@@ -109,6 +109,8 @@ set(COINALGEBRA_SOURCES
   
     ${PROJECT_SOURCE_DIR}/src/COINAlgebra.cxx
     ${PROJECT_SOURCE_DIR}/src/Commands.cxx
+    ${PROJECT_SOURCE_DIR}/src/PathAlgebra.cxx
+    ${PROJECT_SOURCE_DIR}/src/PathProjectors.cxx
     ${PROJECT_SOURCE_DIR}/src/DecayLevel.cxx
     ${PROJECT_SOURCE_DIR}/src/DecayTransition.cxx
     ${PROJECT_SOURCE_DIR}/src/DecayQuiver.cxx
@@ -171,6 +173,8 @@ set_target_properties(COINAlgebra PROPERTIES
 
 set(COINALGEBRA_HEADERS
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/COINAlgebra.h 
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathAlgebra.h 
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathProjectors.h
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/Commands.h	
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayLevel.h
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h

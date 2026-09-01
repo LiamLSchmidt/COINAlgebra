@@ -196,43 +196,8 @@ bool DecayVector::PathsEqual(
     const DecayPath& second
 )
 {
-    if(first.Length() != second.Length())
-    {
-        return false;
-    }
-
-    for(std::size_t i = 0;
-        i < first.Length();
-        ++i)
-    {
-        const auto& transition1 =
-            first.GetTransition(i);
-
-        const auto& transition2 =
-            second.GetTransition(i);
-
-        if(transition1.GetName() !=
-           transition2.GetName())
-        {
-            return false;
-        }
-
-        if(transition1.GetSource() !=
-           transition2.GetSource())
-        {
-            return false;
-        }
-
-        if(transition1.GetTarget() !=
-           transition2.GetTarget())
-        {
-            return false;
-        }
-    }
-
-    return true;
+    return first == second;
 }
-
 
 // ============================================================
 // Simplification
