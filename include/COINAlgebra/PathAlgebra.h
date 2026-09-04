@@ -3,90 +3,181 @@
 
 #include "COINAlgebra/DecayVector.h"
 
+#include <cstddef>
+
+
+class DecayQuiver;
+
+
 class PathAlgebra
 {
 public:
 
-// --------------------------------------------------------
-// Constructor
-// --------------------------------------------------------
+    // ========================================================
+    // Constructor
+    // ========================================================
 
-PathAlgebra();
+    // Constructs the path algebra associated with a decay
+    // quiver.
+    //
+    // The quiver is not owned by PathAlgebra and must remain
+    // alive for the lifetime of this object.
+    //
+    PathAlgebra(
+        const DecayQuiver& quiver
+    );
 
 
-// --------------------------------------------------------
-// Multiplication
-// --------------------------------------------------------
+    // ========================================================
+    // Identity
+    // ========================================================
 
-// Multiplies two decay vectors using the ordinary
-// path-algebra product.
-//
-// For basis paths p and q:
-//
-//     p * q = p.Compose(q)
-//
-// when p and q are composable.
-//
-// Otherwise:
-//
-//     p * q = 0.
-//
-// For vectors
-//
-//     v = sum_i a_i p_i
-//
-//     w = sum_j b_j q_j
-//
-// bilinearity gives
-//
-//     v*w
-//       = sum_{i,j} a_i b_j (p_i*q_j).
-//
-// Non-composable path pairs contribute zero.
-DecayVector Multiply(
-    const DecayVector& first,
-    const DecayVector& second
-) const;
+    // Returns the global identity of the path algebra:
+    //
+    //     1 = sum_{v in Q_0} e_v
+    //
+    // where e_v is the stationary path associated with
+    // vertex v.
+    //
+    DecayVector Identity() const;
 
-// --------------------------------------------------------
+
+    // ========================================================
+    // Maximum path power
+    // ========================================================
+
+    // Returns the maximum meaningful power for the quiver.
+    //
+    // For an acyclic quiver with |Q_0| vertices, the maximum
+    // length of a non-stationary path is
+    //
+    //     |Q_0| - 1.
+    //
+    // This is therefore the maximum power required for a
+    // complete finite power expansion.
+    //
+    std::size_t MaxPower() const;
+
+
+    // ========================================================
+    // Quiver
+    // ========================================================
+
+    // Returns the quiver associated with this path algebra.
+    //
+    const DecayQuiver& GetQuiver() const;
+
+
+    // ========================================================
+    // Multiplication
+    // ========================================================
+
+    // Multiplies two decay vectors using the ordinary
+    // path-algebra product.
+    //
+    // For basis paths p and q:
+    //
+    //     p * q = p.Compose(q)
+    //
+    // when p and q are composable.
+    //
+    // Otherwise:
+    //
+    //     p * q = 0.
+    //
+    // The vector product is extended bilinearly.
+    //
+    DecayVector Multiply(
+        const DecayVector& first,
+        const DecayVector& second
+    ) const;
+
+
+    // ========================================================
+    // Powers
+    // ========================================================
+
+    // Returns the n-th power of a decay vector:
+    //
+    //     d^n.
+    //
+    // In particular:
+    //
+    //     d^0 = 1
+    //     d^1 = d
+    //     d^2 = d*d
+    //     ...
+    //
+    // where 1 is the global identity of the path algebra.
+    //
+    DecayVector Power(
+        const DecayVector& d,
+        std::size_t n
+    ) const;
+
+
+    // ========================================================
+    // Power expansion
+    // ========================================================
+
+    // Returns the finite power expansion
+    //
+    //     1 + d + d^2 + ... + d^N
+    //
+    // where N = maxPower.
+    //
+    DecayVector PowerExpand(
+        const DecayVector& d,
+        std::size_t maxPower
+    ) const;
+
+
+    // ========================================================
     // Bilinear forms
+    // ========================================================
+
+    // --------------------------------------------------------
+    // Source form
     // --------------------------------------------------------
 
-    // Source form.
-    //
-    // Compares the sources of every pair of paths.
-    //
-    //     <v,w>_S
-    //       = sum_{s(p)=s(q)} a_p b_q
     double SourceForm(
         const DecayVector& first,
         const DecayVector& second
     ) const;
 
 
-    // Target form.
-    //
-    // Compares the targets of every pair of paths.
-    //
-    //     <v,w>_T
-    //       = sum_{t(p)=t(q)} a_p b_q
+    // --------------------------------------------------------
+    // Target form
+    // --------------------------------------------------------
+
     double TargetForm(
         const DecayVector& first,
         const DecayVector& second
     ) const;
 
 
-    // Path form.
-    //
-    // Compares the source and target of every pair of paths.
-    //
-    //     <v,w>_P
-    //       = sum_{s(p)=s(q), t(p)=t(q)} a_p b_q
+    // --------------------------------------------------------
+    // Path form
+    // --------------------------------------------------------
+
     double PathForm(
         const DecayVector& first,
         const DecayVector& second
     ) const;
 
+
+private:
+
+    // ========================================================
+    // Associated quiver
+    // ========================================================
+
+    // Non-owning pointer.
+    //
+    // The quiver must outlive the PathAlgebra object.
+    //
+    const DecayQuiver* fQuiver;
 };
 
 #endif
+

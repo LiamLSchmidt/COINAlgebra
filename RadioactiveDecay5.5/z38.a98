@@ -1,0 +1,32 @@
+# 98SR ( 0.653 S   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.653
+                              BetaMinus            0               1
+                              BetaMinus            0  -       1.9691      5874.61
+                              BetaMinus      119.353  -       5.9073     5755.257
+                              BetaMinus       170.74  -       2.6583      5703.87    uniqueFirstForbidden
+                              BetaMinus       358.15  -      0.78763      5516.46
+                              BetaMinus       374.91  -      0.19691       5499.7
+                              BetaMinus       496.19  -       0.2166      5378.42    uniqueFirstForbidden
+                              BetaMinus       547.75  -       20.675      5326.86
+                              BetaMinus      563.977  -       7.8763     5310.633
+                              BetaMinus       586.21  -      0.12799       5288.4
+                              BetaMinus       595.83  -       2.2644      5278.78
+                              BetaMinus       600.22  -       41.351      5274.39
+                              BetaMinus       601.93  -      0.52181      5272.68
+                              BetaMinus       666.17  -       4.1351      5208.44
+                              BetaMinus       712.85  -      0.33474      5161.76
+                              BetaMinus       824.33  -      0.47258      5050.28
+                              BetaMinus       907.71  -      0.74825       4966.9
+                              BetaMinus       986.27  -       6.5964      4888.34
+                              BetaMinus      1199.58  -        1.083      4675.03
+                              BetaMinus      1348.04  -      0.74825      4526.57
+                              BetaMinus      1464.59  -      0.58088      4410.02
+                              BetaMinus       1679.7  -      0.39382      4194.91
+                              BetaMinus         1897  -      0.35444      3977.61
+P      144.225  -     2.78e-09
+                                     IT            0               1
+P       215.35  -     2.28e-08
+                                     IT            0               1
+P      1837.54  -      7.1e-09
+                                     IT            0               1

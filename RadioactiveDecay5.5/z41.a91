@@ -1,0 +1,31 @@
+# 91NB ( 6.8E+2 Y  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 2.145917e+10
+                               MshellEC            0        0.023621
+                               BetaPlus            0          0.0017
+                               KshellEC            0         0.86959
+                               LshellEC            0         0.10509
+                               MshellEC            0  -       2.3621      1257.58
+                               BetaPlus            0  -         0.17      1257.58
+                               KshellEC            0  -       86.959      1257.58
+                               LshellEC            0  -       10.509      1257.58
+P        104.6  -      5258304
+                               MshellEC            0      0.00090786
+                               BetaPlus            0      1.2919e-05
+                               KshellEC            0        0.029105
+                               LshellEC            0       0.0039741
+                                     IT            0           0.966
+                               MshellEC            0  -     0.033814      1362.18
+                               MshellEC      1204.81  -     0.056972       157.37
+                               BetaPlus            0  -    0.0012919      1362.18    uniqueFirstForbidden
+                               BetaPlus      1204.81  -   9.9377e-28       157.37
+                               KshellEC            0  -       1.2076      1362.18
+                               KshellEC      1204.81  -       1.7029       157.37
+                               LshellEC            0  -      0.14989      1362.18
+                               LshellEC      1204.81  -      0.24752       157.37
+P      1984.26  -        1e-08
+                                     IT            0               1
+P      2034.42  -     3.76e-06
+                                     IT            0               1
+P       5034.5  -      1.2e-09
+                                     IT            0               1

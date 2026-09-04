@@ -1,0 +1,45 @@
+# 21MG ( 122 MS    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.122
+                               BetaPlus            0         0.99997
+                               KshellEC            0      3.1577e-05
+                               BetaPlus            0  -       16.439      13098.2
+                               BetaPlus        331.9  -       42.126      12766.3
+                               BetaPlus       1716.1  -       11.199      11382.1
+                               BetaPlus       3544.3  -      0.46236       9553.9
+                               BetaPlus       4294.3  -       5.5483       8803.9
+                               BetaPlus       4467.9  -       10.788       8630.3
+                               BetaPlus         5020  -       2.5995       8078.2
+                               BetaPlus         5380  -       2.4967       7718.2
+                               BetaPlus         5770  -      0.34934       7328.2
+                               BetaPlus         5867  -      0.63703       7231.2
+                               BetaPlus         5979  -      0.48291       7119.2
+                               BetaPlus         6090  -      0.14385       7008.2
+                               BetaPlus         6170  -      0.14385       6928.2
+                               BetaPlus         6341  -      0.88362       6757.2
+                               BetaPlus         6512  -       1.0994       6586.2
+                               BetaPlus         8303  -      0.31852       4795.2
+                               BetaPlus         8397  -      0.18494       4701.2
+                               BetaPlus         8827  -       1.2227       4271.2
+                               BetaPlus         8973  -       2.8666       4125.2
+                               BetaPlus         9280  -    0.0013357       3818.2
+                               KshellEC            0  -        1e-25      13098.2
+                               KshellEC        331.9  -        1e-25      12766.3
+                               KshellEC       1716.1  -        1e-25      11382.1
+                               KshellEC       3544.3  -        1e-25       9553.9
+                               KshellEC       4294.3  -        1e-25       8803.9
+                               KshellEC       4467.9  -        1e-25       8630.3
+                               KshellEC         5020  -        1e-25       8078.2
+                               KshellEC         5380  -        1e-25       7718.2
+                               KshellEC         5770  -        1e-25       7328.2
+                               KshellEC         5867  -        1e-25       7231.2
+                               KshellEC         5979  -        1e-25       7119.2
+                               KshellEC         6090  -        1e-25       7008.2
+                               KshellEC         6170  -        1e-25       6928.2
+                               KshellEC         6341  -   9.8637e-05       6757.2
+                               KshellEC         6512  -    0.0001346       6586.2
+                               KshellEC         8303  -    0.0001233       4795.2
+                               KshellEC         8397  -    7.706e-05       4701.2
+                               KshellEC         8827  -   0.00073978       4271.2
+                               KshellEC         8973  -     0.001983       4125.2
+                               KshellEC         9280  -    1.233e-06       3818.2

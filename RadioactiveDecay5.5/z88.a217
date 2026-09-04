@@ -1,0 +1,9 @@
+# 217RA ( 1.6 US    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      1.6e-06
+                                  Alpha            0               1
+                                  Alpha            0  -          100      9160.69
+P       2393.6  -     4.62e-09
+                                     IT            0               1
+P       3825.5  -     1.49e-09
+                                     IT            0               1

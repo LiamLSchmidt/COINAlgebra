@@ -1,0 +1,9 @@
+# 250CM ( 2.6193e+11)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 2.619281e+11
+                                  Alpha            0            0.18
+                              BetaMinus            0            0.08
+                              SpFission            0            0.74
+                                  Alpha            0  -           18       5169.4
+                              BetaMinus            0  -            8         38.8
+                              SpFission            0  -           74        1e-06

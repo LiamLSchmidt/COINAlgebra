@@ -1,0 +1,7 @@
+# 163HF ( 4.0000e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           40
+                                  Alpha            0           1e-06
+                               BetaPlus            0               1
+                                  Alpha            0  -       0.0001       4149.9
+                               BetaPlus            0  -          100       5527.4

@@ -1,0 +1,33 @@
+# 126SB ( 12.35 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      1067040
+                              BetaMinus            0               1
+                              BetaMinus      1776.19  -       19.177      1895.81    uniqueFirstForbidden
+                              BetaMinus     2218.203  -       2.8766     1453.797
+                              BetaMinus      2396.42  -      0.86298      1275.58    uniqueFirstForbidden
+                              BetaMinus      2496.83  -       15.342      1175.17
+                              BetaMinus      2765.75  -       4.6984       906.25
+                              BetaMinus       2811.6  -       7.7668        860.4
+                              BetaMinus       2839.7  -      0.76709        832.3    uniqueFirstForbidden
+                              BetaMinus      2974.32  -      0.47943       697.68    uniqueFirstForbidden
+                              BetaMinus       2989.4  -       4.0272        682.6
+                              BetaMinus      3071.12  -       8.0545       600.88
+                              BetaMinus       3171.6  -       5.6573        500.4
+                              BetaMinus       3193.5  -       27.807        478.5
+                              BetaMinus       3450.5  -        2.004        221.5
+                              BetaMinus       3473.5  -      0.47943        198.5
+P         17.7  -         1149
+                              BetaMinus            0            0.86
+                                     IT            0            0.14
+                              BetaMinus      1776.19  -       80.601      1913.51
+                              BetaMinus      2396.42  -       3.3017      1293.28
+                              BetaMinus      2704.49  -       1.2624       985.21
+                              BetaMinus       2837.1  -      0.83514        852.6
+P         40.4  -           11
+                                     IT            0               1
+P           83  -      5.1e-09
+                                     IT            0               1
+P        104.6  -     5.53e-07
+                                     IT            0               1
+P        127.9  -      7.8e-08
+                                     IT            0               1

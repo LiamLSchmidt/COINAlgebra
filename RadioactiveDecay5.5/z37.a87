@@ -1,0 +1,7 @@
+# 87RB ( 4.81E10 Y )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 1.517921e+18
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100       282.24
+P       1577.9  -        6e-09
+                                     IT            0               1

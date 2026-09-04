@@ -1,0 +1,9 @@
+# 163HO ( 4570 Y    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 1.442182e+11
+                               MshellEC            0               1
+                               MshellEC            0  -          100        2.555
+P       297.88  -         1.09
+                                     IT            0               1
+P       1505.2  -      1.5e-08
+                                     IT            0               1

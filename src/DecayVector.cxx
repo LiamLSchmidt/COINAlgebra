@@ -283,3 +283,146 @@ void DecayVector::Print() const
         << ToString()
         << std::endl;
 }
+
+// ============================================================
+// Table display
+// ============================================================
+//
+// Displays each path and its coefficient interpreted as a
+// probability:
+//
+//     p_i = a_i
+//
+// Example:
+//
+//     +----------------------+--------------+
+//     | Path                 | Probability  |
+//     +----------------------+--------------+
+//     | d2 -> d1             | 0.350000     |
+//     | d2 -> d0             | 0.150000     |
+//     +----------------------+--------------+
+//
+// ============================================================
+
+void DecayVector::PrintTable() const
+{
+    if(fTerms.empty())
+    {
+        std::cout << "DecayVector is empty."
+                  << std::endl;
+
+        return;
+    }
+
+
+    // --------------------------------------------------------
+    // Determine the required path-column width.
+    // --------------------------------------------------------
+
+    std::size_t pathWidth = 4;
+
+    for(const auto& term : fTerms)
+    {
+        const std::string pathString =
+            term.path.ToString();
+
+        if(pathString.length() > pathWidth)
+        {
+            pathWidth = pathString.length();
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // Minimum width for a readable table.
+    // --------------------------------------------------------
+
+    if(pathWidth < 20)
+    {
+        pathWidth = 20;
+    }
+
+
+    const std::size_t probabilityWidth = 14;
+
+
+    // --------------------------------------------------------
+    // Horizontal separator.
+    // --------------------------------------------------------
+
+    std::cout
+        << "+"
+        << std::string(pathWidth + 2, '-')
+        << "+"
+        << std::string(probabilityWidth + 2, '-')
+        << "+"
+        << std::endl;
+
+
+    // --------------------------------------------------------
+    // Header.
+    // --------------------------------------------------------
+
+    std::cout
+        << "| "
+        << std::left
+        << std::setw(static_cast<int>(pathWidth))
+        << "Path"
+        << " | "
+        << std::right
+        << std::setw(static_cast<int>(probabilityWidth))
+        << "Probability"
+        << " |"
+        << std::endl;
+
+
+    // --------------------------------------------------------
+    // Header separator.
+    // --------------------------------------------------------
+
+    std::cout
+        << "+"
+        << std::string(pathWidth + 2, '-')
+        << "+"
+        << std::string(probabilityWidth + 2, '-')
+        << "+"
+        << std::endl;
+
+
+    // --------------------------------------------------------
+    // Table contents.
+    // --------------------------------------------------------
+
+    for(const auto& term : fTerms)
+    {
+        const std::string pathString =
+            term.path.ToString();
+
+        std::cout
+            << "| "
+            << std::left
+            << std::setw(static_cast<int>(pathWidth))
+            << pathString
+            << " | "
+            << std::right
+            << std::fixed
+            << std::setprecision(8)
+            << std::setw(static_cast<int>(probabilityWidth))
+            << term.coefficient
+            << " |"
+            << std::endl;
+    }
+
+
+    // --------------------------------------------------------
+    // Bottom separator.
+    // --------------------------------------------------------
+
+    std::cout
+        << "+"
+        << std::string(pathWidth + 2, '-')
+        << "+"
+        << std::string(probabilityWidth + 2, '-')
+        << "+"
+        << std::endl;
+}

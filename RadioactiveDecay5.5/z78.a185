@@ -1,0 +1,13 @@
+# 185PT ( 4.2540e+03)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         4254
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100       3647.4
+P       103.41  -         1980
+                                  Alpha            0      9.9009e-06
+                               BetaPlus            0         0.98019
+                                     IT            0        0.019802
+                                  Alpha            0  -        0.001      4540.31
+                               BetaPlus            0  -           99      3854.21
+P       200.89  -     7.28e-07
+                                     IT            0               1

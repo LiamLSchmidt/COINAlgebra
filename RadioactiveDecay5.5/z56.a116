@@ -1,0 +1,5 @@
+# 116BA ( 1.3000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.3
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         7365

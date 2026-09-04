@@ -1,0 +1,52 @@
+# 122IN ( 1.5 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.5
+                              BetaMinus            0               1
+                              BetaMinus            0  -       69.242       6368.6
+                              BetaMinus      1140.51  -       16.056      5228.09
+                              BetaMinus      2087.71  -      0.49172      4280.89
+                              BetaMinus      2153.81  -       2.8098      4214.79
+                              BetaMinus     2415.543  -      0.81284     3953.057
+                              BetaMinus      2492.67  -      0.44155      3875.93    uniqueFirstForbidden
+                              BetaMinus      2530.33  -       1.8364      3838.27
+                              BetaMinus       2734.5  -      0.26091       3634.1
+                              BetaMinus      2775.55  -      0.75263      3593.05
+                              BetaMinus      3206.25  -        2.007      3162.35
+                              BetaMinus      3548.66  -      0.43151      2819.94
+                              BetaMinus      3582.35  -      0.12042      2786.25
+                              BetaMinus      3819.79  -      0.26091      2548.81
+                              BetaMinus      3899.68  -       3.1109      2468.92
+                              BetaMinus         4004  -      0.12042       2364.6
+                              BetaMinus       4106.6  -      0.28098         2262
+                              BetaMinus       4116.3  -      0.84295       2252.3
+                              BetaMinus       4179.6  -      0.12042         2189
+P           40  -         10.3
+                              BetaMinus            0               1
+                              BetaMinus      2142.06  -       11.987      4266.54
+                              BetaMinus      2331.09  -       1.5501      4077.51
+                              BetaMinus     2415.543  -       1.6637     3993.057
+                              BetaMinus      2492.67  -      0.72336      3915.93    uniqueFirstForbidden
+                              BetaMinus      2555.42  -       1.5191      3853.18
+                              BetaMinus       2734.5  -      0.77503       3674.1
+                              BetaMinus      2775.55  -      0.25834      3633.05
+                              BetaMinus      2973.39  -       12.297      3435.21
+                              BetaMinus      3082.15  -       3.1001      3326.45
+                              BetaMinus      3233.74  -       17.464      3174.86
+                              BetaMinus      3305.69  -       36.272      3102.91
+                              BetaMinus      3371.24  -      0.31001      3037.36
+                              BetaMinus      3627.01  -       1.4467      2781.59
+                              BetaMinus      3670.28  -       2.6764      2738.32
+                              BetaMinus      3782.84  -      0.43402      2625.76
+                              BetaMinus      3840.65  -       2.0048      2567.95
+                              BetaMinus      3876.48  -       1.3124      2532.12
+                              BetaMinus       3882.1  -       3.8958       2526.5
+                              BetaMinus       3948.5  -      0.31001       2460.1
+P          290  -         10.8
+                              BetaMinus            0               1
+                              BetaMinus         2653  -       3.7791       4005.6
+                              BetaMinus      2690.04  -       2.6163      3968.56
+                              BetaMinus      2837.88  -      0.96899      3820.72
+                              BetaMinus       3416.5  -       3.4884       3242.1
+                              BetaMinus      3530.71  -       74.612      3127.89
+                              BetaMinus      3703.38  -       9.2054      2955.22
+                              BetaMinus      3710.15  -       5.3295      2948.45

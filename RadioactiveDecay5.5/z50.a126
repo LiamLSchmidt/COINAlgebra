@@ -1,0 +1,11 @@
+# 126SN ( 2.30E+5 Y )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 7.258248e+12
+                              BetaMinus            0               1
+                              BetaMinus        127.9  -          100        250.1
+P      2161.54  -     1.08e-08
+                                     IT            0               1
+P      2218.99  -      6.6e-06
+                                     IT            0               1
+P       2564.5  -      7.7e-06
+                                     IT            0               1

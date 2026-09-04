@@ -1,0 +1,30 @@
+# 129TE ( 69.6 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         4176
+                              BetaMinus            0               1
+                              BetaMinus       27.793  -       88.744     1474.517
+                              BetaMinus      278.381  -      0.55839     1223.929
+                              BetaMinus      487.346  -       9.2733     1014.964
+                              BetaMinus       559.61  -      0.25128        942.7
+                              BetaMinus       729.57  -   0.00069799       772.74
+                              BetaMinus       829.91  -      0.21239        672.4
+                              BetaMinus      1047.35  -    0.0090739       454.96
+                              BetaMinus     1111.645  -      0.87747      390.665
+                              BetaMinus      1196.65  -    0.0006581       305.66
+                              BetaMinus       1209.8  -   0.00054842       292.51
+                              BetaMinus      1260.65  -     0.038888       241.66
+                              BetaMinus      1291.94  -     0.032905       210.37
+P       105.51  -      2903040
+                              BetaMinus            0         0.36364
+                                     IT            0         0.63636
+                              BetaMinus            0  -       32.065      1607.82    uniqueFirstForbidden
+                              BetaMinus       695.89  -       3.0061       911.93
+                              BetaMinus       729.57  -      0.70143       878.25
+                              BetaMinus       768.75  -     0.028057       839.07    uniqueFirstForbidden
+                              BetaMinus       844.82  -    0.0090184          763    uniqueFirstForbidden
+                              BetaMinus      1050.21  -     0.037076       557.61    uniqueFirstForbidden
+                              BetaMinus      1203.71  -   0.00048098       404.11    uniqueFirstForbidden
+                              BetaMinus      1281.99  -    0.0022045       325.83    uniqueFirstForbidden
+                              BetaMinus      1401.43  -      0.15031       206.39
+P      2137.83  -      3.3e-08
+                                     IT            0               1

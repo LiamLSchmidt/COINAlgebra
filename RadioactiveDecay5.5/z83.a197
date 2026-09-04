@@ -1,0 +1,53 @@
+# 197BI ( 9.33 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        559.8
+                                  Alpha            0           1e-06
+                               BetaPlus            0               1
+                                  Alpha            0  -       0.0001       5365.3
+                               BetaPlus        84.88  -            5      4976.82
+                               BetaPlus       319.31  -            5      4742.39
+                               BetaPlus       952.04  -            5      4109.66
+                               BetaPlus       988.95  -            5      4072.75
+                               BetaPlus      1015.34  -            5      4046.36
+                               BetaPlus      1079.39  -            5      3982.31
+                               BetaPlus      1089.41  -            5      3972.29
+                               BetaPlus      1147.49  -            5      3914.21
+                               BetaPlus      1164.88  -            5      3896.82
+                               BetaPlus      1166.66  -            5      3895.04
+                               BetaPlus      1173.77  -            5      3887.93
+                               BetaPlus      1295.12  -            5      3766.58
+                               BetaPlus      1430.51  -            5      3631.19
+                               BetaPlus      1472.88  -            5      3588.82
+                               BetaPlus      1524.55  -            5      3537.15
+                               BetaPlus      1525.09  -            5      3536.61
+                               BetaPlus      1553.85  -            5      3507.85
+                               BetaPlus      1624.45  -            5      3437.25
+                               BetaPlus       1675.9  -            5       3385.8
+                               BetaPlus      1773.56  -            5      3288.14
+P          500  -        302.4
+                                  Alpha            0         0.54835
+                               BetaPlus            0         0.44865
+                                     IT            0        0.002991
+                                  Alpha            0  -           55       6365.3
+                               BetaPlus            0  -           45       5561.7
+P          690  -        302.4
+                                  Alpha            0               1
+                                  Alpha            0  -           55       6055.3
+P      1600.95  -     1.53e-08
+                                     IT            0               1
+P         1968 +X      1.8e-08
+                                     IT            0               1
+P       2064.7  -     3.67e-08
+                                     IT            0               1
+P       2088.6  -     1.93e-08
+                                     IT            0               1
+P       2129.3  -     2.04e-07
+                                     IT            0               1
+P       2357.4  -      5.3e-08
+                                     IT            0               1
+P       2360.4 +X     2.63e-07
+                                     IT            0               1
+P       2383.1 +X     2.53e-07
+                                     IT            0               1
+P       2929.5  -     2.09e-07
+                                     IT            0               1

@@ -1,0 +1,10 @@
+# 151LU (  80.6 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       0.0806
+                               BetaPlus            0           0.366
+                                 Proton            0           0.634
+                               BetaPlus            0  -         36.6        11434
+                                 Proton            0  -         63.4      1241.14
+P           78  -      1.6e-05
+                                 Proton            0               1
+                                 Proton            0  -          100      1319.14

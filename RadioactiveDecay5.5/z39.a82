@@ -1,0 +1,37 @@
+# 82Y ( 8.3 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          8.3
+                               MshellEC            0      0.00013891
+                               BetaPlus            0         0.99375
+                               KshellEC            0       0.0054768
+                               LshellEC            0      0.00063894
+                               MshellEC            0  -    0.0095329      7947.08
+                               MshellEC       573.54  -    0.0035793      7373.54
+                               MshellEC      1175.71  -   0.00026756      6771.37
+                               MshellEC      1310.89  -   0.00051168      6636.19
+                               MshellEC         1865  -        1e-25      6082.08
+                               BetaPlus            0  -       75.056      7947.08
+                               BetaPlus       573.54  -       21.016      7373.54
+                               BetaPlus      1175.71  -       1.2009      6771.37
+                               BetaPlus      1310.89  -       2.1016      6636.19
+                               BetaPlus         1865  -   1.0008e-27      6082.08
+                               KshellEC            0  -      0.37685      7947.08
+                               KshellEC       573.54  -      0.14015      7373.54
+                               KshellEC      1175.71  -     0.010511      6771.37
+                               KshellEC      1310.89  -      0.02017      6636.19
+                               KshellEC         1865  -        1e-25      6082.08
+                               LshellEC            0  -     0.043941      7947.08
+                               LshellEC       573.54  -     0.016387      7373.54
+                               LshellEC      1175.71  -    0.0012303      6771.37
+                               LshellEC      1310.89  -    0.0023355      6636.19
+                               LshellEC         1865  -        1e-25      6082.08
+P        401.1  -      1.1e-08
+                                     IT            0               1
+P       402.63  -     2.68e-07
+                                     IT            0               1
+P       405.76  -     3.53e-08
+                                     IT            0               1
+P        507.5  -     1.47e-07
+                                     IT            0               1
+P       511.82  -     1.42e-09
+                                     IT            0               1

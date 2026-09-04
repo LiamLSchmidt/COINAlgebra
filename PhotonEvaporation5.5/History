@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+
+     =========================================================
+     Geant4 - an Object-Oriented Toolkit for Simulation in HEP
+     =========================================================
+
+         History file for the Photon Evaporation Database
+         ------------------------------------------------
+
+     * Reverse chronological order (last date on top), please *
+     ---------------------------------------------------------
+ 
+ 
+November 2019 L.Desorgher
+---------------------------  
+- Fix z85.a217 file (217At)
+
+Jan-October 2019 L.Desorgher
+---------------------------  
+- Fix of z85.a217 file (217At)
+ 
+October 2018 L.Desorgher
+---------------------------
+- Correct typo in Te125 (z100.a247)
+- Set IC coefficient = 1e20 for E0 gamma/IC transition of 809.907 keV  in U234 (z92.a234).
+  Correction needed for Pa234m decay simulation. Correction of bug 2076 reported by Gien Warren. 
+       
+May 2018 L.Desorgher
+---------------------------
+ Changes in Te125 (z52.a125):
+        -Correct internal conversion coefficient for the excited level 35.495 keV according 
+           to DDEP data. Needed for I125 decay.
+        
+9 November 2017 L.Desorgher
+---------------------------
+ Changes in U234 (z92.a234):
+        -Correct the decay from 809.907 to the ground according to gamma input in DDEP pdf table.
+         Info is missing in ENSDF. Correction to solve  the bug 1967.
+        -Correction of gamma intensities from level 1040.536 according to input ENSDF file from DDEP.
+
+5 September 2017 L.Desorgher
+---------------------------
+ Correction of transitions for floating levels in last 60 files.
+
+13 July 2017 L.Desorgher
+---------------------------
+ Correction of transitions for floating levels in more than 300 files.
+
+04 April 2017 V.Ivantchenko
+---------------------------
+ Old data removed, correlated_gamma files moved to the main directory
+
+21 February 2017 Desorgher
+-------------------------
+ Correct the correlated_gamma files z64.a148,z64.a149,z64.a150,z81.a194 for problem of order of level
+ index, reported by V. Ivantchenko.
+ 
+1 February 2017 Desorgher
+-------------------------
+ Correct all the correlated_gamma files for the uncorrect setting of the multipolarity E0 as -1.
+ No we  consider E0,E1,M1, as 1,2,3,..... The value of 0 is for unkown.
+
+19 December 2016 Desorgher Laurent 
+--------------------------------------------------------------  
+ Update total internal conversion coefficient  of z90.a234 with DDEP data for U238 decay.
+ Update total internal conversion coefficient  of z91.a234 with DDEP data for TH234 decay.
+ Still need to correct partial ICC coefficient. Correction are done only in correlated_gamma_files.
+
+19 December 2016 Desorgher Laurent 
+--------------------------------------------------------------  
+ Correct data of z89.a228 with DDEP data.
+
+
+23 November2016 Vladimir Ivanchenko  PhotonEvaporation4.3
+--------------------------------------------------------------  
+ New data files moved to subdirectory correlated_gamma
+ Files from PhotonEvaporation3.2 are restored for Geant4 release 
+ 10.3
+     
+ 8 November2016 Laurent Desorgher  PhotonEvaporation4.2
+--------------------------------------------------------------  
+ Correct 12 lines with mispelled data in the whole database
+ 
+ Correct the order of levels in  files z58.a133, z64.a148, z64.a149, z64.a150, z65.a151, z72.a174,
+       z81.a192,z81.a194,z82.a193 
+ Correct few gamma energies
+ 
+ Update z90.a231 for U235 decay with data form the DDEP http://www.nucleide.org/DDEP.htm
+ 
+ 19 October 2016 and 2 November 2016 Laurent Desorgher  PhotonEvaporation4.1
+--------------------------------------------------------------
+-Reformatting of z* files. Correction of few data in these files.
+ Checking of the format has been added in the python test suite.
+-Remove PhotoEvaporation3.2 z*.a* files
+-Add explode files z*.a*  from z* files.
+-Correction of few gamma intensities in z6.a12, z16.a33,z17.a42,z34.a76,z38.a95,z38.a97,
+           z41.a88,z56.a129,z74.a187
+-Remove deexcitation of levels on it self.
+          
+ 
+
+
+ 16 September 2016 Laurent Desorgher         PhotonEvaporation4.0
+-----------------------------------------------------------   
+-Merging in the same database of the PhotoEvaporation3.2 z*.a*.txt files and the 
+ new photoevaporation data files.
+ The new data files are updated with  floating levels, multipolarity and mixing ratio data.
+ The new files are in Z*.txt files.
+ The README for the new data is the file README-LevelGammaData_Extended.
+ 
+
+ 6 November 2015 Dennis Wright         PhotonEvaporation3.2
+-----------------------------------------------------------
+- package Laurent Desorgher's new version of photon evaporation database
+  which is meant to be consistent with the 4.3 version of the radioactive 
+  decay database.  It is also formatted to remove scientific notation
+  where possible and to remove trailing zeros. 
+ 
+19 February 2014 Dennis Wright         PhotonEvaporation3.1
+-----------------------------------------------------------
+- contains Laurent Desorgher's corrections of of +X, +Y, ... levels for
+    compliance with latest isomer list
+- problem report 1565: propagate bug fix in NUDAT2 to PhotonEvaporation:
+    212Bi (z83.a212, line 8), change strength of gamma transition
+    (415.272 keV to ground state) from 4.4 to 0.4. 
+
+3 September 2013  Laurent Desorgher    PhotonEvaporation3.0
+-----------------------------------------------------------
+- update to August 2012 version of ENSDF
+
+7 November 2013  Dennis Wright
+-----------------------------------------------------------
+- update README with Michel Maire's corrections
+

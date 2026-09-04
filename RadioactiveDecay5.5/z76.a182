@@ -1,0 +1,30 @@
+# 182OS (    21.84 H)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        78624
+                               MshellEC            0        0.057851
+                               KshellEC            0         0.76689
+                               LshellEC            0         0.17526
+                               MshellEC      235.732  -      0.56974      603.268
+                               MshellEC      263.278  -       1.3531      575.722
+                               MshellEC       438.28  -     0.027668       400.72
+                               MshellEC       510.05  -       3.6818       328.95
+                               MshellEC       549.67  -     0.041355       289.33
+                               MshellEC       726.97  -        1e-25       112.03
+                               KshellEC      235.732  -       6.6054      603.268
+                               KshellEC      263.278  -        21.11      575.722
+                               KshellEC       438.28  -      0.38142       400.72
+                               KshellEC       510.05  -       46.636       328.95
+                               KshellEC       549.67  -      0.47817       289.33
+                               KshellEC       726.97  -        1e-25       112.03
+                               LshellEC      235.732  -       1.7181      603.268
+                               LshellEC      263.278  -       4.2167      575.722
+                               LshellEC       438.28  -      0.08498       400.72
+                               LshellEC       510.05  -       11.045       328.95
+                               LshellEC       549.67  -      0.12277       289.33
+                               LshellEC       726.97  -        1e-25       112.03
+P       1831.4  -      0.00078
+                                     IT            0               1
+P       4370.3  -        6e-09
+                                     IT            0               1
+P       7049.5  -      1.5e-07
+                                     IT            0               1

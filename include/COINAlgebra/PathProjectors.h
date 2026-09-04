@@ -82,8 +82,7 @@ public:
     //
     // where e_i is the stationary path at vertex i.
     DecayVector SourceVertexProjector(
-        const DecayVector& vector,
-        DecayLevel* source
+        const DecayVector& vector
     ) const;
 
 
@@ -102,8 +101,7 @@ public:
     //
     // where e_i is the stationary path at vertex i.
     DecayVector TargetVertexProjector(
-        const DecayVector& vector,
-        DecayLevel* target
+        const DecayVector& vector
     ) const;
 
 

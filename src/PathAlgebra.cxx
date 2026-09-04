@@ -1,12 +1,98 @@
 #include "COINAlgebra/PathAlgebra.h"
 
+#include "COINAlgebra/DecayQuiver.h"
+#include "COINAlgebra/DecayPath.h"
+
 
 // ============================================================
 // Constructor
 // ============================================================
 
-PathAlgebra::PathAlgebra()
+PathAlgebra::PathAlgebra(
+    const DecayQuiver& quiver
+)
+    : fQuiver(&quiver)
 {
+}
+
+
+// ============================================================
+// Global identity
+// ============================================================
+//
+// The global identity is the sum of all stationary paths:
+//
+//     1 = sum_{v in Q_0} e_v.
+//
+// Each stationary path satisfies:
+//
+//     e_v * e_v = e_v
+//
+// and for distinct vertices:
+//
+//     e_v * e_w = 0.
+//
+// Therefore the sum acts as the identity on every path.
+//
+// ============================================================
+
+DecayVector PathAlgebra::Identity() const
+{
+    DecayVector identity;
+
+    for(auto* level : fQuiver->GetLevels())
+    {
+        if(level == nullptr)
+        {
+            continue;
+        }
+
+        DecayPath stationary(level);
+
+        identity.AddTerm(
+            stationary,
+            1.0
+        );
+    }
+
+    return identity;
+}
+
+
+// ============================================================
+// Maximum path power
+// ============================================================
+//
+// For an acyclic quiver with N vertices, a non-stationary path
+// can visit at most N distinct vertices.
+//
+// Therefore its maximum length is:
+//
+//     N - 1.
+//
+// ============================================================
+
+std::size_t PathAlgebra::MaxPower() const
+{
+    const std::size_t numberOfLevels =
+        fQuiver->GetLevels().size();
+
+    if(numberOfLevels == 0)
+    {
+        return 0;
+    }
+
+    return numberOfLevels - 1;
+}
+
+
+// ============================================================
+// Get quiver
+// ============================================================
+
+const DecayQuiver& PathAlgebra::GetQuiver() const
+{
+    return *fQuiver;
 }
 
 
@@ -14,25 +100,19 @@ PathAlgebra::PathAlgebra()
 // Path-algebra multiplication
 // ============================================================
 //
-// For two vectors
+// For vectors
 //
 //     v = sum_i a_i p_i
 //
 //     w = sum_j b_j q_j
 //
-// the product is defined by bilinearity:
+// the product is
 //
-//     v * w
-//       = sum_{i,j} a_i b_j (p_i * q_j).
+//     v*w = sum_{i,j} a_i b_j (p_i*q_j).
 //
-// For individual paths:
+// Non-composable path pairs contribute zero.
 //
-//     p * q = p.Compose(q)
-//
-// whenever p and q are composable.
-//
-// Non-composable pairs contribute zero.
-//
+// ============================================================
 
 DecayVector PathAlgebra::Multiply(
     const DecayVector& first,
@@ -95,7 +175,7 @@ DecayVector PathAlgebra::Multiply(
 
 
             // ------------------------------------------------
-            // Coefficients multiply.
+            // Multiply coefficients.
             // ------------------------------------------------
 
             const double coefficient =
@@ -103,10 +183,7 @@ DecayVector PathAlgebra::Multiply(
 
 
             // ------------------------------------------------
-            // Add the product to the result.
-            //
-            // AddTerm() combines coefficients when the same
-            // path occurs more than once.
+            // Add product to result.
             // ------------------------------------------------
 
             result.AddTerm(
@@ -122,35 +199,98 @@ DecayVector PathAlgebra::Multiply(
 
 
 // ============================================================
+// Path-algebra power
+// ============================================================
+//
+//     d^0 = 1
+//
+//     d^n = d^(n-1) * d
+//
+// ============================================================
+
+DecayVector PathAlgebra::Power(
+    const DecayVector& d,
+    std::size_t n
+) const
+{
+    // --------------------------------------------------------
+    // Zeroth power
+    // --------------------------------------------------------
+
+    if(n == 0)
+    {
+        return Identity();
+    }
+
+
+    // --------------------------------------------------------
+    // First power
+    // --------------------------------------------------------
+
+    DecayVector result = d;
+
+
+    // --------------------------------------------------------
+    // Higher powers
+    // --------------------------------------------------------
+
+    for(std::size_t i = 1;
+        i < n;
+        ++i)
+    {
+        result =
+            Multiply(
+                result,
+                d
+            );
+    }
+
+
+    return result;
+}
+
+
+// ============================================================
+// Power expansion
+// ============================================================
+//
+//     PowerExpand(d,N)
+//
+// returns
+//
+//     1 + d + d^2 + ... + d^N.
+//
+// ============================================================
+
+DecayVector PathAlgebra::PowerExpand(
+    const DecayVector& d,
+    std::size_t maxPower
+) const
+{
+    DecayVector result;
+
+    for(std::size_t n = 0;
+        n <= maxPower;
+        ++n)
+    {
+        result += Power(
+            d,
+            n
+        );
+    }
+
+    return result;
+}
+
+
+// ============================================================
 // Source form
 // ============================================================
 //
-// For basis paths p and q:
-//
-//     <p,q>_S = 1
-//
-// if
-//
-//     s(p) = s(q),
-//
-// and zero otherwise.
-//
-// For vectors
-//
-//     v = sum_i a_i p_i
-//
-//     w = sum_j b_j q_j,
-//
-// bilinearity gives
-//
 //     <v,w>_S
-//       = sum_{i,j}
-//           a_i b_j
-//           delta_{s(p_i),s(q_j)}.
+//       = sum_{s(p)=s(q)} a_p b_q.
 //
-// Thus matching paths contribute the product of their
-// coefficients.
-//
+// ============================================================
 
 double PathAlgebra::SourceForm(
     const DecayVector& first,
@@ -180,10 +320,6 @@ double PathAlgebra::SourceForm(
                 secondTerm.coefficient;
 
 
-            // ------------------------------------------------
-            // Source comparison
-            // ------------------------------------------------
-
             if(p.HasSameSource(q))
             {
                 result += a * b;
@@ -200,23 +336,10 @@ double PathAlgebra::SourceForm(
 // Target form
 // ============================================================
 //
-// For basis paths p and q:
-//
-//     <p,q>_T = 1
-//
-// if
-//
-//     t(p) = t(q),
-//
-// and zero otherwise.
-//
-// Extended bilinearly:
-//
 //     <v,w>_T
-//       = sum_{i,j}
-//           a_i b_j
-//           delta_{t(p_i),t(q_j)}.
+//       = sum_{t(p)=t(q)} a_p b_q.
 //
+// ============================================================
 
 double PathAlgebra::TargetForm(
     const DecayVector& first,
@@ -246,10 +369,6 @@ double PathAlgebra::TargetForm(
                 secondTerm.coefficient;
 
 
-            // ------------------------------------------------
-            // Target comparison
-            // ------------------------------------------------
-
             if(p.HasSameTarget(q))
             {
                 result += a * b;
@@ -266,33 +385,12 @@ double PathAlgebra::TargetForm(
 // Path form
 // ============================================================
 //
-// For basis paths p and q:
-//
-//     <p,q>_P = 1
-//
-// if
-//
-//     s(p) = s(q)
-//
-// and
-//
-//     t(p) = t(q).
-//
-// Otherwise:
-//
-//     <p,q>_P = 0.
-//
-// Extended bilinearly:
-//
 //     <v,w>_P
-//       = sum_{i,j}
-//           a_i b_j
-//           delta_{s(p_i),s(q_j)}
-//           delta_{t(p_i),t(q_j)}.
+//       = sum_{s(p)=s(q), t(p)=t(q)} a_p b_q.
 //
-// This form therefore identifies paths by their endpoints,
-// independently of their lengths or intermediate transitions.
+// This identifies paths by their endpoints.
 //
+// ============================================================
 
 double PathAlgebra::PathForm(
     const DecayVector& first,
@@ -321,10 +419,6 @@ double PathAlgebra::PathForm(
             const double b =
                 secondTerm.coefficient;
 
-
-            // ------------------------------------------------
-            // Endpoint comparison
-            // ------------------------------------------------
 
             if(p.HasSameEndpoints(q))
             {

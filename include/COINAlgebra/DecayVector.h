@@ -83,7 +83,7 @@ public:
     std::string ToString() const;
 
     void Print() const;
-
+    void PrintTable() const;
 private:
 
     std::vector<Term> fTerms;

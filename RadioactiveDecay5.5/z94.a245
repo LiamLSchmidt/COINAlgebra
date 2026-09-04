@@ -1,0 +1,28 @@
+# 245PU ( 10.5 H    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        37800
+                              BetaMinus            0               1
+                              BetaMinus            0  -   1.0037e-27       1277.3
+                              BetaMinus         19.2  -   1.0037e-27       1258.1
+                              BetaMinus        47.07  -       10.037      1230.23
+                              BetaMinus        70.43  -   1.0037e-27      1206.87
+                              BetaMinus        87.65  -   1.0037e-27      1189.65
+                              BetaMinus       124.59  -   1.0037e-27      1152.71
+                              BetaMinus       134.51  -   1.0037e-27      1142.79
+                              BetaMinus       190.82  -   1.0037e-27      1086.48
+                              BetaMinus      327.428  -       53.197      949.872
+                              BetaMinus       395.87  -       3.9145       881.43
+                              BetaMinus       475.52  -      0.41152       801.78
+                              BetaMinus        563.1  -   1.0037e-27        714.2
+                              BetaMinus       887.47  -       15.056       389.83
+                              BetaMinus       921.01  -       2.3085       356.29
+                              BetaMinus       957.53  -       8.5316       319.77
+                              BetaMinus       987.51  -       2.9108       289.79
+                              BetaMinus      1024.22  -       1.1041       253.08
+                              BetaMinus       1065.3  -       1.7063          212
+                              BetaMinus       1111.2  -       0.7026        166.1
+                              BetaMinus       1185.6  -      0.12045         91.7
+P        264.5  -      3.3e-07
+                                     IT            0               1
+P         2000  -        9e-08
+                                     IT            0               1

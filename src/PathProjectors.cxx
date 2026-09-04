@@ -149,50 +149,52 @@ DecayVector PathProjectors::TargetProjector(
 // source and places their sum onto the corresponding
 // stationary path.
 //
-
 DecayVector PathProjectors::SourceVertexProjector(
-    const DecayVector& vector,
-    DecayLevel* source
+    const DecayVector& vector
 ) const
 {
-    if(source == nullptr)
-    {
-        throw std::invalid_argument(
-            "PathProjectors::SourceVertexProjector: "
-            "source cannot be nullptr"
-        );
-    }
+    DecayVector result;
 
-    double coefficient = 0.0;
+    // --------------------------------------------------------
+    // For every path in the vector, collect its coefficient
+    // according to its source.
+    // --------------------------------------------------------
 
     for(const auto& term : vector.GetTerms())
     {
         const DecayPath& path =
             term.path;
 
-        if(path.GetSource() == source)
+        DecayLevel* source =
+            path.GetSource();
+
+        if(source == nullptr)
         {
-            coefficient += term.coefficient;
+            continue;
         }
+
+        // ----------------------------------------------------
+        // Construct the stationary path associated with the
+        // source.
+        // ----------------------------------------------------
+
+        DecayPath stationary(source);
+
+        // ----------------------------------------------------
+        // Add the coefficient to that stationary path.
+        //
+        // AddTerm() automatically combines coefficients for
+        // identical stationary paths.
+        // ----------------------------------------------------
+
+        result.AddTerm(
+            stationary,
+            term.coefficient
+        );
     }
 
-    if(coefficient == 0.0)
-    {
-        return DecayVector();
-    }
-
-    // --------------------------------------------------------
-    // Construct the stationary path e_source.
-    // --------------------------------------------------------
-
-    DecayPath stationary(source);
-
-    return DecayVector(
-        stationary,
-        coefficient
-    );
+    return result;
 }
-
 
 // ============================================================
 // Target vertex projector
@@ -202,51 +204,52 @@ DecayVector PathProjectors::SourceVertexProjector(
 // target and places their sum onto the corresponding
 // stationary path.
 //
-
 DecayVector PathProjectors::TargetVertexProjector(
-    const DecayVector& vector,
-    DecayLevel* target
+    const DecayVector& vector
 ) const
 {
-    if(target == nullptr)
-    {
-        throw std::invalid_argument(
-            "PathProjectors::TargetVertexProjector: "
-            "target cannot be nullptr"
-        );
-    }
+    DecayVector result;
 
-    double coefficient = 0.0;
+    // --------------------------------------------------------
+    // For every path in the vector, collect its coefficient
+    // according to its target.
+    // --------------------------------------------------------
 
     for(const auto& term : vector.GetTerms())
     {
         const DecayPath& path =
             term.path;
 
-        if(path.GetTarget() == target)
+        DecayLevel* target =
+            path.GetTarget();
+
+        if(target == nullptr)
         {
-            coefficient += term.coefficient;
+            continue;
         }
+
+        // ----------------------------------------------------
+        // Construct the stationary path associated with the
+        // target.
+        // ----------------------------------------------------
+
+        DecayPath stationary(target);
+
+        // ----------------------------------------------------
+        // Add the coefficient to that stationary path.
+        //
+        // AddTerm() automatically combines coefficients for
+        // identical stationary paths.
+        // ----------------------------------------------------
+
+        result.AddTerm(
+            stationary,
+            term.coefficient
+        );
     }
 
-    if(coefficient == 0.0)
-    {
-        return DecayVector();
-    }
-
-    // --------------------------------------------------------
-    // Construct the stationary path e_target.
-    // --------------------------------------------------------
-
-    DecayPath stationary(target);
-
-    return DecayVector(
-        stationary,
-        coefficient
-    );
+    return result;
 }
-
-
 // ============================================================
 // Branching projector
 // ============================================================

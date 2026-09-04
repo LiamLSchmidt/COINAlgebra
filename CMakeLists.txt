@@ -116,6 +116,11 @@ set(COINALGEBRA_SOURCES
     ${PROJECT_SOURCE_DIR}/src/DecayQuiver.cxx
     ${PROJECT_SOURCE_DIR}/src/DecayPath.cxx
     ${PROJECT_SOURCE_DIR}/src/DecayVector.cxx
+    ${PROJECT_SOURCE_DIR}/src/DecayProbability.cxx
+    ${PROJECT_SOURCE_DIR}/src/RadioactiveDecayReader.cxx
+    ${PROJECT_SOURCE_DIR}/src/PhotonEvaporationReader.cxx
+    ${PROJECT_SOURCE_DIR}/src/DecayQuiverBuilder.cxx
+
 )
 
 #
@@ -180,6 +185,11 @@ set(COINALGEBRA_HEADERS
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiver.h
     ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayVector.h
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayProbability.h
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/RadioactiveDecayReader.h
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PhotonEvaporationReader.h
+    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiverBuilder.h
+
 )
 
 #

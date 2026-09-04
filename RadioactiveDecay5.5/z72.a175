@@ -1,0 +1,39 @@
+# 175HF ( 70 D      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      6048000
+                               MshellEC            0        0.054111
+                               KshellEC            0         0.77536
+                               LshellEC            0         0.17053
+                               MshellEC            0  -      0.30347       683.71
+                               MshellEC       343.38  -       4.1039       340.33
+                               MshellEC       353.48  -    0.0098599       330.23
+                               MshellEC       432.74  -      0.99022       250.97
+                               MshellEC       514.66  -    0.0037376       169.05
+                               KshellEC            0  -       5.4316       683.71
+                               KshellEC       343.38  -       59.679       340.33
+                               KshellEC       353.48  -      0.14143       330.23
+                               KshellEC       432.74  -       12.251       250.97
+                               KshellEC       514.66  -     0.033064       169.05
+                               LshellEC            0  -      0.98023       683.71
+                               LshellEC       343.38  -       12.964       340.33
+                               LshellEC       353.48  -     0.030983       330.23
+                               LshellEC       432.74  -       3.0669       250.97
+                               LshellEC       514.66  -     0.011165       169.05
+P       125.89  -     5.37e-05
+                                     IT            0               1
+P       207.41  -     1.55e-09
+                                     IT            0               1
+P      1433.41  -      1.1e-06
+                                     IT            0               1
+P       1766.3  -     1.16e-09
+                                     IT            0               1
+P       3015.6  -     1.21e-06
+                                     IT            0               1
+P       3819.6  -        7e-09
+                                     IT            0               1
+P       4636.2  -      2.8e-06
+                                     IT            0               1
+P       6510.1  -        7e-09
+                                     IT            0               1
+P       7455.2  -        7e-09
+                                     IT            0               1

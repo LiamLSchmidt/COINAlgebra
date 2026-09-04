@@ -1,0 +1,13 @@
+# 119SB ( 38.19 H   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       137484
+                               MshellEC            0         0.03069
+                               KshellEC            0           0.851
+                               LshellEC            0         0.11831
+                               MshellEC       23.871  -        3.069      566.979
+                               KshellEC       23.871  -         85.1      566.979
+                               LshellEC       23.871  -       11.831      566.979
+P       2553.6  -      1.3e-07
+                                     IT            0               1
+P       2841.7 +X         0.85
+                                     IT            0               1

@@ -1,0 +1,30 @@
+# 141BA ( 18.27 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       1096.2
+                              BetaMinus            0               1
+                              BetaMinus            0  -       4.4153      3201.83    uniqueFirstForbidden
+                              BetaMinus      190.328  -       8.3288     3011.502
+                              BetaMinus      467.277  -       18.163     2734.553
+                              BetaMinus        580.2  -       1.1038      2621.63
+                              BetaMinus       647.87  -       24.485      2553.96
+                              BetaMinus        685.4  -      0.17059      2516.43
+                              BetaMinus        826.4  -      0.31108      2375.43
+                              BetaMinus        831.8  -       2.1575      2370.03
+                              BetaMinus        929.4  -       12.543      2272.43
+                              BetaMinus       1066.6  -       3.8032      2135.23
+                              BetaMinus       1172.3  -       1.6557      2029.53
+                              BetaMinus       1501.7  -       6.6229      1700.13
+                              BetaMinus       1566.2  -     0.032111      1635.63
+                              BetaMinus       1628.2  -       3.0907      1573.63
+                              BetaMinus         1717  -     0.082285      1484.83
+                              BetaMinus       1740.8  -        2.037      1461.03
+                              BetaMinus       1844.3  -         2.89      1357.53
+                              BetaMinus       1872.8  -       4.4052      1329.03
+                              BetaMinus       1926.3  -       1.8865      1275.53
+                              BetaMinus       2293.7  -      0.57198       908.13
+                              BetaMinus       2468.8  -      0.85295       733.03
+                              BetaMinus       2744.3  -      0.39135       457.53
+P        48.53  -      2.3e-09
+                                     IT            0               1
+P           55  -      5.2e-09
+                                     IT            0               1

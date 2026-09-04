@@ -1,0 +1,12 @@
+# 169RE (  8.1 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          8.1
+                                  Alpha            0               1
+                                  Alpha           60  -        0.003       4953.5
+                                  Alpha          230  -        0.003       4783.5
+P            0 +X         15.1
+                                  Alpha            0               1
+                                  Alpha            0  -          0.2       5013.5
+P          145  -         15.1
+                                  Alpha            0               1
+                                  Alpha            0  -          0.2       5158.5

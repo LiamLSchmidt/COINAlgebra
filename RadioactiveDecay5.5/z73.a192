@@ -1,0 +1,6 @@
+# 192TA ( 2.2 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          2.2
+                              BetaMinus            0               1
+                              BetaMinus            0  -           50         6493
+                              BetaMinus          219  -           50         6274

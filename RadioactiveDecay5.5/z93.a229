@@ -1,0 +1,7 @@
+# 229NP (  4.0 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          240
+                                  Alpha            0            0.68
+                               BetaPlus            0            0.32
+                                  Alpha            0  -           68         7014
+                               BetaPlus            0  -           32       2568.9

@@ -1,0 +1,15 @@
+# 165IR ( 1.0000e-06)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        1e-06
+                                  Alpha            0             0.5
+                                 Proton            0             0.5
+                                  Alpha            0  -           50         6823
+                                 Proton            0  -           50         1541
+P          180  -       0.0003
+                                  Alpha            0               1
+                                  Alpha        123.8  -           13       6879.2
+P          230  -       0.0003
+                                  Alpha            0            0.13
+                                 Proton            0            0.87
+                                  Alpha            0  -           13         7283
+                                 Proton            0  -           87         1771

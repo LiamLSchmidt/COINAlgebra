@@ -1,0 +1,7 @@
+# 32SI ( 153 Y     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 4.828313e+09
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100      227.188
+P         5581  -      2.7e-08
+                                     IT            0               1

@@ -1,0 +1,9 @@
+# 66AS ( 95.77 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      0.09577
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100      9581.96
+P      1356.63  -      1.1e-06
+                                     IT            0               1
+P       3023.8  -      8.2e-06
+                                     IT            0               1

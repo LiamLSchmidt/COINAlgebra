@@ -1,0 +1,60 @@
+# 76KR (    14.8 H )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        53280
+                               MshellEC            0        0.020843
+                               KshellEC            0         0.87663
+                               LshellEC            0         0.10253
+                               MshellEC            0  -      0.10675       1274.9
+                               MshellEC        45.47  -     0.072791      1229.43
+                               MshellEC       102.58  -     0.007126      1172.32
+                               MshellEC       150.52  -     0.001783      1124.38
+                               MshellEC       252.28  -     0.021436      1022.62
+                               MshellEC       315.78  -      0.98379       959.12
+                               MshellEC       317.11  -     0.019677       957.79
+                               MshellEC       355.33  -      0.18621       919.57
+                               MshellEC       446.18  -     0.011488       828.72
+                               MshellEC       451.99  -      0.47036       822.91
+                               MshellEC        487.4  -    0.0075494        787.5
+                               MshellEC        548.4  -     0.030381        726.5
+                               MshellEC       616.13  -     0.035227       658.77
+                               MshellEC        815.2  -     0.008237        459.7
+                               MshellEC        868.2  -     0.040113        406.7
+                               MshellEC       898.41  -     0.041354       376.49
+                               MshellEC       936.55  -     0.025992       338.35
+                               MshellEC      1047.89  -     0.014074       227.01
+                               KshellEC            0  -       4.5955       1274.9
+                               KshellEC        45.47  -       3.0544      1229.43
+                               KshellEC       102.58  -       0.3063      1172.32
+                               KshellEC       150.52  -     0.076567      1124.38
+                               KshellEC       252.28  -       0.9186      1022.62
+                               KshellEC       315.78  -       42.095       959.12
+                               KshellEC       317.11  -       0.8419       957.79
+                               KshellEC       355.33  -       7.9589       919.57
+                               KshellEC       446.18  -      0.48962       828.72
+                               KshellEC       451.99  -       20.044       822.91
+                               KshellEC        487.4  -      0.32126        787.5
+                               KshellEC        548.4  -      0.12897        726.5
+                               KshellEC       616.13  -       1.4906       658.77
+                               KshellEC        815.2  -      0.34342        459.7
+                               KshellEC        868.2  -       1.6625        406.7
+                               KshellEC       898.41  -       1.7075       376.49
+                               KshellEC       936.55  -       1.0664       338.35
+                               KshellEC      1047.89  -      0.56188       227.01
+                               LshellEC            0  -      0.53241       1274.9
+                               LshellEC        45.47  -      0.36263      1229.43
+                               LshellEC       102.58  -     0.035553      1172.32
+                               LshellEC       150.52  -    0.0088947      1124.38
+                               LshellEC       252.28  -       0.1069      1022.62
+                               LshellEC       315.78  -       4.9057       959.12
+                               LshellEC       317.11  -     0.098115       957.79
+                               LshellEC       355.33  -      0.92836       919.57
+                               LshellEC       446.18  -     0.057259       828.72
+                               LshellEC       451.99  -       2.3442       822.91
+                               LshellEC        487.4  -     0.037619        787.5
+                               LshellEC        548.4  -     0.015135        726.5
+                               LshellEC       616.13  -      0.17543       658.77
+                               LshellEC        815.2  -     0.040946        459.7
+                               LshellEC        868.2  -      0.19927        406.7
+                               LshellEC       898.41  -      0.20542       376.49
+                               LshellEC       936.55  -      0.12899       338.35
+                               LshellEC      1047.89  -     0.069661       227.01

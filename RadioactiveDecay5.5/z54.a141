@@ -1,0 +1,26 @@
+# 141XE ( 1.73 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         1.73
+                              BetaMinus            0               1
+                              BetaMinus            0  -       21.075      6279.85
+                              BetaMinus        69.05  -       8.6407       6210.8
+                              BetaMinus       116.82  -      0.31612      6163.03
+                              BetaMinus       187.76  -       6.2171      6092.09
+                              BetaMinus       206.65  -       2.9505       6073.2
+                              BetaMinus        369.5  -        1.686      5910.35
+                              BetaMinus          389  -      0.73762      5890.85
+                              BetaMinus          468  -        2.529      5811.85
+                              BetaMinus        492.8  -      0.73762      5787.05
+                              BetaMinus        557.1  -      0.10537      5722.75
+                              BetaMinus        644.2  -       2.0021      5635.65
+                              BetaMinus        668.7  -      0.73762      5611.15
+                              BetaMinus          801  -       1.1591      5478.85
+                              BetaMinus        843.1  -      0.63224      5436.75
+                              BetaMinus        975.2  -      0.31612      5304.65
+                              BetaMinus        979.8  -       4.6365      5300.05
+                              BetaMinus       1097.1  -        25.29      5182.75
+                              BetaMinus         1121  -       2.6344      5158.85
+                              BetaMinus       1134.3  -       2.6344      5145.55
+                              BetaMinus       1195.5  -       1.3699      5084.35
+                              BetaMinus       1338.7  -      0.94837      4941.15
+                              BetaMinus       1556.6  -       12.645      4723.25

@@ -1,0 +1,23 @@
+# 226AC ( 29.37 H   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       105732
+                                  Alpha            0      5.9996e-05
+                              BetaMinus            0         0.82995
+                               MshellEC            0        0.012875
+                               KshellEC            0          0.1214
+                               LshellEC            0        0.035713
+                                  Alpha           40  -        0.006       5495.8
+                              BetaMinus            0  -       23.953      1113.14
+                              BetaMinus         72.2  -       9.9804      1040.94
+                              BetaMinus       230.37  -       48.904       882.77
+                              BetaMinus        805.2  -     0.070861       307.94
+                              BetaMinus        847.8  -      0.09182       265.34
+                               MshellEC            0  -      0.27075       640.92
+                               MshellEC        67.67  -      0.10932       573.25
+                               MshellEC       253.73  -      0.90748       387.19
+                               KshellEC            0  -       3.0613       640.92
+                               KshellEC        67.67  -       1.1824       573.25
+                               KshellEC       253.73  -       7.8972       387.19
+                               LshellEC            0  -       0.7679       640.92
+                               LshellEC        67.67  -      0.30831       573.25
+                               LshellEC       253.73  -       2.4953       387.19

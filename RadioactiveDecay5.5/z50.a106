@@ -1,0 +1,17 @@
+# 106SN ( 115 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          115
+                               BetaPlus            0         0.99405
+                               KshellEC            0       0.0059543
+                               BetaPlus        506.3  -      0.49952         2748
+                               BetaPlus          893  -       58.943       2361.3
+                               BetaPlus       1218.7  -       36.965       2035.6
+                               BetaPlus       1602.2  -      0.99904       1652.1
+                               BetaPlus       1925.3  -       1.9981         1329
+                               KshellEC        506.3  -        1e-25         2748
+                               KshellEC          893  -     0.031969       2361.3
+                               KshellEC       1218.7  -     0.053948       2035.6
+                               KshellEC       1602.2  -    0.0099904       1652.1
+                               KshellEC       1925.3  -      0.49952         1329
+P         2325  -      2.6e-09
+                                     IT            0               1

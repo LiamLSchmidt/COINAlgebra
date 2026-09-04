@@ -1,0 +1,22 @@
+# 217AC ( 69 NS     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      6.9e-08
+                                  Alpha            0         0.98039
+                               BetaPlus            0        0.019608
+                                  Alpha            0  -          100       9831.5
+                               BetaPlus            0  -            2         2816
+P       1149.2  -            0
+                                  Alpha            0               1
+                                  Alpha            0  -          1.7      10980.7
+P       1498.2  -            0
+                                  Alpha            0               1
+                                  Alpha            0  -         0.98      11329.7
+P       1528.5  -        1e-08
+                                     IT            0               1
+P       1682.3  -        1e-08
+                                     IT            0               1
+P         2013  -      7.4e-07
+                                  Alpha            0               1
+                                  Alpha            0  -      0.11633      11844.5
+                                  Alpha          498  -      0.30591      11346.5
+                                  Alpha         1105  -       3.8778      10739.5

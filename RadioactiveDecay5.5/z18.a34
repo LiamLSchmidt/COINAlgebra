@@ -1,0 +1,27 @@
+# 34AR ( 843.8 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       0.8438
+                               MshellEC            0      9.7421e-06
+                               BetaPlus            0         0.99912
+                               KshellEC            0      0.00079235
+                               LshellEC            0       7.564e-05
+                               MshellEC            0  -   0.00071345     6061.795
+                               MshellEC          461  -        1e-25     5600.795
+                               MshellEC       665.56  -   2.8633e-05     5396.235
+                               MshellEC       2580.4  -   5.4414e-05     3481.395
+                               MshellEC      3129.13  -   0.00017771     2932.665
+                               BetaPlus            0  -       94.373     6061.795
+                               BetaPlus          461  -      0.90993     5600.795
+                               BetaPlus       665.56  -       2.4898     5396.235
+                               BetaPlus       2580.4  -      0.85993     3481.395
+                               BetaPlus      3129.13  -       1.2799     2932.665
+                               KshellEC            0  -     0.058042     6061.795
+                               KshellEC          461  -        1e-25     5600.795
+                               KshellEC       665.56  -    0.0023288     5396.235
+                               KshellEC       2580.4  -    0.0044228     3481.395
+                               KshellEC      3129.13  -     0.014441     2932.665
+                               LshellEC            0  -    0.0055396     6061.795
+                               LshellEC          461  -        1e-25     5600.795
+                               LshellEC       665.56  -   0.00022232     5396.235
+                               LshellEC       2580.4  -   0.00042243     3481.395
+                               LshellEC      3129.13  -    0.0013796     2932.665

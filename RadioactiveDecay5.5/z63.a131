@@ -1,0 +1,8 @@
+# 131EU (  17.8 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       0.0178
+                               BetaPlus            0        0.099099
+                                 Proton            0          0.9009
+                               BetaPlus            0  -           11        10863
+                                 Proton            0  -           76       947.09
+                                 Proton          122  -           24       825.09

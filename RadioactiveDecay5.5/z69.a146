@@ -1,0 +1,13 @@
+# 146TM ( 68 MS     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.235
+                                 Proton            0               1
+                                 Proton            0  -       67.964        895.7
+                                 Proton          175  -       18.263        720.7
+                                 Proton          253  -       13.772        642.7
+P          180  -        0.072
+                                     IT            0               1
+P          182  -        0.198
+                                 Proton            0               1
+                                 Proton          253  -           99        824.7
+                                 Proton          484  -            1        593.7

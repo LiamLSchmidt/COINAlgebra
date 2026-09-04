@@ -1,0 +1,43 @@
+# 42CL (  6.9 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          6.8
+                              BetaMinus            0               1
+                              BetaMinus            0  -   1.6129e-27         9510
+                              BetaMinus      1208.24  -   1.6129e-27      8301.76
+                              BetaMinus         2414  -       30.645         7096
+                              BetaMinus       2485.9  -   1.6129e-27       7024.1
+                              BetaMinus       2512.5  -   1.6129e-27       6997.5
+                              BetaMinus       3013.7  -   1.6129e-27       6496.3
+                              BetaMinus       3096.2  -   1.6129e-27       6413.8
+                              BetaMinus       3557.9  -   1.6129e-27       5952.1
+                              BetaMinus         3846  -   1.6129e-27         5664
+                              BetaMinus       4013.6  -   1.6129e-27       5496.4
+                              BetaMinus       4045.8  -       41.935       5464.2
+                              BetaMinus         4057  -   1.6129e-27         5453
+                              BetaMinus         4131  -   1.6129e-27         5379
+                              BetaMinus         4181  -   1.6129e-27         5329
+                              BetaMinus         4196  -   1.6129e-27         5314
+                              BetaMinus         4266  -   1.6129e-27         5244
+                              BetaMinus         4313  -   1.6129e-27         5197
+                              BetaMinus         4352  -   1.6129e-27         5158
+                              BetaMinus       4417.4  -       27.419       5092.6
+                              BetaMinus         4527  -   1.6129e-27         4983
+                              BetaMinus         4566  -   1.6129e-27         4944
+                              BetaMinus         4607  -   1.6129e-27         4903
+                              BetaMinus         4619  -   1.6129e-27         4891
+                              BetaMinus       4633.9  -   1.6129e-27       4876.1
+                              BetaMinus         4735  -   1.6129e-27         4775
+                              BetaMinus         4812  -   1.6129e-27         4698
+                              BetaMinus         4827  -   1.6129e-27         4683
+                              BetaMinus         4902  -   1.6129e-27         4608
+                              BetaMinus         4936  -   1.6129e-27         4574
+                              BetaMinus         4941  -   1.6129e-27         4569
+                              BetaMinus         5015  -   1.6129e-27         4495
+                              BetaMinus         5260  -   1.6129e-27         4250
+                              BetaMinus         5282  -   1.6129e-27         4228
+                              BetaMinus         5297  -   1.6129e-27         4213
+                              BetaMinus         5506  -   1.6129e-27         4004
+                              BetaMinus         5529  -   1.6129e-27         3981
+                              BetaMinus         5792  -   1.6129e-27         3718
+                              BetaMinus         6412  -   1.6129e-27         3098
+                              BetaMinus         7648  -   1.6129e-27         1862

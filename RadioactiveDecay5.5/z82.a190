@@ -1,0 +1,79 @@
+# 190PB (   71 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           71
+                                  Alpha            0           0.004
+                               MshellEC            0        0.040672
+                               BetaPlus            0         0.12934
+                               KshellEC            0          0.7003
+                               LshellEC            0         0.12569
+                                  Alpha            0  -      0.39961      5697.46
+                                  Alpha          409  -   0.00033601      5288.46
+                                  Alpha          532  -   5.6001e-05      5165.46
+                               MshellEC            0 +X     0.025327         3963
+                               MshellEC       151.31  -      0.46151      3811.69
+                               MshellEC       158.15  -     0.057084      3804.85
+                               MshellEC       210.55  -      0.46163      3752.45
+                               MshellEC       372.75  -     0.035409      3590.25
+                               MshellEC       376.26  -      0.12515      3586.74
+                               MshellEC       416.68  -      0.51698      3546.32
+                               MshellEC       495.07  -      0.51712      3467.93
+                               MshellEC       539.81  -     0.046382      3423.19
+                               MshellEC       598.33  -      0.26469      3364.67
+                               MshellEC       738.99  -      0.27116      3224.01
+                               MshellEC       890.72  -      0.10422      3072.28
+                               MshellEC       942.21  -       1.0423      3020.79
+                               MshellEC       1235.5  -      0.11865       2727.5
+                               MshellEC       1854.5  -     0.019623       2108.5
+                               BetaPlus            0 +X     0.052349         3963    uniqueFirstForbidden
+                               BetaPlus       151.31  -       2.3848      3811.69
+                               BetaPlus       158.15  -      0.29083      3804.85
+                               BetaPlus       210.55  -       2.2684      3752.45
+                               BetaPlus       372.75  -      0.14541      3590.25
+                               BetaPlus       376.26  -      0.46532      3586.74
+                               BetaPlus       416.68  -       1.9195      3546.32
+                               BetaPlus       495.07  -        1.745      3467.93
+                               BetaPlus       539.81  -      0.15123      3423.19
+                               BetaPlus       598.33  -      0.75615      3364.67
+                               BetaPlus       738.99  -      0.63982      3224.01
+                               BetaPlus       890.72  -      0.19195      3072.28
+                               BetaPlus       942.21  -       1.8031      3020.79
+                               BetaPlus       1235.5  -      0.11633       2727.5
+                               BetaPlus       1854.5  -    0.0034899       2108.5
+                               KshellEC            0 +X       0.4204         3963
+                               KshellEC       151.31  -       8.0028      3811.69
+                               KshellEC       158.15  -      0.98875      3804.85
+                               KshellEC       210.55  -       7.9968      3752.45
+                               KshellEC       372.75  -      0.61137      3590.25
+                               KshellEC       376.26  -       2.1639      3586.74
+                               KshellEC       416.68  -       8.9367      3546.32
+                               KshellEC       495.07  -       8.9343      3467.93
+                               KshellEC       539.81  -      0.79919      3423.19
+                               KshellEC       598.33  -       4.5614      3364.67
+                               KshellEC       738.99  -       4.6539      3224.01
+                               KshellEC       890.72  -       1.7835      3072.28
+                               KshellEC       942.21  -       17.833      3020.79
+                               KshellEC       1235.5  -       2.0168       2727.5
+                               KshellEC       1854.5  -      0.32719       2108.5
+                               LshellEC            0 +X     0.077762         3963
+                               LshellEC       151.31  -       1.4238      3811.69
+                               LshellEC       158.15  -      0.17564      3804.85
+                               LshellEC       210.55  -       1.4297      3752.45
+                               LshellEC       372.75  -      0.10937      3590.25
+                               LshellEC       376.26  -      0.38653      3586.74
+                               LshellEC       416.68  -       1.5977      3546.32
+                               LshellEC       495.07  -          1.6      3467.93
+                               LshellEC       539.81  -      0.14324      3423.19
+                               LshellEC       598.33  -      0.81592      3364.67
+                               LshellEC       738.99  -      0.83334      3224.01
+                               LshellEC       890.72  -      0.32253      3072.28
+                               LshellEC       942.21  -       3.2272      3020.79
+                               LshellEC       1235.5  -      0.36565       2727.5
+                               LshellEC       1854.5  -     0.060347       2108.5
+P       2614.8  -      1.5e-07
+                                     IT            0               1
+P         2615 +X      2.5e-05
+                                     IT            0               1
+P       2658.2  -      7.2e-06
+                                     IT            0               1
+P       4516.8  -      1.4e-08
+                                     IT            0               1

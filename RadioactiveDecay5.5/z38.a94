@@ -1,0 +1,10 @@
+# 94SR ( 75.3 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         75.3
+                              BetaMinus            0               1
+                              BetaMinus            0  -      0.89871      3507.09    uniqueFirstForbidden
+                              BetaMinus      1427.71  -        97.96      2079.38
+                              BetaMinus      1437.01  -      0.18973      2070.08
+                              BetaMinus      2182.42  -      0.75891      1324.67
+                              BetaMinus      2373.02  -      0.11284      1134.07
+                              BetaMinus      2969.93  -     0.079886       537.16

@@ -1,0 +1,5 @@
+# 101SN ( 1.7000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.7
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         8308

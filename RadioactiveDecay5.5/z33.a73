@@ -1,0 +1,13 @@
+# 73AS ( 80.30 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      6937920
+                               MshellEC            0        0.019831
+                               KshellEC            0         0.87526
+                               LshellEC            0         0.10491
+                               MshellEC       66.726  -       1.9831      278.044
+                               KshellEC       66.726  -       87.526      278.044
+                               LshellEC       66.726  -       10.491      278.044
+P       67.039  -     4.95e-09
+                                     IT            0               1
+P      427.906  -      5.7e-06
+                                     IT            0               1

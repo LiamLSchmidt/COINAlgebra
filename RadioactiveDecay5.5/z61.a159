@@ -1,0 +1,5 @@
+# 159PM (    1.5 S  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.5
+                              BetaMinus            0               1
+                              BetaMinus         71.8  -          100       5581.7

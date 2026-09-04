@@ -1,0 +1,5 @@
+# 92PD ( 7.0000e-01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          0.7
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         7929

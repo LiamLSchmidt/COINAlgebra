@@ -1,0 +1,9 @@
+# 200PT ( 12.6 H    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        45360
+                              BetaMinus            0               1
+                              BetaMinus       468.71  -          100       170.59
+P       1566.9 +X     1.42e-08
+                                     IT            0               1
+P       3226.6 +X     1.03e-08
+                                     IT            0               1

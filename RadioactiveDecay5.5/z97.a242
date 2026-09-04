@@ -1,0 +1,10 @@
+# 242BK ( 9.5000e-09)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X      9.5e-09
+                               BetaPlus            0             0.5
+                                     IT            0             0.5
+                               BetaPlus            0  -          100         2930
+P            0 +Y        6e-07
+                               BetaPlus            0             0.5
+                                     IT            0             0.5
+                               BetaPlus            0  -          100         2930

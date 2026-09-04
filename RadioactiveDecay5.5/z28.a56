@@ -1,0 +1,27 @@
+# 56NI ( 6.075 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       524880
+                               MshellEC            0        0.017066
+                               BetaPlus            0      1.3014e-05
+                               KshellEC            0         0.88513
+                               LshellEC            0        0.097791
+                               MshellEC            0  -   3.6122e-07     2132.889
+                               MshellEC       158.38  -   7.8822e-06     1974.509
+                               MshellEC       970.23  -     0.012701     1162.659
+                               MshellEC      1450.68  -    0.0083189      682.209
+                               MshellEC      1720.18  -       1.6856      412.709
+                               BetaPlus            0  -   5.9246e-05     2132.889
+                               BetaPlus       158.38  -   5.7272e-05     1974.509
+                               BetaPlus       970.23  -    0.0011849     1162.659
+                               BetaPlus      1450.68  -   9.8744e-28      682.209
+                               BetaPlus      1720.18  -   9.8744e-28      412.709
+                               KshellEC            0  -   1.9287e-05     2132.889
+                               KshellEC       158.38  -   0.00042072     1974.509
+                               KshellEC       970.23  -      0.67465     1162.659
+                               KshellEC      1450.68  -      0.43767      682.209
+                               KshellEC      1720.18  -         87.4      412.709
+                               LshellEC            0  -   2.0758e-06     2132.889
+                               LshellEC       158.38  -   4.5367e-05     1974.509
+                               LshellEC       970.23  -     0.072978     1162.659
+                               LshellEC      1450.68  -     0.047736      682.209
+                               LshellEC      1720.18  -       9.6584      412.709

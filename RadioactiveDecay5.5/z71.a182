@@ -1,0 +1,8 @@
+# 182LU (     2.0 M )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          120
+                              BetaMinus            0               1
+                              BetaMinus        97.79  -           20      4074.21
+                              BetaMinus       322.17  -            5      3849.83
+                              BetaMinus        818.4  -           60       3353.6
+                              BetaMinus        905.9  -           15       3266.1

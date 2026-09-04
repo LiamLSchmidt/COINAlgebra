@@ -1,0 +1,23 @@
+# 142SM ( 72.49 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       4349.4
+                               MshellEC            0        0.032376
+                               BetaPlus            0           0.074
+                               KshellEC            0         0.78084
+                               LshellEC            0         0.11279
+                               MshellEC            0  -       3.2339       2155.5
+                               MshellEC        678.3  -    0.0037715       1477.2
+                               BetaPlus            0  -          7.4       2155.5
+                               BetaPlus        678.3  -        1e-27       1477.2    uniqueFirstForbidden
+                               KshellEC            0  -           78       2155.5
+                               KshellEC        678.3  -     0.083243       1477.2
+                               LshellEC            0  -       11.266       2155.5
+                               LshellEC        678.3  -     0.012985       1477.2
+P       2372.1  -      1.7e-07
+                                     IT            0               1
+P       2420.1  -        2e-09
+                                     IT            0               1
+P       3662.2  -      4.8e-07
+                                     IT            0               1
+P         4547  -      2.6e-09
+                                     IT            0               1

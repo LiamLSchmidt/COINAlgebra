@@ -1,0 +1,28 @@
+# 146DY ( 29 S      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           29
+                               BetaPlus            0               1
+                               BetaPlus            0  -       4.5455       5208.5
+                               BetaPlus       241.09  -       4.5455      4967.41
+                               BetaPlus       280.18  -       4.5455      4928.32
+                               BetaPlus       338.15  -       4.5455      4870.35
+                               BetaPlus       354.85  -       4.5455      4853.65
+                               BetaPlus       384.65  -       4.5455      4823.85
+                               BetaPlus       397.98  -       4.5455      4810.52
+                               BetaPlus       565.91  -       4.5455      4642.59
+                               BetaPlus       574.95  -       4.5455      4633.55
+                               BetaPlus        618.4  -       4.5455       4590.1
+                               BetaPlus       653.15  -       4.5455      4555.35
+                               BetaPlus       660.31  -       4.5455      4548.19
+                               BetaPlus       664.83  -       4.5455      4543.67
+                               BetaPlus       682.14  -       4.5455      4526.36
+                               BetaPlus          920  -       4.5455       4288.5
+                               BetaPlus       1162.3  -       4.5455       4046.2
+                               BetaPlus       1696.1  -       4.5455       3512.4
+                               BetaPlus      1726.96  -       4.5455      3481.54
+                               BetaPlus       1737.4  -       4.5455       3471.1
+                               BetaPlus       1923.8  -       4.5455       3284.7
+                               BetaPlus      2082.01  -       4.5455      3126.49
+                               BetaPlus       2156.8  -       4.5455       3051.7
+P       2935.7  -         0.15
+                                     IT            0               1

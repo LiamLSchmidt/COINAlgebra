@@ -1,0 +1,5 @@
+# 259FM ( 1.5000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.5
+                              SpFission            0               1
+                              SpFission            0  -          100        1e-06

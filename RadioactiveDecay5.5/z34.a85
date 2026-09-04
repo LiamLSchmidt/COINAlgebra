@@ -1,0 +1,26 @@
+# 85SE ( 32.9 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         32.9
+                              BetaMinus            0               1
+                              BetaMinus            0  -       29.894      6161.83
+                              BetaMinus       344.96  -       10.608      5816.87
+                              BetaMinus      1427.08  -       2.7001      4734.75
+                              BetaMinus      1553.13  -       1.6393       4608.7
+                              BetaMinus       1724.6  -       1.8322      4437.23
+                              BetaMinus       1795.1  -       1.5429      4366.73    uniqueFirstForbidden
+                              BetaMinus      1859.34  -      0.38573      4302.49
+                              BetaMinus       1943.7  -       1.6393      4218.13
+                              BetaMinus       2800.3  -       7.5217      3361.53
+                              BetaMinus       3007.8  -        2.893      3154.03
+                              BetaMinus       3539.6  -       2.9894      2622.23
+                              BetaMinus       3644.5  -       2.7001      2517.33
+                              BetaMinus       3680.3  -      0.66538      2481.53
+                              BetaMinus       3741.6  -       9.3539      2420.23
+                              BetaMinus       3824.4  -       1.6393      2337.43
+                              BetaMinus       3970.2  -       4.1466      2191.63
+                              BetaMinus       4000.3  -       4.1466      2161.53
+                              BetaMinus       4028.7  -       7.0395      2133.13
+                              BetaMinus       4118.8  -       3.7608      2043.03
+                              BetaMinus       4172.2  -       1.0608      1989.63
+                              BetaMinus       4299.2  -         1.35      1862.63
+                              BetaMinus       4510.8  -       0.4918      1651.03

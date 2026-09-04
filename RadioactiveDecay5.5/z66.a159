@@ -1,0 +1,27 @@
+# 159DY ( 144.4 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 1.247616e+07
+                               MshellEC            0        0.046157
+                               KshellEC            0         0.80126
+                               LshellEC            0         0.15258
+                               MshellEC            0  -       3.3416       365.38
+                               MshellEC      57.9964  -       1.2733     307.3836
+                               MshellEC     137.5055  -   0.00028528     227.8745
+                               MshellEC     348.2832  -   0.00056398      17.0968
+                               MshellEC     363.5449  -        1e-25       1.8351
+                               KshellEC            0  -       58.987       365.38
+                               KshellEC      57.9964  -       21.138     307.3836
+                               KshellEC     137.5055  -    0.0016806     227.8745
+                               KshellEC     348.2832  -        1e-25      17.0968
+                               KshellEC     363.5449  -        1e-25       1.8351
+                               LshellEC            0  -       11.069       365.38
+                               LshellEC      57.9964  -       4.1879     307.3836
+                               LshellEC     137.5055  -     0.000834     227.8745
+                               LshellEC     348.2832  -   0.00063597      17.0968
+                               LshellEC     363.5449  -        1e-25       1.8351
+P      177.614  -      9.3e-09
+                                     IT            0               1
+P      208.988  -     1.35e-09
+                                     IT            0               1
+P       352.77  -     0.000122
+                                     IT            0               1

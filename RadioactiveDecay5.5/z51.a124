@@ -1,0 +1,44 @@
+# 124SB ( 60.20 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      5201280
+                              BetaMinus            0               1
+                              BetaMinus     602.7271  -       23.205     2301.573
+                              BetaMinus     1248.581  -       2.5705     1655.719
+                              BetaMinus     1325.513  -        4.881     1578.787
+                              BetaMinus     1657.283  -    0.0057012     1247.017
+                              BetaMinus     1957.902  -       2.1444      946.398
+                              BetaMinus     2039.293  -       3.9948      865.007
+                              BetaMinus     2091.603  -      0.68514      812.697
+                              BetaMinus      2182.41  -      0.45009       721.89
+                              BetaMinus     2224.954  -     0.091019      679.346
+                              BetaMinus     2293.711  -       51.251      610.589
+                              BetaMinus      2322.95  -     0.059012       581.35
+                              BetaMinus     2454.069  -    0.0079016      450.231
+                              BetaMinus     2483.362  -      0.32607      420.938
+                              BetaMinus      2511.96  -     0.041309       392.34
+                              BetaMinus      2521.33  -     0.054511       382.97
+                              BetaMinus      2549.97  -     0.034307       354.33
+                              BetaMinus      2618.63  -      0.09502       285.67
+                              BetaMinus      2681.46  -     0.022005       222.84
+                              BetaMinus     2693.679  -       8.7518      210.621
+                              BetaMinus      2701.61  -      0.55812       202.69
+                              BetaMinus      2710.64  -      0.10602       193.66
+                              BetaMinus     2774.968  -      0.57212      129.332
+                              BetaMinus      2808.66  -    0.0014703        95.64
+                              BetaMinus      2814.53  -     0.023005        89.77
+                              BetaMinus     2865.262  -     0.061113       39.038
+                              BetaMinus      2886.05  -    0.0080017        18.25
+P      10.8627  -           93
+                              BetaMinus            0            0.25
+                                     IT            0            0.75
+                              BetaMinus     1248.581  -       1.1905     1666.582
+                              BetaMinus     1746.958  -       23.333     1168.205
+                              BetaMinus     2349.465  -      0.47619     565.6977
+P       36.844  -         1212
+                                     IT            0               1
+P      40.8038  -      3.2e-06
+                                     IT            0               1
+P      80.7638  -        4e-09
+                                     IT            0               1
+P     125.2291  -      8.6e-08
+                                     IT            0               1

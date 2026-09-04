@@ -1,0 +1,31 @@
+# 144TB ( 1 S       )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -            1
+                               BetaPlus            0               1
+                               BetaPlus            0  -       16.667       9391.3
+                               BetaPlus          743  -       16.667       8648.3
+                               BetaPlus      1876.41  -       16.667      7514.89
+                               BetaPlus       1886.9  -       16.667       7504.4
+                               BetaPlus      2226.51  -       16.667      7164.79
+                               BetaPlus       2462.1  -       16.667       6929.2
+P        396.9  -         4.25
+                               BetaPlus            0            0.34
+                                     IT            0            0.66
+                               BetaPlus      1702.29  -       2.8333      8085.91
+                               BetaPlus      1744.52  -       2.8333      8043.68    uniqueFirstForbidden
+                               BetaPlus       2302.6  -       2.8333       7485.6
+                               BetaPlus       2330.5  -       2.8333       7457.7
+                               BetaPlus       2354.3  -       2.8333       7433.9
+                               BetaPlus       2442.3  -       2.8333       7345.9
+                               BetaPlus       2471.6  -       2.8333       7316.6
+                               BetaPlus       2786.7  -       2.8333       7001.5
+                               BetaPlus       2787.9  -       2.8333       7000.3
+                               BetaPlus       2861.9  -       2.8333       6926.3
+                               BetaPlus       2912.5  -       2.8333       6875.7
+                               BetaPlus       3015.4  -       2.8333       6772.8
+P        476.2  -      2.8e-06
+                                     IT            0               1
+P        517.1  -      6.7e-07
+                                     IT            0               1
+P        544.5  -        3e-07
+                                     IT            0               1

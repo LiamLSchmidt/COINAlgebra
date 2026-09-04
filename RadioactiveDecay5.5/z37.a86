@@ -1,0 +1,16 @@
+# 86RB ( 18.642 D  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      1610669
+                              BetaMinus            0         0.99995
+                               MshellEC            0      1.2282e-06
+                               KshellEC            0       4.489e-05
+                               LshellEC            0      5.8815e-06
+                              BetaMinus            0  -       91.355      1776.19    uniqueFirstForbidden
+                              BetaMinus      1076.68  -       8.6396       699.51
+                               MshellEC            0  -   0.00012282      518.655
+                               KshellEC            0  -     0.004489      518.655
+                               LshellEC            0  -   0.00058815      518.655
+P       556.05  -        61.02
+                              BetaMinus            0        0.002991
+                                     IT            0         0.99701
+                              BetaMinus            0  -          0.3      2888.34

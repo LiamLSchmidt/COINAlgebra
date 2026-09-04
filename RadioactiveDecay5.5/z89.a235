@@ -1,0 +1,5 @@
+# 235AC ( 6.2000e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           62
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100       3339.4

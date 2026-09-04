@@ -1,0 +1,30 @@
+# 72GA ( 14.10 H   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        50760
+                              BetaMinus            0               1
+                              BetaMinus      834.011  -        6.762     3163.634
+                              BetaMinus      1463.99  -       9.3276     2533.655
+                              BetaMinus       1728.3  -      0.69609     2269.345
+                              BetaMinus      2064.93  -       3.1921     1932.715
+                              BetaMinus       2402.3  -     0.099441     1595.345
+                              BetaMinus       2463.9  -     0.094469     1533.745
+                              BetaMinus      2514.79  -       9.1287     1482.855
+                              BetaMinus       2583.4  -     0.012728     1414.245
+                              BetaMinus      2754.27  -     0.021877     1243.375
+                              BetaMinus      2943.47  -       1.9421     1054.175
+                              BetaMinus      3035.64  -       28.709      962.005
+                              BetaMinus      3325.01  -       22.305      672.635
+                              BetaMinus         3338  -     0.004276      659.645
+                              BetaMinus      3341.76  -       15.622      655.885
+                              BetaMinus      3439.34  -      0.28937      558.305
+                              BetaMinus      3455.32  -      0.33014      542.325
+                              BetaMinus       3565.9  -      0.26849      431.745
+                              BetaMinus       3619.3  -     0.040771      378.345
+                              BetaMinus      3678.08  -      0.94966      319.565
+                              BetaMinus       3708.5  -    0.0047732      289.145
+                              BetaMinus       3757.2  -      0.13623      240.445
+                              BetaMinus       3815.4  -     0.063642      182.245
+P        16.44  -     3.92e-08
+                                     IT            0               1
+P       119.66  -      0.03968
+                                     IT            0               1

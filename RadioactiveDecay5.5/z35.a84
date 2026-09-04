@@ -1,0 +1,29 @@
+# 84BR ( 31.76 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       1905.6
+                              BetaMinus            0               1
+                              BetaMinus            0  -       32.657       4656.3    uniqueFirstForbidden
+                              BetaMinus      881.615  -        13.36     3774.685
+                              BetaMinus       1837.3  -     0.059377         2819    uniqueFirstForbidden
+                              BetaMinus     1897.783  -       11.578     2758.517
+                              BetaMinus         2095  -      0.39584       2561.3    uniqueFirstForbidden
+                              BetaMinus      2345.46  -      0.89065      2310.84    uniqueFirstForbidden
+                              BetaMinus       2489.2  -      0.32657       2167.1
+                              BetaMinus      2622.98  -       1.6823      2033.32
+                              BetaMinus      2700.28  -       7.2241      1956.02
+                              BetaMinus      2759.28  -       1.1084      1897.02
+                              BetaMinus      3082.38  -       3.8595      1573.92
+                              BetaMinus      3365.88  -       9.3023      1290.42
+                              BetaMinus      3475.75  -      0.48491      1180.55
+                              BetaMinus      3705.87  -        2.474       950.43
+                              BetaMinus       3870.1  -      0.16823        786.2
+                              BetaMinus       3878.8  -      0.28699        777.5
+                              BetaMinus      3927.33  -       11.381       728.97
+                              BetaMinus       4084.3  -      0.47501          572
+                              BetaMinus       4116.8  -       2.0782        539.5
+                              BetaMinus       4189.2  -      0.20782        467.1
+P          320  -          360
+                              BetaMinus            0               1
+                              BetaMinus       2768.6  -          100       2207.7
+P        408.2  -      1.4e-07
+                                     IT            0               1

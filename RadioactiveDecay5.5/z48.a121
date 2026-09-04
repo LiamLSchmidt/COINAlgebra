@@ -1,0 +1,57 @@
+# 121CD ( 13.5 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         13.5
+                              BetaMinus            0               1
+                              BetaMinus       313.68  -       3.3013      4448.72
+                              BetaMinus       987.17  -       3.9016      3775.23
+                              BetaMinus      1040.33  -       6.3025      3722.07
+                              BetaMinus      1078.98  -       1.9008      3683.42
+                              BetaMinus      1197.34  -      0.90036      3565.06
+                              BetaMinus      1315.22  -       10.104      3447.18
+                              BetaMinus       1460.6  -      0.53021       3301.8
+                              BetaMinus      1483.26  -       4.0016      3279.14
+                              BetaMinus       1759.8  -       1.1905       3002.6
+                              BetaMinus      1792.09  -       2.2409      2970.31
+                              BetaMinus      1961.23  -       5.5022      2801.17
+                              BetaMinus      1965.83  -       6.4026      2796.57
+                              BetaMinus       1988.8  -       1.9608       2773.6
+                              BetaMinus      2136.36  -       11.705      2626.04
+                              BetaMinus      2222.04  -       4.4018      2540.36
+                              BetaMinus      2264.91  -       7.0028      2497.49
+                              BetaMinus      2299.49  -       3.1012      2462.91
+                              BetaMinus      2336.95  -       9.5038      2425.45
+                              BetaMinus      2382.12  -       2.8111      2380.28
+                              BetaMinus      2472.71  -       2.8111      2289.69
+                              BetaMinus      2491.81  -       4.2017      2270.59
+                              BetaMinus      2523.22  -       3.8015      2239.18
+                              BetaMinus      2538.82  -      0.52021      2223.58
+                              BetaMinus      2611.73  -       1.9008      2150.67
+P       214.86  -          8.3
+                              BetaMinus            0               1
+                              BetaMinus            0  -       4.7923      4977.26
+                              BetaMinus       987.69  -       1.5974      3989.57
+                              BetaMinus      1181.55  -       2.5958      3795.71
+                              BetaMinus      1487.11  -      0.79872      3490.15
+                              BetaMinus      1504.02  -       0.9984      3473.24
+                              BetaMinus      2059.39  -        18.67      2917.87
+                              BetaMinus      2114.84  -       2.0767      2862.42
+                              BetaMinus       2134.2  -       1.3978      2843.06
+                              BetaMinus      2160.09  -        12.68      2817.17
+                              BetaMinus         2292  -       5.3914      2685.26
+                              BetaMinus       2331.9  -        4.992      2645.36
+                              BetaMinus      2357.59  -       1.9968      2619.67
+                              BetaMinus      2364.87  -       7.9872      2612.39
+                              BetaMinus      2369.71  -       4.5927      2607.55
+                              BetaMinus       2396.4  -      0.23962      2580.86
+                              BetaMinus      2455.05  -       8.7859      2522.21
+                              BetaMinus      2477.61  -       6.6893      2499.65
+                              BetaMinus      2503.76  -       1.2181       2473.5
+                              BetaMinus      2510.78  -       3.0152      2466.48
+                              BetaMinus      2562.36  -       4.4928       2414.9
+                              BetaMinus      2581.39  -        4.992      2395.87
+P        314.5  -      1.9e-08
+                                     IT            0               1
+P       329.92  -        2e-09
+                                     IT            0               1
+P       508.39  -        2e-09
+                                     IT            0               1

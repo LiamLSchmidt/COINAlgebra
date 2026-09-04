@@ -3,7 +3,10 @@
 #include "COINAlgebra/DecayPath.h"
 #include "COINAlgebra/DecayQuiver.h"
 #include "COINAlgebra/DecayVector.h"
-
+#include "COINAlgebra/PathAlgebra.h"
+#include "COINAlgebra/PathProjectors.h"
+#include <cassert>
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 
@@ -94,7 +97,7 @@ void example_vector()
         0.30
     );
 
-    quiver.AddTransition(
+    DecayTransition* g32 = quiver.AddTransition(
         "gamma32",
         d3,
         d2,
@@ -111,7 +114,7 @@ void example_vector()
         0.30
     );
 
-    quiver.AddTransition(
+   DecayTransition* g21 =  quiver.AddTransition(
         "gamma21",
         d2,
         d1,
@@ -121,7 +124,7 @@ void example_vector()
 
     // d1 -> d0
 
-    quiver.AddTransition(
+    DecayTransition* g10 = quiver.AddTransition(
         "gamma10",
         d1,
         d0,
@@ -181,27 +184,27 @@ void example_vector()
 
     decay_vector.AddTerm(
         e0,
-        e0.GetProbability()
+        0.10 //e0.GetProbability()
     );
 
     decay_vector.AddTerm(
         e1,
-        e1.GetProbability()
+        0.20 //e1.GetProbability()
     );
 
     decay_vector.AddTerm(
         e2,
-        e2.GetProbability()
+        0.30 // e2.GetProbability()
     );
 
     decay_vector.AddTerm(
         e3,
-        e3.GetProbability()
+        0.25 //e3.GetProbability()
     );
 
     decay_vector.AddTerm(
         e4,
-        e4.GetProbability()
+        0.15 //e4.GetProbability()
     );
 
 
@@ -322,4 +325,16 @@ void example_vector()
 
     std::cout
         << "\n============================================\n";
+    // Probability vector testing: 
+    PathAlgebra algebra(quiver);
+    PathProjectors projectors;
+    DecayProbability pb(algebra,projectors);
+    DecayVector feedingVector = pb.FeedingVector(decay_vector);
+    feedingVector.PrintTable();
+    DecayPath pathi(*g32);
+    DecayPath pathj(*g10);
+    double prob = pb.FeedingProbability(decay_vector,pathi);
+    double coin = pb.CoincidenceProbability(decay_vector,pathi, pathj);
+    std::cout << prob <<"\n";
+    std::cout << coin <<"\n";
 }

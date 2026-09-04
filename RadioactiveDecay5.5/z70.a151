@@ -1,0 +1,9 @@
+# 151YB ( 1.6000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X          1.6
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         9235
+P       1791.2 +Y      2.6e-06
+                                     IT            0               1
+P         2448 +Z        2e-05
+                                     IT            0               1

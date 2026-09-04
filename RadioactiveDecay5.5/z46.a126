@@ -1,0 +1,9 @@
+# 126PD ( 2.3000e-07)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      2.3e-07
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100         8765
+P       2023.5  -      3.3e-07
+                                     IT            0               1
+P       2109.7  -      4.4e-07
+                                     IT            0               1

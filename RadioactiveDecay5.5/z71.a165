@@ -1,0 +1,12 @@
+# 165LU ( 10.74 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        644.4
+                               BetaPlus            0               1
+                               BetaPlus       427.66  -         12.5      3425.44
+                               BetaPlus       1013.1  -         12.5         2840
+                               BetaPlus       1361.5  -         12.5       2491.6
+                               BetaPlus      1734.14  -         12.5      2118.96
+                               BetaPlus      2125.87  -         12.5      1727.23
+                               BetaPlus         2800  -         12.5       1053.1
+                               BetaPlus         3200  -         12.5        653.1
+                               BetaPlus         3600  -         12.5        253.1

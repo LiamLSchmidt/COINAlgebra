@@ -1,0 +1,7 @@
+# 161LU ( 7.7000e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           77
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100       5276.8
+P        166.5 +X       0.0073
+                                     IT            0               1

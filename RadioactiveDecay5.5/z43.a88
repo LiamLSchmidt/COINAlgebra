@@ -1,0 +1,30 @@
+# 88TC (  6.4 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X          6.4
+                               MshellEC            0      0.00024605
+                               BetaPlus            0          0.9897
+                               KshellEC            0        0.008974
+                               LshellEC            0       0.0010769
+                               MshellEC       2100.7  -    0.0052895       8904.3
+                               MshellEC       2626.8  -     0.019315       8378.2
+                               BetaPlus       2100.7  -       24.993       8904.3
+                               BetaPlus       2626.8  -       73.978       8378.2
+                               KshellEC       2100.7  -      0.19165       8904.3
+                               KshellEC       2626.8  -      0.70575       8378.2
+                               LshellEC       2100.7  -     0.022998       8904.3
+                               LshellEC       2626.8  -      0.08469       8378.2
+P            0 +Y          5.8
+                               MshellEC            0      9.6176e-05
+                               BetaPlus            0         0.99602
+                               KshellEC            0       0.0034715
+                               LshellEC            0      0.00041641
+                               MshellEC       740.54  -    0.0064918     10264.46
+                               MshellEC      1654.83  -    0.0031258      9350.17
+                               BetaPlus       740.54  -       73.705     10264.46
+                               BetaPlus      1654.83  -       25.896      9350.17
+                               KshellEC       740.54  -       0.2343     10264.46
+                               KshellEC      1654.83  -      0.11285      9350.17
+                               LshellEC       740.54  -     0.028131     10264.46
+                               LshellEC      1654.83  -      0.01351      9350.17
+P           95 +W     1.46e-07
+                                     IT            0               1

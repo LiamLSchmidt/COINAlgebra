@@ -1,0 +1,19 @@
+# 180HF ( 1.5220e-09)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P      93.3243  -    1.522e-09
+                                     IT            0               1
+P       1141.5  -        19692
+                              BetaMinus            0       0.0030997
+                                     IT            0          0.9969
+                              BetaMinus         77.1  -      0.28722        218.8
+                              BetaMinus       177.65  -      0.02278       118.25
+P      1374.15  -      5.7e-07
+                                     IT            0               1
+P       2425.8  -      1.5e-05
+                                     IT            0               1
+P       2486.3  -        1e-05
+                                     IT            0               1
+P       2538.3  -        1e-05
+                                     IT            0               1
+P       3599.3  -        9e-05
+                                     IT            0               1

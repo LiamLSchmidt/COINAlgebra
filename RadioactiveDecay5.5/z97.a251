@@ -1,0 +1,9 @@
+# 251BK ( 55.6 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         3336
+                              BetaMinus            0               1
+                              BetaMinus            0  -            5         1093
+                              BetaMinus      177.602  -           90      915.398
+                              BetaMinus       211.53  -            5       881.47
+P         35.5  -      5.8e-05
+                                     IT            0               1

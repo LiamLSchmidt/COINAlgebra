@@ -1,0 +1,31 @@
+# 174LU ( 3.31 Y    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 1.044557e+08
+                               MshellEC            0        0.054057
+                               BetaPlus            0      0.00023866
+                               KshellEC            0         0.78023
+                               LshellEC            0         0.16548
+                               MshellEC            0  -       1.5617      1373.41
+                               MshellEC       76.471  -       2.3318     1296.939
+                               MshellEC     1318.361  -       1.5122       55.049
+                               BetaPlus            0  -     0.020055      1373.41
+                               BetaPlus       76.471  -    0.0038105     1296.939
+                               BetaPlus     1318.361  -   1.0028e-27       55.049
+                               KshellEC            0  -       31.387      1373.41
+                               KshellEC       76.471  -       46.635     1296.939
+                               KshellEC     1318.361  -        1e-25       55.049
+                               LshellEC            0  -       5.1562      1373.41
+                               LshellEC       76.471  -       7.6894     1296.939
+                               LshellEC     1318.361  -       3.7022       55.049
+P       170.83  -  1.22688e+07
+                               MshellEC            0        0.002356
+                               LshellEC            0        0.003844
+                                     IT            0          0.9938
+                               MshellEC     1518.148  -       0.2356       26.092
+                               LshellEC     1518.148  -       0.3844       26.092
+P      240.818  -     3.95e-07
+                                     IT            0               1
+P      365.183  -     1.45e-07
+                                     IT            0               1
+P       431.41  -      1.5e-09
+                                     IT            0               1

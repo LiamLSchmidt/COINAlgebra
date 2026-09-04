@@ -1,0 +1,7 @@
+# 208HG ( 41 M      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         2460
+                              BetaMinus            0               1
+                              BetaMinus         1728  -          100       1755.8
+P       1296.9 +X      9.9e-08
+                                     IT            0               1
