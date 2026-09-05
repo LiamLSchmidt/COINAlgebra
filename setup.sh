@@ -1,6 +1,12 @@
 #!/bin/bash
 
 export COINALGEBRA_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export COINALGEBRA_CONFIG_DIR="$COINALGEBRA_HOME/config"
+if [ -d "$COINALGEBRA_HOME/share/COINAlgebra" ]; then
+    export COINALGEBRA_DATA_DIR="$COINALGEBRA_HOME/share/COINAlgebra"
+else
+    export COINALGEBRA_DATA_DIR="$COINALGEBRA_HOME"
+fi
 
 # Single place to edit for a user install of ROOT.
 # Example:

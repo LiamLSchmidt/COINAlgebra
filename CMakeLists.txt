@@ -48,15 +48,18 @@ set(COINALGEBRA_BINARY_DIR
 include(GNUInstallDirs)
 
 #
-# For the development tree we use the repository itself
-# as the installation prefix.
+# Keep the repository as the install prefix for an unconfigured
+# development build, while allowing normal user installs with
+# -DCMAKE_INSTALL_PREFIX=$HOME/.local.
 #
-
-set(CMAKE_INSTALL_PREFIX
-    ${PROJECT_SOURCE_DIR}
-    CACHE PATH
-    "COINAlgebra installation prefix"
-)
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX
+        ${PROJECT_SOURCE_DIR}
+        CACHE PATH
+        "COINAlgebra installation prefix"
+        FORCE
+    )
+endif()
 
 set(CMAKE_INSTALL_LIBDIR
     lib
@@ -362,6 +365,21 @@ install(
         ${COINALGEBRA_CONFIG_DIR}/
     DESTINATION
         config
+)
+
+install(
+    PROGRAMS
+        ${PROJECT_SOURCE_DIR}/setup.sh
+    DESTINATION
+        .
+)
+
+install(
+    DIRECTORY
+        ${PROJECT_SOURCE_DIR}/RadioactiveDecay5.5
+        ${PROJECT_SOURCE_DIR}/PhotonEvaporation5.5
+    DESTINATION
+        share/COINAlgebra
 )
 
 #
