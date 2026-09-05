@@ -1,8 +1,8 @@
 
 This README file provides instructions for reading the radioactive decay 
 schemes in the files zXX.aYYY found in the directory RadioactiveDecay5.0
-(most recent version).  This directory, as well as previous versions, is
-available from the Geant4 download page 
+(most recent version). This directory, as well as previous versions, is
+available from the Geant4 download page
 
 http://cern.ch/geant4/support/download.shtml
 
@@ -12,7 +12,13 @@ area, and set the environment variable
 
 G4RADIOACTIVEDATA
 
-to point to it. 
+to point to it.
+
+All nuclear data files in this directory are Geant4-provided radioactive decay
+files. The `zXX.aYYY` tables are part of the official Geant4 data package and
+are not custom-generated local files. They are the standard Geant4 source of
+parent-state, decay-mode, and branching-ratio information for nuclear decay
+simulations and for this project's radioactive decay reader.
 
 **************************************************************************
 In each of the files, lines beginning with '#' are comments.

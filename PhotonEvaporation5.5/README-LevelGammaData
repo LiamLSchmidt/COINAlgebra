@@ -1,7 +1,15 @@
 
 The photo-evaporation database contains nuclear deexcitation data starting 
 from a given nuclear level including information on spin of a state and
-angular moment of a transition in a directory
+angular moment of a transition in a directory.
+
+This directory contains the standard Geant4 PhotonEvaporation nuclear data files.
+All of the files in this directory, including the isotope tables such as
+z11.a22, z12.a24, and the rest of the level-gamma data sets, are supplied by
+Geant4 and are used as the reference nuclear deexcitation database for this
+project. These files are not custom-generated local data; they are the
+official Geant4 photon-evaporation tables distributed as part of the Geant4
+nuclear data package.
 
 **************************************************
 
