@@ -76,18 +76,49 @@ set(CMAKE_INSTALL_INCLUDEDIR
 # ============================================================
 #
 
-find_package(ROOT REQUIRED COMPONENTS
-    Core
-    RIO
-    Hist
-    Rint
-)
+# Allow users to point CMake at their ROOT install in one place.
+# Example:
+#   export ROOT_PREFIX=/opt/root
+#   cmake -S . -B build
+# or:
+#   cmake -DROOT_DIR=/opt/root -S . -B build
+set(ROOT_DIR "$ENV{ROOT_PREFIX}" CACHE PATH "Path to the ROOT installation")
+if(NOT ROOT_DIR)
+    set(ROOT_DIR "$ENV{ROOTSYS}" CACHE PATH "Path to the ROOT installation" FORCE)
+endif()
+
+if(ROOT_DIR)
+    list(PREPEND CMAKE_PREFIX_PATH "${ROOT_DIR}")
+endif()
+
+if(ROOT_DIR)
+    find_package(ROOT REQUIRED COMPONENTS
+        Core
+        RIO
+        Hist
+        Rint
+        PATHS "${ROOT_DIR}"
+        NO_DEFAULT_PATH
+    )
+else()
+    find_package(ROOT REQUIRED COMPONENTS
+        Core
+        RIO
+        Hist
+        Rint
+    )
+endif()
 
 #
 # Use ROOT's CMake configuration
 #
 
 include(${ROOT_USE_FILE})
+
+option(COINALGEBRA_GENERATE_ROOT_DICT
+    "Generate the ROOT dictionary for interactive reflection"
+    OFF
+)
 
 #
 # ============================================================
@@ -175,92 +206,68 @@ set_target_properties(COINAlgebra PROPERTIES
 # ROOT dictionary
 # ============================================================
 #
-
-set(COINALGEBRA_HEADERS
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/COINAlgebra.h 
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathAlgebra.h 
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathProjectors.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/Commands.h	
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayLevel.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiver.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayVector.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayProbability.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/RadioactiveDecayReader.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PhotonEvaporationReader.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiverBuilder.h
-
-)
-
-#
-# Generate the ROOT dictionary for the COINAlgebra library.
-#
-# NOINSTALL is important here because ROOT 6.26's
-# ROOT_GENERATE_DICTIONARY() otherwise attempts to perform
-# its own install() operation.
+# This project can operate without a generated ROOT dictionary in the
+# development tree, which is important when the active ROOT/Cling toolchain
+# is incompatible with the conda-provided compiler flags. Keep the option
+# available for users who want to enable dictionary generation explicitly.
 #
 
-ROOT_GENERATE_DICTIONARY(
-    COINAlgebraDict
+if(COINALGEBRA_GENERATE_ROOT_DICT)
+    set(COINALGEBRA_HEADERS
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/COINAlgebra.h 
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathAlgebra.h 
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathProjectors.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/Commands.h	
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayLevel.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiver.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayVector.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayProbability.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/RadioactiveDecayReader.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PhotonEvaporationReader.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiverBuilder.h
+    )
 
-    ${COINALGEBRA_HEADERS}
+    ROOT_GENERATE_DICTIONARY(
+        COINAlgebraDict
 
-    LINKDEF
-        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/LinkDef.h
+        ${COINALGEBRA_HEADERS}
 
-    MODULE
-        COINAlgebra
+        LINKDEF
+            ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/LinkDef.h
 
-    NOINSTALL
-)
+        MODULE
+            COINAlgebra
 
-#
-# ============================================================
-# Copy ROOT dictionary artifacts into lib/
-# ============================================================
-#
-# ROOT_GENERATE_DICTIONARY() creates the dictionary artifacts
-# in the CMake binary directory (normally build/).
-#
-# We leave the generated files there and copy the two runtime
-# artifacts into the repository's lib/ directory:
-#
-#   libCOINAlgebra_rdict.pcm
-#   libCOINAlgebra.rootmap
-#
-# This makes the development tree self-contained:
-#
-#   lib/
-#       libCOINAlgebra.so
-#       libCOINAlgebra_rdict.pcm
-#       libCOINAlgebra.rootmap
-#
-# ============================================================
-#
+        NOINSTALL
+    )
 
-set(COINALGEBRA_PCM
-    ${CMAKE_CURRENT_BINARY_DIR}/libCOINAlgebra_rdict.pcm
-)
+    set(COINALGEBRA_PCM
+        ${CMAKE_CURRENT_BINARY_DIR}/libCOINAlgebra_rdict.pcm
+    )
 
-set(COINALGEBRA_ROOTMAP
-    ${CMAKE_CURRENT_BINARY_DIR}/libCOINAlgebra.rootmap
-)
+    set(COINALGEBRA_ROOTMAP
+        ${CMAKE_CURRENT_BINARY_DIR}/libCOINAlgebra.rootmap
+    )
 
-add_custom_command(
-    TARGET COINAlgebra
-    POST_BUILD
+    add_custom_command(
+        TARGET COINAlgebra
+        POST_BUILD
 
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${COINALGEBRA_PCM}
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${COINALGEBRA_PCM}
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
 
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${COINALGEBRA_ROOTMAP}
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${COINALGEBRA_ROOTMAP}
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
 
-    COMMENT
-        "Copying ROOT dictionary files to lib/"
-)
+        COMMENT
+            "Copying ROOT dictionary files to lib/"
+    )
+else()
+    message(STATUS "ROOT dictionary generation disabled; library will be built without generated rootmap/pcm files.")
+endif()
 
 #
 # ============================================================
@@ -365,14 +372,16 @@ install(
 # dictionary has not yet been generated.
 #
 
-install(
-    FILES
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
-    DESTINATION
-        lib
-    OPTIONAL
-)
+if(COINALGEBRA_GENERATE_ROOT_DICT)
+    install(
+        FILES
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
+        DESTINATION
+            lib
+        OPTIONAL
+    )
+endif()
 
 #
 # ============================================================

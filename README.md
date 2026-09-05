@@ -67,25 +67,53 @@ COINAlgebra/
 
 * CMake ≥ 3.16
 * C++17 compiler
-* CERN ROOT
+* CERN ROOT 6.x
 * ROOT's CMake integration
 
-The current development environment has been tested with **ROOT 6.26.10** and **GCC 11**.
+The project is designed to work with a standard ROOT installation and does not require a hardcoded path inside the repository. The only installation-specific value that users may need to provide is the ROOT prefix for their local environment.
+
+## ROOT Setup
+
+Before building or running the project, point the repo at the ROOT install you want to use.
+
+The simplest pattern is to set a single environment variable once in your shell:
+
+```bash
+export ROOT_PREFIX=/path/to/root
+# examples:
+# export ROOT_PREFIX=/opt/root
+# export ROOT_PREFIX=/usr/local
+# export ROOT_PREFIX=/root/miniconda3/envs/root626
+```
+
+Then load the project environment:
+
+```bash
+source setup.sh
+```
+
+The script will use `ROOT_PREFIX` if it is set, otherwise it falls back to the currently active `ROOTSYS` and then common ROOT install locations.
+
+You can also pass the ROOT install directly to CMake:
+
+```bash
+cmake -DROOT_DIR=/path/to/root -S . -B build
+```
 
 ## Building
 
 From the repository root:
 
 ```bash
-rm -rf build
-mkdir build
-cd build
+export ROOT_PREFIX=/path/to/root
+source setup.sh
 
-cmake ..
-make -j4
+rm -rf build
+cmake -S . -B build
+cmake --build build -j4
 ```
 
-The executable and library are placed directly in the repository:
+This will build the library and executable directly into the repository:
 
 ```text
 bin/coinalgebra
@@ -95,8 +123,11 @@ lib/libCOINAlgebra.so
 Run the interactive environment with:
 
 ```bash
+source setup.sh
 ./bin/coinalgebra
 ```
+
+The current development environment has been tested with **ROOT 6.26.10** and **GCC 10/11-compatible toolchains**. The project is intended to work with other standard ROOT 6 installations as long as the active compiler and Cling toolchain are compatible.
 
 ## Interactive Environment
 
