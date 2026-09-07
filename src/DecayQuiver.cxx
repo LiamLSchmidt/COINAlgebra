@@ -140,6 +140,52 @@ DecayQuiver::GetTransitions() const
     return fTransitions;
 }
 
+bool DecayQuiver::RemoveTransition(const DecayTransition* transition)
+{
+    if(transition == nullptr) return false;
+
+    for(auto it = fTransitions.begin(); it != fTransitions.end(); ++it)
+    {
+        if(*it == transition)
+        {
+            delete *it;
+            fTransitions.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool DecayQuiver::RemoveLevel(const DecayLevel* level)
+{
+    if(level == nullptr) return false;
+
+    // remove transitions referring to this level
+    for(auto it = fTransitions.begin(); it != fTransitions.end(); ) {
+        DecayTransition* tr = *it;
+        if(tr != nullptr && (tr->GetSource() == level || tr->GetTarget() == level)) {
+            delete tr;
+            it = fTransitions.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
+    // remove the level itself
+    for(auto it = fLevels.begin(); it != fLevels.end(); ++it)
+    {
+        if(*it == level)
+        {
+            delete *it;
+            fLevels.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 
 // ============================================================
 // Quiver structure

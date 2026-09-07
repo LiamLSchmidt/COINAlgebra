@@ -1,0 +1,28 @@
+{
+    "levels": [
+        "E1",
+        "E2"
+    ],
+    "transitions": [
+        {
+            "name": "E1->E2",
+            "probability": 1,
+            "source_index": 0,
+            "target_index": 1
+        }
+    ],
+    "vectors": [
+        {
+            "display": "1 * (E1 -[E1->E2]-> E2)",
+            "terms": [
+                {
+                    "coefficient": 1,
+                    "path_names": [
+                        "E1->E2"
+                    ],
+                    "path_probability": 1
+                }
+            ]
+        }
+    ]
+}

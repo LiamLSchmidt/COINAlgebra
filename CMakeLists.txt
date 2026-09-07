@@ -15,6 +15,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Option to disable building ROOT-dependent targets (useful for GUI-only builds)
+option(BUILD_WITH_ROOT "Build COINAlgebra with ROOT support" ON)
+
 #
 # COINAlgebra directory layout
 #
@@ -43,21 +46,22 @@ set(COINALGEBRA_BINARY_DIR
 # ============================================================
 # Installation directories
 # ============================================================
-#
+# ROOT (optional)
+# ============================================================
+if(BUILD_WITH_ROOT)
+    find_package(ROOT REQUIRED COMPONENTS
+        Core
+        RIO
+        Hist
+        Rint
+    )
 
-include(GNUInstallDirs)
+    # Use ROOT's CMake configuration
+    include(${ROOT_USE_FILE})
+endif()
 
-#
-# For the development tree we use the repository itself
-# as the installation prefix.
-#
-
-set(CMAKE_INSTALL_PREFIX
-    ${PROJECT_SOURCE_DIR}
-    CACHE PATH
-    "COINAlgebra installation prefix"
-)
-
+# Add optional GUI (Qt) subproject (does not require ROOT)
+add_subdirectory(gui OPTIONAL)
 set(CMAKE_INSTALL_LIBDIR
     lib
 )
@@ -71,24 +75,6 @@ set(CMAKE_INSTALL_INCLUDEDIR
 )
 
 #
-# ============================================================
-# ROOT
-# ============================================================
-#
-
-find_package(ROOT REQUIRED COMPONENTS
-    Core
-    RIO
-    Hist
-    Rint
-)
-
-#
-# Use ROOT's CMake configuration
-#
-
-include(${ROOT_USE_FILE})
-
 #
 # ============================================================
 # Include directories
@@ -124,97 +110,41 @@ set(COINALGEBRA_SOURCES
 )
 
 #
-# ============================================================
-# COINAlgebra library
-# ============================================================
-#
-
-add_library(COINAlgebra SHARED
-    ${COINALGEBRA_SOURCES}
-)
-
-#
-# Header include directory
-#
-
-target_include_directories(COINAlgebra
-    PUBLIC
-        ${COINALGEBRA_INCLUDE_DIR}
-)
-
-#
-# ROOT libraries required by COINAlgebra
-#
-
-target_link_libraries(COINAlgebra
-    PUBLIC
-        ROOT::Core
-        ROOT::RIO
-        ROOT::Hist
-)
-
-#
-# Put the shared library directly into lib/
-#
-
-set_target_properties(COINAlgebra PROPERTIES
-
-    LIBRARY_OUTPUT_DIRECTORY
-        ${COINALGEBRA_LIBRARY_DIR}
-
-    BUILD_RPATH
-        ${COINALGEBRA_LIBRARY_DIR}
-
-    INSTALL_RPATH
-        "$ORIGIN"
-
-)
+# COINAlgebra core/library is configured below (optionally with ROOT)
 
 #
 # ============================================================
-# ROOT dictionary
+# COINAlgebra library (ROOT-dependent, optional)
 # ============================================================
-#
+if(BUILD_WITH_ROOT)
+    add_library(COINAlgebra SHARED
+        ${COINALGEBRA_SOURCES}
+    )
 
-set(COINALGEBRA_HEADERS
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/COINAlgebra.h 
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathAlgebra.h 
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathProjectors.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/Commands.h	
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayLevel.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiver.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayVector.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayProbability.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/RadioactiveDecayReader.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PhotonEvaporationReader.h
-    ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiverBuilder.h
+    # Header include directory
+    target_include_directories(COINAlgebra
+        PUBLIC
+            ${COINALGEBRA_INCLUDE_DIR}
+    )
 
-)
+    # ROOT libraries required by COINAlgebra
+    target_link_libraries(COINAlgebra
+        PUBLIC
+            ROOT::Core
+            ROOT::RIO
+            ROOT::Hist
+    )
 
-#
-# Generate the ROOT dictionary for the COINAlgebra library.
-#
-# NOINSTALL is important here because ROOT 6.26's
-# ROOT_GENERATE_DICTIONARY() otherwise attempts to perform
-# its own install() operation.
-#
-
-ROOT_GENERATE_DICTIONARY(
-    COINAlgebraDict
-
-    ${COINALGEBRA_HEADERS}
-
-    LINKDEF
-        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/LinkDef.h
-
-    MODULE
-        COINAlgebra
-
-    NOINSTALL
-)
-
-#
+    # Put the shared library directly into lib/
+    set_target_properties(COINAlgebra PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY
+            ${COINALGEBRA_LIBRARY_DIR}
+        BUILD_RPATH
+            ${COINALGEBRA_LIBRARY_DIR}
+        INSTALL_RPATH
+            "$ORIGIN"
+    )
+endif()
 # ============================================================
 # Copy ROOT dictionary artifacts into lib/
 # ============================================================
@@ -246,21 +176,23 @@ set(COINALGEBRA_ROOTMAP
     ${CMAKE_CURRENT_BINARY_DIR}/libCOINAlgebra.rootmap
 )
 
-add_custom_command(
-    TARGET COINAlgebra
-    POST_BUILD
+if(BUILD_WITH_ROOT)
+    add_custom_command(
+        TARGET COINAlgebra
+        POST_BUILD
 
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${COINALGEBRA_PCM}
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${COINALGEBRA_PCM}
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
 
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${COINALGEBRA_ROOTMAP}
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${COINALGEBRA_ROOTMAP}
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
 
-    COMMENT
-        "Copying ROOT dictionary files to lib/"
-)
+        COMMENT
+            "Copying ROOT dictionary files to lib/"
+    )
+endif()
 
 #
 # ============================================================
@@ -268,48 +200,34 @@ add_custom_command(
 # ============================================================
 #
 
-add_executable(coinalgebra
+if(BUILD_WITH_ROOT)
+    add_executable(coinalgebra
+        ${PROJECT_SOURCE_DIR}/src/main.cxx
+    )
 
-    ${PROJECT_SOURCE_DIR}/src/main.cxx
+    # Link the executable against the COINAlgebra library and ROOT's interactive interpreter.
+    target_link_libraries(coinalgebra
+        PRIVATE
+            COINAlgebra
+            ROOT::Rint
+    )
 
-)
+    # Include COINAlgebra headers for the executable
+    target_include_directories(coinalgebra
+        PRIVATE
+            ${COINALGEBRA_INCLUDE_DIR}
+    )
 
-#
-# Link the executable against the COINAlgebra library and
-# ROOT's interactive interpreter.
-#
-
-target_link_libraries(coinalgebra
-    PRIVATE
-        COINAlgebra
-        ROOT::Rint
-)
-
-#
-# Include COINAlgebra headers for the executable
-#
-
-target_include_directories(coinalgebra
-    PRIVATE
-        ${COINALGEBRA_INCLUDE_DIR}
-)
-
-#
-# Put executable directly into bin/
-#
-
-set_target_properties(coinalgebra PROPERTIES
-
-    RUNTIME_OUTPUT_DIRECTORY
-        ${COINALGEBRA_BINARY_DIR}
-
-    BUILD_RPATH
-        ${COINALGEBRA_LIBRARY_DIR}
-
-    INSTALL_RPATH
-        "$ORIGIN/../lib"
-
-)
+    # Put executable directly into bin/
+    set_target_properties(coinalgebra PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY
+            ${COINALGEBRA_BINARY_DIR}
+        BUILD_RPATH
+            ${COINALGEBRA_LIBRARY_DIR}
+        INSTALL_RPATH
+            "$ORIGIN/../lib"
+    )
+endif()
 
 #
 # ============================================================
@@ -321,19 +239,23 @@ set_target_properties(coinalgebra PROPERTIES
 # Install the main library
 #
 
-install(
-    TARGETS COINAlgebra
-    LIBRARY DESTINATION lib
-)
+if(BUILD_WITH_ROOT)
+    install(
+        TARGETS COINAlgebra
+        LIBRARY DESTINATION lib
+    )
+endif()
 
 #
 # Install the executable
 #
 
-install(
-    TARGETS coinalgebra
-    RUNTIME DESTINATION bin
-)
+if(BUILD_WITH_ROOT)
+    install(
+        TARGETS coinalgebra
+        RUNTIME DESTINATION bin
+    )
+endif()
 
 #
 # Install public headers
@@ -365,32 +287,45 @@ install(
 # dictionary has not yet been generated.
 #
 
-install(
-    FILES
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
-        ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
-    DESTINATION
-        lib
-    OPTIONAL
-)
+if(BUILD_WITH_ROOT)
+    install(
+        FILES
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra_rdict.pcm
+            ${COINALGEBRA_LIBRARY_DIR}/libCOINAlgebra.rootmap
+        DESTINATION
+            lib
+        OPTIONAL
+    )
+endif()
 
 #
 # ============================================================
-# Summary
+# ROOT dictionary and executable (optional)
 # ============================================================
-#
+if(BUILD_WITH_ROOT)
+    set(COINALGEBRA_HEADERS
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/COINAlgebra.h 
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathAlgebra.h 
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PathProjectors.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/Commands.h	
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayLevel.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayTransition.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiver.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayVector.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayProbability.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/RadioactiveDecayReader.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/PhotonEvaporationReader.h
+        ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/DecayQuiverBuilder.h
+    )
 
-message(STATUS "")
-message(STATUS "==============================================")
-message(STATUS "           COINAlgebra Configuration")
-message(STATUS "==============================================")
-message(STATUS "Version:       ${PROJECT_VERSION}")
-message(STATUS "Source:        ${PROJECT_SOURCE_DIR}")
-message(STATUS "Headers:       ${COINALGEBRA_INCLUDE_DIR}")
-message(STATUS "Library:       ${COINALGEBRA_LIBRARY_DIR}")
-message(STATUS "Executable:    ${COINALGEBRA_BINARY_DIR}")
-message(STATUS "Config:        ${COINALGEBRA_CONFIG_DIR}")
-message(STATUS "ROOT:          ${ROOT_VERSION}")
-message(STATUS "C++ Standard:  C++${CMAKE_CXX_STANDARD}")
-message(STATUS "==============================================")
-message(STATUS "")
+    # Generate the ROOT dictionary for the COINAlgebra library.
+    ROOT_GENERATE_DICTIONARY(
+        COINAlgebraDict
+        ${COINALGEBRA_HEADERS}
+        LINKDEF
+            ${COINALGEBRA_INCLUDE_DIR}/COINAlgebra/LinkDef.h
+        MODULE
+            COINAlgebra
+        NOINSTALL
+    )
+endif()

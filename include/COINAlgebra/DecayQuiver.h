@@ -48,6 +48,14 @@ public:
     const std::vector<DecayTransition*>& GetTransitions() const;
 
     // --------------------------------------------------------
+    // Mutators
+    // --------------------------------------------------------
+
+    bool RemoveLevel(const DecayLevel* level);
+
+    bool RemoveTransition(const DecayTransition* transition);
+
+    // --------------------------------------------------------
     // Quiver structure
     // --------------------------------------------------------
 
