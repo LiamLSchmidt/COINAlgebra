@@ -5,6 +5,7 @@
 #include <vector>
 
 class DecayQuiver;
+class DecayLevel;
 
 class QuiverView : public QGraphicsView
 {
@@ -16,9 +17,13 @@ public:
 
     // Rebuild the scene from the current quiver data.
     void refresh();
+    void focusOnLevel(int index);
+    void showAllLevels();
 
 private:
     DecayQuiver* fQuiver = nullptr;
+    const DecayLevel* fTopLevel = nullptr;
+    int fVisibleLevelCount = 0;
     std::vector<QPointF> fPositions;
     double fNodeRadius = 28.0;
     double fLineStartX = 0.0;

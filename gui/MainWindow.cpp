@@ -1,6 +1,15 @@
 #include "MainWindow.h"
 #include "QuiverJson.h"
 #include "TransitionEditor.h"
+#include "COINAlgebra/Algebra/PathAlgebra.h"
+#include "COINAlgebra/Algebra/PathProjectors.h"
+#include "COINAlgebra/Probability/DecayProbability.h"
+#include <QPlainTextEdit>
+#include <QFontDatabase>
+#include <sstream>
+#include <iostream>
+#include <functional>
+#include <map>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QIcon>
@@ -71,7 +80,7 @@ MainWindow::MainWindow()
     auto* heading = new QVBoxLayout();
     heading->setSpacing(6);
     heading->addStretch();
-    auto* title = new QLabel("Quiver workspace", header);
+    auto* title = new QLabel("Decay Quiver Studio", header);
     title->setObjectName("workspaceTitle");
     title->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     heading->addWidget(title);
@@ -140,7 +149,7 @@ MainWindow::MainWindow()
     fExportButton = new QPushButton("Export Quiver");
     v->addWidget(fExportButton);
     QPushButton* builderBtn = new QPushButton("Paths && Vectors");
-    v->addWidget(builderBtn);
+
 
     section("LEVELS");
     fLevelsList = new QListWidget();
@@ -166,6 +175,46 @@ MainWindow::MainWindow()
     fView = new QuiverView();
     canvas->addWidget(fView, 1);
     body->addLayout(canvas, 1);
+    auto* right = new QWidget(central);
+    right->setObjectName("sidebar");
+    auto* analysis = new QVBoxLayout(right);
+    analysis->setContentsMargins(16, 12, 16, 16);
+    analysis->setSpacing(10);
+    auto* analysisTitle = new QLabel("PATHS & PROBABILITIES");
+    analysisTitle->setObjectName("sectionTitle");
+    analysis->addWidget(analysisTitle);
+    analysis->addWidget(builderBtn);
+    auto* create = new QPushButton("Create Decay Vector");
+    create->setObjectName("createDecayVector");
+    analysis->addWidget(create);
+    auto* decayTable = new QPushButton("Print Decay Vector Table");
+    analysis->addWidget(decayTable);
+    analysis->addWidget(new QLabel("Transition name"));
+    fFeedingTransition = new QLineEdit();
+    fFeedingTransition->setObjectName("feedingTransition");
+    fFeedingTransition->setPlaceholderText("Select a transition on the left");
+    analysis->addWidget(fFeedingTransition);
+    auto* feeding = new QPushButton("Calculate Feeding Probability");
+    analysis->addWidget(feeding);
+    auto* feedingTable = new QPushButton("Print Feeding Table");
+    analysis->addWidget(feedingTable);
+    fAnalysisResult = new QLabel("Uses the full quiver, including levels hidden by zoom.");
+    fAnalysisResult->setObjectName("analysisResult");
+    fAnalysisResult->setWordWrap(true);
+    fAnalysisResult->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    analysis->addWidget(fAnalysisResult);
+    analysis->addStretch();
+    auto* analysisScroll = new QScrollArea(central);
+    analysisScroll->setWidgetResizable(true);
+    analysisScroll->setFrameShape(QFrame::NoFrame);
+    analysisScroll->setFixedWidth(280);
+    analysisScroll->setWidget(right);
+    body->addWidget(analysisScroll);
+    connect(create, &QPushButton::clicked, this, &MainWindow::createDecayVector);
+    connect(feeding, &QPushButton::clicked, this, &MainWindow::calculateFeeding);
+    connect(decayTable, &QPushButton::clicked, this, &MainWindow::showDecayTable);
+    connect(feedingTable, &QPushButton::clicked, this, &MainWindow::showFeedingTable);
+    connect(fTransitionsList, &QListWidget::currentTextChanged, fFeedingTransition, &QLineEdit::setText);
     connect(importButton, &QPushButton::clicked, this, &MainWindow::importQuiver);
 
     connect(fAddLevel, &QPushButton::clicked, this, &MainWindow::addLevel);
@@ -179,7 +228,7 @@ MainWindow::MainWindow()
 
     setWindowTitle("DecayQuiver Studio");
     setMinimumSize(820, 640);
-    resize(1120, 860);
+    resize(1440, 860);
 
     fView->setQuiver(fQuiver.get());
     updateUI();
@@ -229,6 +278,7 @@ void MainWindow::addTransition()
 
 void MainWindow::updateUI()
 {
+    fAnalysisResult->setText("Uses the full quiver, including levels hidden by zoom.");
     // repopulate combos and lists from fQuiver
     fSourceBox->clear();
     fTargetBox->clear();
@@ -273,6 +323,7 @@ void MainWindow::importQuiver()
         fView->setQuiver(nullptr);
         fQuiver = std::move(document.quiver);
         fVectors = std::move(document.vectors);
+        fMetadata = document.metadata;
         fView->setQuiver(fQuiver.get());
         fLevelName->clear();
         fProbability->setText("1.0");
@@ -290,6 +341,7 @@ void MainWindow::exportQuiver()
     const auto& trans = fQuiver->GetTransitions();
 
     QJsonObject root;
+    if (!fMetadata.isEmpty()) root["metadata"] = fMetadata;
     QJsonArray lvlArr;
     for (const auto* L : levels) {
         lvlArr.append(QString::fromStdString(L->GetName()));
@@ -558,4 +610,96 @@ void MainWindow::showPathVectorBuilder()
         if (!vec.Empty()) fVectors.push_back(vec);
         updateUI();
     }
+}
+
+DecayVector MainWindow::currentDecay() const
+{
+    return Studio::createDecayVector(*fQuiver, fMetadata);
+}
+
+namespace {
+// Feeding probabilities require finite, acyclic decay schemes.
+void checkFeedingSize(const DecayQuiver& quiver) {
+    std::map<const DecayLevel*, int> state;
+    std::function<void(const DecayLevel*)> visit = [&](const DecayLevel* l) {
+        if (state[l] == 1) throw std::runtime_error("Feeding requires an acyclic quiver.");
+        if (state[l] == 2) return;
+        state[l] = 1;
+        for (auto* t : quiver.GetTransitions())
+            if (t->GetSource() == l) visit(t->GetTarget());
+        state[l] = 2;
+    };
+    for (auto* l : quiver.GetLevels()) visit(l);
+}
+}
+
+void MainWindow::createDecayVector()
+{
+    try {
+        auto decay = currentDecay();
+        const auto count = decay.Size();
+        fVectors.push_back(std::move(decay));
+        updateUI();
+        fAnalysisResult->setText(QString("Created decay vector %1 with %2 terms. Included in Export Quiver.").arg(fVectors.size()).arg(count));
+    } catch (const std::exception& e) { QMessageBox::warning(this, "Decay Vector", e.what()); }
+}
+
+void MainWindow::calculateFeeding()
+{
+    try {
+        const auto* t = fQuiver->GetTransition(fFeedingTransition->text().toStdString());
+        if (!t) throw std::runtime_error("Select or enter an existing transition name.");
+        const auto decay = currentDecay();
+        checkFeedingSize(*fQuiver);
+        PathAlgebra algebra(*fQuiver);
+        PathProjectors projectors;
+        DecayProbability probability(algebra, projectors);
+        const double value = probability.FeedingProbability(decay, DecayPath(std::vector<DecayTransition>{*t}));
+        fAnalysisResult->setText(QString("Feeding probability: %1").arg(value, 0, 'g', 12));
+    } catch (const std::exception& e) { QMessageBox::warning(this, "Feeding Probability", e.what()); }
+}
+
+void MainWindow::showVectorTable(const DecayVector& vector, const QString& title)
+{
+    std::ostringstream stream;
+    vector.PrintTable(stream);
+    vector.PrintTable();
+    QDialog dialog(this);
+    dialog.setWindowTitle(title);
+    dialog.resize(1000, 600);
+    auto* layout = new QVBoxLayout(&dialog);
+    auto* text = new QPlainTextEdit(QString::fromStdString(stream.str()));
+    text->setReadOnly(true);
+    text->setLineWrapMode(QPlainTextEdit::NoWrap);
+    text->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+    layout->addWidget(text);
+    auto* save = new QPushButton("Save Table…");
+    layout->addWidget(save);
+    connect(save, &QPushButton::clicked, &dialog, [&] {
+        const auto path = QFileDialog::getSaveFileName(&dialog, "Save Table", "decay-table.txt", "Text (*.txt)");
+        if (path.isEmpty()) return;
+        QFile file(path);
+        const auto bytes = text->toPlainText().toUtf8();
+        if (!file.open(QIODevice::WriteOnly) || file.write(bytes) != bytes.size())
+            QMessageBox::warning(&dialog, "Save Table", "Could not save table.");
+    });
+    dialog.exec();
+}
+
+void MainWindow::showDecayTable()
+{
+    try { showVectorTable(currentDecay(), "Decay Vector — coefficients (PrintTable)"); }
+    catch (const std::exception& e) { QMessageBox::warning(this, "Decay Table", e.what()); }
+}
+
+void MainWindow::showFeedingTable()
+{
+    try {
+        const auto decay = currentDecay();
+        checkFeedingSize(*fQuiver);
+        PathAlgebra algebra(*fQuiver);
+        PathProjectors projectors;
+        DecayProbability probability(algebra, projectors);
+        showVectorTable(probability.FeedingVector(decay), "Feeding Vector — probabilities (PrintTable)");
+    } catch (const std::exception& e) { QMessageBox::warning(this, "Feeding Table", e.what()); }
 }

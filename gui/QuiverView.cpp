@@ -20,6 +20,7 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QAction>
+#include <algorithm>
 #include <map>
 
 QuiverView::QuiverView(QWidget* parent)
@@ -32,12 +33,30 @@ QuiverView::QuiverView(QWidget* parent)
 
 void QuiverView::setQuiver(DecayQuiver* q)
 {
+    fTopLevel = nullptr;
     fPositions.clear();
     fTransitionOffsets.clear();
     fTransitionPinned.clear();
     fDraggingLevel = fDraggingTransition = -1;
     unsetCursor();
     fQuiver = q;
+    refresh();
+}
+
+void QuiverView::focusOnLevel(int index)
+{
+    if (!fQuiver || index < 0 || index >= static_cast<int>(fQuiver->GetLevels().size())) return;
+    fTopLevel = fQuiver->GetLevels()[index];
+    fPositions.clear();
+    fTransitionPinned.assign(fQuiver->GetTransitions().size(), 0);
+    refresh();
+}
+
+void QuiverView::showAllLevels()
+{
+    fTopLevel = nullptr;
+    fPositions.clear();
+    if (fQuiver) fTransitionPinned.assign(fQuiver->GetTransitions().size(), 0);
     refresh();
 }
 
@@ -56,7 +75,13 @@ void QuiverView::refresh()
 
     const auto& levels = fQuiver->GetLevels();
     const auto& transitions = fQuiver->GetTransitions();
-    const int n = static_cast<int>(levels.size());
+    int n = static_cast<int>(levels.size());
+    if (fTopLevel) {
+        const auto top = std::find(levels.begin(), levels.end(), fTopLevel);
+        if (top == levels.end()) fTopLevel = nullptr;
+        else n = static_cast<int>(top - levels.begin()) + 1;
+    }
+    fVisibleLevelCount = n;
     if (n == 0) {
         fPositions.clear();
         auto* title = s->addText("Your next decay scheme starts here");
@@ -96,6 +121,7 @@ void QuiverView::refresh()
         }
         fPositions = pos;
     }
+    fPositions = pos; // Keep hit testing aligned after a horizontal resize.
     fLineStartX = startX;
     fLineEndX = endX;
     const double nodeRadius = fNodeRadius; // vertical half-gap used when connecting transitions
@@ -117,30 +143,24 @@ void QuiverView::refresh()
         fTransitionPinned.assign(transitions.size(), 0);
     }
 
-    // group transitions by (sourceIndex, targetIndex)
-    std::map<std::pair<int,int>, std::vector<int>> groups;
-    for (int tr_i=0; tr_i<(int)transitions.size(); ++tr_i) {
-        const auto* tr = transitions[tr_i];
-        int si=-1, ti_idx=-1;
-        for (int i=0;i<n;++i) {
-            if (levels[i] == tr->GetSource()) si = i;
-            if (levels[i] == tr->GetTarget()) ti_idx = i;
-        }
-        if (si<0 || ti_idx<0) continue;
-        groups[{si, ti_idx}].push_back(tr_i);
-    }
-
-    // compute even spacing for each group, but do not overwrite offsets for transitions the user dragged
-    const double groupSpacing = 18.0;
-    for (const auto& kv : groups) {
-        const auto& idxs = kv.second;
-        int m = (int)idxs.size();
-        for (int j=0;j<m;++j) {
-            int ti = idxs[j];
-            if (fTransitionPinned[ti]) continue; // preserve user offset
-            double pos = (j - (m-1)/2.0) * groupSpacing;
-            fTransitionOffsets[ti] = pos;
-        }
+    // Place upper-source transitions first from left to right. Keep the input
+    // order within a source level and leave quiver/path identities unchanged.
+    std::map<const DecayLevel*, double> sourceY;
+    for (int i = 0; i < n; ++i) sourceY[levels[i]] = pos[i].y();
+    std::vector<std::size_t> laneOrder;
+    for (std::size_t i = 0; i < transitions.size(); ++i)
+        if (sourceY.count(transitions[i]->GetSource()) && sourceY.count(transitions[i]->GetTarget()))
+            laneOrder.push_back(i);
+    std::stable_sort(laneOrder.begin(), laneOrder.end(), [&](std::size_t a, std::size_t b) {
+        return sourceY.at(transitions[a]->GetSource()) < sourceY.at(transitions[b]->GetSource());
+    });
+    // Give each transition a lane across the usable width, preserving drags.
+    const double laneSpacing = (endX - startX) / (laneOrder.size() + 1.0);
+    const double centerX = (startX + endX) * 0.5;
+    for (std::size_t lane = 0; lane < laneOrder.size(); ++lane) {
+        const auto i = laneOrder[lane];
+        if (!fTransitionPinned[i])
+            fTransitionOffsets[i] = startX + (lane + 1) * laneSpacing - centerX;
     }
 
     for (int tr_i=0; tr_i<(int)transitions.size(); ++tr_i) {
@@ -155,9 +175,7 @@ void QuiverView::refresh()
         QPointF a = pos[si];
         QPointF b = pos[ti_idx];
 
-        // apply a small horizontal offset based on transition index to reduce overlap
-        double baseOffset = ((tr_i % 5) - 2) * 10.0;
-        double offsetX = baseOffset + fTransitionOffsets[tr_i];
+        const double offsetX = fTransitionOffsets[tr_i];
         a += QPointF(offsetX, 0);
         b += QPointF(offsetX, 0);
 
@@ -246,10 +264,18 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                 }
                 DecayLevel* lvl = fQuiver->GetLevels()[i];
                 QMenu menu;
+                QAction* focusA = menu.addAction("Zoom: make this the top level");
+                QAction* allA = menu.addAction("Show all levels");
+                allA->setEnabled(fTopLevel != nullptr);
+                menu.addSeparator();
                 QAction* renameA = menu.addAction("Rename");
                 QAction* delA = menu.addAction("Delete");
                 QAction* act = menu.exec(event->globalPos());
-                if (act == renameA) {
+                if (act == focusA) {
+                    focusOnLevel(i);
+                } else if (act == allA) {
+                    showAllLevels();
+                } else if (act == renameA) {
                     bool ok = false;
                     QString name = QInputDialog::getText(this, "Rename Level", "Name:", QLineEdit::Normal, QString::fromStdString(lvl->GetName()), &ok);
                     if (ok && !name.isEmpty()) {
@@ -277,7 +303,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
     for (int ti=0; ti<(int)transitions.size(); ++ti) {
         const auto* tr = transitions[ti];
         int si=-1, ti_idx=-1;
-        for (int j=0;j<(int)levels.size();++j) {
+        for (int j=0;j<fVisibleLevelCount;++j) {
             if (levels[j] == tr->GetSource()) si = j;
             if (levels[j] == tr->GetTarget()) ti_idx = j;
         }
@@ -285,8 +311,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
         QPointF a = fPositions[si];
         QPointF b = fPositions[ti_idx];
         // account for the per-transition horizontal offset used when drawing
-        double baseOffset = ((ti % 5) - 2) * 10.0;
-        double offsetX = baseOffset + fTransitionOffsets[ti];
+        const double offsetX = fTransitionOffsets[ti];
         a += QPointF(offsetX, 0);
         b += QPointF(offsetX, 0);
         // shorten by node radius
@@ -331,6 +356,12 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
             }
     }
 
+    if (event->button() == Qt::RightButton && fTopLevel) {
+        QMenu menu;
+        auto* allA = menu.addAction("Show all levels");
+        if (menu.exec(event->globalPos()) == allA) showAllLevels();
+        return;
+    }
     QGraphicsView::mousePressEvent(event);
 }
 

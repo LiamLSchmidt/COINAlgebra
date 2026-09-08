@@ -306,9 +306,14 @@ void DecayVector::Print() const
 
 void DecayVector::PrintTable() const
 {
+    PrintTable(std::cout);
+}
+
+void DecayVector::PrintTable(std::ostream& out) const
+{
     if(fTerms.empty())
     {
-        std::cout << "DecayVector is empty."
+        out << "DecayVector is empty."
                   << std::endl;
 
         return;
@@ -350,7 +355,7 @@ void DecayVector::PrintTable() const
     // Horizontal separator.
     // --------------------------------------------------------
 
-    std::cout
+    out
         << "+"
         << std::string(pathWidth + 2, '-')
         << "+"
@@ -363,7 +368,7 @@ void DecayVector::PrintTable() const
     // Header.
     // --------------------------------------------------------
 
-    std::cout
+    out
         << "| "
         << std::left
         << std::setw(static_cast<int>(pathWidth))
@@ -380,7 +385,7 @@ void DecayVector::PrintTable() const
     // Header separator.
     // --------------------------------------------------------
 
-    std::cout
+    out
         << "+"
         << std::string(pathWidth + 2, '-')
         << "+"
@@ -398,7 +403,7 @@ void DecayVector::PrintTable() const
         const std::string pathString =
             term.path.ToString();
 
-        std::cout
+        out
             << "| "
             << std::left
             << std::setw(static_cast<int>(pathWidth))
@@ -418,7 +423,7 @@ void DecayVector::PrintTable() const
     // Bottom separator.
     // --------------------------------------------------------
 
-    std::cout
+    out
         << "+"
         << std::string(pathWidth + 2, '-')
         << "+"

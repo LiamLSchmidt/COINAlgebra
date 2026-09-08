@@ -1,0 +1,149 @@
+{
+    "levels": [
+        "48Ca:L0_0.000000keV",
+        "48Ca:L1_3831.720000keV",
+        "48Ca:L2_4283.330000keV",
+        "48Ca:L3_4503.140000keV",
+        "48Ca:L4_4506.780000keV"
+    ],
+    "metadata": {
+        "A": 48,
+        "Z": 20,
+        "excited_gamma_terminal_levels": [
+        ],
+        "isotope": "48Ca",
+        "level_data": [
+            {
+                "energy_keV": 0,
+                "half_life_s": 5.99594e+26,
+                "jpi_raw": 0,
+                "name": "48Ca:L0_0.000000keV",
+                "photon_level_id": 0
+            },
+            {
+                "energy_keV": 3831.72,
+                "half_life_s": 3.87e-14,
+                "jpi_raw": 2,
+                "name": "48Ca:L1_3831.720000keV",
+                "photon_level_id": 1
+            },
+            {
+                "energy_keV": 4283.33,
+                "half_life_s": 2.23e-10,
+                "jpi_raw": 0,
+                "name": "48Ca:L2_4283.330000keV",
+                "photon_level_id": 2
+            },
+            {
+                "energy_keV": 4503.14,
+                "half_life_s": 1.53e-09,
+                "jpi_raw": 4,
+                "name": "48Ca:L3_4503.140000keV",
+                "photon_level_id": 3
+            },
+            {
+                "energy_keV": 4506.78,
+                "half_life_s": 9.4e-12,
+                "jpi_raw": -3,
+                "name": "48Ca:L4_4506.780000keV",
+                "photon_level_id": 4
+            }
+        ],
+        "limitations": "No beta/EC feeding, particle decay, E0 edges, conversion competition, excitation cross sections, timing cuts, or inferred missing branches. Excited gamma terminals are not necessarily stable.",
+        "maximum_energy_keV": 4506.78,
+        "omitted_branches": [
+            {
+                "energy_keV": 4283.33,
+                "multipolarity_code": 1,
+                "reason": "E0 is not single-photon emission",
+                "relative_intensity": 0,
+                "source_level_id": 2,
+                "target_level_id": 0
+            }
+        ],
+        "omitted_floating_level_ids": [
+        ],
+        "phenomenon": "Doubly magic nucleus: sparse high-energy low-lying spectrum",
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Positive non-E0 relative gamma intensity / outgoing sum; conditional gamma branching, not Coulomb-excitation populations or absolute photon yields",
+        "selection": "All absolute-energy levels at or below upper state; not only descendants of upper state",
+        "transition_data": [
+            {
+                "conversion_coefficient": 0.00112,
+                "energy_keV": 3831.72,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "48Ca:gamma_L1_to_L0_0_3831.7200keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.000934,
+                "energy_keV": 451.61,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "48Ca:gamma_L2_to_L1_0_451.6100keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.000268,
+                "energy_keV": 671.42,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "48Ca:gamma_L3_to_L1_0_671.4200keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 9.19e-05,
+                "energy_keV": 675.06,
+                "mixing_ratio": 0,
+                "multipolarity_code": 205,
+                "name": "48Ca:gamma_L4_to_L1_0_675.0600keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.00105,
+                "energy_keV": 4506.78,
+                "mixing_ratio": 0,
+                "multipolarity_code": 6,
+                "name": "48Ca:gamma_L4_to_L0_1_4506.7800keV",
+                "relative_intensity": 25
+            }
+        ],
+        "upper_jpi_raw": -3,
+        "upper_level": "48Ca:L4_4506.780000keV"
+    },
+    "transitions": [
+        {
+            "name": "48Ca:gamma_L1_to_L0_0_3831.7200keV",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "48Ca:gamma_L2_to_L1_0_451.6100keV",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "48Ca:gamma_L3_to_L1_0_671.4200keV",
+            "probability": 1,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "48Ca:gamma_L4_to_L1_0_675.0600keV",
+            "probability": 0.8,
+            "source_index": 4,
+            "target_index": 1
+        },
+        {
+            "name": "48Ca:gamma_L4_to_L0_1_4506.7800keV",
+            "probability": 0.2,
+            "source_index": 4,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

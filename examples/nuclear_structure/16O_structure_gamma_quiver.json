@@ -1,0 +1,181 @@
+{
+    "levels": [
+        "16O:L0_0.000000keV",
+        "16O:L1_6049.400000keV",
+        "16O:L2_6129.890000keV",
+        "16O:L3_6917.100000keV",
+        "16O:L4_7116.850000keV"
+    ],
+    "metadata": {
+        "A": 16,
+        "Z": 8,
+        "excited_gamma_terminal_levels": [
+            {
+                "name": "16O:L1_6049.400000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            }
+        ],
+        "isotope": "16O",
+        "level_data": [
+            {
+                "energy_keV": 0,
+                "half_life_s": -1,
+                "jpi_raw": 0,
+                "name": "16O:L0_0.000000keV",
+                "photon_level_id": 0
+            },
+            {
+                "energy_keV": 6049.4,
+                "half_life_s": 6.7e-11,
+                "jpi_raw": 0,
+                "name": "16O:L1_6049.400000keV",
+                "photon_level_id": 1
+            },
+            {
+                "energy_keV": 6129.89,
+                "half_life_s": 1.84e-11,
+                "jpi_raw": -3,
+                "name": "16O:L2_6129.890000keV",
+                "photon_level_id": 2
+            },
+            {
+                "energy_keV": 6917.1,
+                "half_life_s": 4.7e-15,
+                "jpi_raw": 2,
+                "name": "16O:L3_6917.100000keV",
+                "photon_level_id": 3
+            },
+            {
+                "energy_keV": 7116.85,
+                "half_life_s": 8.3e-15,
+                "jpi_raw": -1,
+                "name": "16O:L4_7116.850000keV",
+                "photon_level_id": 4
+            }
+        ],
+        "limitations": "No beta/EC feeding, particle decay, E0 edges, conversion competition, excitation cross sections, timing cuts, or inferred missing branches. Excited gamma terminals are not necessarily stable.",
+        "maximum_energy_keV": 7116.85,
+        "omitted_branches": [
+            {
+                "energy_keV": 6049.4,
+                "multipolarity_code": 1,
+                "reason": "E0 is not single-photon emission",
+                "relative_intensity": 0,
+                "source_level_id": 1,
+                "target_level_id": 0
+            }
+        ],
+        "omitted_floating_level_ids": [
+        ],
+        "phenomenon": "Light closed-shell nucleus: E1/E2/E3 branches and E0-only endpoint",
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Positive non-E0 relative gamma intensity / outgoing sum; conditional gamma branching, not Coulomb-excitation populations or absolute photon yields",
+        "selection": "All absolute-energy levels at or below upper state; not only descendants of upper state",
+        "transition_data": [
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 6129.89,
+                "mixing_ratio": 0,
+                "multipolarity_code": 6,
+                "name": "16O:gamma_L2_to_L0_0_6129.8900keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 4.437e-06,
+                "energy_keV": 787.21,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "16O:gamma_L3_to_L2_0_787.2100keV",
+                "relative_intensity": 0.008
+            },
+            {
+                "conversion_coefficient": 8.93e-06,
+                "energy_keV": 867.7,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "16O:gamma_L3_to_L1_1_867.7000keV",
+                "relative_intensity": 0.027
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 6917.1,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "16O:gamma_L3_to_L0_2_6917.1000keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 6.364e-06,
+                "energy_keV": 986.96,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "16O:gamma_L4_to_L2_0_986.9600keV",
+                "relative_intensity": 0.07
+            },
+            {
+                "conversion_coefficient": 2.395e-06,
+                "energy_keV": 1067.45,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "16O:gamma_L4_to_L1_1_1067.4500keV",
+                "relative_intensity": 0.0006
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 7116.85,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "16O:gamma_L4_to_L0_2_7116.8500keV",
+                "relative_intensity": 100
+            }
+        ],
+        "upper_jpi_raw": -1,
+        "upper_level": "16O:L4_7116.850000keV"
+    },
+    "transitions": [
+        {
+            "name": "16O:gamma_L2_to_L0_0_6129.8900keV",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 0
+        },
+        {
+            "name": "16O:gamma_L3_to_L2_0_787.2100keV",
+            "probability": 7.99720097965712e-05,
+            "source_index": 3,
+            "target_index": 2
+        },
+        {
+            "name": "16O:gamma_L3_to_L1_1_867.7000keV",
+            "probability": 0.0002699055330634278,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "16O:gamma_L3_to_L0_2_6917.1000keV",
+            "probability": 0.99965012245714,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "16O:gamma_L4_to_L2_0_986.9600keV",
+            "probability": 0.0006995061486590468,
+            "source_index": 4,
+            "target_index": 2
+        },
+        {
+            "name": "16O:gamma_L4_to_L1_1_1067.4500keV",
+            "probability": 5.995766988506114e-06,
+            "source_index": 4,
+            "target_index": 1
+        },
+        {
+            "name": "16O:gamma_L4_to_L0_2_7116.8500keV",
+            "probability": 0.9992944980843524,
+            "source_index": 4,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

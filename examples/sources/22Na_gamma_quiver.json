@@ -1,0 +1,74 @@
+{
+    "levels": [
+        "22Ne:level_0.000000keV",
+        "22Ne:level_1274.577000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 0.056
+                    },
+                    {
+                        "daughter_energy_keV": 1274.577,
+                        "raw_branching_percentage": 90.326
+                    }
+                ],
+                "daughter": "22Ne",
+                "decay_type": "BetaPlus",
+                "total_branching_fraction": 0.90382
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 1e-25
+                    },
+                    {
+                        "daughter_energy_keV": 1274.577,
+                        "raw_branching_percentage": 8.8828
+                    }
+                ],
+                "daughter": "22Ne",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.088828
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 1e-25
+                    },
+                    {
+                        "daughter_energy_keV": 1274.577,
+                        "raw_branching_percentage": 0.73523
+                    }
+                ],
+                "daughter": "22Ne",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 0.0073523
+            }
+        ],
+        "parent_A": 22,
+        "parent_Z": 11,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "22Na"
+    },
+    "transitions": [
+        {
+            "name": "22Ne:gamma_1275_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

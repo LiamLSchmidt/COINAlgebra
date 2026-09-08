@@ -1,0 +1,102 @@
+{
+    "levels": [
+        "65Cu:level_0.000000keV",
+        "65Cu:level_770.640000keV",
+        "65Cu:level_1115.556000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 0.82531
+                    },
+                    {
+                        "daughter_energy_keV": 1115.556,
+                        "raw_branching_percentage": 0.90071
+                    }
+                ],
+                "daughter": "65Cu",
+                "decay_type": "MshellEC",
+                "total_branching_fraction": 0.01726
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 1.421
+                    },
+                    {
+                        "daughter_energy_keV": 1115.556,
+                        "raw_branching_percentage": 9.9999e-28
+                    }
+                ],
+                "daughter": "65Cu",
+                "decay_type": "BetaPlus",
+                "total_branching_fraction": 0.01421
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 42.989
+                    },
+                    {
+                        "daughter_energy_keV": 1115.556,
+                        "raw_branching_percentage": 44.02
+                    }
+                ],
+                "daughter": "65Cu",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.87009
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 4.7251
+                    },
+                    {
+                        "daughter_energy_keV": 1115.556,
+                        "raw_branching_percentage": 5.119
+                    }
+                ],
+                "daughter": "65Cu",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 0.098441
+            }
+        ],
+        "parent_A": 65,
+        "parent_Z": 30,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "65Zn"
+    },
+    "transitions": [
+        {
+            "name": "65Cu:gamma_1116_to_0_1",
+            "probability": 0.999940003599784,
+            "source_index": 2,
+            "target_index": 0
+        },
+        {
+            "name": "65Cu:gamma_1116_to_771_0",
+            "probability": 5.999640021598704e-05,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "65Cu:gamma_771_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

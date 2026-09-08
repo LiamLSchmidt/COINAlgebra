@@ -5,6 +5,7 @@
 
 #include <cstddef>
 #include <string>
+#include <iosfwd>
 #include <vector>
 
 class DecayVector
@@ -84,6 +85,7 @@ public:
 
     void Print() const;
     void PrintTable() const;
+    void PrintTable(std::ostream& out) const;
 private:
 
     std::vector<Term> fTerms;

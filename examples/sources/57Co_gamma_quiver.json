@@ -1,0 +1,131 @@
+{
+    "levels": [
+        "57Fe:level_0.000000keV",
+        "57Fe:level_14.412900keV",
+        "57Fe:level_136.474300keV",
+        "57Fe:level_366.759000keV",
+        "57Fe:level_706.416000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 136.4743,
+                        "raw_branching_percentage": 1.6691
+                    },
+                    {
+                        "daughter_energy_keV": 706.416,
+                        "raw_branching_percentage": 0.0031586
+                    }
+                ],
+                "daughter": "57Fe",
+                "decay_type": "MshellEC",
+                "total_branching_fraction": 0.016723
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 136.4743,
+                        "raw_branching_percentage": 88.616
+                    },
+                    {
+                        "daughter_energy_keV": 706.416,
+                        "raw_branching_percentage": 0.15301
+                    }
+                ],
+                "daughter": "57Fe",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.88769
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 136.4743,
+                        "raw_branching_percentage": 9.5405
+                    },
+                    {
+                        "daughter_energy_keV": 706.416,
+                        "raw_branching_percentage": 0.017882
+                    }
+                ],
+                "daughter": "57Fe",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 0.095583
+            }
+        ],
+        "parent_A": 57,
+        "parent_Z": 27,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "57Co"
+    },
+    "transitions": [
+        {
+            "name": "57Fe:gamma_136_to_0_1",
+            "probability": 0.10714285714285714,
+            "source_index": 2,
+            "target_index": 0
+        },
+        {
+            "name": "57Fe:gamma_136_to_14_0",
+            "probability": 0.8928571428571429,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "57Fe:gamma_14_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "57Fe:gamma_367_to_0_2",
+            "probability": 0.13947990543735223,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "57Fe:gamma_367_to_136_0",
+            "probability": 0.07249802994483845,
+            "source_index": 3,
+            "target_index": 2
+        },
+        {
+            "name": "57Fe:gamma_367_to_14_1",
+            "probability": 0.7880220646178092,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "57Fe:gamma_706_to_0_3",
+            "probability": 0.04814189189189189,
+            "source_index": 4,
+            "target_index": 0
+        },
+        {
+            "name": "57Fe:gamma_706_to_136_1",
+            "probability": 0.0929054054054054,
+            "source_index": 4,
+            "target_index": 2
+        },
+        {
+            "name": "57Fe:gamma_706_to_14_2",
+            "probability": 0.8445945945945945,
+            "source_index": 4,
+            "target_index": 1
+        },
+        {
+            "name": "57Fe:gamma_706_to_367_0",
+            "probability": 0.014358108108108107,
+            "source_index": 4,
+            "target_index": 3
+        }
+    ],
+    "vectors": [
+    ]
+}

@@ -5,6 +5,12 @@ quivers and constructing path, probability, and coincidence-algebra machinery.
 It includes a ROOT interactive environment and **DecayQuiver Studio**, a Qt
 quiver-builder GUI.
 
+## License
+
+Original project code and documentation are licensed under the [MIT License](LICENSE).
+Bundled nuclear datasets and third-party dependencies retain their upstream
+terms; see [Third-party notices](THIRD_PARTY_NOTICES.md).
+
 ## Build
 
 Requirements: CMake 3.16+, a C++17 compiler, ROOT for the optional interactive

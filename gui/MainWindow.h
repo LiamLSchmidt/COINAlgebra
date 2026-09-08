@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <memory>
 #include <vector>
+#include <QJsonObject>
 #include "COINAlgebra/Core/DecayQuiver.h"
 #include "COINAlgebra/Core/DecayVector.h"
 
@@ -12,6 +13,7 @@ class QComboBox;
 class QListWidget;
 class QListWidgetItem;
 class QuiverView;
+class QLabel;
 
 class DecayQuiver;
 
@@ -31,9 +33,15 @@ private slots:
     void editLevelItem(QListWidgetItem* item);
     void editTransitionItem(QListWidgetItem* item);
     void showPathVectorBuilder();
+    void createDecayVector();
+    void calculateFeeding();
+    void showDecayTable();
+    void showFeedingTable();
 
 private:
     void updateUI();
+    void showVectorTable(const DecayVector& vector, const QString& title);
+    DecayVector currentDecay() const;
     
     QuiverView* fView;
 
@@ -52,4 +60,7 @@ private:
     std::unique_ptr<DecayQuiver> fQuiver;
     // stored vectors created via the builder
     std::vector<DecayVector> fVectors;
+    QJsonObject fMetadata;
+    QLineEdit* fFeedingTransition;
+    QLabel* fAnalysisResult;
 };

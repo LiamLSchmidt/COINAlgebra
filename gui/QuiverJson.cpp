@@ -38,6 +38,8 @@ Studio::Document Studio::readJson(const QByteArray& bytes) {
     require(root["levels"].isArray(), "'levels' must be an array of names.");
     require(root["transitions"].isArray(), "'transitions' must be an array.");
     Document document{std::make_unique<DecayQuiver>(), {}};
+    require(!root.contains("metadata") || root["metadata"].isObject(), "Metadata must be an object.");
+    document.metadata = root["metadata"].toObject();
     for (const auto value : root["levels"].toArray())
         document.quiver->AddLevel(name(value, "Level name").toStdString());
     const auto& levels = document.quiver->GetLevels();
@@ -87,4 +89,52 @@ Studio::Document Studio::readJson(const QByteArray& bytes) {
         document.vectors.push_back(std::move(vector));
     }
     return document;
+}
+
+DecayVector Studio::createDecayVector(const DecayQuiver& quiver, const QJsonObject& metadata) {
+    require(!quiver.GetLevels().empty(), "Add or import levels first.");
+    DecayVector result;
+    for (const auto* t : quiver.GetTransitions())
+        result.AddTerm(DecayPath(std::vector<DecayTransition>{*t}), t->GetProbability());
+    if (metadata.contains("feeding_modes")) {
+        require(metadata["feeding_modes"].isArray() && !metadata["feeding_modes"].toArray().empty(),
+                "Source feeding metadata is missing or invalid.");
+        const double tolerance = metadata.value("energy_tolerance_keV").toDouble(1.0);
+        require(std::isfinite(tolerance) && tolerance >= 0, "Invalid feeding energy tolerance.");
+        double population = 0;
+        for (const auto modeValue : metadata["feeding_modes"].toArray()) {
+            const auto mode = modeValue.toObject();
+            const auto daughter = name(mode["daughter"], "Feeding daughter");
+            require(mode["channels"].isArray(), "Feeding channels must be an array.");
+            for (const auto channelValue : mode["channels"].toArray()) {
+                const auto channel = channelValue.toObject();
+                const double energy = number(channel["daughter_energy_keV"], "Feeding energy");
+                const double coefficient = number(channel["raw_branching_percentage"], "Feeding percentage") / 100.;
+                require(coefficient >= 0 && coefficient <= 1, "Invalid feeding percentage.");
+                DecayLevel* best = nullptr;
+                double distance = tolerance;
+                const QString prefix = daughter + ":level_";
+                for (auto* level : quiver.GetLevels()) {
+                    const auto label = QString::fromStdString(level->GetName());
+                    if (!label.startsWith(prefix) || !label.endsWith("keV")) continue;
+                    bool ok = false;
+                    const double e = label.mid(prefix.size(), label.size()-prefix.size()-3).toDouble(&ok);
+                    if (ok && std::abs(e-energy) <= distance) { best = level; distance = std::abs(e-energy); }
+                }
+                require(best != nullptr, "Cannot match feeding level; restore its imported name or reimport the source.");
+                result.AddTerm(DecayPath(best), coefficient);
+                population += coefficient;
+            }
+        }
+        require(population > 0, "Source metadata has no positive feeding population.");
+    } else {
+        require(!metadata.contains("source"), "Source decay requires feeding metadata; reimport the original source file.");
+        auto* top = quiver.GetLevels().back();
+        if (metadata.contains("upper_level")) {
+            top = quiver.GetLevel(metadata["upper_level"].toString().toStdString());
+            require(top != nullptr, "The imported upper level was renamed or removed. Reimport the scheme to restore its population.");
+        }
+        result.AddTerm(DecayPath(top), 1.0);
+    }
+    return result;
 }

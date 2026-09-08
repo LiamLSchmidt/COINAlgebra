@@ -1,0 +1,55 @@
+{
+    "levels": [
+        "137Ba:level_0.000000keV",
+        "137Ba:level_283.540000keV",
+        "137Ba:level_661.659000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 0,
+                        "raw_branching_percentage": 5.3
+                    },
+                    {
+                        "daughter_energy_keV": 283.54,
+                        "raw_branching_percentage": 0.00058
+                    },
+                    {
+                        "daughter_energy_keV": 661.659,
+                        "raw_branching_percentage": 94.699
+                    }
+                ],
+                "daughter": "137Ba",
+                "decay_type": "BetaMinus",
+                "total_branching_fraction": 1
+            }
+        ],
+        "parent_A": 137,
+        "parent_Z": 55,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "137Cs"
+    },
+    "transitions": [
+        {
+            "name": "137Ba:gamma_284_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "137Ba:gamma_662_to_0_0",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

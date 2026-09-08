@@ -2,6 +2,9 @@
 
 #include "COINAlgebra/Algebra/PathAlgebra.h"
 #include "COINAlgebra/Algebra/PathProjectors.h"
+#include "COINAlgebra/Core/DecayQuiver.h"
+#include <map>
+#include <queue>
 
 
 // ============================================================
@@ -49,6 +52,45 @@ DecayVector DecayProbability::FeedingVector(
     const DecayVector& decay
 ) const
 {
+    // For the usual decay vector (stationary populations plus single edges),
+    // sum population flow in topological order instead of enumerating paths.
+    // This is the same finite path expansion, with shared suffixes combined.
+    const auto& levels = fAlgebra->GetQuiver().GetLevels();
+    std::map<DecayLevel*, double> population;
+    std::map<DecayLevel*, int> indegree;
+    std::map<DecayLevel*, std::vector<const DecayVector::Term*>> outgoing;
+    for (auto* level : levels) { population[level] = 0; indegree[level] = 0; }
+    bool singleEdges = true;
+    for (const auto& term : decay.GetTerms()) {
+        if (!population.count(term.path.GetSource()) || !population.count(term.path.GetTarget())) {
+            singleEdges = false; break;
+        }
+        if (term.path.IsStationary()) population[term.path.GetSource()] += term.coefficient;
+        else if (term.path.Length() == 1) {
+            outgoing[term.path.GetSource()].push_back(&term);
+            ++indegree[term.path.GetTarget()];
+        } else { singleEdges = false; break; }
+    }
+    if (singleEdges) {
+        std::queue<DecayLevel*> ready;
+        for (auto* level : levels) if (indegree[level] == 0) ready.push(level);
+        std::size_t visited = 0;
+        while (!ready.empty()) {
+            auto* level = ready.front(); ready.pop(); ++visited;
+            for (const auto* term : outgoing[level]) {
+                auto* target = term->path.GetTarget();
+                population[target] += population[level] * term->coefficient;
+                if (--indegree[target] == 0) ready.push(target);
+            }
+        }
+        if (visited == levels.size()) {
+            DecayVector feeding;
+            for (const auto& term : decay.GetTerms())
+                if (!term.path.IsStationary())
+                    feeding.AddTerm(term.path, population[term.path.GetSource()] * term.coefficient);
+            return feeding;
+        }
+    }
     // --------------------------------------------------------
     // Extract branching component.
     // --------------------------------------------------------

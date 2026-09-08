@@ -1,0 +1,160 @@
+{
+    "levels": [
+        "88Sr:level_0.000000keV",
+        "88Sr:level_1836.090000keV",
+        "88Sr:level_2734.137000keV",
+        "88Sr:level_3218.489000keV",
+        "88Sr:level_3584.784000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 1836.09,
+                        "raw_branching_percentage": 0.1215
+                    },
+                    {
+                        "daughter_energy_keV": 2734.137,
+                        "raw_branching_percentage": 2.1578
+                    },
+                    {
+                        "daughter_energy_keV": 3218.489,
+                        "raw_branching_percentage": 0.00075651
+                    },
+                    {
+                        "daughter_energy_keV": 3584.784,
+                        "raw_branching_percentage": 0.0035639
+                    }
+                ],
+                "daughter": "88Sr",
+                "decay_type": "MshellEC",
+                "total_branching_fraction": 0.022836
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 1836.09,
+                        "raw_branching_percentage": 0.20999
+                    },
+                    {
+                        "daughter_energy_keV": 2734.137,
+                        "raw_branching_percentage": 9.9996e-28
+                    },
+                    {
+                        "daughter_energy_keV": 3218.489,
+                        "raw_branching_percentage": 9.9996e-28
+                    },
+                    {
+                        "daughter_energy_keV": 3584.784,
+                        "raw_branching_percentage": 9.9996e-28
+                    }
+                ],
+                "daughter": "88Sr",
+                "decay_type": "BetaPlus",
+                "total_branching_fraction": 0.0020999
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 1836.09,
+                        "raw_branching_percentage": 4.6228
+                    },
+                    {
+                        "daughter_energy_keV": 2734.137,
+                        "raw_branching_percentage": 82.365
+                    },
+                    {
+                        "daughter_energy_keV": 3218.489,
+                        "raw_branching_percentage": 0.023857
+                    },
+                    {
+                        "daughter_energy_keV": 3584.784,
+                        "raw_branching_percentage": 0.047584
+                    }
+                ],
+                "daughter": "88Sr",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.87059
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 1836.09,
+                        "raw_branching_percentage": 0.55548
+                    },
+                    {
+                        "daughter_energy_keV": 2734.137,
+                        "raw_branching_percentage": 9.8733
+                    },
+                    {
+                        "daughter_energy_keV": 3218.489,
+                        "raw_branching_percentage": 0.003385
+                    },
+                    {
+                        "daughter_energy_keV": 3584.784,
+                        "raw_branching_percentage": 0.014849
+                    }
+                ],
+                "daughter": "88Sr",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 0.10447
+            }
+        ],
+        "parent_A": 88,
+        "parent_Z": 39,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "88Y"
+    },
+    "transitions": [
+        {
+            "name": "88Sr:gamma_1836_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "88Sr:gamma_2734_to_0_1",
+            "probability": 0.0068527162578210345,
+            "source_index": 2,
+            "target_index": 0
+        },
+        {
+            "name": "88Sr:gamma_2734_to_1836_0",
+            "probability": 0.993147283742179,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "88Sr:gamma_3218_to_0_2",
+            "probability": 0.22027439024390244,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "88Sr:gamma_3218_to_1836_1",
+            "probability": 0.7621951219512195,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "88Sr:gamma_3218_to_2734_0",
+            "probability": 0.01753048780487805,
+            "source_index": 3,
+            "target_index": 2
+        },
+        {
+            "name": "88Sr:gamma_3585_to_2734_0",
+            "probability": 1,
+            "source_index": 4,
+            "target_index": 2
+        }
+    ],
+    "vectors": [
+    ]
+}

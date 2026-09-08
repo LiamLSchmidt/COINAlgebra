@@ -1,0 +1,571 @@
+{
+    "levels": [
+        "56Fe:level_0.000000keV",
+        "56Fe:level_846.777800keV",
+        "56Fe:level_2085.104000keV",
+        "56Fe:level_2657.589000keV",
+        "56Fe:level_2959.972000keV",
+        "56Fe:level_3122.970000keV",
+        "56Fe:level_3369.950000keV",
+        "56Fe:level_3445.348000keV",
+        "56Fe:level_3856.495000keV",
+        "56Fe:level_4048.888000keV",
+        "56Fe:level_4100.363000keV",
+        "56Fe:level_4119.936000keV",
+        "56Fe:level_4298.096000keV",
+        "56Fe:level_4394.930000keV",
+        "56Fe:level_4447.700000keV",
+        "56Fe:level_4458.532000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 846.7778,
+                        "raw_branching_percentage": 8.1877e-05
+                    },
+                    {
+                        "daughter_energy_keV": 2085.104,
+                        "raw_branching_percentage": 0.040014
+                    },
+                    {
+                        "daughter_energy_keV": 2959.972,
+                        "raw_branching_percentage": 0.00029609
+                    },
+                    {
+                        "daughter_energy_keV": 3122.97,
+                        "raw_branching_percentage": 0.14831
+                    },
+                    {
+                        "daughter_energy_keV": 3369.95,
+                        "raw_branching_percentage": 0.00024737
+                    },
+                    {
+                        "daughter_energy_keV": 3445.348,
+                        "raw_branching_percentage": 0.36136
+                    },
+                    {
+                        "daughter_energy_keV": 3856.495,
+                        "raw_branching_percentage": 0.27995
+                    },
+                    {
+                        "daughter_energy_keV": 4048.888,
+                        "raw_branching_percentage": 0.066304
+                    },
+                    {
+                        "daughter_energy_keV": 4100.363,
+                        "raw_branching_percentage": 0.21234
+                    },
+                    {
+                        "daughter_energy_keV": 4119.936,
+                        "raw_branching_percentage": 0.16691
+                    },
+                    {
+                        "daughter_energy_keV": 4298.096,
+                        "raw_branching_percentage": 0.063103
+                    },
+                    {
+                        "daughter_energy_keV": 4394.93,
+                        "raw_branching_percentage": 0.0037972
+                    },
+                    {
+                        "daughter_energy_keV": 4447.7,
+                        "raw_branching_percentage": 0.00030399
+                    },
+                    {
+                        "daughter_energy_keV": 4458.532,
+                        "raw_branching_percentage": 0.0038483
+                    }
+                ],
+                "daughter": "56Fe",
+                "decay_type": "MshellEC",
+                "total_branching_fraction": 0.013469
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 846.7778,
+                        "raw_branching_percentage": 0.24841
+                    },
+                    {
+                        "daughter_energy_keV": 2085.104,
+                        "raw_branching_percentage": 18.283
+                    },
+                    {
+                        "daughter_energy_keV": 2959.972,
+                        "raw_branching_percentage": 0.0066575
+                    },
+                    {
+                        "daughter_energy_keV": 3122.97,
+                        "raw_branching_percentage": 1.0344
+                    },
+                    {
+                        "daughter_energy_keV": 3369.95,
+                        "raw_branching_percentage": 5.9619e-05
+                    },
+                    {
+                        "daughter_energy_keV": 3445.348,
+                        "raw_branching_percentage": 0.008148
+                    },
+                    {
+                        "daughter_energy_keV": 3856.495,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4048.888,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4100.363,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4119.936,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4298.096,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4394.93,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4447.7,
+                        "raw_branching_percentage": 9.9365e-28
+                    },
+                    {
+                        "daughter_energy_keV": 4458.532,
+                        "raw_branching_percentage": 9.9365e-28
+                    }
+                ],
+                "daughter": "56Fe",
+                "decay_type": "BetaPlus",
+                "total_branching_fraction": 0.19581
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 846.7778,
+                        "raw_branching_percentage": 0.0044177
+                    },
+                    {
+                        "daughter_energy_keV": 2085.104,
+                        "raw_branching_percentage": 2.1555
+                    },
+                    {
+                        "daughter_energy_keV": 2959.972,
+                        "raw_branching_percentage": 0.015896
+                    },
+                    {
+                        "daughter_energy_keV": 3122.97,
+                        "raw_branching_percentage": 7.9559
+                    },
+                    {
+                        "daughter_energy_keV": 3369.95,
+                        "raw_branching_percentage": 0.013242
+                    },
+                    {
+                        "daughter_energy_keV": 3445.348,
+                        "raw_branching_percentage": 19.333
+                    },
+                    {
+                        "daughter_energy_keV": 3856.495,
+                        "raw_branching_percentage": 14.863
+                    },
+                    {
+                        "daughter_energy_keV": 4048.888,
+                        "raw_branching_percentage": 3.4949
+                    },
+                    {
+                        "daughter_energy_keV": 4100.363,
+                        "raw_branching_percentage": 11.155
+                    },
+                    {
+                        "daughter_energy_keV": 4119.936,
+                        "raw_branching_percentage": 8.7574
+                    },
+                    {
+                        "daughter_energy_keV": 4298.096,
+                        "raw_branching_percentage": 3.242
+                    },
+                    {
+                        "daughter_energy_keV": 4394.93,
+                        "raw_branching_percentage": 0.18917
+                    },
+                    {
+                        "daughter_energy_keV": 4447.7,
+                        "raw_branching_percentage": 0.014571
+                    },
+                    {
+                        "daughter_energy_keV": 4458.532,
+                        "raw_branching_percentage": 0.18209
+                    }
+                ],
+                "daughter": "56Fe",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.71376
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 846.7778,
+                        "raw_branching_percentage": 0.00046873
+                    },
+                    {
+                        "daughter_energy_keV": 2085.104,
+                        "raw_branching_percentage": 0.22897
+                    },
+                    {
+                        "daughter_energy_keV": 2959.972,
+                        "raw_branching_percentage": 0.0016941
+                    },
+                    {
+                        "daughter_energy_keV": 3122.97,
+                        "raw_branching_percentage": 0.84862
+                    },
+                    {
+                        "daughter_energy_keV": 3369.95,
+                        "raw_branching_percentage": 0.0014151
+                    },
+                    {
+                        "daughter_energy_keV": 3445.348,
+                        "raw_branching_percentage": 2.0671
+                    },
+                    {
+                        "daughter_energy_keV": 3856.495,
+                        "raw_branching_percentage": 1.5998
+                    },
+                    {
+                        "daughter_energy_keV": 4048.888,
+                        "raw_branching_percentage": 0.37868
+                    },
+                    {
+                        "daughter_energy_keV": 4100.363,
+                        "raw_branching_percentage": 1.212
+                    },
+                    {
+                        "daughter_energy_keV": 4119.936,
+                        "raw_branching_percentage": 0.95258
+                    },
+                    {
+                        "daughter_energy_keV": 4298.096,
+                        "raw_branching_percentage": 0.35949
+                    },
+                    {
+                        "daughter_energy_keV": 4394.93,
+                        "raw_branching_percentage": 0.02156
+                    },
+                    {
+                        "daughter_energy_keV": 4447.7,
+                        "raw_branching_percentage": 0.0017193
+                    },
+                    {
+                        "daughter_energy_keV": 4458.532,
+                        "raw_branching_percentage": 0.021732
+                    }
+                ],
+                "daughter": "56Fe",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 0.076959
+            }
+        ],
+        "parent_A": 56,
+        "parent_Z": 27,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "56Co"
+    },
+    "transitions": [
+        {
+            "name": "56Fe:gamma_2085_to_847_0",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_2658_to_0_1",
+            "probability": 0.03006789524733269,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "56Fe:gamma_2658_to_847_0",
+            "probability": 0.9699321047526673,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_2960_to_0_1",
+            "probability": 0.021143304620203605,
+            "source_index": 4,
+            "target_index": 0
+        },
+        {
+            "name": "56Fe:gamma_2960_to_847_0",
+            "probability": 0.9788566953797965,
+            "source_index": 4,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_3123_to_2085_0",
+            "probability": 0.991571641051066,
+            "source_index": 5,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_3123_to_847_1",
+            "probability": 0.00842835894893406,
+            "source_index": 5,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_3370_to_0_1",
+            "probability": 0.1452991452991453,
+            "source_index": 6,
+            "target_index": 0
+        },
+        {
+            "name": "56Fe:gamma_3370_to_847_0",
+            "probability": 0.8547008547008547,
+            "source_index": 6,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_3445_to_2085_1",
+            "probability": 0.20108269260944608,
+            "source_index": 7,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_3445_to_2658_0",
+            "probability": 0.014357445473089597,
+            "source_index": 7,
+            "target_index": 3
+        },
+        {
+            "name": "56Fe:gamma_3445_to_847_2",
+            "probability": 0.7845598619174643,
+            "source_index": 7,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_3856_to_2085_5",
+            "probability": 0.9178522257916475,
+            "source_index": 8,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_3856_to_2658_4",
+            "probability": 0.0025699862322166134,
+            "source_index": 8,
+            "target_index": 3
+        },
+        {
+            "name": "56Fe:gamma_3856_to_2960_3",
+            "probability": 0.004222120238641579,
+            "source_index": 8,
+            "target_index": 4
+        },
+        {
+            "name": "56Fe:gamma_3856_to_3123_2",
+            "probability": 0.011381367599816429,
+            "source_index": 8,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_3856_to_3370_1",
+            "probability": 0.0034878384580082607,
+            "source_index": 8,
+            "target_index": 6
+        },
+        {
+            "name": "56Fe:gamma_3856_to_3445_0",
+            "probability": 0.0015603487838458008,
+            "source_index": 8,
+            "target_index": 7
+        },
+        {
+            "name": "56Fe:gamma_3856_to_847_6",
+            "probability": 0.05892611289582377,
+            "source_index": 8,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4049_to_2085_1",
+            "probability": 0.1778496362166532,
+            "source_index": 9,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_4049_to_2960_0",
+            "probability": 0.0137429264349232,
+            "source_index": 9,
+            "target_index": 4
+        },
+        {
+            "name": "56Fe:gamma_4049_to_847_2",
+            "probability": 0.8084074373484236,
+            "source_index": 9,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4100_to_2085_4",
+            "probability": 0.23822852522236737,
+            "source_index": 10,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_4100_to_2658_3",
+            "probability": 0.014243950985880452,
+            "source_index": 10,
+            "target_index": 3
+        },
+        {
+            "name": "56Fe:gamma_4100_to_2960_2",
+            "probability": 0.01044971076693413,
+            "source_index": 10,
+            "target_index": 4
+        },
+        {
+            "name": "56Fe:gamma_4100_to_3123_1",
+            "probability": 0.11227219008521493,
+            "source_index": 10,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_4100_to_3445_0",
+            "probability": 0.0027990296697144993,
+            "source_index": 10,
+            "target_index": 7
+        },
+        {
+            "name": "56Fe:gamma_4100_to_847_5",
+            "probability": 0.6220065932698887,
+            "source_index": 10,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4120_to_2085_5",
+            "probability": 0.779058896852602,
+            "source_index": 11,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_4120_to_2658_4",
+            "probability": 0.00779058896852602,
+            "source_index": 11,
+            "target_index": 3
+        },
+        {
+            "name": "56Fe:gamma_4120_to_2960_3",
+            "probability": 0.008881271424119661,
+            "source_index": 11,
+            "target_index": 4
+        },
+        {
+            "name": "56Fe:gamma_4120_to_3123_2",
+            "probability": 0.01168588345278903,
+            "source_index": 11,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_4120_to_3445_1",
+            "probability": 0.003505765035836709,
+            "source_index": 11,
+            "target_index": 7
+        },
+        {
+            "name": "56Fe:gamma_4120_to_3856_0",
+            "probability": 0.0023371766905578057,
+            "source_index": 11,
+            "target_index": 8
+        },
+        {
+            "name": "56Fe:gamma_4120_to_847_6",
+            "probability": 0.1867404175755687,
+            "source_index": 11,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4298_to_2085_3",
+            "probability": 0.10430645358057825,
+            "source_index": 12,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_4298_to_2658_2",
+            "probability": 0.01683542759546175,
+            "source_index": 12,
+            "target_index": 3
+        },
+        {
+            "name": "56Fe:gamma_4298_to_3123_1",
+            "probability": 0.609979260705136,
+            "source_index": 12,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_4298_to_3445_0",
+            "probability": 0.013297547883371964,
+            "source_index": 12,
+            "target_index": 7
+        },
+        {
+            "name": "56Fe:gamma_4298_to_847_4",
+            "probability": 0.25558131023545194,
+            "source_index": 12,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4395_to_3123_0",
+            "probability": 0.09338168631006347,
+            "source_index": 13,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_4395_to_847_1",
+            "probability": 0.9066183136899365,
+            "source_index": 13,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4448_to_847_0",
+            "probability": 1,
+            "source_index": 14,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_4459_to_2085_1",
+            "probability": 0.37470725995316156,
+            "source_index": 15,
+            "target_index": 2
+        },
+        {
+            "name": "56Fe:gamma_4459_to_3123_0",
+            "probability": 0.585480093676815,
+            "source_index": 15,
+            "target_index": 5
+        },
+        {
+            "name": "56Fe:gamma_4459_to_847_2",
+            "probability": 0.039812646370023415,
+            "source_index": 15,
+            "target_index": 1
+        },
+        {
+            "name": "56Fe:gamma_847_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        }
+    ],
+    "vectors": [
+    ]
+}

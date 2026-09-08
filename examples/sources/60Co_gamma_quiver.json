@@ -1,0 +1,80 @@
+{
+    "levels": [
+        "60Ni:level_0.000000keV",
+        "60Ni:level_1332.514000keV",
+        "60Ni:level_2158.632000keV",
+        "60Ni:level_2505.753000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 1332.514,
+                        "raw_branching_percentage": 0.12
+                    },
+                    {
+                        "daughter_energy_keV": 2158.632,
+                        "raw_branching_percentage": 1e-27
+                    },
+                    {
+                        "daughter_energy_keV": 2505.753,
+                        "raw_branching_percentage": 99.88
+                    }
+                ],
+                "daughter": "60Ni",
+                "decay_type": "BetaMinus",
+                "total_branching_fraction": 1
+            }
+        ],
+        "parent_A": 60,
+        "parent_Z": 27,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "60Co"
+    },
+    "transitions": [
+        {
+            "name": "60Ni:gamma_1333_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "60Ni:gamma_2159_to_0_1",
+            "probability": 0.14965986394557826,
+            "source_index": 2,
+            "target_index": 0
+        },
+        {
+            "name": "60Ni:gamma_2159_to_1333_0",
+            "probability": 0.8503401360544218,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "60Ni:gamma_2506_to_0_2",
+            "probability": 1.9998479715572023e-08,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "60Ni:gamma_2506_to_1333_1",
+            "probability": 0.9999239857786012,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "60Ni:gamma_2506_to_2159_0",
+            "probability": 7.599422291917368e-05,
+            "source_index": 3,
+            "target_index": 2
+        }
+    ],
+    "vectors": [
+    ]
+}

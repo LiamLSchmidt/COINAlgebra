@@ -1,0 +1,83 @@
+{
+    "levels": [
+        "12C:L0_0.000000keV",
+        "12C:L1_4438.910000keV",
+        "12C:L2_7654.200000keV"
+    ],
+    "metadata": {
+        "A": 12,
+        "Z": 6,
+        "excited_gamma_terminal_levels": [
+        ],
+        "isotope": "12C",
+        "level_data": [
+            {
+                "energy_keV": 0,
+                "half_life_s": -1,
+                "jpi_raw": 0,
+                "name": "12C:L0_0.000000keV",
+                "photon_level_id": 0
+            },
+            {
+                "energy_keV": 4438.91,
+                "half_life_s": 4.2195e-14,
+                "jpi_raw": 2,
+                "name": "12C:L1_4438.910000keV",
+                "photon_level_id": 1
+            },
+            {
+                "energy_keV": 7654.2,
+                "half_life_s": 5.36125e-17,
+                "jpi_raw": 0,
+                "name": "12C:L2_7654.200000keV",
+                "photon_level_id": 2
+            }
+        ],
+        "limitations": "No beta/EC feeding, particle decay, E0 edges, conversion competition, excitation cross sections, timing cuts, or inferred missing branches. Excited gamma terminals are not necessarily stable.",
+        "maximum_energy_keV": 7654.2,
+        "omitted_branches": [
+        ],
+        "omitted_floating_level_ids": [
+        ],
+        "phenomenon": "Hoyle-state radiative cascade; alpha competition excluded",
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Positive non-E0 relative gamma intensity / outgoing sum; conditional gamma branching, not Coulomb-excitation populations or absolute photon yields",
+        "selection": "All absolute-energy levels at or below upper state; not only descendants of upper state",
+        "transition_data": [
+            {
+                "conversion_coefficient": 1.658e-07,
+                "energy_keV": 4438.91,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "12C:gamma_L1_to_L0_0_4438.9100keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 2.639e-07,
+                "energy_keV": 3215.29,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "12C:gamma_L2_to_L1_0_3215.2900keV",
+                "relative_intensity": 100
+            }
+        ],
+        "upper_jpi_raw": 0,
+        "upper_level": "12C:L2_7654.200000keV"
+    },
+    "transitions": [
+        {
+            "name": "12C:gamma_L1_to_L0_0_4438.9100keV",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "12C:gamma_L2_to_L1_0_3215.2900keV",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 1
+        }
+    ],
+    "vectors": [
+    ]
+}

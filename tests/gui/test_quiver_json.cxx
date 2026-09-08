@@ -6,6 +6,10 @@
 #include <cmath>
 #include <iostream>
 #include <stdexcept>
+#include <sstream>
+#include "COINAlgebra/Algebra/PathAlgebra.h"
+#include "COINAlgebra/Algebra/PathProjectors.h"
+#include "COINAlgebra/Probability/DecayProbability.h"
 
 int main() {
     const QByteArray fixture = R"({
@@ -68,5 +72,33 @@ int main() {
         check(root);
     }
     root = original; root["vectors"] = "invalid"; check(root);
+    auto source = Studio::readJson(R"({
+      "levels":["D:level_0.000000keV","D:level_100.000000keV","D:level_200.000000keV"],
+      "transitions":[{"name":"hi","source_index":2,"target_index":1,"probability":0.5},
+                     {"name":"lo","source_index":1,"target_index":0,"probability":0.75}],
+      "metadata":{"feeding_modes":[
+        {"daughter":"D","total_branching_fraction":0.6,"channels":[{"daughter_energy_keV":200,"raw_branching_percentage":60}]},
+        {"daughter":"D","total_branching_fraction":0.4,"channels":[{"daughter_energy_keV":200,"raw_branching_percentage":20},{"daughter_energy_keV":100,"raw_branching_percentage":20}]}]}
+    })");
+    auto decay = Studio::createDecayVector(*source.quiver, source.metadata);
+    assert(decay.Size() == 4); // Shared feeding merged, not multiplied by mode fractions.
+    PathAlgebra algebra(*source.quiver);
+    PathProjectors projectors;
+    DecayProbability probability(algebra, projectors);
+    DecayPath low(std::vector<DecayTransition>{*source.quiver->GetTransition("lo")});
+    assert(std::abs(probability.FeedingProbability(decay, low) - 0.45) < 1e-12);
+    const auto branch = projectors.BranchingProjector(decay);
+    const auto transitionPart = decay - branch;
+    const auto reference = algebra.Multiply(projectors.TargetVertexProjector(
+        algebra.Multiply(branch, algebra.PowerExpand(transitionPart, algebra.MaxPower()))), transitionPart);
+    const auto feeding = probability.FeedingVector(decay);
+    assert(std::abs(algebra.PathForm(reference, DecayVector(low, 1)) -
+                    algebra.PathForm(feeding, DecayVector(low, 1))) < 1e-12);
+    auto coulex = Studio::createDecayVector(*source.quiver, QJsonObject{});
+    assert(std::abs(probability.FeedingProbability(coulex, low) - 0.375) < 1e-12);
+    std::ostringstream table;
+    coulex.PrintTable(table);
+    assert(table.str().find("Probability") != std::string::npos);
+    assert(table.str().find("0.50000000") != std::string::npos);
     std::cout << "PASS: JSON quivers, vector ownership, long/stationary paths, invalid documents\n";
 }

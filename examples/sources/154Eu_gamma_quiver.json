@@ -1,0 +1,1008 @@
+{
+    "levels": [
+        "154Gd:level_0.000000keV",
+        "154Gd:level_123.070900keV",
+        "154Gd:level_370.999800keV",
+        "154Gd:level_680.667300keV",
+        "154Gd:level_717.662000keV",
+        "154Gd:level_815.491700keV",
+        "154Gd:level_996.256800keV",
+        "154Gd:level_1047.592000keV",
+        "154Gd:level_1127.802000keV",
+        "154Gd:level_1182.091000keV",
+        "154Gd:level_1241.291000keV",
+        "154Gd:level_1251.641000keV",
+        "154Gd:level_1263.778000keV",
+        "154Gd:level_1397.515000keV",
+        "154Gd:level_1404.160000keV",
+        "154Gd:level_1414.426000keV",
+        "154Gd:level_1418.160000keV",
+        "154Gd:level_1432.588000keV",
+        "154Gd:level_1531.305000keV",
+        "154Gd:level_1559.920000keV",
+        "154Gd:level_1617.125000keV",
+        "154Gd:level_1645.814000keV",
+        "154Gd:level_1660.903000keV",
+        "154Gd:level_1719.559000keV",
+        "154Gd:level_1789.170000keV",
+        "154Gd:level_1796.960000keV",
+        "154Sm:level_0.000000keV",
+        "154Sm:level_81.981000keV",
+        "154Sm:level_266.817000keV"
+    ],
+    "metadata": {
+        "builder": "DecayQuiverBuilder::BuildGammaQuiver",
+        "energy_tolerance_keV": 1,
+        "feeding_modes": [
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 123.0709,
+                        "raw_branching_percentage": 9.9547
+                    },
+                    {
+                        "daughter_energy_keV": 370.9998,
+                        "raw_branching_percentage": 0.18914
+                    },
+                    {
+                        "daughter_energy_keV": 815.4917,
+                        "raw_branching_percentage": 0.69683
+                    },
+                    {
+                        "daughter_energy_keV": 996.2568,
+                        "raw_branching_percentage": 3.4842
+                    },
+                    {
+                        "daughter_energy_keV": 1047.592,
+                        "raw_branching_percentage": 0.13041
+                    },
+                    {
+                        "daughter_energy_keV": 1127.802,
+                        "raw_branching_percentage": 16.724
+                    },
+                    {
+                        "daughter_energy_keV": 1251.641,
+                        "raw_branching_percentage": 0.29964
+                    },
+                    {
+                        "daughter_energy_keV": 1263.778,
+                        "raw_branching_percentage": 0.72471
+                    },
+                    {
+                        "daughter_energy_keV": 1397.515,
+                        "raw_branching_percentage": 36.136
+                    },
+                    {
+                        "daughter_energy_keV": 1404.16,
+                        "raw_branching_percentage": 0.00099547
+                    },
+                    {
+                        "daughter_energy_keV": 1414.426,
+                        "raw_branching_percentage": 0.012941
+                    },
+                    {
+                        "daughter_energy_keV": 1418.16,
+                        "raw_branching_percentage": 0.10552
+                    },
+                    {
+                        "daughter_energy_keV": 1432.588,
+                        "raw_branching_percentage": 0.0020905
+                    },
+                    {
+                        "daughter_energy_keV": 1531.305,
+                        "raw_branching_percentage": 0.31855
+                    },
+                    {
+                        "daughter_energy_keV": 1559.92,
+                        "raw_branching_percentage": 0.091185
+                    },
+                    {
+                        "daughter_energy_keV": 1617.125,
+                        "raw_branching_percentage": 1.5768
+                    },
+                    {
+                        "daughter_energy_keV": 1645.814,
+                        "raw_branching_percentage": 0.17122
+                    },
+                    {
+                        "daughter_energy_keV": 1660.903,
+                        "raw_branching_percentage": 0.81828
+                    },
+                    {
+                        "daughter_energy_keV": 1719.559,
+                        "raw_branching_percentage": 28.471
+                    },
+                    {
+                        "daughter_energy_keV": 1789.17,
+                        "raw_branching_percentage": 0.0085611
+                    },
+                    {
+                        "daughter_energy_keV": 1796.96,
+                        "raw_branching_percentage": 0.0659
+                    }
+                ],
+                "daughter": "154Gd",
+                "decay_type": "BetaMinus",
+                "total_branching_fraction": 0.99982
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 81.981,
+                        "raw_branching_percentage": 0.00050111
+                    },
+                    {
+                        "daughter_energy_keV": 266.817,
+                        "raw_branching_percentage": 0.00020749
+                    }
+                ],
+                "daughter": "154Sm",
+                "decay_type": "MshellEC",
+                "total_branching_fraction": 7.086e-06
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 81.981,
+                        "raw_branching_percentage": 0.010712
+                    },
+                    {
+                        "daughter_energy_keV": 266.817,
+                        "raw_branching_percentage": 0.00416
+                    }
+                ],
+                "daughter": "154Sm",
+                "decay_type": "KshellEC",
+                "total_branching_fraction": 0.00014872
+            },
+            {
+                "channels": [
+                    {
+                        "daughter_energy_keV": 81.981,
+                        "raw_branching_percentage": 0.0017147
+                    },
+                    {
+                        "daughter_energy_keV": 266.817,
+                        "raw_branching_percentage": 0.00070438
+                    }
+                ],
+                "daughter": "154Sm",
+                "decay_type": "LshellEC",
+                "total_branching_fraction": 2.4191e-05
+            }
+        ],
+        "parent_A": 154,
+        "parent_Z": 63,
+        "parent_energy_keV": 0,
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Conditional gamma branch: relativeIntensity / sum of positive outgoing relativeIntensity; not absolute source photon yield.",
+        "radioactive_data": "RadioactiveDecay5.5",
+        "source": "154Eu"
+    },
+    "transitions": [
+        {
+            "name": "154Gd:gamma_1048_to_123_3",
+            "probability": 0.24641178712053857,
+            "source_index": 7,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1048_to_371_2",
+            "probability": 0.6350819255683984,
+            "source_index": 7,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1048_to_718_1",
+            "probability": 0.03556458783183031,
+            "source_index": 7,
+            "target_index": 4
+        },
+        {
+            "name": "154Gd:gamma_1048_to_815_0",
+            "probability": 0.08294169947923284,
+            "source_index": 7,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1128_to_1048_0",
+            "probability": 0.00012769353551476457,
+            "source_index": 8,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1128_to_123_4",
+            "probability": 0.7980845969672785,
+            "source_index": 8,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1128_to_371_3",
+            "probability": 0.20039904229848363,
+            "source_index": 8,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1128_to_815_2",
+            "probability": 0.0008060654429369513,
+            "source_index": 8,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1128_to_996_1",
+            "probability": 0.0005826017557861134,
+            "source_index": 8,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1182_to_123_2",
+            "probability": 0.8264462809917356,
+            "source_index": 9,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1182_to_815_0",
+            "probability": 0.17355371900826447,
+            "source_index": 9,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_123_to_0_0",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_1241_to_0_4",
+            "probability": 0.5167157546633597,
+            "source_index": 10,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_1241_to_123_3",
+            "probability": 0.4753784942902909,
+            "source_index": 10,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1241_to_681_2",
+            "probability": 0.0026352503487831343,
+            "source_index": 10,
+            "target_index": 3
+        },
+        {
+            "name": "154Gd:gamma_1241_to_815_1",
+            "probability": 0.003358652405311838,
+            "source_index": 10,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1241_to_996_0",
+            "probability": 0.0019118482922544308,
+            "source_index": 10,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1252_to_123_3",
+            "probability": 0.7695267410542517,
+            "source_index": 11,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1252_to_371_2",
+            "probability": 0.21546748749519049,
+            "source_index": 11,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1252_to_815_1",
+            "probability": 0.008080030781069643,
+            "source_index": 11,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1252_to_996_0",
+            "probability": 0.006925740669488266,
+            "source_index": 11,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1264_to_123_4",
+            "probability": 0.3056914929275324,
+            "source_index": 12,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1264_to_371_3",
+            "probability": 0.6703760809814306,
+            "source_index": 12,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1264_to_718_2",
+            "probability": 0.011262318160488035,
+            "source_index": 12,
+            "target_index": 4
+        },
+        {
+            "name": "154Gd:gamma_1264_to_815_1",
+            "probability": 0.00328484279680901,
+            "source_index": 12,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1264_to_996_0",
+            "probability": 0.009385265133740028,
+            "source_index": 12,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1398_to_1128_2",
+            "probability": 0.0003198226050617258,
+            "source_index": 13,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1398_to_123_5",
+            "probability": 0.969159409277957,
+            "source_index": 13,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1398_to_1241_1",
+            "probability": 0.00023938237409165536,
+            "source_index": 13,
+            "target_index": 10
+        },
+        {
+            "name": "154Gd:gamma_1398_to_1252_0",
+            "probability": 0.00019867767890198118,
+            "source_index": 13,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1398_to_815_4",
+            "probability": 0.024839555659794038,
+            "source_index": 13,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1398_to_996_3",
+            "probability": 0.005243152404193747,
+            "source_index": 13,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1404_to_371_0",
+            "probability": 1,
+            "source_index": 14,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1414_to_0_2",
+            "probability": 0.21292775665399238,
+            "source_index": 15,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_1414_to_123_1",
+            "probability": 0.7604562737642585,
+            "source_index": 15,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1414_to_815_0",
+            "probability": 0.026615969581749048,
+            "source_index": 15,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1418_to_0_10",
+            "probability": 0.06753401529446817,
+            "source_index": 16,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_1418_to_1048_4",
+            "probability": 0.03416426656073095,
+            "source_index": 16,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1418_to_1128_3",
+            "probability": 0.013904061972390505,
+            "source_index": 16,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1418_to_1182_2",
+            "probability": 0.013904061972390505,
+            "source_index": 16,
+            "target_index": 9
+        },
+        {
+            "name": "154Gd:gamma_1418_to_123_9",
+            "probability": 0.0938524183136359,
+            "source_index": 16,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1418_to_1241_1",
+            "probability": 0.0054623100605819845,
+            "source_index": 16,
+            "target_index": 10
+        },
+        {
+            "name": "154Gd:gamma_1418_to_1252_0",
+            "probability": 0.008441751911808522,
+            "source_index": 16,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1418_to_371_8",
+            "probability": 0.4965736418710895,
+            "source_index": 16,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1418_to_681_7",
+            "probability": 0.018373224749230314,
+            "source_index": 16,
+            "target_index": 3
+        },
+        {
+            "name": "154Gd:gamma_1418_to_815_6",
+            "probability": 0.2368656271725097,
+            "source_index": 16,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1418_to_996_5",
+            "probability": 0.010924620121163969,
+            "source_index": 16,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1433_to_1264_0",
+            "probability": 0.038314176245210725,
+            "source_index": 17,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1433_to_371_3",
+            "probability": 0.7662835249042146,
+            "source_index": 17,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1433_to_718_2",
+            "probability": 0.19540229885057472,
+            "source_index": 17,
+            "target_index": 4
+        },
+        {
+            "name": "154Gd:gamma_1531_to_0_11",
+            "probability": 0.0112221041445271,
+            "source_index": 18,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1048_5",
+            "probability": 0.01640807651434644,
+            "source_index": 18,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1128_4",
+            "probability": 0.03910733262486717,
+            "source_index": 18,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1182_3",
+            "probability": 0.012582359192348567,
+            "source_index": 18,
+            "target_index": 9
+        },
+        {
+            "name": "154Gd:gamma_1531_to_123_10",
+            "probability": 0.04335812964930925,
+            "source_index": 18,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1241_2",
+            "probability": 0.002507970244420829,
+            "source_index": 18,
+            "target_index": 10
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1252_1",
+            "probability": 0.00561105207226355,
+            "source_index": 18,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1531_to_1264_0",
+            "probability": 0.006716259298618492,
+            "source_index": 18,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1531_to_371_9",
+            "probability": 0.08076514346439959,
+            "source_index": 18,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1531_to_681_8",
+            "probability": 0.42507970244420834,
+            "source_index": 18,
+            "target_index": 3
+        },
+        {
+            "name": "154Gd:gamma_1531_to_815_7",
+            "probability": 0.3268862911795962,
+            "source_index": 18,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1531_to_996_6",
+            "probability": 0.029755579171094584,
+            "source_index": 18,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1560_to_1048_2",
+            "probability": 0.03446955189582535,
+            "source_index": 19,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1560_to_1252_1",
+            "probability": 0.004212945231711988,
+            "source_index": 19,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1560_to_1264_0",
+            "probability": 0.0038299502106472617,
+            "source_index": 19,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1560_to_371_3",
+            "probability": 0.9574875526618154,
+            "source_index": 19,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1048_6",
+            "probability": 0.008650799658293414,
+            "source_index": 20,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1617_to_123_10",
+            "probability": 0.44092044508364236,
+            "source_index": 20,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1252_5",
+            "probability": 0.0006379964747991392,
+            "source_index": 20,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1264_4",
+            "probability": 0.000832639467110741,
+            "source_index": 20,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1398_3",
+            "probability": 0.0005082344799247381,
+            "source_index": 20,
+            "target_index": 13
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1404_2",
+            "probability": 0.0002649307395352358,
+            "source_index": 20,
+            "target_index": 14
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1414_1",
+            "probability": 0.00032981173697243637,
+            "source_index": 20,
+            "target_index": 15
+        },
+        {
+            "name": "154Gd:gamma_1617_to_1418_0",
+            "probability": 0.0006379964747991392,
+            "source_index": 20,
+            "target_index": 16
+        },
+        {
+            "name": "154Gd:gamma_1617_to_371_9",
+            "probability": 0.5406749786433384,
+            "source_index": 20,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1617_to_815_8",
+            "probability": 0.0038928598462320356,
+            "source_index": 20,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1617_to_996_7",
+            "probability": 0.0026493073953523577,
+            "source_index": 20,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1646_to_1048_3",
+            "probability": 0.061633281972265024,
+            "source_index": 21,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1646_to_1128_2",
+            "probability": 0.29275808936825887,
+            "source_index": 21,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1646_to_123_8",
+            "probability": 0.005136106831022086,
+            "source_index": 21,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1646_to_1264_1",
+            "probability": 0.05546995377503853,
+            "source_index": 21,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1646_to_1404_0",
+            "probability": 0.007190549563430919,
+            "source_index": 21,
+            "target_index": 14
+        },
+        {
+            "name": "154Gd:gamma_1646_to_371_7",
+            "probability": 0.010272213662044172,
+            "source_index": 21,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1646_to_718_6",
+            "probability": 0.01746276322547509,
+            "source_index": 21,
+            "target_index": 4
+        },
+        {
+            "name": "154Gd:gamma_1646_to_815_5",
+            "probability": 0.036466358500256806,
+            "source_index": 21,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1646_to_996_4",
+            "probability": 0.5136106831022086,
+            "source_index": 21,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1048_7",
+            "probability": 0.11281557405241796,
+            "source_index": 22,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1128_6",
+            "probability": 0.022356744857948682,
+            "source_index": 22,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1661_to_123_11",
+            "probability": 0.06961546398844327,
+            "source_index": 22,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1252_5",
+            "probability": 0.006191098576047328,
+            "source_index": 22,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1264_4",
+            "probability": 0.03343193231065557,
+            "source_index": 22,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1398_3",
+            "probability": 0.0012382197152094655,
+            "source_index": 22,
+            "target_index": 13
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1418_2",
+            "probability": 0.004952878860837862,
+            "source_index": 22,
+            "target_index": 16
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1433_1",
+            "probability": 0.002476439430418931,
+            "source_index": 22,
+            "target_index": 17
+        },
+        {
+            "name": "154Gd:gamma_1661_to_1531_0",
+            "probability": 0.001926119556992502,
+            "source_index": 22,
+            "target_index": 18
+        },
+        {
+            "name": "154Gd:gamma_1661_to_371_10",
+            "probability": 0.025452294145972346,
+            "source_index": 22,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1661_to_815_9",
+            "probability": 0.6878998417830363,
+            "source_index": 22,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1661_to_996_8",
+            "probability": 0.03164339272201967,
+            "source_index": 22,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1128_7",
+            "probability": 0.17473936069618087,
+            "source_index": 23,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1720_to_123_10",
+            "probability": 0.063464315842634,
+            "source_index": 23,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1241_6",
+            "probability": 0.007947205622258409,
+            "source_index": 23,
+            "target_index": 10
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1252_5",
+            "probability": 0.0022099181409488623,
+            "source_index": 23,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1398_4",
+            "probability": 0.002188668928055123,
+            "source_index": 23,
+            "target_index": 13
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1414_3",
+            "probability": 0.000723181545483586,
+            "source_index": 23,
+            "target_index": 15
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1418_2",
+            "probability": 0.0004363171714181087,
+            "source_index": 23,
+            "target_index": 16
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1531_1",
+            "probability": 0.008471352873637305,
+            "source_index": 23,
+            "target_index": 18
+        },
+        {
+            "name": "154Gd:gamma_1720_to_1661_0",
+            "probability": 0.00013457834832701404,
+            "source_index": 23,
+            "target_index": 22
+        },
+        {
+            "name": "154Gd:gamma_1720_to_815_9",
+            "probability": 0.03137800437308801,
+            "source_index": 23,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1720_to_996_8",
+            "probability": 0.7083070964579686,
+            "source_index": 23,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_1789_to_1048_0",
+            "probability": 0.11757425742574258,
+            "source_index": 24,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1789_to_123_3",
+            "probability": 0.23514851485148516,
+            "source_index": 24,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1789_to_371_2",
+            "probability": 0.6188118811881188,
+            "source_index": 24,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1789_to_718_1",
+            "probability": 0.028465346534653463,
+            "source_index": 24,
+            "target_index": 4
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1048_5",
+            "probability": 0.11343860779890429,
+            "source_index": 25,
+            "target_index": 7
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1128_4",
+            "probability": 0.24170157911698356,
+            "source_index": 25,
+            "target_index": 8
+        },
+        {
+            "name": "154Gd:gamma_1797_to_123_9",
+            "probability": 0.03061553335481792,
+            "source_index": 25,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1252_3",
+            "probability": 0.0206252014179826,
+            "source_index": 25,
+            "target_index": 11
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1264_2",
+            "probability": 0.12375120850789557,
+            "source_index": 25,
+            "target_index": 12
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1414_1",
+            "probability": 0.003222687721559781,
+            "source_index": 25,
+            "target_index": 15
+        },
+        {
+            "name": "154Gd:gamma_1797_to_1418_0",
+            "probability": 0.005800837898807605,
+            "source_index": 25,
+            "target_index": 16
+        },
+        {
+            "name": "154Gd:gamma_1797_to_371_8",
+            "probability": 0.006445375443119562,
+            "source_index": 25,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_1797_to_815_7",
+            "probability": 0.132130196583951,
+            "source_index": 25,
+            "target_index": 5
+        },
+        {
+            "name": "154Gd:gamma_1797_to_996_6",
+            "probability": 0.3222687721559781,
+            "source_index": 25,
+            "target_index": 6
+        },
+        {
+            "name": "154Gd:gamma_371_to_123_0",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_681_to_123_0",
+            "probability": 1,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_718_to_371_0",
+            "probability": 1,
+            "source_index": 4,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_815_to_0_3",
+            "probability": 0.17976123507719236,
+            "source_index": 5,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_815_to_123_2",
+            "probability": 0.6250390649415589,
+            "source_index": 5,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_815_to_371_1",
+            "probability": 0.19238702418901185,
+            "source_index": 5,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_815_to_681_0",
+            "probability": 0.0028126757922370153,
+            "source_index": 5,
+            "target_index": 3
+        },
+        {
+            "name": "154Gd:gamma_996_to_0_4",
+            "probability": 0.45798417316444895,
+            "source_index": 6,
+            "target_index": 0
+        },
+        {
+            "name": "154Gd:gamma_996_to_123_3",
+            "probability": 0.5276315359037431,
+            "source_index": 6,
+            "target_index": 1
+        },
+        {
+            "name": "154Gd:gamma_996_to_371_2",
+            "probability": 0.013771183087087694,
+            "source_index": 6,
+            "target_index": 2
+        },
+        {
+            "name": "154Gd:gamma_996_to_681_1",
+            "probability": 0.0003862262842815399,
+            "source_index": 6,
+            "target_index": 3
+        },
+        {
+            "name": "154Gd:gamma_996_to_815_0",
+            "probability": 0.0002268815604386095,
+            "source_index": 6,
+            "target_index": 5
+        },
+        {
+            "name": "154Sm:gamma_267_to_82_0",
+            "probability": 1,
+            "source_index": 28,
+            "target_index": 27
+        },
+        {
+            "name": "154Sm:gamma_82_to_0_0",
+            "probability": 1,
+            "source_index": 27,
+            "target_index": 26
+        }
+    ],
+    "vectors": [
+    ]
+}

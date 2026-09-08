@@ -1,0 +1,3304 @@
+{
+    "levels": [
+        "114Cd:L0_0.000000keV",
+        "114Cd:L1_558.456000keV",
+        "114Cd:L2_1134.532000keV",
+        "114Cd:L3_1209.708000keV",
+        "114Cd:L4_1283.739000keV",
+        "114Cd:L5_1305.609000keV",
+        "114Cd:L6_1364.344000keV",
+        "114Cd:L7_1732.246000keV",
+        "114Cd:L8_1784.000000keV",
+        "114Cd:L9_1841.947000keV",
+        "114Cd:L10_1859.698000keV",
+        "114Cd:L11_1864.262000keV",
+        "114Cd:L12_1932.077000keV",
+        "114Cd:L13_1958.094000keV",
+        "114Cd:L14_1990.300000keV",
+        "114Cd:L15_2048.026000keV",
+        "114Cd:L16_2152.266000keV",
+        "114Cd:L17_2204.561000keV",
+        "114Cd:L18_2218.860000keV",
+        "114Cd:L19_2298.930000keV",
+        "114Cd:L20_2317.100000keV",
+        "114Cd:L21_2384.760000keV",
+        "114Cd:L22_2387.300000keV",
+        "114Cd:L23_2391.500000keV",
+        "114Cd:L24_2396.000000keV",
+        "114Cd:L25_2400.200000keV",
+        "114Cd:L26_2412.500000keV",
+        "114Cd:L27_2437.640000keV",
+        "114Cd:L28_2456.005000keV",
+        "114Cd:L29_2460.757000keV",
+        "114Cd:L30_2465.200000keV",
+        "114Cd:L31_2503.240000keV",
+        "114Cd:L32_2505.000000keV",
+        "114Cd:L33_2525.420000keV",
+        "114Cd:L34_2535.810000keV",
+        "114Cd:L35_2553.870000keV",
+        "114Cd:L36_2580.357000keV",
+        "114Cd:L37_2636.520000keV",
+        "114Cd:L38_2646.000000keV",
+        "114Cd:L39_2650.120000keV",
+        "114Cd:L40_2660.900000keV",
+        "114Cd:L41_2669.300000keV",
+        "114Cd:L42_2701.066000keV",
+        "114Cd:L43_2735.200000keV",
+        "114Cd:L44_2747.210000keV",
+        "114Cd:L45_2749.265000keV",
+        "114Cd:L46_2756.920000keV",
+        "114Cd:L47_2767.850000keV",
+        "114Cd:L48_2788.501000keV",
+        "114Cd:L49_2799.990000keV",
+        "114Cd:L50_2806.590000keV",
+        "114Cd:L51_2812.050000keV",
+        "114Cd:L52_2820.220000keV",
+        "114Cd:L53_2827.880000keV",
+        "114Cd:L54_2828.200000keV",
+        "114Cd:L55_2847.000000keV",
+        "114Cd:L56_2869.000000keV",
+        "114Cd:L57_2871.630000keV",
+        "114Cd:L58_2874.260000keV",
+        "114Cd:L59_2880.560000keV",
+        "114Cd:L60_2902.600000keV",
+        "114Cd:L61_2910.200000keV",
+        "114Cd:L62_2918.450000keV",
+        "114Cd:L63_2932.970000keV",
+        "114Cd:L64_2935.760000keV",
+        "114Cd:L65_2936.120000keV",
+        "114Cd:L66_2941.270000keV"
+    ],
+    "metadata": {
+        "A": 114,
+        "Z": 48,
+        "excited_gamma_terminal_levels": [
+            {
+                "name": "114Cd:L8_1784.000000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L24_2396.000000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L26_2412.500000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L31_2503.240000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L32_2505.000000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L38_2646.000000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L43_2735.200000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L44_2747.210000keV",
+                "reason": "No positive-intensity non-E0 gamma branch tabulated"
+            },
+            {
+                "name": "114Cd:L54_2828.200000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L55_2847.000000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L56_2869.000000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L60_2902.600000keV",
+                "reason": "No transitions tabulated"
+            },
+            {
+                "name": "114Cd:L61_2910.200000keV",
+                "reason": "No transitions tabulated"
+            }
+        ],
+        "isotope": "114Cd",
+        "level_data": [
+            {
+                "energy_keV": 0,
+                "half_life_s": -1,
+                "jpi_raw": 0,
+                "name": "114Cd:L0_0.000000keV",
+                "photon_level_id": 0
+            },
+            {
+                "energy_keV": 558.456,
+                "half_life_s": 1.02e-11,
+                "jpi_raw": 2,
+                "name": "114Cd:L1_558.456000keV",
+                "photon_level_id": 1
+            },
+            {
+                "energy_keV": 1134.532,
+                "half_life_s": 9.9e-12,
+                "jpi_raw": 0,
+                "name": "114Cd:L2_1134.532000keV",
+                "photon_level_id": 2
+            },
+            {
+                "energy_keV": 1209.708,
+                "half_life_s": 3.1e-12,
+                "jpi_raw": 2,
+                "name": "114Cd:L3_1209.708000keV",
+                "photon_level_id": 3
+            },
+            {
+                "energy_keV": 1283.739,
+                "half_life_s": 1.39e-12,
+                "jpi_raw": 4,
+                "name": "114Cd:L4_1283.739000keV",
+                "photon_level_id": 4
+            },
+            {
+                "energy_keV": 1305.609,
+                "half_life_s": 4.7e-09,
+                "jpi_raw": 0,
+                "name": "114Cd:L5_1305.609000keV",
+                "photon_level_id": 5
+            },
+            {
+                "energy_keV": 1364.344,
+                "half_life_s": 5.2e-12,
+                "jpi_raw": 2,
+                "name": "114Cd:L6_1364.344000keV",
+                "photon_level_id": 6
+            },
+            {
+                "energy_keV": 1732.246,
+                "half_life_s": 4.8e-12,
+                "jpi_raw": 4,
+                "name": "114Cd:L7_1732.246000keV",
+                "photon_level_id": 7
+            },
+            {
+                "energy_keV": 1784,
+                "half_life_s": 0,
+                "jpi_raw": 2,
+                "name": "114Cd:L8_1784.000000keV",
+                "photon_level_id": 8
+            },
+            {
+                "energy_keV": 1841.947,
+                "half_life_s": 6.5e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L9_1841.947000keV",
+                "photon_level_id": 9
+            },
+            {
+                "energy_keV": 1859.698,
+                "half_life_s": 1.8e-12,
+                "jpi_raw": 0,
+                "name": "114Cd:L10_1859.698000keV",
+                "photon_level_id": 10
+            },
+            {
+                "energy_keV": 1864.262,
+                "half_life_s": 8.7e-13,
+                "jpi_raw": 3,
+                "name": "114Cd:L11_1864.262000keV",
+                "photon_level_id": 11
+            },
+            {
+                "energy_keV": 1932.077,
+                "half_life_s": 3.1e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L12_1932.077000keV",
+                "photon_level_id": 12
+            },
+            {
+                "energy_keV": 1958.094,
+                "half_life_s": 6e-13,
+                "jpi_raw": -3,
+                "name": "114Cd:L13_1958.094000keV",
+                "photon_level_id": 13
+            },
+            {
+                "energy_keV": 1990.3,
+                "half_life_s": 8.2e-13,
+                "jpi_raw": 6,
+                "name": "114Cd:L14_1990.300000keV",
+                "photon_level_id": 14
+            },
+            {
+                "energy_keV": 2048.026,
+                "half_life_s": 3.8e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L15_2048.026000keV",
+                "photon_level_id": 15
+            },
+            {
+                "energy_keV": 2152.266,
+                "half_life_s": 3.5e-13,
+                "jpi_raw": 3,
+                "name": "114Cd:L16_2152.266000keV",
+                "photon_level_id": 16
+            },
+            {
+                "energy_keV": 2204.561,
+                "half_life_s": 5.5e-13,
+                "jpi_raw": 3,
+                "name": "114Cd:L17_2204.561000keV",
+                "photon_level_id": 17
+            },
+            {
+                "energy_keV": 2218.86,
+                "half_life_s": 8.9e-14,
+                "jpi_raw": 2,
+                "name": "114Cd:L18_2218.860000keV",
+                "photon_level_id": 18
+            },
+            {
+                "energy_keV": 2298.93,
+                "half_life_s": 1.04e-12,
+                "jpi_raw": -5,
+                "name": "114Cd:L19_2298.930000keV",
+                "photon_level_id": 19
+            },
+            {
+                "energy_keV": 2317.1,
+                "half_life_s": 0,
+                "jpi_raw": 2,
+                "name": "114Cd:L20_2317.100000keV",
+                "photon_level_id": 20
+            },
+            {
+                "energy_keV": 2384.76,
+                "half_life_s": 5.5e-13,
+                "jpi_raw": -3,
+                "name": "114Cd:L21_2384.760000keV",
+                "photon_level_id": 21
+            },
+            {
+                "energy_keV": 2387.3,
+                "half_life_s": 0,
+                "jpi_raw": -3,
+                "name": "114Cd:L22_2387.300000keV",
+                "photon_level_id": 22
+            },
+            {
+                "energy_keV": 2391.5,
+                "half_life_s": 1.87e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L23_2391.500000keV",
+                "photon_level_id": 23
+            },
+            {
+                "energy_keV": 2396,
+                "half_life_s": 6.51009e-13,
+                "jpi_raw": -1,
+                "name": "114Cd:L24_2396.000000keV",
+                "photon_level_id": 24
+            },
+            {
+                "energy_keV": 2400.2,
+                "half_life_s": 1e-12,
+                "jpi_raw": 6,
+                "name": "114Cd:L25_2400.200000keV",
+                "photon_level_id": 25
+            },
+            {
+                "energy_keV": 2412.5,
+                "half_life_s": 0,
+                "jpi_raw": 6,
+                "name": "114Cd:L26_2412.500000keV",
+                "photon_level_id": 26
+            },
+            {
+                "energy_keV": 2437.64,
+                "half_life_s": 9e-13,
+                "jpi_raw": 0,
+                "name": "114Cd:L27_2437.640000keV",
+                "photon_level_id": 27
+            },
+            {
+                "energy_keV": 2456.005,
+                "half_life_s": 3.9e-14,
+                "jpi_raw": -1,
+                "name": "114Cd:L28_2456.005000keV",
+                "photon_level_id": 28
+            },
+            {
+                "energy_keV": 2460.757,
+                "half_life_s": 6.8e-13,
+                "jpi_raw": -4,
+                "name": "114Cd:L29_2460.757000keV",
+                "photon_level_id": 29
+            },
+            {
+                "energy_keV": 2465.2,
+                "half_life_s": 0,
+                "jpi_raw": 99,
+                "name": "114Cd:L30_2465.200000keV",
+                "photon_level_id": 30
+            },
+            {
+                "energy_keV": 2503.24,
+                "half_life_s": 1.52e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L31_2503.240000keV",
+                "photon_level_id": 31
+            },
+            {
+                "energy_keV": 2505,
+                "half_life_s": 0,
+                "jpi_raw": 0,
+                "name": "114Cd:L32_2505.000000keV",
+                "photon_level_id": 32
+            },
+            {
+                "energy_keV": 2525.42,
+                "half_life_s": 3.5e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L33_2525.420000keV",
+                "photon_level_id": 33
+            },
+            {
+                "energy_keV": 2535.81,
+                "half_life_s": 1.8e-13,
+                "jpi_raw": -5,
+                "name": "114Cd:L34_2535.810000keV",
+                "photon_level_id": 34
+            },
+            {
+                "energy_keV": 2553.87,
+                "half_life_s": 3.2e-13,
+                "jpi_raw": 0,
+                "name": "114Cd:L35_2553.870000keV",
+                "photon_level_id": 35
+            },
+            {
+                "energy_keV": 2580.357,
+                "half_life_s": 4.2e-13,
+                "jpi_raw": -2,
+                "name": "114Cd:L36_2580.357000keV",
+                "photon_level_id": 36
+            },
+            {
+                "energy_keV": 2636.52,
+                "half_life_s": 2.5e-13,
+                "jpi_raw": 0,
+                "name": "114Cd:L37_2636.520000keV",
+                "photon_level_id": 37
+            },
+            {
+                "energy_keV": 2646,
+                "half_life_s": 7.5951e-13,
+                "jpi_raw": 1,
+                "name": "114Cd:L38_2646.000000keV",
+                "photon_level_id": 38
+            },
+            {
+                "energy_keV": 2650.12,
+                "half_life_s": 4.1e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L39_2650.120000keV",
+                "photon_level_id": 39
+            },
+            {
+                "energy_keV": 2660.9,
+                "half_life_s": 2.22e-14,
+                "jpi_raw": 2,
+                "name": "114Cd:L40_2660.900000keV",
+                "photon_level_id": 40
+            },
+            {
+                "energy_keV": 2669.3,
+                "half_life_s": 1.4e-12,
+                "jpi_raw": 8,
+                "name": "114Cd:L41_2669.300000keV",
+                "photon_level_id": 41
+            },
+            {
+                "energy_keV": 2701.066,
+                "half_life_s": 3.1e-13,
+                "jpi_raw": 3,
+                "name": "114Cd:L42_2701.066000keV",
+                "photon_level_id": 42
+            },
+            {
+                "energy_keV": 2735.2,
+                "half_life_s": 0,
+                "jpi_raw": -7,
+                "name": "114Cd:L43_2735.200000keV",
+                "photon_level_id": 43
+            },
+            {
+                "energy_keV": 2747.21,
+                "half_life_s": 0,
+                "jpi_raw": 5,
+                "name": "114Cd:L44_2747.210000keV",
+                "photon_level_id": 44
+            },
+            {
+                "energy_keV": 2749.265,
+                "half_life_s": 6.9e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L45_2749.265000keV",
+                "photon_level_id": 45
+            },
+            {
+                "energy_keV": 2756.92,
+                "half_life_s": 5.1e-13,
+                "jpi_raw": -3,
+                "name": "114Cd:L46_2756.920000keV",
+                "photon_level_id": 46
+            },
+            {
+                "energy_keV": 2767.85,
+                "half_life_s": 2.98e-14,
+                "jpi_raw": -1,
+                "name": "114Cd:L47_2767.850000keV",
+                "photon_level_id": 47
+            },
+            {
+                "energy_keV": 2788.501,
+                "half_life_s": 2.5e-13,
+                "jpi_raw": 1,
+                "name": "114Cd:L48_2788.501000keV",
+                "photon_level_id": 48
+            },
+            {
+                "energy_keV": 2799.99,
+                "half_life_s": 1.94e-14,
+                "jpi_raw": 1,
+                "name": "114Cd:L49_2799.990000keV",
+                "photon_level_id": 49
+            },
+            {
+                "energy_keV": 2806.59,
+                "half_life_s": 1.25e-13,
+                "jpi_raw": 3,
+                "name": "114Cd:L50_2806.590000keV",
+                "photon_level_id": 50
+            },
+            {
+                "energy_keV": 2812.05,
+                "half_life_s": 3.6e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L51_2812.050000keV",
+                "photon_level_id": 51
+            },
+            {
+                "energy_keV": 2820.22,
+                "half_life_s": 0,
+                "jpi_raw": 4,
+                "name": "114Cd:L52_2820.220000keV",
+                "photon_level_id": 52
+            },
+            {
+                "energy_keV": 2827.88,
+                "half_life_s": 3.8e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L53_2827.880000keV",
+                "photon_level_id": 53
+            },
+            {
+                "energy_keV": 2828.2,
+                "half_life_s": 0,
+                "jpi_raw": 0,
+                "name": "114Cd:L54_2828.200000keV",
+                "photon_level_id": 54
+            },
+            {
+                "energy_keV": 2847,
+                "half_life_s": 0,
+                "jpi_raw": -2,
+                "name": "114Cd:L55_2847.000000keV",
+                "photon_level_id": 55
+            },
+            {
+                "energy_keV": 2869,
+                "half_life_s": 0,
+                "jpi_raw": 4,
+                "name": "114Cd:L56_2869.000000keV",
+                "photon_level_id": 56
+            },
+            {
+                "energy_keV": 2871.63,
+                "half_life_s": 1.25e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L57_2871.630000keV",
+                "photon_level_id": 57
+            },
+            {
+                "energy_keV": 2874.26,
+                "half_life_s": 6.2e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L58_2874.260000keV",
+                "photon_level_id": 58
+            },
+            {
+                "energy_keV": 2880.56,
+                "half_life_s": 1.11e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L59_2880.560000keV",
+                "photon_level_id": 59
+            },
+            {
+                "energy_keV": 2902.6,
+                "half_life_s": 0,
+                "jpi_raw": 3,
+                "name": "114Cd:L60_2902.600000keV",
+                "photon_level_id": 60
+            },
+            {
+                "energy_keV": 2910.2,
+                "half_life_s": 0,
+                "jpi_raw": 0,
+                "name": "114Cd:L61_2910.200000keV",
+                "photon_level_id": 61
+            },
+            {
+                "energy_keV": 2918.45,
+                "half_life_s": 6.9e-14,
+                "jpi_raw": 3,
+                "name": "114Cd:L62_2918.450000keV",
+                "photon_level_id": 62
+            },
+            {
+                "energy_keV": 2932.97,
+                "half_life_s": 1.25e-13,
+                "jpi_raw": 4,
+                "name": "114Cd:L63_2932.970000keV",
+                "photon_level_id": 63
+            },
+            {
+                "energy_keV": 2935.76,
+                "half_life_s": 3.5e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L64_2935.760000keV",
+                "photon_level_id": 64
+            },
+            {
+                "energy_keV": 2936.12,
+                "half_life_s": 0,
+                "jpi_raw": -3,
+                "name": "114Cd:L65_2936.120000keV",
+                "photon_level_id": 65
+            },
+            {
+                "energy_keV": 2941.27,
+                "half_life_s": 2.4e-13,
+                "jpi_raw": 2,
+                "name": "114Cd:L66_2941.270000keV",
+                "photon_level_id": 66
+            }
+        ],
+        "limitations": "No beta/EC feeding, E0 edges, conversion competition, excitation cross sections, timing cuts, or inferred missing branches. Excited gamma terminals are not necessarily stable.",
+        "maximum_energy_keV": 2941.27,
+        "omitted_floating_level_ids": [
+        ],
+        "photon_data": "PhotonEvaporation5.5",
+        "probability_semantics": "Positive non-E0 relative gamma intensity / outgoing sum; conditional gamma branching, not Coulomb-excitation populations or absolute photon yields",
+        "selection": "All absolute-energy levels at or below upper state; not only descendants of upper state",
+        "transition_data": [
+            {
+                "conversion_coefficient": 0.00493,
+                "energy_keV": 558.456,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L1_to_L0_0_558.4560keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.004472,
+                "energy_keV": 576.076,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L2_to_L1_0_576.0760keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 4.2,
+                "energy_keV": 75.176,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L3_to_L2_0_75.1760keV",
+                "relative_intensity": 0.00019
+            },
+            {
+                "conversion_coefficient": 0.003352,
+                "energy_keV": 651.252,
+                "mixing_ratio": -1.2,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L3_to_L1_1_651.2520keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0007551,
+                "energy_keV": 1209.708,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L3_to_L0_2_1209.7080keV",
+                "relative_intensity": 29
+            },
+            {
+                "conversion_coefficient": 0.00247,
+                "energy_keV": 725.283,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L4_to_L1_0_725.2830keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 1.76,
+                "energy_keV": 95.901,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L5_to_L3_0_95.9010keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.002267,
+                "energy_keV": 747.153,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L5_to_L1_2_747.1530keV",
+                "relative_intensity": 58
+            },
+            {
+                "conversion_coefficient": 3.221,
+                "energy_keV": 80.605,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L6_to_L4_0_80.6050keV",
+                "relative_intensity": 0.009
+            },
+            {
+                "conversion_coefficient": 0.2802,
+                "energy_keV": 154.636,
+                "mixing_ratio": 1.95,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L6_to_L3_1_154.6360keV",
+                "relative_intensity": 0.178
+            },
+            {
+                "conversion_coefficient": 0.07964,
+                "energy_keV": 229.812,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L6_to_L2_2_229.8120keV",
+                "relative_intensity": 2.45
+            },
+            {
+                "conversion_coefficient": 0.002163,
+                "energy_keV": 805.888,
+                "mixing_ratio": 0.05,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L6_to_L1_3_805.8880keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0005893,
+                "energy_keV": 1364.344,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L6_to_L0_4_1364.3440keV",
+                "relative_intensity": 91
+            },
+            {
+                "conversion_coefficient": 0.01681,
+                "energy_keV": 367.902,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L7_to_L6_0_367.9020keV",
+                "relative_intensity": 64
+            },
+            {
+                "conversion_coefficient": 0.00902,
+                "energy_keV": 448.507,
+                "mixing_ratio": -1.6,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L7_to_L4_1_448.5070keV",
+                "relative_intensity": 33.4
+            },
+            {
+                "conversion_coefficient": 0.005869,
+                "energy_keV": 522.538,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L7_to_L3_2_522.5380keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0008047,
+                "energy_keV": 1173.79,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L7_to_L1_3_1173.7900keV",
+                "relative_intensity": 90
+            },
+            {
+                "conversion_coefficient": 0.007578,
+                "energy_keV": 477.603,
+                "mixing_ratio": 2.3,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L9_to_L6_0_477.6030keV",
+                "relative_intensity": 20.1
+            },
+            {
+                "conversion_coefficient": 0.005453,
+                "energy_keV": 536.338,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L9_to_L5_1_536.3380keV",
+                "relative_intensity": 14.1
+            },
+            {
+                "conversion_coefficient": 0.003481,
+                "energy_keV": 632.239,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L9_to_L3_2_632.2390keV",
+                "relative_intensity": 5.2
+            },
+            {
+                "conversion_coefficient": 0.002601,
+                "energy_keV": 707.415,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L9_to_L2_3_707.4150keV",
+                "relative_intensity": 69
+            },
+            {
+                "conversion_coefficient": 0.0006828,
+                "energy_keV": 1283.491,
+                "mixing_ratio": 2.4,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L9_to_L1_4_1283.4910keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0003289,
+                "energy_keV": 1841.947,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L9_to_L0_5_1841.9470keV",
+                "relative_intensity": 37
+            },
+            {
+                "conversion_coefficient": 0.006839,
+                "energy_keV": 495.354,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L10_to_L6_0_495.3540keV",
+                "relative_intensity": 6
+            },
+            {
+                "conversion_coefficient": 0.000649,
+                "energy_keV": 1301.242,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L10_to_L1_1_1301.2420keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.264,
+                "energy_keV": 132.016,
+                "mixing_ratio": 0.65,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L11_to_L7_0_132.0160keV",
+                "relative_intensity": 0.041
+            },
+            {
+                "conversion_coefficient": 0.006661,
+                "energy_keV": 499.918,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L11_to_L6_1_499.9180keV",
+                "relative_intensity": 0.4
+            },
+            {
+                "conversion_coefficient": 0.004651,
+                "energy_keV": 580.523,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L11_to_L4_2_580.5230keV",
+                "relative_intensity": 22.8
+            },
+            {
+                "conversion_coefficient": 0.003194,
+                "energy_keV": 654.554,
+                "mixing_ratio": -4.2,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L11_to_L3_3_654.5540keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0007415,
+                "energy_keV": 1305.806,
+                "mixing_ratio": -0.1,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L11_to_L1_4_1305.8060keV",
+                "relative_intensity": 86
+            },
+            {
+                "conversion_coefficient": 0.069,
+                "energy_keV": 199.831,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L12_to_L7_0_199.8310keV",
+                "relative_intensity": 2.4
+            },
+            {
+                "conversion_coefficient": 0.004655,
+                "energy_keV": 567.733,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L12_to_L6_1_567.7330keV",
+                "relative_intensity": 34.5
+            },
+            {
+                "conversion_coefficient": 0.00342,
+                "energy_keV": 648.338,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L12_to_L4_2_648.3380keV",
+                "relative_intensity": 66
+            },
+            {
+                "conversion_coefficient": 0.002467,
+                "energy_keV": 722.369,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L12_to_L3_3_722.3690keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.01668,
+                "energy_keV": 225.848,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L13_to_L7_0_225.8480keV",
+                "relative_intensity": 0.07
+            },
+            {
+                "conversion_coefficient": 0.001433,
+                "energy_keV": 593.75,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L13_to_L6_1_593.7500keV",
+                "relative_intensity": 1
+            },
+            {
+                "conversion_coefficient": 0.001082,
+                "energy_keV": 674.355,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L13_to_L4_2_674.3550keV",
+                "relative_intensity": 0.3
+            },
+            {
+                "conversion_coefficient": 0.0008666,
+                "energy_keV": 748.386,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L13_to_L3_3_748.3860keV",
+                "relative_intensity": 35
+            },
+            {
+                "conversion_coefficient": 0.0002646,
+                "energy_keV": 1399.638,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L13_to_L1_4_1399.6380keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.002608,
+                "energy_keV": 706.561,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L14_to_L4_0_706.5610keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.2258,
+                "energy_keV": 89.932,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L15_to_L13_0_89.9320keV",
+                "relative_intensity": 0.168
+            },
+            {
+                "conversion_coefficient": 0.08636,
+                "energy_keV": 183.764,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L15_to_L11_1_183.7640keV",
+                "relative_intensity": 0.088
+            },
+            {
+                "conversion_coefficient": 0.06355,
+                "energy_keV": 206.079,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L15_to_L9_2_206.0790keV",
+                "relative_intensity": 0.113
+            },
+            {
+                "conversion_coefficient": 0.002303,
+                "energy_keV": 742.417,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L15_to_L5_3_742.4170keV",
+                "relative_intensity": 10.4
+            },
+            {
+                "conversion_coefficient": 0.001929,
+                "energy_keV": 838.318,
+                "mixing_ratio": 0.75,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L15_to_L3_4_838.3180keV",
+                "relative_intensity": 4.5
+            },
+            {
+                "conversion_coefficient": 0.0005281,
+                "energy_keV": 1489.57,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L15_to_L1_5_1489.5700keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0002705,
+                "energy_keV": 2048.026,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L15_to_L0_6_2048.0260keV",
+                "relative_intensity": 7.6
+            },
+            {
+                "conversion_coefficient": 0.07279,
+                "energy_keV": 220.189,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L16_to_L12_0_220.1890keV",
+                "relative_intensity": 4.5
+            },
+            {
+                "conversion_coefficient": 0.02645,
+                "energy_keV": 288.004,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L16_to_L11_1_288.0040keV",
+                "relative_intensity": 24.3
+            },
+            {
+                "conversion_coefficient": 0.02905,
+                "energy_keV": 310.319,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L16_to_L9_2_310.3190keV",
+                "relative_intensity": 20.2
+            },
+            {
+                "conversion_coefficient": 0.01068,
+                "energy_keV": 420.02,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L16_to_L7_3_420.0200keV",
+                "relative_intensity": 37
+            },
+            {
+                "conversion_coefficient": 0.002285,
+                "energy_keV": 787.922,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L16_to_L6_4_787.9220keV",
+                "relative_intensity": 13
+            },
+            {
+                "conversion_coefficient": 0.0017,
+                "energy_keV": 868.527,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L16_to_L4_5_868.5270keV",
+                "relative_intensity": 63
+            },
+            {
+                "conversion_coefficient": 0.00141,
+                "energy_keV": 942.558,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L16_to_L3_6_942.5580keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004881,
+                "energy_keV": 1593.81,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L16_to_L1_7_1593.8100keV",
+                "relative_intensity": 43
+            },
+            {
+                "conversion_coefficient": 0.1462,
+                "energy_keV": 156.535,
+                "mixing_ratio": 0.42,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L17_to_L15_0_156.5350keV",
+                "relative_intensity": 0.3
+            },
+            {
+                "conversion_coefficient": 0.01312,
+                "energy_keV": 246.467,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L17_to_L13_1_246.4670keV",
+                "relative_intensity": 1
+            },
+            {
+                "conversion_coefficient": 0.01941,
+                "energy_keV": 340.299,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L17_to_L11_2_340.2990keV",
+                "relative_intensity": 3.8
+            },
+            {
+                "conversion_coefficient": 0.0153,
+                "energy_keV": 362.614,
+                "mixing_ratio": 0.82,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L17_to_L9_3_362.6140keV",
+                "relative_intensity": 4.4
+            },
+            {
+                "conversion_coefficient": 0.007647,
+                "energy_keV": 472.315,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L17_to_L7_4_472.3150keV",
+                "relative_intensity": 4.5
+            },
+            {
+                "conversion_coefficient": 0.001967,
+                "energy_keV": 840.217,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L17_to_L6_5_840.2170keV",
+                "relative_intensity": 43
+            },
+            {
+                "conversion_coefficient": 0.001599,
+                "energy_keV": 920.822,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L17_to_L4_6_920.8220keV",
+                "relative_intensity": 73
+            },
+            {
+                "conversion_coefficient": 0.00127,
+                "energy_keV": 994.853,
+                "mixing_ratio": 0.8,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L17_to_L3_7_994.8530keV",
+                "relative_intensity": 71
+            },
+            {
+                "conversion_coefficient": 0.0004557,
+                "energy_keV": 1646.105,
+                "mixing_ratio": -0.1,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L17_to_L1_8_1646.1050keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.1051,
+                "energy_keV": 170.834,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L18_to_L15_0_170.8340keV",
+                "relative_intensity": 0.016
+            },
+            {
+                "conversion_coefficient": 0.01813,
+                "energy_keV": 359.162,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L18_to_L10_1_359.1620keV",
+                "relative_intensity": 0.06
+            },
+            {
+                "conversion_coefficient": 0.0072,
+                "energy_keV": 486.614,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L18_to_L7_2_486.6140keV",
+                "relative_intensity": 0.2
+            },
+            {
+                "conversion_coefficient": 0.001764,
+                "energy_keV": 854.516,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L18_to_L6_3_854.5160keV",
+                "relative_intensity": 1.2
+            },
+            {
+                "conversion_coefficient": 0.0004243,
+                "energy_keV": 1660.404,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L18_to_L1_4_1660.4040keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.004571,
+                "energy_keV": 366.853,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L19_to_L12_0_366.8530keV",
+                "relative_intensity": 3
+            },
+            {
+                "conversion_coefficient": 0.000472,
+                "energy_keV": 1015.191,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L19_to_L4_1_1015.1910keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.001046,
+                "energy_keV": 1107.392,
+                "mixing_ratio": 0.5,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L20_to_L3_0_1107.3920keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0007905,
+                "energy_keV": 1182.568,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L20_to_L2_1_1182.5680keV",
+                "relative_intensity": 31
+            },
+            {
+                "conversion_coefficient": 0.0002166,
+                "energy_keV": 2317.1,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L20_to_L0_2_2317.1000keV",
+                "relative_intensity": 20
+            },
+            {
+                "conversion_coefficient": 0.03953,
+                "energy_keV": 165.9,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L21_to_L18_0_165.9000keV",
+                "relative_intensity": 0.25
+            },
+            {
+                "conversion_coefficient": 0.03131,
+                "energy_keV": 180.199,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L21_to_L17_1_180.1990keV",
+                "relative_intensity": 0.18
+            },
+            {
+                "conversion_coefficient": 0.005703,
+                "energy_keV": 336.734,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L21_to_L15_2_336.7340keV",
+                "relative_intensity": 0.31
+            },
+            {
+                "conversion_coefficient": 0.009814,
+                "energy_keV": 426.666,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L21_to_L13_3_426.6660keV",
+                "relative_intensity": 7.9
+            },
+            {
+                "conversion_coefficient": 0.00036,
+                "energy_keV": 1175.052,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L21_to_L3_4_1175.0520keV",
+                "relative_intensity": 25.1
+            },
+            {
+                "conversion_coefficient": 0.0001708,
+                "energy_keV": 1826.304,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L21_to_L1_5_1826.3040keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0001704,
+                "energy_keV": 1828.844,
+                "mixing_ratio": 0.01,
+                "multipolarity_code": 205,
+                "name": "114Cd:gamma_L22_to_L1_0_1828.8440keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.008184,
+                "energy_keV": 459.423,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L23_to_L12_0_459.4230keV",
+                "relative_intensity": 2.5
+            },
+            {
+                "conversion_coefficient": 0.003444,
+                "energy_keV": 659.254,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L23_to_L7_1_659.2540keV",
+                "relative_intensity": 4.5
+            },
+            {
+                "conversion_coefficient": 0.00106,
+                "energy_keV": 1107.761,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L23_to_L4_2_1107.7610keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.003014,
+                "energy_keV": 667.954,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L25_to_L7_0_667.9540keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0007317,
+                "energy_keV": 1227.932,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L27_to_L3_0_1227.9320keV",
+                "relative_intensity": 8.6
+            },
+            {
+                "conversion_coefficient": 0.0003169,
+                "energy_keV": 1879.184,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L27_to_L1_1_1879.1840keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004119,
+                "energy_keV": 1091.661,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L28_to_L6_0_1091.6610keV",
+                "relative_intensity": 15
+            },
+            {
+                "conversion_coefficient": 0.0001086,
+                "energy_keV": 2456.005,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L28_to_L0_1_2456.0050keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.01181,
+                "energy_keV": 256.196,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L29_to_L17_0_256.1960keV",
+                "relative_intensity": 12.5
+            },
+            {
+                "conversion_coefficient": 0.006565,
+                "energy_keV": 502.663,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L29_to_L13_1_502.6630keV",
+                "relative_intensity": 18
+            },
+            {
+                "conversion_coefficient": 0.001418,
+                "energy_keV": 596.495,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L29_to_L11_2_596.4950keV",
+                "relative_intensity": 61
+            },
+            {
+                "conversion_coefficient": 0.0009169,
+                "energy_keV": 728.511,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L29_to_L7_3_728.5110keV",
+                "relative_intensity": 9.7
+            },
+            {
+                "conversion_coefficient": 0.0003589,
+                "energy_keV": 1177.018,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L29_to_L4_4_1177.0180keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.000682,
+                "energy_keV": 1902.301,
+                "mixing_ratio": 0,
+                "multipolarity_code": 5,
+                "name": "114Cd:gamma_L29_to_L1_5_1902.3010keV",
+                "relative_intensity": 97
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 1100.856,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L30_to_L6_0_1100.8560keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.06313,
+                "energy_keV": 140.66,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L33_to_L21_0_140.6600keV",
+                "relative_intensity": 0.5
+            },
+            {
+                "conversion_coefficient": 0.02793,
+                "energy_keV": 306.56,
+                "mixing_ratio": 0.82,
+                "multipolarity_code": 403,
+                "name": "114Cd:gamma_L33_to_L18_1_306.5600keV",
+                "relative_intensity": 7.6
+            },
+            {
+                "conversion_coefficient": 0.02006,
+                "energy_keV": 320.859,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L33_to_L17_2_320.8590keV",
+                "relative_intensity": 0.7
+            },
+            {
+                "conversion_coefficient": 0.001589,
+                "energy_keV": 567.326,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L33_to_L13_3_567.3260keV",
+                "relative_intensity": 30
+            },
+            {
+                "conversion_coefficient": 0.00342,
+                "energy_keV": 661.158,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L33_to_L11_4_661.1580keV",
+                "relative_intensity": 5.4
+            },
+            {
+                "conversion_coefficient": 0.00304,
+                "energy_keV": 665.722,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L33_to_L10_5_665.7220keV",
+                "relative_intensity": 10
+            },
+            {
+                "conversion_coefficient": 0.0009571,
+                "energy_keV": 1161.076,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L33_to_L6_6_1161.0760keV",
+                "relative_intensity": 56
+            },
+            {
+                "conversion_coefficient": 0.0007421,
+                "energy_keV": 1219.811,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L33_to_L5_7_1219.8110keV",
+                "relative_intensity": 73
+            },
+            {
+                "conversion_coefficient": 0.0007305,
+                "energy_keV": 1315.712,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L33_to_L3_8_1315.7120keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0003173,
+                "energy_keV": 1966.964,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L33_to_L1_9_1966.9640keV",
+                "relative_intensity": 87
+            },
+            {
+                "conversion_coefficient": 0.0001861,
+                "energy_keV": 2525.42,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L33_to_L0_10_2525.4200keV",
+                "relative_intensity": 58
+            },
+            {
+                "conversion_coefficient": 0.04396,
+                "energy_keV": 236.88,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L34_to_L19_0_236.8800keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0007826,
+                "energy_keV": 1189.526,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L35_to_L6_1_1189.5260keV",
+                "relative_intensity": 18.33
+            },
+            {
+                "conversion_coefficient": 0.0002837,
+                "energy_keV": 1995.414,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L35_to_L1_2_1995.4140keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.004749,
+                "energy_keV": 361.497,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L36_to_L18_0_361.4970keV",
+                "relative_intensity": 0.3
+            },
+            {
+                "conversion_coefficient": 0.004315,
+                "energy_keV": 375.796,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L36_to_L17_1_375.7960keV",
+                "relative_intensity": 1.5
+            },
+            {
+                "conversion_coefficient": 0.00192,
+                "energy_keV": 532.331,
+                "mixing_ratio": 0.07,
+                "multipolarity_code": 205,
+                "name": "114Cd:gamma_L36_to_L15_2_532.3310keV",
+                "relative_intensity": 5.1
+            },
+            {
+                "conversion_coefficient": 0.003759,
+                "energy_keV": 622.263,
+                "mixing_ratio": 1.2,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L36_to_L13_3_622.2630keV",
+                "relative_intensity": 5.7
+            },
+            {
+                "conversion_coefficient": 0.0008915,
+                "energy_keV": 738.41,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L36_to_L9_4_738.4100keV",
+                "relative_intensity": 1.4
+            },
+            {
+                "conversion_coefficient": 0.0002745,
+                "energy_keV": 1370.649,
+                "mixing_ratio": 0.01,
+                "multipolarity_code": 205,
+                "name": "114Cd:gamma_L36_to_L3_5_1370.6490keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.000152,
+                "energy_keV": 2021.901,
+                "mixing_ratio": 0.12,
+                "multipolarity_code": 205,
+                "name": "114Cd:gamma_L36_to_L1_6_2021.9010keV",
+                "relative_intensity": 41
+            },
+            {
+                "conversion_coefficient": 0.0005387,
+                "energy_keV": 1426.812,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L37_to_L3_0_1426.8120keV",
+                "relative_intensity": 8.5
+            },
+            {
+                "conversion_coefficient": 0.0002633,
+                "energy_keV": 2078.064,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L37_to_L1_1_2078.0640keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.2496,
+                "energy_keV": 124.7,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L39_to_L33_0_124.7000keV",
+                "relative_intensity": 0.15
+            },
+            {
+                "conversion_coefficient": 0.02541,
+                "energy_keV": 194.115,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L39_to_L28_1_194.1150keV",
+                "relative_intensity": 0.18
+            },
+            {
+                "conversion_coefficient": 0.1043,
+                "energy_keV": 212.48,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L39_to_L27_2_212.4800keV",
+                "relative_intensity": 0.1
+            },
+            {
+                "conversion_coefficient": 0.009559,
+                "energy_keV": 431.26,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L39_to_L18_3_431.2600keV",
+                "relative_intensity": 2.5
+            },
+            {
+                "conversion_coefficient": 0.004265,
+                "energy_keV": 602.094,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L39_to_L15_4_602.0940keV",
+                "relative_intensity": 2.7
+            },
+            {
+                "conversion_coefficient": 0.001023,
+                "energy_keV": 692.026,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L39_to_L13_5_692.0260keV",
+                "relative_intensity": 4
+            },
+            {
+                "conversion_coefficient": 0.0007674,
+                "energy_keV": 1285.776,
+                "mixing_ratio": 0.03,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L39_to_L6_6_1285.7760keV",
+                "relative_intensity": 28
+            },
+            {
+                "conversion_coefficient": 0.0006069,
+                "energy_keV": 1344.511,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L39_to_L5_7_1344.5110keV",
+                "relative_intensity": 12.1
+            },
+            {
+                "conversion_coefficient": 0.000171,
+                "energy_keV": 2650.12,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L39_to_L0_8_2650.1200keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.009643,
+                "energy_keV": 276.14,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L40_to_L21_0_276.1400keV",
+                "relative_intensity": 0.3
+            },
+            {
+                "conversion_coefficient": 0.0002678,
+                "energy_keV": 2102.444,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L40_to_L1_1_2102.4440keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.002897,
+                "energy_keV": 679,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L41_to_L14_1_679.0000keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.01407,
+                "energy_keV": 240.309,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L42_to_L29_0_240.3090keV",
+                "relative_intensity": 4
+            },
+            {
+                "conversion_coefficient": 0.02197,
+                "energy_keV": 309.566,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L42_to_L23_1_309.5660keV",
+                "relative_intensity": 1.2
+            },
+            {
+                "conversion_coefficient": 0.006717,
+                "energy_keV": 316.306,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L42_to_L21_2_316.3060keV",
+                "relative_intensity": 1
+            },
+            {
+                "conversion_coefficient": 0.006771,
+                "energy_keV": 496.505,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L42_to_L17_3_496.5050keV",
+                "relative_intensity": 7.7
+            },
+            {
+                "conversion_coefficient": 0.00088,
+                "energy_keV": 742.972,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L42_to_L13_4_742.9720keV",
+                "relative_intensity": 59
+            },
+            {
+                "conversion_coefficient": 0.001869,
+                "energy_keV": 859.119,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L42_to_L9_5_859.1190keV",
+                "relative_intensity": 13.3
+            },
+            {
+                "conversion_coefficient": 0.0005602,
+                "energy_keV": 1491.358,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L42_to_L3_6_1491.3580keV",
+                "relative_intensity": 83
+            },
+            {
+                "conversion_coefficient": 0.0002675,
+                "energy_keV": 2142.61,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L42_to_L1_7_2142.6100keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004977,
+                "energy_keV": 2701.066,
+                "mixing_ratio": 0,
+                "multipolarity_code": 7,
+                "name": "114Cd:gamma_L42_to_L0_8_2701.0660keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.004058,
+                "energy_keV": 596.999,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L45_to_L16_0_596.9990keV",
+                "relative_intensity": 5
+            },
+            {
+                "conversion_coefficient": 0.000256,
+                "energy_keV": 2190.809,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L45_to_L1_1_2190.8090keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0001606,
+                "energy_keV": 2749.265,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L45_to_L0_2_2749.2650keV",
+                "relative_intensity": 8
+            },
+            {
+                "conversion_coefficient": 0.03215,
+                "energy_keV": 300.915,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L46_to_L28_0_300.9150keV",
+                "relative_intensity": 1.4
+            },
+            {
+                "conversion_coefficient": 0.002065,
+                "energy_keV": 798.826,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L46_to_L13_1_798.8260keV",
+                "relative_intensity": 14
+            },
+            {
+                "conversion_coefficient": 0.0004636,
+                "energy_keV": 1024.674,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L46_to_L7_2_1024.6740keV",
+                "relative_intensity": 39
+            },
+            {
+                "conversion_coefficient": 0.0002426,
+                "energy_keV": 1473.181,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L46_to_L4_3_1473.1810keV",
+                "relative_intensity": 49
+            },
+            {
+                "conversion_coefficient": 0.0001282,
+                "energy_keV": 2198.464,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L46_to_L1_4_2198.4640keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.000585,
+                "energy_keV": 908.152,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L47_to_L10_0_908.1520keV",
+                "relative_intensity": 2.1
+            },
+            {
+                "conversion_coefficient": 0.0001272,
+                "energy_keV": 2209.394,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L47_to_L1_1_2209.3940keV",
+                "relative_intensity": 52
+            },
+            {
+                "conversion_coefficient": 9.132e-05,
+                "energy_keV": 2767.85,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L47_to_L0_2_2767.8500keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 138.381,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L48_to_L39_0_138.3810keV",
+                "relative_intensity": 0.06
+            },
+            {
+                "conversion_coefficient": 0.03343,
+                "energy_keV": 263.081,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L48_to_L33_1_263.0810keV",
+                "relative_intensity": 0.4
+            },
+            {
+                "conversion_coefficient": 0.0002395,
+                "energy_keV": 2230.045,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L48_to_L1_2_2230.0450keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0001588,
+                "energy_keV": 2788.501,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L48_to_L0_3_2788.5010keV",
+                "relative_intensity": 30
+            },
+            {
+                "conversion_coefficient": 0.0004885,
+                "energy_keV": 1590.282,
+                "mixing_ratio": 0.24,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L49_to_L3_0_1590.2820keV",
+                "relative_intensity": 19
+            },
+            {
+                "conversion_coefficient": 0.0002372,
+                "energy_keV": 2241.534,
+                "mixing_ratio": 1,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L49_to_L1_1_2241.5340keV",
+                "relative_intensity": 20
+            },
+            {
+                "conversion_coefficient": 0.0001576,
+                "energy_keV": 2799.99,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L49_to_L0_2_2799.9900keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.01661,
+                "energy_keV": 226.233,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L50_to_L36_0_226.2330keV",
+                "relative_intensity": 1.2
+            },
+            {
+                "conversion_coefficient": 0.02816,
+                "energy_keV": 281.17,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L50_to_L33_1_281.1700keV",
+                "relative_intensity": 0.5
+            },
+            {
+                "conversion_coefficient": 0.0005049,
+                "energy_keV": 1522.851,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L50_to_L4_2_1522.8510keV",
+                "relative_intensity": 92
+            },
+            {
+                "conversion_coefficient": 0.0002359,
+                "energy_keV": 2248.134,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L50_to_L1_3_2248.1340keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.4482,
+                "energy_keV": 110.984,
+                "mixing_ratio": 0.42,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L51_to_L42_0_110.9840keV",
+                "relative_intensity": 0.35
+            },
+            {
+                "conversion_coefficient": 0.2032,
+                "energy_keV": 175.53,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L51_to_L37_1_175.5300keV",
+                "relative_intensity": 0.09
+            },
+            {
+                "conversion_coefficient": 0.01555,
+                "energy_keV": 231.693,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L51_to_L36_2_231.6930keV",
+                "relative_intensity": 0.3
+            },
+            {
+                "conversion_coefficient": 0.004025,
+                "energy_keV": 607.489,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L51_to_L17_3_607.4890keV",
+                "relative_intensity": 2.2
+            },
+            {
+                "conversion_coefficient": 0.0006612,
+                "energy_keV": 853.956,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L51_to_L13_4_853.9560keV",
+                "relative_intensity": 14.6
+            },
+            {
+                "conversion_coefficient": 0.0005598,
+                "energy_keV": 1447.706,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L51_to_L6_5_1447.7060keV",
+                "relative_intensity": 16.5
+            },
+            {
+                "conversion_coefficient": 0.0002349,
+                "energy_keV": 2253.594,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L51_to_L1_6_2253.5940keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0001544,
+                "energy_keV": 2812.05,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L51_to_L0_7_2812.0500keV",
+                "relative_intensity": 36
+            },
+            {
+                "conversion_coefficient": 0.003979,
+                "energy_keV": 601.36,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L52_to_L18_0_601.3600keV",
+                "relative_intensity": 23
+            },
+            {
+                "conversion_coefficient": 0.00209,
+                "energy_keV": 772.194,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L52_to_L15_1_772.1940keV",
+                "relative_intensity": 40
+            },
+            {
+                "conversion_coefficient": 0.0006487,
+                "energy_keV": 862.126,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L52_to_L13_2_862.1260keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004207,
+                "energy_keV": 1618.172,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L53_to_L3_0_1618.1720keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 913.536,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L57_to_L13_0_913.5360keV",
+                "relative_intensity": 13
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 2313.174,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L57_to_L1_1_2313.1740keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 826.234,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L58_to_L15_0_826.2340keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 916.166,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L58_to_L13_1_916.1660keV",
+                "relative_intensity": 19
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 1664.552,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L58_to_L3_2_1664.5520keV",
+                "relative_intensity": 33
+            },
+            {
+                "conversion_coefficient": 0,
+                "energy_keV": 1596.821,
+                "mixing_ratio": 0,
+                "multipolarity_code": 0,
+                "name": "114Cd:gamma_L59_to_L4_0_1596.8210keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004377,
+                "energy_keV": 1634.711,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L62_to_L4_0_1634.7110keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004056,
+                "energy_keV": 1649.231,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L63_to_L4_0_1649.2310keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0004152,
+                "energy_keV": 1630.151,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L64_to_L5_0_1630.1510keV",
+                "relative_intensity": 56
+            },
+            {
+                "conversion_coefficient": 0.0004041,
+                "energy_keV": 1652.021,
+                "mixing_ratio": 0,
+                "multipolarity_code": 4,
+                "name": "114Cd:gamma_L64_to_L4_1_1652.0210keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0003848,
+                "energy_keV": 1726.052,
+                "mixing_ratio": -1.5,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L64_to_L3_2_1726.0520keV",
+                "relative_intensity": 85
+            },
+            {
+                "conversion_coefficient": 0.0002125,
+                "energy_keV": 2377.304,
+                "mixing_ratio": 0,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L64_to_L1_3_2377.3040keV",
+                "relative_intensity": 93
+            },
+            {
+                "conversion_coefficient": 0.008774,
+                "energy_keV": 286,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L65_to_L39_0_286.0000keV",
+                "relative_intensity": 0.5
+            },
+            {
+                "conversion_coefficient": 0.00753,
+                "energy_keV": 475.363,
+                "mixing_ratio": 0,
+                "multipolarity_code": 3,
+                "name": "114Cd:gamma_L65_to_L29_1_475.3630keV",
+                "relative_intensity": 4.5
+            },
+            {
+                "conversion_coefficient": 0.0002006,
+                "energy_keV": 1652.381,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L65_to_L4_2_1652.3810keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0001139,
+                "energy_keV": 2377.664,
+                "mixing_ratio": 0,
+                "multipolarity_code": 2,
+                "name": "114Cd:gamma_L65_to_L1_3_2377.6640keV",
+                "relative_intensity": 77
+            },
+            {
+                "conversion_coefficient": 0.0003924,
+                "energy_keV": 1731.562,
+                "mixing_ratio": -0.9,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L66_to_L3_0_1731.5620keV",
+                "relative_intensity": 100
+            },
+            {
+                "conversion_coefficient": 0.0002169,
+                "energy_keV": 2382.814,
+                "mixing_ratio": 0.18,
+                "multipolarity_code": 304,
+                "name": "114Cd:gamma_L66_to_L1_1_2382.8140keV",
+                "relative_intensity": 96
+            }
+        ],
+        "upper_jpi_raw": 2,
+        "upper_level": "114Cd:L66_2941.270000keV"
+    },
+    "transitions": [
+        {
+            "name": "114Cd:gamma_L1_to_L0_0_558.4560keV",
+            "probability": 1,
+            "source_index": 1,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L2_to_L1_0_576.0760keV",
+            "probability": 1,
+            "source_index": 2,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L3_to_L2_0_75.1760keV",
+            "probability": 1.472866047716674e-06,
+            "source_index": 3,
+            "target_index": 2
+        },
+        {
+            "name": "114Cd:gamma_L3_to_L1_1_651.2520keV",
+            "probability": 0.7751926566929862,
+            "source_index": 3,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L3_to_L0_2_1209.7080keV",
+            "probability": 0.224805870440966,
+            "source_index": 3,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L4_to_L1_0_725.2830keV",
+            "probability": 1,
+            "source_index": 4,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L5_to_L3_0_95.9010keV",
+            "probability": 0.6329113924050633,
+            "source_index": 5,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L5_to_L1_2_747.1530keV",
+            "probability": 0.3670886075949367,
+            "source_index": 5,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L6_to_L4_0_80.6050keV",
+            "probability": 4.647872049246786e-05,
+            "source_index": 6,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L6_to_L3_1_154.6360keV",
+            "probability": 0.0009192458052954756,
+            "source_index": 6,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L6_to_L2_2_229.8120keV",
+            "probability": 0.012652540578505142,
+            "source_index": 6,
+            "target_index": 2
+        },
+        {
+            "name": "114Cd:gamma_L6_to_L1_3_805.8880keV",
+            "probability": 0.5164302276940874,
+            "source_index": 6,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L6_to_L0_4_1364.3440keV",
+            "probability": 0.46995150720161954,
+            "source_index": 6,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L7_to_L6_0_367.9020keV",
+            "probability": 0.22268615170494085,
+            "source_index": 7,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L7_to_L4_1_448.5070keV",
+            "probability": 0.11621433542101602,
+            "source_index": 7,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L7_to_L3_2_522.5380keV",
+            "probability": 0.3479471120389701,
+            "source_index": 7,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L7_to_L1_3_1173.7900keV",
+            "probability": 0.3131524008350731,
+            "source_index": 7,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L6_0_477.6030keV",
+            "probability": 0.08190709046454768,
+            "source_index": 9,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L5_1_536.3380keV",
+            "probability": 0.057457212713936424,
+            "source_index": 9,
+            "target_index": 5
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L3_2_632.2390keV",
+            "probability": 0.021189894050529748,
+            "source_index": 9,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L2_3_707.4150keV",
+            "probability": 0.28117359413202936,
+            "source_index": 9,
+            "target_index": 2
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L1_4_1283.4910keV",
+            "probability": 0.40749796251018744,
+            "source_index": 9,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L9_to_L0_5_1841.9470keV",
+            "probability": 0.15077424612876936,
+            "source_index": 9,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L10_to_L6_0_495.3540keV",
+            "probability": 0.05660377358490566,
+            "source_index": 10,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L10_to_L1_1_1301.2420keV",
+            "probability": 0.9433962264150944,
+            "source_index": 10,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L11_to_L7_0_132.0160keV",
+            "probability": 0.00019594630115512738,
+            "source_index": 11,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L11_to_L6_1_499.9180keV",
+            "probability": 0.0019116712307817303,
+            "source_index": 11,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L11_to_L4_2_580.5230keV",
+            "probability": 0.10896526015455862,
+            "source_index": 11,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L11_to_L3_3_654.5540keV",
+            "probability": 0.4779178076954326,
+            "source_index": 11,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L11_to_L1_4_1305.8060keV",
+            "probability": 0.411009314618072,
+            "source_index": 11,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L12_to_L7_0_199.8310keV",
+            "probability": 0.011828486939379004,
+            "source_index": 12,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L12_to_L6_1_567.7330keV",
+            "probability": 0.17003449975357318,
+            "source_index": 12,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L12_to_L4_2_648.3380keV",
+            "probability": 0.3252833908329226,
+            "source_index": 12,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L12_to_L3_3_722.3690keV",
+            "probability": 0.4928536224741252,
+            "source_index": 12,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L13_to_L7_0_225.8480keV",
+            "probability": 0.0005133093788956516,
+            "source_index": 13,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L13_to_L6_1_593.7500keV",
+            "probability": 0.007332991127080736,
+            "source_index": 13,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L13_to_L4_2_674.3550keV",
+            "probability": 0.0021998973381242206,
+            "source_index": 13,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L13_to_L3_3_748.3860keV",
+            "probability": 0.25665468944782577,
+            "source_index": 13,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L13_to_L1_4_1399.6380keV",
+            "probability": 0.7332991127080736,
+            "source_index": 13,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L14_to_L4_0_706.5610keV",
+            "probability": 1,
+            "source_index": 14,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L13_0_89.9320keV",
+            "probability": 0.001367309899160895,
+            "source_index": 15,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L11_1_183.7640keV",
+            "probability": 0.0007162099471795163,
+            "source_index": 15,
+            "target_index": 11
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L9_2_206.0790keV",
+            "probability": 0.0009196786821736973,
+            "source_index": 15,
+            "target_index": 9
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L5_3_742.4170keV",
+            "probability": 0.08464299375757921,
+            "source_index": 15,
+            "target_index": 5
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L3_4_838.3180keV",
+            "probability": 0.036624372298952546,
+            "source_index": 15,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L1_5_1489.5700keV",
+            "probability": 0.8138749399767232,
+            "source_index": 15,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L15_to_L0_6_2048.0260keV",
+            "probability": 0.06185449543823096,
+            "source_index": 15,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L12_0_220.1890keV",
+            "probability": 0.014754098360655738,
+            "source_index": 16,
+            "target_index": 12
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L11_1_288.0040keV",
+            "probability": 0.07967213114754099,
+            "source_index": 16,
+            "target_index": 11
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L9_2_310.3190keV",
+            "probability": 0.06622950819672131,
+            "source_index": 16,
+            "target_index": 9
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L7_3_420.0200keV",
+            "probability": 0.12131147540983607,
+            "source_index": 16,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L6_4_787.9220keV",
+            "probability": 0.04262295081967213,
+            "source_index": 16,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L4_5_868.5270keV",
+            "probability": 0.20655737704918034,
+            "source_index": 16,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L3_6_942.5580keV",
+            "probability": 0.32786885245901637,
+            "source_index": 16,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L16_to_L1_7_1593.8100keV",
+            "probability": 0.14098360655737704,
+            "source_index": 16,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L15_0_156.5350keV",
+            "probability": 0.0009966777408637873,
+            "source_index": 17,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L13_1_246.4670keV",
+            "probability": 0.0033222591362126247,
+            "source_index": 17,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L11_2_340.2990keV",
+            "probability": 0.012624584717607973,
+            "source_index": 17,
+            "target_index": 11
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L9_3_362.6140keV",
+            "probability": 0.01461794019933555,
+            "source_index": 17,
+            "target_index": 9
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L7_4_472.3150keV",
+            "probability": 0.014950166112956811,
+            "source_index": 17,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L6_5_840.2170keV",
+            "probability": 0.14285714285714285,
+            "source_index": 17,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L4_6_920.8220keV",
+            "probability": 0.2425249169435216,
+            "source_index": 17,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L3_7_994.8530keV",
+            "probability": 0.23588039867109634,
+            "source_index": 17,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L17_to_L1_8_1646.1050keV",
+            "probability": 0.33222591362126247,
+            "source_index": 17,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L18_to_L15_0_170.8340keV",
+            "probability": 0.00015767275020694548,
+            "source_index": 18,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L18_to_L10_1_359.1620keV",
+            "probability": 0.0005912728132760456,
+            "source_index": 18,
+            "target_index": 10
+        },
+        {
+            "name": "114Cd:gamma_L18_to_L7_2_486.6140keV",
+            "probability": 0.001970909377586819,
+            "source_index": 18,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L18_to_L6_3_854.5160keV",
+            "probability": 0.01182545626552091,
+            "source_index": 18,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L18_to_L1_4_1660.4040keV",
+            "probability": 0.9854546887934093,
+            "source_index": 18,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L19_to_L12_0_366.8530keV",
+            "probability": 0.02912621359223301,
+            "source_index": 19,
+            "target_index": 12
+        },
+        {
+            "name": "114Cd:gamma_L19_to_L4_1_1015.1910keV",
+            "probability": 0.970873786407767,
+            "source_index": 19,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L20_to_L3_0_1107.3920keV",
+            "probability": 0.6622516556291391,
+            "source_index": 20,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L20_to_L2_1_1182.5680keV",
+            "probability": 0.2052980132450331,
+            "source_index": 20,
+            "target_index": 2
+        },
+        {
+            "name": "114Cd:gamma_L20_to_L0_2_2317.1000keV",
+            "probability": 0.13245033112582782,
+            "source_index": 20,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L18_0_165.9000keV",
+            "probability": 0.0018692986391505907,
+            "source_index": 21,
+            "target_index": 18
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L17_1_180.1990keV",
+            "probability": 0.001345895020188425,
+            "source_index": 21,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L15_2_336.7340keV",
+            "probability": 0.002317930312546732,
+            "source_index": 21,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L13_3_426.6660keV",
+            "probability": 0.05906983699715866,
+            "source_index": 21,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L3_4_1175.0520keV",
+            "probability": 0.1876775833707193,
+            "source_index": 21,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L21_to_L1_5_1826.3040keV",
+            "probability": 0.7477194556602362,
+            "source_index": 21,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L22_to_L1_0_1828.8440keV",
+            "probability": 1,
+            "source_index": 22,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L23_to_L12_0_459.4230keV",
+            "probability": 0.02336448598130841,
+            "source_index": 23,
+            "target_index": 12
+        },
+        {
+            "name": "114Cd:gamma_L23_to_L7_1_659.2540keV",
+            "probability": 0.04205607476635514,
+            "source_index": 23,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L23_to_L4_2_1107.7610keV",
+            "probability": 0.9345794392523364,
+            "source_index": 23,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L25_to_L7_0_667.9540keV",
+            "probability": 1,
+            "source_index": 25,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L27_to_L3_0_1227.9320keV",
+            "probability": 0.07918968692449356,
+            "source_index": 27,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L27_to_L1_1_1879.1840keV",
+            "probability": 0.9208103130755065,
+            "source_index": 27,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L28_to_L6_0_1091.6610keV",
+            "probability": 0.13043478260869565,
+            "source_index": 28,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L28_to_L0_1_2456.0050keV",
+            "probability": 0.8695652173913043,
+            "source_index": 28,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L17_0_256.1960keV",
+            "probability": 0.04191817572099262,
+            "source_index": 29,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L13_1_502.6630keV",
+            "probability": 0.060362173038229376,
+            "source_index": 29,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L11_2_596.4950keV",
+            "probability": 0.204560697518444,
+            "source_index": 29,
+            "target_index": 11
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L7_3_728.5110keV",
+            "probability": 0.03252850435949027,
+            "source_index": 29,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L4_4_1177.0180keV",
+            "probability": 0.335345405767941,
+            "source_index": 29,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L29_to_L1_5_1902.3010keV",
+            "probability": 0.3252850435949028,
+            "source_index": 29,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L30_to_L6_0_1100.8560keV",
+            "probability": 1,
+            "source_index": 30,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L21_0_140.6600keV",
+            "probability": 0.0011676786548341896,
+            "source_index": 33,
+            "target_index": 21
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L18_1_306.5600keV",
+            "probability": 0.01774871555347968,
+            "source_index": 33,
+            "target_index": 18
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L17_2_320.8590keV",
+            "probability": 0.0016347501167678655,
+            "source_index": 33,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L13_3_567.3260keV",
+            "probability": 0.07006071929005138,
+            "source_index": 33,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L11_4_661.1580keV",
+            "probability": 0.012610929472209249,
+            "source_index": 33,
+            "target_index": 11
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L10_5_665.7220keV",
+            "probability": 0.023353573096683792,
+            "source_index": 33,
+            "target_index": 10
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L6_6_1161.0760keV",
+            "probability": 0.13078000934142925,
+            "source_index": 33,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L5_7_1219.8110keV",
+            "probability": 0.1704810836057917,
+            "source_index": 33,
+            "target_index": 5
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L3_8_1315.7120keV",
+            "probability": 0.23353573096683794,
+            "source_index": 33,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L1_9_1966.9640keV",
+            "probability": 0.203176085941149,
+            "source_index": 33,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L33_to_L0_10_2525.4200keV",
+            "probability": 0.135450723960766,
+            "source_index": 33,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L34_to_L19_0_236.8800keV",
+            "probability": 1,
+            "source_index": 34,
+            "target_index": 19
+        },
+        {
+            "name": "114Cd:gamma_L35_to_L6_1_1189.5260keV",
+            "probability": 0.15490577199357727,
+            "source_index": 35,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L35_to_L1_2_1995.4140keV",
+            "probability": 0.8450942280064228,
+            "source_index": 35,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L18_0_361.4970keV",
+            "probability": 0.001935483870967742,
+            "source_index": 36,
+            "target_index": 18
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L17_1_375.7960keV",
+            "probability": 0.00967741935483871,
+            "source_index": 36,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L15_2_532.3310keV",
+            "probability": 0.03290322580645161,
+            "source_index": 36,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L13_3_622.2630keV",
+            "probability": 0.036774193548387096,
+            "source_index": 36,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L9_4_738.4100keV",
+            "probability": 0.009032258064516128,
+            "source_index": 36,
+            "target_index": 9
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L3_5_1370.6490keV",
+            "probability": 0.6451612903225806,
+            "source_index": 36,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L36_to_L1_6_2021.9010keV",
+            "probability": 0.2645161290322581,
+            "source_index": 36,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L37_to_L3_0_1426.8120keV",
+            "probability": 0.07834101382488479,
+            "source_index": 37,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L37_to_L1_1_2078.0640keV",
+            "probability": 0.9216589861751152,
+            "source_index": 37,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L33_0_124.7000keV",
+            "probability": 0.0010018032458425166,
+            "source_index": 39,
+            "target_index": 33
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L28_1_194.1150keV",
+            "probability": 0.00120216389501102,
+            "source_index": 39,
+            "target_index": 28
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L27_2_212.4800keV",
+            "probability": 0.0006678688305616778,
+            "source_index": 39,
+            "target_index": 27
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L18_3_431.2600keV",
+            "probability": 0.016696720764041943,
+            "source_index": 39,
+            "target_index": 18
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L15_4_602.0940keV",
+            "probability": 0.0180324584251653,
+            "source_index": 39,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L13_5_692.0260keV",
+            "probability": 0.026714753222467108,
+            "source_index": 39,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L6_6_1285.7760keV",
+            "probability": 0.18700327255726976,
+            "source_index": 39,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L5_7_1344.5110keV",
+            "probability": 0.080812128497963,
+            "source_index": 39,
+            "target_index": 5
+        },
+        {
+            "name": "114Cd:gamma_L39_to_L0_8_2650.1200keV",
+            "probability": 0.6678688305616778,
+            "source_index": 39,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L40_to_L21_0_276.1400keV",
+            "probability": 0.002991026919242273,
+            "source_index": 40,
+            "target_index": 21
+        },
+        {
+            "name": "114Cd:gamma_L40_to_L1_1_2102.4440keV",
+            "probability": 0.9970089730807578,
+            "source_index": 40,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L41_to_L14_1_679.0000keV",
+            "probability": 1,
+            "source_index": 41,
+            "target_index": 14
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L29_0_240.3090keV",
+            "probability": 0.010834236186348862,
+            "source_index": 42,
+            "target_index": 29
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L23_1_309.5660keV",
+            "probability": 0.0032502708559046588,
+            "source_index": 42,
+            "target_index": 23
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L21_2_316.3060keV",
+            "probability": 0.0027085590465872156,
+            "source_index": 42,
+            "target_index": 21
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L17_3_496.5050keV",
+            "probability": 0.02085590465872156,
+            "source_index": 42,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L13_4_742.9720keV",
+            "probability": 0.1598049837486457,
+            "source_index": 42,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L9_5_859.1190keV",
+            "probability": 0.03602383531960997,
+            "source_index": 42,
+            "target_index": 9
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L3_6_1491.3580keV",
+            "probability": 0.2248104008667389,
+            "source_index": 42,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L1_7_2142.6100keV",
+            "probability": 0.27085590465872156,
+            "source_index": 42,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L42_to_L0_8_2701.0660keV",
+            "probability": 0.27085590465872156,
+            "source_index": 42,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L45_to_L16_0_596.9990keV",
+            "probability": 0.04424778761061947,
+            "source_index": 45,
+            "target_index": 16
+        },
+        {
+            "name": "114Cd:gamma_L45_to_L1_1_2190.8090keV",
+            "probability": 0.8849557522123894,
+            "source_index": 45,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L45_to_L0_2_2749.2650keV",
+            "probability": 0.07079646017699115,
+            "source_index": 45,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L46_to_L28_0_300.9150keV",
+            "probability": 0.006882989183874139,
+            "source_index": 46,
+            "target_index": 28
+        },
+        {
+            "name": "114Cd:gamma_L46_to_L13_1_798.8260keV",
+            "probability": 0.0688298918387414,
+            "source_index": 46,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L46_to_L7_2_1024.6740keV",
+            "probability": 0.19174041297935102,
+            "source_index": 46,
+            "target_index": 7
+        },
+        {
+            "name": "114Cd:gamma_L46_to_L4_3_1473.1810keV",
+            "probability": 0.24090462143559488,
+            "source_index": 46,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L46_to_L1_4_2198.4640keV",
+            "probability": 0.4916420845624385,
+            "source_index": 46,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L47_to_L10_0_908.1520keV",
+            "probability": 0.013627514600908502,
+            "source_index": 47,
+            "target_index": 10
+        },
+        {
+            "name": "114Cd:gamma_L47_to_L1_1_2209.3940keV",
+            "probability": 0.3374432186891629,
+            "source_index": 47,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L47_to_L0_2_2767.8500keV",
+            "probability": 0.6489292667099287,
+            "source_index": 47,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L48_to_L39_0_138.3810keV",
+            "probability": 0.00045991108385712103,
+            "source_index": 48,
+            "target_index": 39
+        },
+        {
+            "name": "114Cd:gamma_L48_to_L33_1_263.0810keV",
+            "probability": 0.003066073892380807,
+            "source_index": 48,
+            "target_index": 33
+        },
+        {
+            "name": "114Cd:gamma_L48_to_L1_2_2230.0450keV",
+            "probability": 0.7665184730952017,
+            "source_index": 48,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L48_to_L0_3_2788.5010keV",
+            "probability": 0.22995554192856052,
+            "source_index": 48,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L49_to_L3_0_1590.2820keV",
+            "probability": 0.1366906474820144,
+            "source_index": 49,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L49_to_L1_1_2241.5340keV",
+            "probability": 0.14388489208633093,
+            "source_index": 49,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L49_to_L0_2_2799.9900keV",
+            "probability": 0.7194244604316546,
+            "source_index": 49,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L50_to_L36_0_226.2330keV",
+            "probability": 0.006195147134744451,
+            "source_index": 50,
+            "target_index": 36
+        },
+        {
+            "name": "114Cd:gamma_L50_to_L33_1_281.1700keV",
+            "probability": 0.002581311306143521,
+            "source_index": 50,
+            "target_index": 33
+        },
+        {
+            "name": "114Cd:gamma_L50_to_L4_2_1522.8510keV",
+            "probability": 0.47496128033040785,
+            "source_index": 50,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L50_to_L1_3_2248.1340keV",
+            "probability": 0.5162622612287042,
+            "source_index": 50,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L42_0_110.9840keV",
+            "probability": 0.002058339214302517,
+            "source_index": 51,
+            "target_index": 42
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L37_1_175.5300keV",
+            "probability": 0.000529287226534933,
+            "source_index": 51,
+            "target_index": 37
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L36_2_231.6930keV",
+            "probability": 0.0017642907551164433,
+            "source_index": 51,
+            "target_index": 36
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L17_3_607.4890keV",
+            "probability": 0.012938132204187252,
+            "source_index": 51,
+            "target_index": 17
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L13_4_853.9560keV",
+            "probability": 0.08586215008233357,
+            "source_index": 51,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L6_5_1447.7060keV",
+            "probability": 0.09703599153140438,
+            "source_index": 51,
+            "target_index": 6
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L1_6_2253.5940keV",
+            "probability": 0.5880969183721477,
+            "source_index": 51,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L51_to_L0_7_2812.0500keV",
+            "probability": 0.2117148906139732,
+            "source_index": 51,
+            "target_index": 0
+        },
+        {
+            "name": "114Cd:gamma_L52_to_L18_0_601.3600keV",
+            "probability": 0.1411042944785276,
+            "source_index": 52,
+            "target_index": 18
+        },
+        {
+            "name": "114Cd:gamma_L52_to_L15_1_772.1940keV",
+            "probability": 0.24539877300613497,
+            "source_index": 52,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L52_to_L13_2_862.1260keV",
+            "probability": 0.6134969325153374,
+            "source_index": 52,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L53_to_L3_0_1618.1720keV",
+            "probability": 1,
+            "source_index": 53,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L57_to_L13_0_913.5360keV",
+            "probability": 0.11504424778761062,
+            "source_index": 57,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L57_to_L1_1_2313.1740keV",
+            "probability": 0.8849557522123894,
+            "source_index": 57,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L58_to_L15_0_826.2340keV",
+            "probability": 0.6578947368421053,
+            "source_index": 58,
+            "target_index": 15
+        },
+        {
+            "name": "114Cd:gamma_L58_to_L13_1_916.1660keV",
+            "probability": 0.125,
+            "source_index": 58,
+            "target_index": 13
+        },
+        {
+            "name": "114Cd:gamma_L58_to_L3_2_1664.5520keV",
+            "probability": 0.21710526315789475,
+            "source_index": 58,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L59_to_L4_0_1596.8210keV",
+            "probability": 1,
+            "source_index": 59,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L62_to_L4_0_1634.7110keV",
+            "probability": 1,
+            "source_index": 62,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L63_to_L4_0_1649.2310keV",
+            "probability": 1,
+            "source_index": 63,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L64_to_L5_0_1630.1510keV",
+            "probability": 0.16766467065868262,
+            "source_index": 64,
+            "target_index": 5
+        },
+        {
+            "name": "114Cd:gamma_L64_to_L4_1_1652.0210keV",
+            "probability": 0.2994011976047904,
+            "source_index": 64,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L64_to_L3_2_1726.0520keV",
+            "probability": 0.25449101796407186,
+            "source_index": 64,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L64_to_L1_3_2377.3040keV",
+            "probability": 0.27844311377245506,
+            "source_index": 64,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L65_to_L39_0_286.0000keV",
+            "probability": 0.0027472527472527475,
+            "source_index": 65,
+            "target_index": 39
+        },
+        {
+            "name": "114Cd:gamma_L65_to_L29_1_475.3630keV",
+            "probability": 0.024725274725274724,
+            "source_index": 65,
+            "target_index": 29
+        },
+        {
+            "name": "114Cd:gamma_L65_to_L4_2_1652.3810keV",
+            "probability": 0.5494505494505495,
+            "source_index": 65,
+            "target_index": 4
+        },
+        {
+            "name": "114Cd:gamma_L65_to_L1_3_2377.6640keV",
+            "probability": 0.4230769230769231,
+            "source_index": 65,
+            "target_index": 1
+        },
+        {
+            "name": "114Cd:gamma_L66_to_L3_0_1731.5620keV",
+            "probability": 0.5102040816326531,
+            "source_index": 66,
+            "target_index": 3
+        },
+        {
+            "name": "114Cd:gamma_L66_to_L1_1_2382.8140keV",
+            "probability": 0.4897959183673469,
+            "source_index": 66,
+            "target_index": 1
+        }
+    ],
+    "vectors": [
+    ]
+}

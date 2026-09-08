@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     assert(button(&window, "Import Quiver")->mapTo(&window, QPoint()).y() <
            button(&window, "Export Quiver")->mapTo(&window, QPoint()).y());
     auto edits = window.findChildren<QLineEdit*>();
-    assert(edits.size() == 2);
+    assert(edits.size() == 3);
     for (const auto& name : {"d0", "d1", "d2"}) {
         edits[0]->setText(name);
         button(&window, "Add Level")->click();
@@ -153,6 +153,19 @@ int main(int argc, char** argv) {
         assert(roundTrip.open(QIODevice::ReadOnly));
         assert(QJsonDocument::fromJson(roundTrip.readAll()).object() == json);
     }
+    assert(button(&window, "Paths & Vectors")->mapTo(&window, QPoint()).x() >
+           button(&window, "Import Quiver")->mapTo(&window, QPoint()).x());
+    button(&window, "Create Decay Vector")->click();
+    assert(window.findChild<QLabel*>("analysisResult")->text().contains("Created decay vector"));
+    window.findChild<QLineEdit*>("feedingTransition")->setText(lists[1]->item(0)->text());
+    button(&window, "Calculate Feeding Probability")->click();
+    assert(window.findChild<QLabel*>("analysisResult")->text().contains("Feeding probability:"));
+    QTimer::singleShot(0, [&] {
+        auto* dialog = qobject_cast<QDialog*>(QApplication::activeModalWidget());
+        assert(dialog && dialog->windowTitle().startsWith("Decay Vector"));
+        dialog->accept();
+    });
+    button(&window, "Print Decay Vector Table")->click();
     if (argc > 1) assert(window.grab().save(argv[1]));
     window.close();
     std::cout << "PASS: GUI construction, levels, transition, scene, path/vector, JSON import/export and failed-import rollback\n";

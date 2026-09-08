@@ -13,6 +13,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <algorithm>
 
 int main(int argc, char** argv) {
     QApplication app(argc, argv);
@@ -100,5 +101,96 @@ int main(int argc, char** argv) {
     assert(transition->GetSource() == middle);
     assert(transition->GetTarget() == ground);
     assert(transition->GetProbability() == 0.75);
-    std::cout << "PASS: bottom-up levels and one transition editor with accept/cancel\n";
+    // More than five transitions must occupy distinct, evenly spaced lanes,
+    // including parallel branches. Previously the x positions repeated modulo 5.
+    for (int i = 0; i < 11; ++i)
+        quiver.AddTransition("branch_" + std::to_string(i), upper, ground, 0.1);
+    view.refresh();
+    const auto lanes = [&] {
+        std::vector<double> xs;
+        for (auto* item : view.scene()->items())
+            if (auto* line = dynamic_cast<QGraphicsLineItem*>(item))
+                if (std::abs(line->line().dy()) > 1) xs.push_back(line->line().x1());
+        std::sort(xs.begin(), xs.end());
+        return xs;
+    };
+    const auto checkSpacing = [&] {
+        const auto xs = lanes();
+        assert(xs.size() == 12);
+        const double gap = xs[1] - xs[0];
+        assert(gap > 20);
+        for (std::size_t i = 2; i < xs.size(); ++i)
+            assert(std::abs(xs[i] - xs[i-1] - gap) < 1e-8);
+        assert(xs.back() - xs.front() > view.viewport()->width() * 0.6);
+        return gap;
+    };
+    const double before = checkSpacing();
+    view.resize(1200, 600);
+    app.processEvents();
+    assert(checkSpacing() > before);
+
+    // The first inserted transition starts at the middle level; it must be
+    // placed after all upper-source branches, regardless of insertion order.
+    std::vector<std::pair<double, double>> arrowSources;
+    for (auto* item : view.scene()->items())
+        if (auto* line = dynamic_cast<QGraphicsLineItem*>(item))
+            if (std::abs(line->line().dy()) > 1)
+                arrowSources.emplace_back(line->line().x1(), line->line().y1());
+    std::sort(arrowSources.begin(), arrowSources.end());
+    for (std::size_t i = 0; i + 1 < arrowSources.size(); ++i)
+        assert(std::abs(arrowSources[i].second - levelY("upper") - 10) < 1e-8);
+    assert(std::abs(arrowSources.back().second - levelY("middle") - 10) < 1e-8);
+    assert(quiver.GetTransitions().front() == transition);
+
+    // Hit testing after resizing must find the arrow in its new lane.
+    const double x = lanes().front();
+    const double y = (levelY("middle") + levelY("ground")) / 2;
+    const QPoint from = view.mapFromScene(QPointF(x, y));
+    const QPoint to = from + QPoint(15, 0);
+    QMouseEvent press(QEvent::MouseButtonPress, from, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(view.viewport(), &press);
+    QMouseEvent move(QEvent::MouseMove, to, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(view.viewport(), &move);
+    QMouseEvent release(QEvent::MouseButtonRelease, to, Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+    QApplication::sendEvent(view.viewport(), &release);
+    assert(std::abs(lanes().front() - x - 15) < 1e-8);
+    view.refresh();
+    assert(std::abs(lanes().front() - x - 15) < 1e-8);
+    // Use the actual level menu to focus on middle, hiding upper and its
+    // transitions without changing the underlying quiver.
+    QTimer zoomDriver;
+    bool zoomChosen = false;
+    QObject::connect(&zoomDriver, &QTimer::timeout, [&] {
+        auto* menu = qobject_cast<QMenu*>(QApplication::activePopupWidget());
+        if (!menu || zoomChosen) return;
+        zoomChosen = true;
+        assert(menu->actions().front()->text() == "Zoom: make this the top level");
+        menu->setActiveAction(menu->actions().front());
+        QKeyEvent key(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier);
+        QApplication::sendEvent(menu, &key);
+    });
+    zoomDriver.start(10);
+    const QPoint levelPoint = view.mapFromScene(QPointF(view.viewport()->width()/2, levelY("middle")));
+    QMouseEvent zoomPress(QEvent::MouseButtonPress, levelPoint, view.viewport()->mapToGlobal(levelPoint),
+                         Qt::RightButton, Qt::RightButton, Qt::NoModifier);
+    QApplication::sendEvent(view.viewport(), &zoomPress);
+    zoomDriver.stop();
+    assert(zoomChosen);
+    assert(levelY("middle") < 30);
+    assert(lanes().size() == 1);
+    assert(quiver.GetLevels().size() == 3 && quiver.GetTransitions().size() == 12);
+    for (auto* item : view.scene()->items())
+        if (auto* text = dynamic_cast<QGraphicsTextItem*>(item))
+            assert(text->toPlainText() != "upper");
+    view.resize(1000, 650);
+    app.processEvents();
+    assert(lanes().size() == 1);
+    view.showAllLevels();
+    assert(lanes().size() == 12);
+    assert(levelY("upper") < levelY("middle"));
+    view.focusOnLevel(0);
+    assert(lanes().empty());
+    view.setQuiver(&quiver);
+    assert(lanes().size() == 12);
+    std::cout << "PASS: level layout, transition editing, even lanes, resize and dragging\n";
 }
