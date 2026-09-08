@@ -1,0 +1,737 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tests/nuclear_data/test_decay_readers.C — COINAlgebra</title><style>:root{--blue:#005baa;--navy:#143d62;--link:#245c8a;--line:#ced8e2;--soft:#f1f5f9;--ink:#243445;--muted:#617285;--sidebar:266px;--top:158px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:180px}body{margin:0;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif;background:white}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer;border:1px solid #bacbdc;border-radius:4px;background:#fff;color:var(--navy);padding:5px 12px}button:hover{background:#eaf1f7}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d69b28;outline-offset:3px}.project-header{height:110px;background:var(--blue);display:flex;align-items:center;padding:20px 32px;gap:20px;color:white}.brand-mark{border:1px solid #ffffff65;width:62px;height:62px;font-size:40px;line-height:60px;text-align:center;font-family:Georgia,serif}.brand-mark span{font-size:24px}.project-name{color:white;font-size:32px;letter-spacing:.2px;font-weight:600;line-height:1.2}.project-name span{font-size:14px;font-weight:normal;opacity:.85;margin-left:8px}.project-header p{margin:6px 0 0;font-size:15px;color:#dfedfb}.header-note{margin-left:auto;text-align:right;font-size:14px;color:#d8eafb}.top-nav{height:48px;display:flex;align-items:stretch;background:linear-gradient(#f5f8fc,#e1e9f3);border-bottom:1px solid #a8bcd2;position:sticky;top:0;z-index:20;padding:0 24px;box-shadow:0 2px 4px #1c3f6410}.top-nav>a{padding:11px 20px;font-size:14px;font-weight:600;border-right:1px solid #cad6e3;color:#284c71;white-space:nowrap}.top-nav>a.active{background:#d2e1f0;box-shadow:inset 0 -3px var(--blue)}.search-box{margin:auto 0 auto auto;position:relative}.search-box input{width:280px;border:1px solid #a9bdd0;border-radius:18px;background:white;padding:5px 34px 5px 14px;font-size:14px}.search-box kbd{position:absolute;right:12px;top:5px;color:#8190a0;font:14px monospace}.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr) 190px;min-height:calc(100vh - 158px)}#sidebar{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;border-right:1px solid var(--line);background:#f8fafc;padding:20px 12px;font-size:14px}#sidebar a{display:flex;align-items:center;gap:8px;padding:5px 10px;color:#344e67;overflow-wrap:anywhere}#sidebar a.active{background:#dce9f6;color:#174d7a;border-radius:3px;font-weight:600}#sidebar details{margin:8px 0}#sidebar summary{padding:4px 8px;font-weight:600;color:#314d68;cursor:pointer}#sidebar details a{padding-left:24px}.tree-root{font-weight:bold;margin-bottom:10px}.type-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;border:1px solid #84a6c4;background:#e7f1f9;color:#2b6b9c;font:12px/1 monospace;border-radius:3px}.sidebar-footer{border-top:1px solid var(--line);padding-top:14px;margin-top:22px}.sidebar-footer span{display:block;font-size:12px;color:var(--muted);padding:5px 10px}main{min-width:0;padding:24px 38px 40px}.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:25px}.breadcrumb span{margin-left:8px}.view-tools{float:right}h1{font-size:28px;font-weight:500;line-height:1.3;color:#223c55;margin:0 0 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}h2{font-size:24px;font-weight:500;color:#204b72;border-bottom:1px solid #c5d5e5;padding:10px 0 8px;margin:38px 0 18px}h3{font-size:19px;color:#2c506e;margin-top:28px}p{margin:15px 0}li{margin:6px 0}.permalink{opacity:0;margin-left:10px;color:#8ba8c1;font-size:16px}h2:hover .permalink,h3:hover .permalink,.permalink:focus{opacity:1}code{font-family:Consolas,'Liberation Mono',monospace;font-size:.9em;color:#214a6a}p code,li code,td code{background:#f0f4f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:4px}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}th{background:#eaf0f7;text-align:left;font-weight:600;color:#294d70}th,td{padding:12px 15px;border-bottom:1px solid #dbe3eb;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fafc}td:first-child{min-width:180px}tr:target{background:#fff3ce!important}pre{overflow-x:auto;font:14px/1.65 Consolas,'Liberation Mono',monospace;margin:0;padding:18px 20px;background:#f6f8fb;tab-size:4}.code-wrap{border:1px solid #cbd8e5;border-radius:4px;margin:22px 0;overflow:hidden}.code-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:#eaf0f7;font-size:12px;color:#526d85;border-bottom:1px solid #d4dfeb}.code-bar button{font-size:12px;padding:2px 9px}.equation{overflow-x:auto;padding:10px 4px}.on-page{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;padding:28px 15px 20px 5px;font-size:13px}.on-page strong{font-size:12px;letter-spacing:.8px;color:#758698}.on-page a{display:block;border-left:2px solid #e2e8f0;padding:7px 12px;line-height:1.5;margin-top:2px}.on-page a:hover{border-left-color:#005baa}.class-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:25px}.class-card{display:grid;grid-template-columns:20px 1fr;gap:4px 10px;border:1px solid #cfdae5;padding:16px;border-radius:4px;background:#fafcfe}.class-card:hover{background:#eef4fa;text-decoration:none;border-color:#93b0cb}.class-card strong{overflow-wrap:anywhere;font-size:15px}.class-card>span:last-child{grid-column:2;font-size:13px;color:#71849a}footer{margin-top:48px;border-top:1px solid var(--line);padding-top:15px;font-size:12px;color:#74879a}footer span{margin:0 6px}#search-results{position:fixed;right:24px;top:158px;width:min(640px,calc(100vw - 32px));max-height:65vh;overflow:auto;background:white;border:1px solid #bacbdc;border-radius:5px;box-shadow:0 8px 30px #143d6233;z-index:30;padding:16px}#search-status{font-size:14px;color:#617285;margin-bottom:10px}.search-result{display:block;padding:12px;border-top:1px solid #e3eaf1}.search-result strong{display:block;font-size:15px;overflow-wrap:anywhere}.search-result span{font-size:13px;color:#6d7f90}.search-result small{display:block;font-size:14px;color:#455c72}#close-search{margin-top:12px}#member-filter{display:block;width:min(100%,480px);padding:8px 12px;border:1px solid #adbed0;border-radius:4px;margin-top:6px}#member-count{font-size:14px;color:var(--muted)}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.skip{position:absolute;top:-100px;left:20px;z-index:100;background:white;padding:12px}.skip:focus{top:10px}#menu-toggle{display:none}.source-page main{padding:32px}.source-page h1{font-size:22px;margin-top:20px;overflow-wrap:anywhere}.source-line{display:block;min-height:23px}.source-line>a{display:inline-block;width:55px;text-align:right;padding-right:18px;color:#8494a5;user-select:none}.source-line:target{background:#fff1c6}.source-code{border:1px solid var(--line);padding:12px 0;white-space:pre}.source-code code{font-size:14px}@media(min-width:1450px){main{padding-right:55px;padding-left:55px}}@media(max-width:1150px){.layout{grid-template-columns:240px minmax(0,1fr)}.on-page{display:none}.top-nav{padding:0 12px}.top-nav>a{padding:11px 13px}.search-box input{width:230px}}@media(max-width:800px){.project-header{height:100px;padding:18px}.brand-mark{display:none}.project-name{font-size:27px}.header-note{display:none}.top-nav{height:auto;min-height:48px;flex-wrap:wrap;padding:0 8px}.top-nav>a{padding:12px 8px;font-size:13px}.search-box{width:100%;margin:6px 0 9px}.search-box input{width:100%}.layout{display:block}#sidebar{display:none;position:fixed;top:0;bottom:0;left:0;height:100vh;width:280px;z-index:40;box-shadow:8px 0 30px #143d6233;padding-top:24px}body.nav-open #sidebar{display:block}#menu-toggle{display:block;border:0;background:transparent;padding:6px}#menu-toggle span{display:none}main{padding:22px 18px}.view-tools{float:none;text-align:right;margin-bottom:14px}.class-grid{grid-template-columns:1fr}h1{font-size:25px}h2{font-size:22px}#search-results{top:110px;right:12px}.project-header p{font-size:13px}.breadcrumb{margin-bottom:14px}html{scroll-padding-top:125px}}@media print{.project-header,.top-nav,#sidebar,.on-page,.view-tools,#search-results,.code-bar button,.permalink,.breadcrumb{display:none!important}.layout{display:block}main{padding:0}#guide{display:block!important}#class-index,#member-index,#file-index{display:none!important}pre{white-space:pre-wrap}a{color:inherit}h2,h3{break-after:avoid}tr{break-inside:avoid}footer{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body class="source-page"><header class="project-header"><a class="project-name" href="../../../index.html#files">COINAlgebra <span>Source reference</span></a></header><main><a href="../../../index.html#files">← File list</a><h1>tests/nuclear_data/test_decay_readers.C</h1><pre class="source-code"><code><span class="source-line" id="L1"><a href="#L1" aria-label="Line 1">1</a>#include &quot;COINAlgebra/NuclearData/PhotonEvaporationReader.h&quot;</span>
+<span class="source-line" id="L2"><a href="#L2" aria-label="Line 2">2</a>#include &quot;COINAlgebra/NuclearData/RadioactiveDecayReader.h&quot;</span>
+<span class="source-line" id="L3"><a href="#L3" aria-label="Line 3">3</a></span>
+<span class="source-line" id="L4"><a href="#L4" aria-label="Line 4">4</a>#include &lt;cmath&gt;</span>
+<span class="source-line" id="L5"><a href="#L5" aria-label="Line 5">5</a>#include &lt;iostream&gt;</span>
+<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a>#include &lt;string&gt;</span>
+<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a></span>
+<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>// ============================================================</span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>// Helper</span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>// ============================================================</span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a></span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>bool check(</span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>    bool condition,</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>    const std::string&amp; message</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>)</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>{</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    if(condition)</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    {</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>        std::cout &lt;&lt; &quot;  PASS: &quot; &lt;&lt; message &lt;&lt; std::endl;</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>        return true;</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    }</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a></span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    std::cout &lt;&lt; &quot;  FAIL: &quot; &lt;&lt; message &lt;&lt; std::endl;</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    return false;</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>}</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a></span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a></span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>// ============================================================</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>// Test RadioactiveDecayReader</span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>// ============================================================</span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a></span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>bool test_radioactive_decay_reader()</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>{</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>    std::cout</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>        &lt;&lt; &quot;============================================\n&quot;</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>        &lt;&lt; &quot; Testing RadioactiveDecayReader\n&quot;</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>        &lt;&lt; &quot;============================================\n&quot;;</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a></span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    bool success = true;</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a></span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    RadioactiveDecayReader reader(</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>        &quot;RadioactiveDecay5.5&quot;</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>    );</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a></span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    // Check data directory</span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a></span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    success &amp;= check(</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>        reader.dataDirectory() == &quot;RadioactiveDecay5.5&quot;,</span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>        &quot;Data directory&quot;</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    );</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a></span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a></span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    // Check file path</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a></span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    const std::string path =</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>        reader.filePath(12, 22);</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a></span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>    std::cout</span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>        &lt;&lt; &quot;  File: &quot;</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>        &lt;&lt; path</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    success &amp;= check(</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>        path.find(&quot;z12.a22&quot;) != std::string::npos,</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>        &quot;22Mg file path&quot;</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    );</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a></span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a></span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>    // Read 22Mg</span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a></span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    RadioactiveIsotope mg22 =</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>        reader.read(12, 22);</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a></span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    success &amp;= check(</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>        mg22.atomicNumber() == 12,</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>        &quot;Atomic number Z = 12&quot;</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    );</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a></span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    success &amp;= check(</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>        mg22.massNumber() == 22,</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>        &quot;Mass number A = 22&quot;</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    );</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a></span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a></span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    // Parent states</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a></span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    std::cout</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>        &lt;&lt; &quot;  Number of parent states: &quot;</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>        &lt;&lt; mg22.numberOfParentStates()</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a></span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    success &amp;= check(</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>        mg22.numberOfParentStates() &gt; 0,</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>        &quot;At least one parent state&quot;</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>    );</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a></span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    if(mg22.numberOfParentStates() == 0)</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>        return false;</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a></span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a></span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    // First parent state</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a></span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>    const auto&amp; parent =</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>        mg22.parentStates().front();</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a></span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>    std::cout</span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>        &lt;&lt; &quot;  First parent state:\n&quot;</span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a>        &lt;&lt; &quot;    Energy:    &quot;</span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>        &lt;&lt; parent.energy_keV</span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>        &lt;&lt; &quot; keV\n&quot;</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>        &lt;&lt; &quot;    Floating:  &quot;</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>        &lt;&lt; parent.floating</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>        &lt;&lt; &quot;    Half-life: &quot;</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>        &lt;&lt; parent.halfLife_s</span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>        &lt;&lt; &quot; s\n&quot;;</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a></span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a></span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    // 22Mg half-life</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a></span>
+<span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a>    success &amp;= check(</span>
+<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a>        std::abs(parent.halfLife_s - 3.8755) &lt; 1.0e-4,</span>
+<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>        &quot;22Mg half-life = 3.8755 s&quot;</span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>    );</span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a></span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a></span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a>    // Decay modes</span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a></span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>    std::cout</span>
+<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a>        &lt;&lt; &quot;  Decay modes: &quot;</span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>        &lt;&lt; parent.numberOfDecayModes()</span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a></span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>    success &amp;= check(</span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a>        parent.numberOfDecayModes() &gt; 0,</span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>        &quot;At least one decay mode&quot;</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>    );</span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a></span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a></span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>    double totalBranching = 0.0;</span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>    bool foundBetaPlus = false;</span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>    bool foundEC = false;</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a></span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a></span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>    for(const auto&amp; mode : parent.decayModes)</span>
+<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>    {</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>        std::cout</span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>            &lt;&lt; &quot;    Mode: &quot;</span>
+<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a>            &lt;&lt; mode.decayType</span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>            &lt;&lt; &quot;      Branching fraction: &quot;</span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>            &lt;&lt; mode.totalBranchingFraction</span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>            &lt;&lt; &quot;      Number of channels: &quot;</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>            &lt;&lt; mode.numberOfChannels()</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a>            &lt;&lt; std::endl;</span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a></span>
+<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a>        totalBranching +=</span>
+<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>            mode.totalBranchingFraction;</span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a></span>
+<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a></span>
+<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>        // Beta+</span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a></span>
+<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a>        if(mode.decayType == &quot;BetaPlus&quot;)</span>
+<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>        {</span>
+<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>            foundBetaPlus = true;</span>
+<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a></span>
+<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a>            success &amp;= check(</span>
+<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>                std::abs(</span>
+<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a>                    mode.totalBranchingFraction</span>
+<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>                    -</span>
+<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a>                    0.99918</span>
+<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a>                ) &lt; 1.0e-5,</span>
+<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a>                &quot;BetaPlus branching fraction = 0.99918&quot;</span>
+<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a>            );</span>
+<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>        }</span>
+<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a></span>
+<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a></span>
+<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a>        // Electron capture</span>
+<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a></span>
+<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>        if(</span>
+<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a>            mode.decayType == &quot;KshellEC&quot; ||</span>
+<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a>            mode.decayType == &quot;LshellEC&quot; ||</span>
+<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a>            mode.decayType == &quot;MshellEC&quot; ||</span>
+<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a>            mode.decayType == &quot;NshellEC&quot;</span>
+<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>        )</span>
+<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>        {</span>
+<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>            foundEC = true;</span>
+<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a>        }</span>
+<span class="source-line" id="L212"><a href="#L212" aria-label="Line 212">212</a></span>
+<span class="source-line" id="L213"><a href="#L213" aria-label="Line 213">213</a></span>
+<span class="source-line" id="L214"><a href="#L214" aria-label="Line 214">214</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L215"><a href="#L215" aria-label="Line 215">215</a>        // Channels</span>
+<span class="source-line" id="L216"><a href="#L216" aria-label="Line 216">216</a>        // ----------------------------------------------------</span>
+<span class="source-line" id="L217"><a href="#L217" aria-label="Line 217">217</a></span>
+<span class="source-line" id="L218"><a href="#L218" aria-label="Line 218">218</a>        for(std::size_t i = 0;</span>
+<span class="source-line" id="L219"><a href="#L219" aria-label="Line 219">219</a>            i &lt; mode.channels.size();</span>
+<span class="source-line" id="L220"><a href="#L220" aria-label="Line 220">220</a>            ++i)</span>
+<span class="source-line" id="L221"><a href="#L221" aria-label="Line 221">221</a>        {</span>
+<span class="source-line" id="L222"><a href="#L222" aria-label="Line 222">222</a>            const auto&amp; channel =</span>
+<span class="source-line" id="L223"><a href="#L223" aria-label="Line 223">223</a>                mode.channels[i];</span>
+<span class="source-line" id="L224"><a href="#L224" aria-label="Line 224">224</a></span>
+<span class="source-line" id="L225"><a href="#L225" aria-label="Line 225">225</a>            std::cout</span>
+<span class="source-line" id="L226"><a href="#L226" aria-label="Line 226">226</a>                &lt;&lt; &quot;        Channel &quot;</span>
+<span class="source-line" id="L227"><a href="#L227" aria-label="Line 227">227</a>                &lt;&lt; i</span>
+<span class="source-line" id="L228"><a href="#L228" aria-label="Line 228">228</a>                &lt;&lt; &quot;:\n&quot;</span>
+<span class="source-line" id="L229"><a href="#L229" aria-label="Line 229">229</a>                &lt;&lt; &quot;          Daughter energy: &quot;</span>
+<span class="source-line" id="L230"><a href="#L230" aria-label="Line 230">230</a>                &lt;&lt; channel.daughterEnergy_keV</span>
+<span class="source-line" id="L231"><a href="#L231" aria-label="Line 231">231</a>                &lt;&lt; &quot; keV\n&quot;</span>
+<span class="source-line" id="L232"><a href="#L232" aria-label="Line 232">232</a>                &lt;&lt; &quot;          Floating: &quot;</span>
+<span class="source-line" id="L233"><a href="#L233" aria-label="Line 233">233</a>                &lt;&lt; channel.daughterFloating</span>
+<span class="source-line" id="L234"><a href="#L234" aria-label="Line 234">234</a>                &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L235"><a href="#L235" aria-label="Line 235">235</a>                &lt;&lt; &quot;          Branching: &quot;</span>
+<span class="source-line" id="L236"><a href="#L236" aria-label="Line 236">236</a>                &lt;&lt; channel.branchingPercentage</span>
+<span class="source-line" id="L237"><a href="#L237" aria-label="Line 237">237</a>                &lt;&lt; &quot; %\n&quot;</span>
+<span class="source-line" id="L238"><a href="#L238" aria-label="Line 238">238</a>                &lt;&lt; &quot;          Q: &quot;</span>
+<span class="source-line" id="L239"><a href="#L239" aria-label="Line 239">239</a>                &lt;&lt; channel.qValue_keV</span>
+<span class="source-line" id="L240"><a href="#L240" aria-label="Line 240">240</a>                &lt;&lt; &quot; keV&quot;</span>
+<span class="source-line" id="L241"><a href="#L241" aria-label="Line 241">241</a>                &lt;&lt; std::endl;</span>
+<span class="source-line" id="L242"><a href="#L242" aria-label="Line 242">242</a></span>
+<span class="source-line" id="L243"><a href="#L243" aria-label="Line 243">243</a>            success &amp;= check(</span>
+<span class="source-line" id="L244"><a href="#L244" aria-label="Line 244">244</a>                channel.branchingPercentage &gt;= 0.0,</span>
+<span class="source-line" id="L245"><a href="#L245" aria-label="Line 245">245</a>                &quot;Channel branching percentage &gt;= 0&quot;</span>
+<span class="source-line" id="L246"><a href="#L246" aria-label="Line 246">246</a>            );</span>
+<span class="source-line" id="L247"><a href="#L247" aria-label="Line 247">247</a></span>
+<span class="source-line" id="L248"><a href="#L248" aria-label="Line 248">248</a>            success &amp;= check(</span>
+<span class="source-line" id="L249"><a href="#L249" aria-label="Line 249">249</a>                channel.modeFraction() &gt;= 0.0 &amp;&amp;</span>
+<span class="source-line" id="L250"><a href="#L250" aria-label="Line 250">250</a>                channel.modeFraction() &lt;= 1.0,</span>
+<span class="source-line" id="L251"><a href="#L251" aria-label="Line 251">251</a>                &quot;Channel branching fraction in [0,1]&quot;</span>
+<span class="source-line" id="L252"><a href="#L252" aria-label="Line 252">252</a>            );</span>
+<span class="source-line" id="L253"><a href="#L253" aria-label="Line 253">253</a>        }</span>
+<span class="source-line" id="L254"><a href="#L254" aria-label="Line 254">254</a>    }</span>
+<span class="source-line" id="L255"><a href="#L255" aria-label="Line 255">255</a></span>
+<span class="source-line" id="L256"><a href="#L256" aria-label="Line 256">256</a></span>
+<span class="source-line" id="L257"><a href="#L257" aria-label="Line 257">257</a>    success &amp;= check(</span>
+<span class="source-line" id="L258"><a href="#L258" aria-label="Line 258">258</a>        foundBetaPlus,</span>
+<span class="source-line" id="L259"><a href="#L259" aria-label="Line 259">259</a>        &quot;BetaPlus decay mode found&quot;</span>
+<span class="source-line" id="L260"><a href="#L260" aria-label="Line 260">260</a>    );</span>
+<span class="source-line" id="L261"><a href="#L261" aria-label="Line 261">261</a></span>
+<span class="source-line" id="L262"><a href="#L262" aria-label="Line 262">262</a></span>
+<span class="source-line" id="L263"><a href="#L263" aria-label="Line 263">263</a>    if(foundEC)</span>
+<span class="source-line" id="L264"><a href="#L264" aria-label="Line 264">264</a>    {</span>
+<span class="source-line" id="L265"><a href="#L265" aria-label="Line 265">265</a>        std::cout</span>
+<span class="source-line" id="L266"><a href="#L266" aria-label="Line 266">266</a>            &lt;&lt; &quot;  PASS: Electron-capture mode found&quot;</span>
+<span class="source-line" id="L267"><a href="#L267" aria-label="Line 267">267</a>            &lt;&lt; std::endl;</span>
+<span class="source-line" id="L268"><a href="#L268" aria-label="Line 268">268</a>    }</span>
+<span class="source-line" id="L269"><a href="#L269" aria-label="Line 269">269</a>    else</span>
+<span class="source-line" id="L270"><a href="#L270" aria-label="Line 270">270</a>    {</span>
+<span class="source-line" id="L271"><a href="#L271" aria-label="Line 271">271</a>        std::cout</span>
+<span class="source-line" id="L272"><a href="#L272" aria-label="Line 272">272</a>            &lt;&lt; &quot;  INFO: No separate electron-capture &quot;</span>
+<span class="source-line" id="L273"><a href="#L273" aria-label="Line 273">273</a>            &lt;&lt; &quot;mode found&quot;</span>
+<span class="source-line" id="L274"><a href="#L274" aria-label="Line 274">274</a>            &lt;&lt; std::endl;</span>
+<span class="source-line" id="L275"><a href="#L275" aria-label="Line 275">275</a>    }</span>
+<span class="source-line" id="L276"><a href="#L276" aria-label="Line 276">276</a></span>
+<span class="source-line" id="L277"><a href="#L277" aria-label="Line 277">277</a></span>
+<span class="source-line" id="L278"><a href="#L278" aria-label="Line 278">278</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L279"><a href="#L279" aria-label="Line 279">279</a>    // Branching normalization</span>
+<span class="source-line" id="L280"><a href="#L280" aria-label="Line 280">280</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L281"><a href="#L281" aria-label="Line 281">281</a></span>
+<span class="source-line" id="L282"><a href="#L282" aria-label="Line 282">282</a>    std::cout</span>
+<span class="source-line" id="L283"><a href="#L283" aria-label="Line 283">283</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L284"><a href="#L284" aria-label="Line 284">284</a>        &lt;&lt; &quot;  Total decay-mode branching: &quot;</span>
+<span class="source-line" id="L285"><a href="#L285" aria-label="Line 285">285</a>        &lt;&lt; totalBranching</span>
+<span class="source-line" id="L286"><a href="#L286" aria-label="Line 286">286</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L287"><a href="#L287" aria-label="Line 287">287</a></span>
+<span class="source-line" id="L288"><a href="#L288" aria-label="Line 288">288</a>    success &amp;= check(</span>
+<span class="source-line" id="L289"><a href="#L289" aria-label="Line 289">289</a>        std::abs(totalBranching - 1.0) &lt; 1.0e-3,</span>
+<span class="source-line" id="L290"><a href="#L290" aria-label="Line 290">290</a>        &quot;Decay branching fractions approximately sum to 1&quot;</span>
+<span class="source-line" id="L291"><a href="#L291" aria-label="Line 291">291</a>    );</span>
+<span class="source-line" id="L292"><a href="#L292" aria-label="Line 292">292</a></span>
+<span class="source-line" id="L293"><a href="#L293" aria-label="Line 293">293</a></span>
+<span class="source-line" id="L294"><a href="#L294" aria-label="Line 294">294</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L295"><a href="#L295" aria-label="Line 295">295</a>    // Parent-state lookup</span>
+<span class="source-line" id="L296"><a href="#L296" aria-label="Line 296">296</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L297"><a href="#L297" aria-label="Line 297">297</a></span>
+<span class="source-line" id="L298"><a href="#L298" aria-label="Line 298">298</a>    const auto&amp; lookup =</span>
+<span class="source-line" id="L299"><a href="#L299" aria-label="Line 299">299</a>        mg22.parentState(parent.energy_keV);</span>
+<span class="source-line" id="L300"><a href="#L300" aria-label="Line 300">300</a></span>
+<span class="source-line" id="L301"><a href="#L301" aria-label="Line 301">301</a>    success &amp;= check(</span>
+<span class="source-line" id="L302"><a href="#L302" aria-label="Line 302">302</a>        std::abs(</span>
+<span class="source-line" id="L303"><a href="#L303" aria-label="Line 303">303</a>            lookup.energy_keV -</span>
+<span class="source-line" id="L304"><a href="#L304" aria-label="Line 304">304</a>            parent.energy_keV</span>
+<span class="source-line" id="L305"><a href="#L305" aria-label="Line 305">305</a>        ) &lt; 1.0e-9,</span>
+<span class="source-line" id="L306"><a href="#L306" aria-label="Line 306">306</a>        &quot;Parent-state lookup by energy&quot;</span>
+<span class="source-line" id="L307"><a href="#L307" aria-label="Line 307">307</a>    );</span>
+<span class="source-line" id="L308"><a href="#L308" aria-label="Line 308">308</a></span>
+<span class="source-line" id="L309"><a href="#L309" aria-label="Line 309">309</a></span>
+<span class="source-line" id="L310"><a href="#L310" aria-label="Line 310">310</a>    return success;</span>
+<span class="source-line" id="L311"><a href="#L311" aria-label="Line 311">311</a>}</span>
+<span class="source-line" id="L312"><a href="#L312" aria-label="Line 312">312</a></span>
+<span class="source-line" id="L313"><a href="#L313" aria-label="Line 313">313</a></span>
+<span class="source-line" id="L314"><a href="#L314" aria-label="Line 314">314</a>// ============================================================</span>
+<span class="source-line" id="L315"><a href="#L315" aria-label="Line 315">315</a>// Test PhotonTransition</span>
+<span class="source-line" id="L316"><a href="#L316" aria-label="Line 316">316</a>// ============================================================</span>
+<span class="source-line" id="L317"><a href="#L317" aria-label="Line 317">317</a></span>
+<span class="source-line" id="L318"><a href="#L318" aria-label="Line 318">318</a>bool test_photon_transition()</span>
+<span class="source-line" id="L319"><a href="#L319" aria-label="Line 319">319</a>{</span>
+<span class="source-line" id="L320"><a href="#L320" aria-label="Line 320">320</a>    std::cout</span>
+<span class="source-line" id="L321"><a href="#L321" aria-label="Line 321">321</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L322"><a href="#L322" aria-label="Line 322">322</a>        &lt;&lt; &quot;============================================\n&quot;</span>
+<span class="source-line" id="L323"><a href="#L323" aria-label="Line 323">323</a>        &lt;&lt; &quot; Testing PhotonTransition\n&quot;</span>
+<span class="source-line" id="L324"><a href="#L324" aria-label="Line 324">324</a>        &lt;&lt; &quot;============================================\n&quot;;</span>
+<span class="source-line" id="L325"><a href="#L325" aria-label="Line 325">325</a></span>
+<span class="source-line" id="L326"><a href="#L326" aria-label="Line 326">326</a>    bool success = true;</span>
+<span class="source-line" id="L327"><a href="#L327" aria-label="Line 327">327</a></span>
+<span class="source-line" id="L328"><a href="#L328" aria-label="Line 328">328</a>    std::array&lt;double, 10&gt; shells{};</span>
+<span class="source-line" id="L329"><a href="#L329" aria-label="Line 329">329</a></span>
+<span class="source-line" id="L330"><a href="#L330" aria-label="Line 330">330</a>    PhotonTransition transition(</span>
+<span class="source-line" id="L331"><a href="#L331" aria-label="Line 331">331</a>        1,</span>
+<span class="source-line" id="L332"><a href="#L332" aria-label="Line 332">332</a>        583.0,</span>
+<span class="source-line" id="L333"><a href="#L333" aria-label="Line 333">333</a>        100.0,</span>
+<span class="source-line" id="L334"><a href="#L334" aria-label="Line 334">334</a>        3,</span>
+<span class="source-line" id="L335"><a href="#L335" aria-label="Line 335">335</a>        0.0,</span>
+<span class="source-line" id="L336"><a href="#L336" aria-label="Line 336">336</a>        0.0,</span>
+<span class="source-line" id="L337"><a href="#L337" aria-label="Line 337">337</a>        shells</span>
+<span class="source-line" id="L338"><a href="#L338" aria-label="Line 338">338</a>    );</span>
+<span class="source-line" id="L339"><a href="#L339" aria-label="Line 339">339</a></span>
+<span class="source-line" id="L340"><a href="#L340" aria-label="Line 340">340</a></span>
+<span class="source-line" id="L341"><a href="#L341" aria-label="Line 341">341</a>    success &amp;= check(</span>
+<span class="source-line" id="L342"><a href="#L342" aria-label="Line 342">342</a>        transition.daughterLevel == 1,</span>
+<span class="source-line" id="L343"><a href="#L343" aria-label="Line 343">343</a>        &quot;Daughter level&quot;</span>
+<span class="source-line" id="L344"><a href="#L344" aria-label="Line 344">344</a>    );</span>
+<span class="source-line" id="L345"><a href="#L345" aria-label="Line 345">345</a></span>
+<span class="source-line" id="L346"><a href="#L346" aria-label="Line 346">346</a>    success &amp;= check(</span>
+<span class="source-line" id="L347"><a href="#L347" aria-label="Line 347">347</a>        std::abs(</span>
+<span class="source-line" id="L348"><a href="#L348" aria-label="Line 348">348</a>            transition.energy_keV - 583.0</span>
+<span class="source-line" id="L349"><a href="#L349" aria-label="Line 349">349</a>        ) &lt; 1.0e-9,</span>
+<span class="source-line" id="L350"><a href="#L350" aria-label="Line 350">350</a>        &quot;Gamma energy&quot;</span>
+<span class="source-line" id="L351"><a href="#L351" aria-label="Line 351">351</a>    );</span>
+<span class="source-line" id="L352"><a href="#L352" aria-label="Line 352">352</a></span>
+<span class="source-line" id="L353"><a href="#L353" aria-label="Line 353">353</a>    success &amp;= check(</span>
+<span class="source-line" id="L354"><a href="#L354" aria-label="Line 354">354</a>        std::abs(</span>
+<span class="source-line" id="L355"><a href="#L355" aria-label="Line 355">355</a>            transition.relativeIntensity - 100.0</span>
+<span class="source-line" id="L356"><a href="#L356" aria-label="Line 356">356</a>        ) &lt; 1.0e-9,</span>
+<span class="source-line" id="L357"><a href="#L357" aria-label="Line 357">357</a>        &quot;Relative intensity&quot;</span>
+<span class="source-line" id="L358"><a href="#L358" aria-label="Line 358">358</a>    );</span>
+<span class="source-line" id="L359"><a href="#L359" aria-label="Line 359">359</a></span>
+<span class="source-line" id="L360"><a href="#L360" aria-label="Line 360">360</a>    success &amp;= check(</span>
+<span class="source-line" id="L361"><a href="#L361" aria-label="Line 361">361</a>        transition.multipolarity == 3,</span>
+<span class="source-line" id="L362"><a href="#L362" aria-label="Line 362">362</a>        &quot;Multipolarity&quot;</span>
+<span class="source-line" id="L363"><a href="#L363" aria-label="Line 363">363</a>    );</span>
+<span class="source-line" id="L364"><a href="#L364" aria-label="Line 364">364</a></span>
+<span class="source-line" id="L365"><a href="#L365" aria-label="Line 365">365</a>    success &amp;= check(</span>
+<span class="source-line" id="L366"><a href="#L366" aria-label="Line 366">366</a>        std::abs(</span>
+<span class="source-line" id="L367"><a href="#L367" aria-label="Line 367">367</a>            transition.gammaProbability() - 1.0</span>
+<span class="source-line" id="L368"><a href="#L368" aria-label="Line 368">368</a>        ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L369"><a href="#L369" aria-label="Line 369">369</a>        &quot;Gamma probability for alpha = 0&quot;</span>
+<span class="source-line" id="L370"><a href="#L370" aria-label="Line 370">370</a>    );</span>
+<span class="source-line" id="L371"><a href="#L371" aria-label="Line 371">371</a></span>
+<span class="source-line" id="L372"><a href="#L372" aria-label="Line 372">372</a>    success &amp;= check(</span>
+<span class="source-line" id="L373"><a href="#L373" aria-label="Line 373">373</a>        std::abs(</span>
+<span class="source-line" id="L374"><a href="#L374" aria-label="Line 374">374</a>            transition.conversionProbability()</span>
+<span class="source-line" id="L375"><a href="#L375" aria-label="Line 375">375</a>        ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L376"><a href="#L376" aria-label="Line 376">376</a>        &quot;Conversion probability for alpha = 0&quot;</span>
+<span class="source-line" id="L377"><a href="#L377" aria-label="Line 377">377</a>    );</span>
+<span class="source-line" id="L378"><a href="#L378" aria-label="Line 378">378</a></span>
+<span class="source-line" id="L379"><a href="#L379" aria-label="Line 379">379</a></span>
+<span class="source-line" id="L380"><a href="#L380" aria-label="Line 380">380</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L381"><a href="#L381" aria-label="Line 381">381</a>    // Test internal conversion</span>
+<span class="source-line" id="L382"><a href="#L382" aria-label="Line 382">382</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L383"><a href="#L383" aria-label="Line 383">383</a></span>
+<span class="source-line" id="L384"><a href="#L384" aria-label="Line 384">384</a>    PhotonTransition converted(</span>
+<span class="source-line" id="L385"><a href="#L385" aria-label="Line 385">385</a>        1,</span>
+<span class="source-line" id="L386"><a href="#L386" aria-label="Line 386">386</a>        100.0,</span>
+<span class="source-line" id="L387"><a href="#L387" aria-label="Line 387">387</a>        50.0,</span>
+<span class="source-line" id="L388"><a href="#L388" aria-label="Line 388">388</a>        3,</span>
+<span class="source-line" id="L389"><a href="#L389" aria-label="Line 389">389</a>        0.0,</span>
+<span class="source-line" id="L390"><a href="#L390" aria-label="Line 390">390</a>        1.0,</span>
+<span class="source-line" id="L391"><a href="#L391" aria-label="Line 391">391</a>        shells</span>
+<span class="source-line" id="L392"><a href="#L392" aria-label="Line 392">392</a>    );</span>
+<span class="source-line" id="L393"><a href="#L393" aria-label="Line 393">393</a></span>
+<span class="source-line" id="L394"><a href="#L394" aria-label="Line 394">394</a>    success &amp;= check(</span>
+<span class="source-line" id="L395"><a href="#L395" aria-label="Line 395">395</a>        std::abs(</span>
+<span class="source-line" id="L396"><a href="#L396" aria-label="Line 396">396</a>            converted.gammaProbability() - 0.5</span>
+<span class="source-line" id="L397"><a href="#L397" aria-label="Line 397">397</a>        ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L398"><a href="#L398" aria-label="Line 398">398</a>        &quot;Gamma probability for alpha = 1&quot;</span>
+<span class="source-line" id="L399"><a href="#L399" aria-label="Line 399">399</a>    );</span>
+<span class="source-line" id="L400"><a href="#L400" aria-label="Line 400">400</a></span>
+<span class="source-line" id="L401"><a href="#L401" aria-label="Line 401">401</a>    success &amp;= check(</span>
+<span class="source-line" id="L402"><a href="#L402" aria-label="Line 402">402</a>        std::abs(</span>
+<span class="source-line" id="L403"><a href="#L403" aria-label="Line 403">403</a>            converted.conversionProbability() - 0.5</span>
+<span class="source-line" id="L404"><a href="#L404" aria-label="Line 404">404</a>        ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L405"><a href="#L405" aria-label="Line 405">405</a>        &quot;Conversion probability for alpha = 1&quot;</span>
+<span class="source-line" id="L406"><a href="#L406" aria-label="Line 406">406</a>    );</span>
+<span class="source-line" id="L407"><a href="#L407" aria-label="Line 407">407</a></span>
+<span class="source-line" id="L408"><a href="#L408" aria-label="Line 408">408</a>    success &amp;= check(</span>
+<span class="source-line" id="L409"><a href="#L409" aria-label="Line 409">409</a>        std::abs(</span>
+<span class="source-line" id="L410"><a href="#L410" aria-label="Line 410">410</a>            converted.gammaProbability()</span>
+<span class="source-line" id="L411"><a href="#L411" aria-label="Line 411">411</a>            +</span>
+<span class="source-line" id="L412"><a href="#L412" aria-label="Line 412">412</a>            converted.conversionProbability()</span>
+<span class="source-line" id="L413"><a href="#L413" aria-label="Line 413">413</a>            -</span>
+<span class="source-line" id="L414"><a href="#L414" aria-label="Line 414">414</a>            1.0</span>
+<span class="source-line" id="L415"><a href="#L415" aria-label="Line 415">415</a>        ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L416"><a href="#L416" aria-label="Line 416">416</a>        &quot;Gamma + conversion probability = 1&quot;</span>
+<span class="source-line" id="L417"><a href="#L417" aria-label="Line 417">417</a>    );</span>
+<span class="source-line" id="L418"><a href="#L418" aria-label="Line 418">418</a></span>
+<span class="source-line" id="L419"><a href="#L419" aria-label="Line 419">419</a></span>
+<span class="source-line" id="L420"><a href="#L420" aria-label="Line 420">420</a>    return success;</span>
+<span class="source-line" id="L421"><a href="#L421" aria-label="Line 421">421</a>}</span>
+<span class="source-line" id="L422"><a href="#L422" aria-label="Line 422">422</a></span>
+<span class="source-line" id="L423"><a href="#L423" aria-label="Line 423">423</a></span>
+<span class="source-line" id="L424"><a href="#L424" aria-label="Line 424">424</a>// ============================================================</span>
+<span class="source-line" id="L425"><a href="#L425" aria-label="Line 425">425</a>// Test PhotonLevel</span>
+<span class="source-line" id="L426"><a href="#L426" aria-label="Line 426">426</a>// ============================================================</span>
+<span class="source-line" id="L427"><a href="#L427" aria-label="Line 427">427</a></span>
+<span class="source-line" id="L428"><a href="#L428" aria-label="Line 428">428</a>bool test_photon_level()</span>
+<span class="source-line" id="L429"><a href="#L429" aria-label="Line 429">429</a>{</span>
+<span class="source-line" id="L430"><a href="#L430" aria-label="Line 430">430</a>    std::cout</span>
+<span class="source-line" id="L431"><a href="#L431" aria-label="Line 431">431</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L432"><a href="#L432" aria-label="Line 432">432</a>        &lt;&lt; &quot;============================================\n&quot;</span>
+<span class="source-line" id="L433"><a href="#L433" aria-label="Line 433">433</a>        &lt;&lt; &quot; Testing PhotonLevel\n&quot;</span>
+<span class="source-line" id="L434"><a href="#L434" aria-label="Line 434">434</a>        &lt;&lt; &quot;============================================\n&quot;;</span>
+<span class="source-line" id="L435"><a href="#L435" aria-label="Line 435">435</a></span>
+<span class="source-line" id="L436"><a href="#L436" aria-label="Line 436">436</a>    bool success = true;</span>
+<span class="source-line" id="L437"><a href="#L437" aria-label="Line 437">437</a></span>
+<span class="source-line" id="L438"><a href="#L438" aria-label="Line 438">438</a>    PhotonLevel level(</span>
+<span class="source-line" id="L439"><a href="#L439" aria-label="Line 439">439</a>        0,</span>
+<span class="source-line" id="L440"><a href="#L440" aria-label="Line 440">440</a>        &quot;-&quot;,</span>
+<span class="source-line" id="L441"><a href="#L441" aria-label="Line 441">441</a>        0.0,</span>
+<span class="source-line" id="L442"><a href="#L442" aria-label="Line 442">442</a>        -1.0,</span>
+<span class="source-line" id="L443"><a href="#L443" aria-label="Line 443">443</a>        0.0</span>
+<span class="source-line" id="L444"><a href="#L444" aria-label="Line 444">444</a>    );</span>
+<span class="source-line" id="L445"><a href="#L445" aria-label="Line 445">445</a></span>
+<span class="source-line" id="L446"><a href="#L446" aria-label="Line 446">446</a></span>
+<span class="source-line" id="L447"><a href="#L447" aria-label="Line 447">447</a>    success &amp;= check(</span>
+<span class="source-line" id="L448"><a href="#L448" aria-label="Line 448">448</a>        level.id == 0,</span>
+<span class="source-line" id="L449"><a href="#L449" aria-label="Line 449">449</a>        &quot;Level ID&quot;</span>
+<span class="source-line" id="L450"><a href="#L450" aria-label="Line 450">450</a>    );</span>
+<span class="source-line" id="L451"><a href="#L451" aria-label="Line 451">451</a></span>
+<span class="source-line" id="L452"><a href="#L452" aria-label="Line 452">452</a>    success &amp;= check(</span>
+<span class="source-line" id="L453"><a href="#L453" aria-label="Line 453">453</a>        level.isStable(),</span>
+<span class="source-line" id="L454"><a href="#L454" aria-label="Line 454">454</a>        &quot;Stable level&quot;</span>
+<span class="source-line" id="L455"><a href="#L455" aria-label="Line 455">455</a>    );</span>
+<span class="source-line" id="L456"><a href="#L456" aria-label="Line 456">456</a></span>
+<span class="source-line" id="L457"><a href="#L457" aria-label="Line 457">457</a>    success &amp;= check(</span>
+<span class="source-line" id="L458"><a href="#L458" aria-label="Line 458">458</a>        level.hasKnownJPi(),</span>
+<span class="source-line" id="L459"><a href="#L459" aria-label="Line 459">459</a>        &quot;Known JPi&quot;</span>
+<span class="source-line" id="L460"><a href="#L460" aria-label="Line 460">460</a>    );</span>
+<span class="source-line" id="L461"><a href="#L461" aria-label="Line 461">461</a></span>
+<span class="source-line" id="L462"><a href="#L462" aria-label="Line 462">462</a>    success &amp;= check(</span>
+<span class="source-line" id="L463"><a href="#L463" aria-label="Line 463">463</a>        level.numberOfGammas() == 0,</span>
+<span class="source-line" id="L464"><a href="#L464" aria-label="Line 464">464</a>        &quot;Initial gamma count&quot;</span>
+<span class="source-line" id="L465"><a href="#L465" aria-label="Line 465">465</a>    );</span>
+<span class="source-line" id="L466"><a href="#L466" aria-label="Line 466">466</a></span>
+<span class="source-line" id="L467"><a href="#L467" aria-label="Line 467">467</a></span>
+<span class="source-line" id="L468"><a href="#L468" aria-label="Line 468">468</a>    std::array&lt;double, 10&gt; shells{};</span>
+<span class="source-line" id="L469"><a href="#L469" aria-label="Line 469">469</a></span>
+<span class="source-line" id="L470"><a href="#L470" aria-label="Line 470">470</a>    level.transitions.emplace_back(</span>
+<span class="source-line" id="L471"><a href="#L471" aria-label="Line 471">471</a>        0,</span>
+<span class="source-line" id="L472"><a href="#L472" aria-label="Line 472">472</a>        100.0,</span>
+<span class="source-line" id="L473"><a href="#L473" aria-label="Line 473">473</a>        1.0,</span>
+<span class="source-line" id="L474"><a href="#L474" aria-label="Line 474">474</a>        3,</span>
+<span class="source-line" id="L475"><a href="#L475" aria-label="Line 475">475</a>        0.0,</span>
+<span class="source-line" id="L476"><a href="#L476" aria-label="Line 476">476</a>        0.0,</span>
+<span class="source-line" id="L477"><a href="#L477" aria-label="Line 477">477</a>        shells</span>
+<span class="source-line" id="L478"><a href="#L478" aria-label="Line 478">478</a>    );</span>
+<span class="source-line" id="L479"><a href="#L479" aria-label="Line 479">479</a></span>
+<span class="source-line" id="L480"><a href="#L480" aria-label="Line 480">480</a></span>
+<span class="source-line" id="L481"><a href="#L481" aria-label="Line 481">481</a>    success &amp;= check(</span>
+<span class="source-line" id="L482"><a href="#L482" aria-label="Line 482">482</a>        level.numberOfGammas() == 1,</span>
+<span class="source-line" id="L483"><a href="#L483" aria-label="Line 483">483</a>        &quot;Gamma count after adding transition&quot;</span>
+<span class="source-line" id="L484"><a href="#L484" aria-label="Line 484">484</a>    );</span>
+<span class="source-line" id="L485"><a href="#L485" aria-label="Line 485">485</a></span>
+<span class="source-line" id="L486"><a href="#L486" aria-label="Line 486">486</a></span>
+<span class="source-line" id="L487"><a href="#L487" aria-label="Line 487">487</a>    return success;</span>
+<span class="source-line" id="L488"><a href="#L488" aria-label="Line 488">488</a>}</span>
+<span class="source-line" id="L489"><a href="#L489" aria-label="Line 489">489</a></span>
+<span class="source-line" id="L490"><a href="#L490" aria-label="Line 490">490</a></span>
+<span class="source-line" id="L491"><a href="#L491" aria-label="Line 491">491</a>// ============================================================</span>
+<span class="source-line" id="L492"><a href="#L492" aria-label="Line 492">492</a>// Test PhotonEvaporationReader</span>
+<span class="source-line" id="L493"><a href="#L493" aria-label="Line 493">493</a>// ============================================================</span>
+<span class="source-line" id="L494"><a href="#L494" aria-label="Line 494">494</a></span>
+<span class="source-line" id="L495"><a href="#L495" aria-label="Line 495">495</a>bool test_photon_evaporation_reader()</span>
+<span class="source-line" id="L496"><a href="#L496" aria-label="Line 496">496</a>{</span>
+<span class="source-line" id="L497"><a href="#L497" aria-label="Line 497">497</a>    std::cout</span>
+<span class="source-line" id="L498"><a href="#L498" aria-label="Line 498">498</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L499"><a href="#L499" aria-label="Line 499">499</a>        &lt;&lt; &quot;============================================\n&quot;</span>
+<span class="source-line" id="L500"><a href="#L500" aria-label="Line 500">500</a>        &lt;&lt; &quot; Testing PhotonEvaporationReader\n&quot;</span>
+<span class="source-line" id="L501"><a href="#L501" aria-label="Line 501">501</a>        &lt;&lt; &quot;============================================\n&quot;;</span>
+<span class="source-line" id="L502"><a href="#L502" aria-label="Line 502">502</a></span>
+<span class="source-line" id="L503"><a href="#L503" aria-label="Line 503">503</a>    bool success = true;</span>
+<span class="source-line" id="L504"><a href="#L504" aria-label="Line 504">504</a></span>
+<span class="source-line" id="L505"><a href="#L505" aria-label="Line 505">505</a>    PhotonEvaporationReader reader(</span>
+<span class="source-line" id="L506"><a href="#L506" aria-label="Line 506">506</a>        &quot;PhotonEvaporation5.5&quot;</span>
+<span class="source-line" id="L507"><a href="#L507" aria-label="Line 507">507</a>    );</span>
+<span class="source-line" id="L508"><a href="#L508" aria-label="Line 508">508</a></span>
+<span class="source-line" id="L509"><a href="#L509" aria-label="Line 509">509</a></span>
+<span class="source-line" id="L510"><a href="#L510" aria-label="Line 510">510</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L511"><a href="#L511" aria-label="Line 511">511</a>    // File path</span>
+<span class="source-line" id="L512"><a href="#L512" aria-label="Line 512">512</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L513"><a href="#L513" aria-label="Line 513">513</a></span>
+<span class="source-line" id="L514"><a href="#L514" aria-label="Line 514">514</a>    const std::string path =</span>
+<span class="source-line" id="L515"><a href="#L515" aria-label="Line 515">515</a>        reader.filePath(12, 22);</span>
+<span class="source-line" id="L516"><a href="#L516" aria-label="Line 516">516</a></span>
+<span class="source-line" id="L517"><a href="#L517" aria-label="Line 517">517</a>    std::cout</span>
+<span class="source-line" id="L518"><a href="#L518" aria-label="Line 518">518</a>        &lt;&lt; &quot;  File: &quot;</span>
+<span class="source-line" id="L519"><a href="#L519" aria-label="Line 519">519</a>        &lt;&lt; path</span>
+<span class="source-line" id="L520"><a href="#L520" aria-label="Line 520">520</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L521"><a href="#L521" aria-label="Line 521">521</a></span>
+<span class="source-line" id="L522"><a href="#L522" aria-label="Line 522">522</a>    success &amp;= check(</span>
+<span class="source-line" id="L523"><a href="#L523" aria-label="Line 523">523</a>        path.find(&quot;z12.a22&quot;) != std::string::npos,</span>
+<span class="source-line" id="L524"><a href="#L524" aria-label="Line 524">524</a>        &quot;22Mg PhotonEvaporation file path&quot;</span>
+<span class="source-line" id="L525"><a href="#L525" aria-label="Line 525">525</a>    );</span>
+<span class="source-line" id="L526"><a href="#L526" aria-label="Line 526">526</a></span>
+<span class="source-line" id="L527"><a href="#L527" aria-label="Line 527">527</a></span>
+<span class="source-line" id="L528"><a href="#L528" aria-label="Line 528">528</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L529"><a href="#L529" aria-label="Line 529">529</a>    // Read isotope</span>
+<span class="source-line" id="L530"><a href="#L530" aria-label="Line 530">530</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L531"><a href="#L531" aria-label="Line 531">531</a></span>
+<span class="source-line" id="L532"><a href="#L532" aria-label="Line 532">532</a>    PhotonIsotope mg22 =</span>
+<span class="source-line" id="L533"><a href="#L533" aria-label="Line 533">533</a>        reader.read(12, 22);</span>
+<span class="source-line" id="L534"><a href="#L534" aria-label="Line 534">534</a></span>
+<span class="source-line" id="L535"><a href="#L535" aria-label="Line 535">535</a>    success &amp;= check(</span>
+<span class="source-line" id="L536"><a href="#L536" aria-label="Line 536">536</a>        mg22.atomicNumber() == 12,</span>
+<span class="source-line" id="L537"><a href="#L537" aria-label="Line 537">537</a>        &quot;Atomic number Z = 12&quot;</span>
+<span class="source-line" id="L538"><a href="#L538" aria-label="Line 538">538</a>    );</span>
+<span class="source-line" id="L539"><a href="#L539" aria-label="Line 539">539</a></span>
+<span class="source-line" id="L540"><a href="#L540" aria-label="Line 540">540</a>    success &amp;= check(</span>
+<span class="source-line" id="L541"><a href="#L541" aria-label="Line 541">541</a>        mg22.massNumber() == 22,</span>
+<span class="source-line" id="L542"><a href="#L542" aria-label="Line 542">542</a>        &quot;Mass number A = 22&quot;</span>
+<span class="source-line" id="L543"><a href="#L543" aria-label="Line 543">543</a>    );</span>
+<span class="source-line" id="L544"><a href="#L544" aria-label="Line 544">544</a></span>
+<span class="source-line" id="L545"><a href="#L545" aria-label="Line 545">545</a></span>
+<span class="source-line" id="L546"><a href="#L546" aria-label="Line 546">546</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L547"><a href="#L547" aria-label="Line 547">547</a>    // Levels</span>
+<span class="source-line" id="L548"><a href="#L548" aria-label="Line 548">548</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L549"><a href="#L549" aria-label="Line 549">549</a></span>
+<span class="source-line" id="L550"><a href="#L550" aria-label="Line 550">550</a>    std::cout</span>
+<span class="source-line" id="L551"><a href="#L551" aria-label="Line 551">551</a>        &lt;&lt; &quot;  Number of levels: &quot;</span>
+<span class="source-line" id="L552"><a href="#L552" aria-label="Line 552">552</a>        &lt;&lt; mg22.numberOfLevels()</span>
+<span class="source-line" id="L553"><a href="#L553" aria-label="Line 553">553</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L554"><a href="#L554" aria-label="Line 554">554</a></span>
+<span class="source-line" id="L555"><a href="#L555" aria-label="Line 555">555</a>    success &amp;= check(</span>
+<span class="source-line" id="L556"><a href="#L556" aria-label="Line 556">556</a>        mg22.numberOfLevels() &gt; 0,</span>
+<span class="source-line" id="L557"><a href="#L557" aria-label="Line 557">557</a>        &quot;At least one photon level&quot;</span>
+<span class="source-line" id="L558"><a href="#L558" aria-label="Line 558">558</a>    );</span>
+<span class="source-line" id="L559"><a href="#L559" aria-label="Line 559">559</a></span>
+<span class="source-line" id="L560"><a href="#L560" aria-label="Line 560">560</a>    if(mg22.numberOfLevels() == 0)</span>
+<span class="source-line" id="L561"><a href="#L561" aria-label="Line 561">561</a>        return false;</span>
+<span class="source-line" id="L562"><a href="#L562" aria-label="Line 562">562</a></span>
+<span class="source-line" id="L563"><a href="#L563" aria-label="Line 563">563</a></span>
+<span class="source-line" id="L564"><a href="#L564" aria-label="Line 564">564</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L565"><a href="#L565" aria-label="Line 565">565</a>    // Inspect levels</span>
+<span class="source-line" id="L566"><a href="#L566" aria-label="Line 566">566</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L567"><a href="#L567" aria-label="Line 567">567</a></span>
+<span class="source-line" id="L568"><a href="#L568" aria-label="Line 568">568</a>    for(const auto&amp; level : mg22.levels())</span>
+<span class="source-line" id="L569"><a href="#L569" aria-label="Line 569">569</a>    {</span>
+<span class="source-line" id="L570"><a href="#L570" aria-label="Line 570">570</a>        std::cout</span>
+<span class="source-line" id="L571"><a href="#L571" aria-label="Line 571">571</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L572"><a href="#L572" aria-label="Line 572">572</a>            &lt;&lt; &quot;    Level &quot;</span>
+<span class="source-line" id="L573"><a href="#L573" aria-label="Line 573">573</a>            &lt;&lt; level.id</span>
+<span class="source-line" id="L574"><a href="#L574" aria-label="Line 574">574</a>            &lt;&lt; &quot;:\n&quot;</span>
+<span class="source-line" id="L575"><a href="#L575" aria-label="Line 575">575</a>            &lt;&lt; &quot;      Energy:    &quot;</span>
+<span class="source-line" id="L576"><a href="#L576" aria-label="Line 576">576</a>            &lt;&lt; level.energy_keV</span>
+<span class="source-line" id="L577"><a href="#L577" aria-label="Line 577">577</a>            &lt;&lt; &quot; keV\n&quot;</span>
+<span class="source-line" id="L578"><a href="#L578" aria-label="Line 578">578</a>            &lt;&lt; &quot;      Floating:  &quot;</span>
+<span class="source-line" id="L579"><a href="#L579" aria-label="Line 579">579</a>            &lt;&lt; level.floating</span>
+<span class="source-line" id="L580"><a href="#L580" aria-label="Line 580">580</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L581"><a href="#L581" aria-label="Line 581">581</a>            &lt;&lt; &quot;      Half-life: &quot;</span>
+<span class="source-line" id="L582"><a href="#L582" aria-label="Line 582">582</a>            &lt;&lt; level.halfLife_s</span>
+<span class="source-line" id="L583"><a href="#L583" aria-label="Line 583">583</a>            &lt;&lt; &quot; s\n&quot;</span>
+<span class="source-line" id="L584"><a href="#L584" aria-label="Line 584">584</a>            &lt;&lt; &quot;      JPi:       &quot;</span>
+<span class="source-line" id="L585"><a href="#L585" aria-label="Line 585">585</a>            &lt;&lt; level.jpi</span>
+<span class="source-line" id="L586"><a href="#L586" aria-label="Line 586">586</a>            &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L587"><a href="#L587" aria-label="Line 587">587</a>            &lt;&lt; &quot;      Gammas:    &quot;</span>
+<span class="source-line" id="L588"><a href="#L588" aria-label="Line 588">588</a>            &lt;&lt; level.numberOfGammas()</span>
+<span class="source-line" id="L589"><a href="#L589" aria-label="Line 589">589</a>            &lt;&lt; std::endl;</span>
+<span class="source-line" id="L590"><a href="#L590" aria-label="Line 590">590</a></span>
+<span class="source-line" id="L591"><a href="#L591" aria-label="Line 591">591</a></span>
+<span class="source-line" id="L592"><a href="#L592" aria-label="Line 592">592</a>        for(const auto&amp; gamma : level.transitions)</span>
+<span class="source-line" id="L593"><a href="#L593" aria-label="Line 593">593</a>        {</span>
+<span class="source-line" id="L594"><a href="#L594" aria-label="Line 594">594</a>            std::cout</span>
+<span class="source-line" id="L595"><a href="#L595" aria-label="Line 595">595</a>                &lt;&lt; &quot;        Gamma:\n&quot;</span>
+<span class="source-line" id="L596"><a href="#L596" aria-label="Line 596">596</a>                &lt;&lt; &quot;          Daughter: &quot;</span>
+<span class="source-line" id="L597"><a href="#L597" aria-label="Line 597">597</a>                &lt;&lt; gamma.daughterLevel</span>
+<span class="source-line" id="L598"><a href="#L598" aria-label="Line 598">598</a>                &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L599"><a href="#L599" aria-label="Line 599">599</a>                &lt;&lt; &quot;          Energy:   &quot;</span>
+<span class="source-line" id="L600"><a href="#L600" aria-label="Line 600">600</a>                &lt;&lt; gamma.energy_keV</span>
+<span class="source-line" id="L601"><a href="#L601" aria-label="Line 601">601</a>                &lt;&lt; &quot; keV\n&quot;</span>
+<span class="source-line" id="L602"><a href="#L602" aria-label="Line 602">602</a>                &lt;&lt; &quot;          Intensity: &quot;</span>
+<span class="source-line" id="L603"><a href="#L603" aria-label="Line 603">603</a>                &lt;&lt; gamma.relativeIntensity</span>
+<span class="source-line" id="L604"><a href="#L604" aria-label="Line 604">604</a>                &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L605"><a href="#L605" aria-label="Line 605">605</a>                &lt;&lt; &quot;          Multipolarity: &quot;</span>
+<span class="source-line" id="L606"><a href="#L606" aria-label="Line 606">606</a>                &lt;&lt; gamma.multipolarity</span>
+<span class="source-line" id="L607"><a href="#L607" aria-label="Line 607">607</a>                &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L608"><a href="#L608" aria-label="Line 608">608</a>                &lt;&lt; &quot;          Mixing ratio:  &quot;</span>
+<span class="source-line" id="L609"><a href="#L609" aria-label="Line 609">609</a>                &lt;&lt; gamma.mixingRatio</span>
+<span class="source-line" id="L610"><a href="#L610" aria-label="Line 610">610</a>                &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L611"><a href="#L611" aria-label="Line 611">611</a>                &lt;&lt; &quot;          Alpha:          &quot;</span>
+<span class="source-line" id="L612"><a href="#L612" aria-label="Line 612">612</a>                &lt;&lt; gamma.conversionCoefficient</span>
+<span class="source-line" id="L613"><a href="#L613" aria-label="Line 613">613</a>                &lt;&lt; std::endl;</span>
+<span class="source-line" id="L614"><a href="#L614" aria-label="Line 614">614</a></span>
+<span class="source-line" id="L615"><a href="#L615" aria-label="Line 615">615</a></span>
+<span class="source-line" id="L616"><a href="#L616" aria-label="Line 616">616</a>            success &amp;= check(</span>
+<span class="source-line" id="L617"><a href="#L617" aria-label="Line 617">617</a>                gamma.energy_keV &gt;= 0.0,</span>
+<span class="source-line" id="L618"><a href="#L618" aria-label="Line 618">618</a>                &quot;Gamma energy &gt;= 0&quot;</span>
+<span class="source-line" id="L619"><a href="#L619" aria-label="Line 619">619</a>            );</span>
+<span class="source-line" id="L620"><a href="#L620" aria-label="Line 620">620</a></span>
+<span class="source-line" id="L621"><a href="#L621" aria-label="Line 621">621</a>            success &amp;= check(</span>
+<span class="source-line" id="L622"><a href="#L622" aria-label="Line 622">622</a>                gamma.relativeIntensity &gt;= 0.0,</span>
+<span class="source-line" id="L623"><a href="#L623" aria-label="Line 623">623</a>                &quot;Gamma intensity &gt;= 0&quot;</span>
+<span class="source-line" id="L624"><a href="#L624" aria-label="Line 624">624</a>            );</span>
+<span class="source-line" id="L625"><a href="#L625" aria-label="Line 625">625</a></span>
+<span class="source-line" id="L626"><a href="#L626" aria-label="Line 626">626</a>            success &amp;= check(</span>
+<span class="source-line" id="L627"><a href="#L627" aria-label="Line 627">627</a>                gamma.gammaProbability() &gt;= 0.0 &amp;&amp;</span>
+<span class="source-line" id="L628"><a href="#L628" aria-label="Line 628">628</a>                gamma.gammaProbability() &lt;= 1.0,</span>
+<span class="source-line" id="L629"><a href="#L629" aria-label="Line 629">629</a>                &quot;Gamma probability in [0,1]&quot;</span>
+<span class="source-line" id="L630"><a href="#L630" aria-label="Line 630">630</a>            );</span>
+<span class="source-line" id="L631"><a href="#L631" aria-label="Line 631">631</a></span>
+<span class="source-line" id="L632"><a href="#L632" aria-label="Line 632">632</a>            success &amp;= check(</span>
+<span class="source-line" id="L633"><a href="#L633" aria-label="Line 633">633</a>                gamma.conversionProbability() &gt;= 0.0 &amp;&amp;</span>
+<span class="source-line" id="L634"><a href="#L634" aria-label="Line 634">634</a>                gamma.conversionProbability() &lt;= 1.0,</span>
+<span class="source-line" id="L635"><a href="#L635" aria-label="Line 635">635</a>                &quot;Conversion probability in [0,1]&quot;</span>
+<span class="source-line" id="L636"><a href="#L636" aria-label="Line 636">636</a>            );</span>
+<span class="source-line" id="L637"><a href="#L637" aria-label="Line 637">637</a></span>
+<span class="source-line" id="L638"><a href="#L638" aria-label="Line 638">638</a>            success &amp;= check(</span>
+<span class="source-line" id="L639"><a href="#L639" aria-label="Line 639">639</a>                std::abs(</span>
+<span class="source-line" id="L640"><a href="#L640" aria-label="Line 640">640</a>                    gamma.gammaProbability()</span>
+<span class="source-line" id="L641"><a href="#L641" aria-label="Line 641">641</a>                    +</span>
+<span class="source-line" id="L642"><a href="#L642" aria-label="Line 642">642</a>                    gamma.conversionProbability()</span>
+<span class="source-line" id="L643"><a href="#L643" aria-label="Line 643">643</a>                    -</span>
+<span class="source-line" id="L644"><a href="#L644" aria-label="Line 644">644</a>                    1.0</span>
+<span class="source-line" id="L645"><a href="#L645" aria-label="Line 645">645</a>                ) &lt; 1.0e-12,</span>
+<span class="source-line" id="L646"><a href="#L646" aria-label="Line 646">646</a>                &quot;Gamma + conversion probability = 1&quot;</span>
+<span class="source-line" id="L647"><a href="#L647" aria-label="Line 647">647</a>            );</span>
+<span class="source-line" id="L648"><a href="#L648" aria-label="Line 648">648</a>        }</span>
+<span class="source-line" id="L649"><a href="#L649" aria-label="Line 649">649</a>    }</span>
+<span class="source-line" id="L650"><a href="#L650" aria-label="Line 650">650</a></span>
+<span class="source-line" id="L651"><a href="#L651" aria-label="Line 651">651</a></span>
+<span class="source-line" id="L652"><a href="#L652" aria-label="Line 652">652</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L653"><a href="#L653" aria-label="Line 653">653</a>    // Level lookup</span>
+<span class="source-line" id="L654"><a href="#L654" aria-label="Line 654">654</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L655"><a href="#L655" aria-label="Line 655">655</a></span>
+<span class="source-line" id="L656"><a href="#L656" aria-label="Line 656">656</a>    const int firstID =</span>
+<span class="source-line" id="L657"><a href="#L657" aria-label="Line 657">657</a>        mg22.levels().front().id;</span>
+<span class="source-line" id="L658"><a href="#L658" aria-label="Line 658">658</a></span>
+<span class="source-line" id="L659"><a href="#L659" aria-label="Line 659">659</a>    const auto&amp; lookup =</span>
+<span class="source-line" id="L660"><a href="#L660" aria-label="Line 660">660</a>        mg22.level(firstID);</span>
+<span class="source-line" id="L661"><a href="#L661" aria-label="Line 661">661</a></span>
+<span class="source-line" id="L662"><a href="#L662" aria-label="Line 662">662</a>    success &amp;= check(</span>
+<span class="source-line" id="L663"><a href="#L663" aria-label="Line 663">663</a>        lookup.id == firstID,</span>
+<span class="source-line" id="L664"><a href="#L664" aria-label="Line 664">664</a>        &quot;Level lookup by ID&quot;</span>
+<span class="source-line" id="L665"><a href="#L665" aria-label="Line 665">665</a>    );</span>
+<span class="source-line" id="L666"><a href="#L666" aria-label="Line 666">666</a></span>
+<span class="source-line" id="L667"><a href="#L667" aria-label="Line 667">667</a></span>
+<span class="source-line" id="L668"><a href="#L668" aria-label="Line 668">668</a>    return success;</span>
+<span class="source-line" id="L669"><a href="#L669" aria-label="Line 669">669</a>}</span>
+<span class="source-line" id="L670"><a href="#L670" aria-label="Line 670">670</a></span>
+<span class="source-line" id="L671"><a href="#L671" aria-label="Line 671">671</a></span>
+<span class="source-line" id="L672"><a href="#L672" aria-label="Line 672">672</a>// ============================================================</span>
+<span class="source-line" id="L673"><a href="#L673" aria-label="Line 673">673</a>// Main ROOT test function</span>
+<span class="source-line" id="L674"><a href="#L674" aria-label="Line 674">674</a>// ============================================================</span>
+<span class="source-line" id="L675"><a href="#L675" aria-label="Line 675">675</a></span>
+<span class="source-line" id="L676"><a href="#L676" aria-label="Line 676">676</a>void test_decay_readers()</span>
+<span class="source-line" id="L677"><a href="#L677" aria-label="Line 677">677</a>{</span>
+<span class="source-line" id="L678"><a href="#L678" aria-label="Line 678">678</a>    std::cout</span>
+<span class="source-line" id="L679"><a href="#L679" aria-label="Line 679">679</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L680"><a href="#L680" aria-label="Line 680">680</a>        &lt;&lt; &quot;################################################\n&quot;</span>
+<span class="source-line" id="L681"><a href="#L681" aria-label="Line 681">681</a>        &lt;&lt; &quot;#                                              #\n&quot;</span>
+<span class="source-line" id="L682"><a href="#L682" aria-label="Line 682">682</a>        &lt;&lt; &quot;#       COINAlgebra Decay Reader Tests         #\n&quot;</span>
+<span class="source-line" id="L683"><a href="#L683" aria-label="Line 683">683</a>        &lt;&lt; &quot;#                                              #\n&quot;</span>
+<span class="source-line" id="L684"><a href="#L684" aria-label="Line 684">684</a>        &lt;&lt; &quot;################################################\n&quot;;</span>
+<span class="source-line" id="L685"><a href="#L685" aria-label="Line 685">685</a></span>
+<span class="source-line" id="L686"><a href="#L686" aria-label="Line 686">686</a></span>
+<span class="source-line" id="L687"><a href="#L687" aria-label="Line 687">687</a>    bool success = true;</span>
+<span class="source-line" id="L688"><a href="#L688" aria-label="Line 688">688</a></span>
+<span class="source-line" id="L689"><a href="#L689" aria-label="Line 689">689</a></span>
+<span class="source-line" id="L690"><a href="#L690" aria-label="Line 690">690</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L691"><a href="#L691" aria-label="Line 691">691</a>    // Object tests</span>
+<span class="source-line" id="L692"><a href="#L692" aria-label="Line 692">692</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L693"><a href="#L693" aria-label="Line 693">693</a></span>
+<span class="source-line" id="L694"><a href="#L694" aria-label="Line 694">694</a>    success &amp;= test_photon_transition();</span>
+<span class="source-line" id="L695"><a href="#L695" aria-label="Line 695">695</a></span>
+<span class="source-line" id="L696"><a href="#L696" aria-label="Line 696">696</a>    success &amp;= test_photon_level();</span>
+<span class="source-line" id="L697"><a href="#L697" aria-label="Line 697">697</a></span>
+<span class="source-line" id="L698"><a href="#L698" aria-label="Line 698">698</a></span>
+<span class="source-line" id="L699"><a href="#L699" aria-label="Line 699">699</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L700"><a href="#L700" aria-label="Line 700">700</a>    // RadioactiveDecay reader</span>
+<span class="source-line" id="L701"><a href="#L701" aria-label="Line 701">701</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L702"><a href="#L702" aria-label="Line 702">702</a></span>
+<span class="source-line" id="L703"><a href="#L703" aria-label="Line 703">703</a>    success &amp;= test_radioactive_decay_reader();</span>
+<span class="source-line" id="L704"><a href="#L704" aria-label="Line 704">704</a></span>
+<span class="source-line" id="L705"><a href="#L705" aria-label="Line 705">705</a></span>
+<span class="source-line" id="L706"><a href="#L706" aria-label="Line 706">706</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L707"><a href="#L707" aria-label="Line 707">707</a>    // PhotonEvaporation reader</span>
+<span class="source-line" id="L708"><a href="#L708" aria-label="Line 708">708</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L709"><a href="#L709" aria-label="Line 709">709</a></span>
+<span class="source-line" id="L710"><a href="#L710" aria-label="Line 710">710</a>    success &amp;= test_photon_evaporation_reader();</span>
+<span class="source-line" id="L711"><a href="#L711" aria-label="Line 711">711</a></span>
+<span class="source-line" id="L712"><a href="#L712" aria-label="Line 712">712</a></span>
+<span class="source-line" id="L713"><a href="#L713" aria-label="Line 713">713</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L714"><a href="#L714" aria-label="Line 714">714</a>    // Final result</span>
+<span class="source-line" id="L715"><a href="#L715" aria-label="Line 715">715</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L716"><a href="#L716" aria-label="Line 716">716</a></span>
+<span class="source-line" id="L717"><a href="#L717" aria-label="Line 717">717</a>    std::cout</span>
+<span class="source-line" id="L718"><a href="#L718" aria-label="Line 718">718</a>        &lt;&lt; &quot;\n&quot;</span>
+<span class="source-line" id="L719"><a href="#L719" aria-label="Line 719">719</a>        &lt;&lt; &quot;################################################\n&quot;;</span>
+<span class="source-line" id="L720"><a href="#L720" aria-label="Line 720">720</a></span>
+<span class="source-line" id="L721"><a href="#L721" aria-label="Line 721">721</a>    if(success)</span>
+<span class="source-line" id="L722"><a href="#L722" aria-label="Line 722">722</a>    {</span>
+<span class="source-line" id="L723"><a href="#L723" aria-label="Line 723">723</a>        std::cout</span>
+<span class="source-line" id="L724"><a href="#L724" aria-label="Line 724">724</a>            &lt;&lt; &quot;#              ALL TESTS PASSED              #\n&quot;;</span>
+<span class="source-line" id="L725"><a href="#L725" aria-label="Line 725">725</a>    }</span>
+<span class="source-line" id="L726"><a href="#L726" aria-label="Line 726">726</a>    else</span>
+<span class="source-line" id="L727"><a href="#L727" aria-label="Line 727">727</a>    {</span>
+<span class="source-line" id="L728"><a href="#L728" aria-label="Line 728">728</a>        std::cout</span>
+<span class="source-line" id="L729"><a href="#L729" aria-label="Line 729">729</a>            &lt;&lt; &quot;#               TESTS FAILED                 #\n&quot;;</span>
+<span class="source-line" id="L730"><a href="#L730" aria-label="Line 730">730</a>    }</span>
+<span class="source-line" id="L731"><a href="#L731" aria-label="Line 731">731</a></span>
+<span class="source-line" id="L732"><a href="#L732" aria-label="Line 732">732</a>    std::cout</span>
+<span class="source-line" id="L733"><a href="#L733" aria-label="Line 733">733</a>        &lt;&lt; &quot;################################################\n&quot;</span>
+<span class="source-line" id="L734"><a href="#L734" aria-label="Line 734">734</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L735"><a href="#L735" aria-label="Line 735">735</a>}</span>
+<span class="source-line" id="L736"><a href="#L736" aria-label="Line 736">736</a></span></code></pre></main></body></html>

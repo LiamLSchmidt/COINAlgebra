@@ -1,0 +1,7 @@
+{
+  "name": "coinalgebra-documentation",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs", "dev": "python3 -m http.server 8765 --bind 0.0.0.0 --directory dist" },
+  "dependencies": { "marked": "17.0.5", "katex": "0.16.22" }
+}

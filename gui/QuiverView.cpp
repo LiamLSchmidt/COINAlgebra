@@ -34,6 +34,8 @@ QuiverView::QuiverView(QWidget* parent)
 void QuiverView::setQuiver(DecayQuiver* q)
 {
     fTopLevel = nullptr;
+    fHighlightedTransition = nullptr;
+    fHighlightedLevel = nullptr;
     fPositions.clear();
     fTransitionOffsets.clear();
     fTransitionPinned.clear();
@@ -75,6 +77,10 @@ void QuiverView::refresh()
 
     const auto& levels = fQuiver->GetLevels();
     const auto& transitions = fQuiver->GetTransitions();
+    if (std::find(levels.begin(), levels.end(), fHighlightedLevel) == levels.end())
+        fHighlightedLevel = nullptr;
+    if (std::find(transitions.begin(), transitions.end(), fHighlightedTransition) == transitions.end())
+        fHighlightedTransition = nullptr;
     int n = static_cast<int>(levels.size());
     if (fTopLevel) {
         const auto top = std::find(levels.begin(), levels.end(), fTopLevel);
@@ -183,8 +189,17 @@ void QuiverView::refresh()
         QPointF start = a + QPointF(0, (b.y() > a.y()) ? (fLineHalfHeight + 4.0) : -(fLineHalfHeight + 4.0));
         QPointF end = b - QPointF(0, (b.y() > a.y()) ? (fLineHalfHeight + 4.0) : -(fLineHalfHeight + 4.0));
 
-        // main line
-        s->addLine(start.x(), start.y(), end.x(), end.y(), edgePen);
+        const bool highlighted = tr == fHighlightedTransition || tr->GetSource() == fHighlightedLevel;
+        QPen transitionPen = edgePen;
+        if (highlighted) { transitionPen.setColor(QColor("#d97706")); transitionPen.setWidth(4); }
+        const auto tag = [&](QGraphicsItem* item, double z) {
+            item->setData(0, tr_i);
+            item->setToolTip(QString::fromStdString(tr->GetName()));
+            item->setZValue(highlighted ? z + 3 : z);
+        };
+        // All visual parts carry the same transition identity for picking.
+        auto* shaft = s->addLine(start.x(), start.y(), end.x(), end.y(), transitionPen);
+        tag(shaft, 0.2);
 
         // compute arrow direction
         QPointF d = end - start;
@@ -198,22 +213,22 @@ void QuiverView::refresh()
             QPointF p3 = end - u*arrowSize - perp*(arrowSize*0.5);
             QPolygonF tri;
             tri << p1 << p2 << p3;
-            s->addPolygon(tri, edgePen, arrowBrush)->setZValue(0.5);
+            tag(s->addPolygon(tri, transitionPen, QBrush(transitionPen.color())), 0.5);
 
                 // probability label slightly offset perpendicular to the arrow
                 QString label = QString::number(tr->GetProbability(), 'g', 3);
                 QGraphicsTextItem* t = s->addText(label, probFont);
-                t->setDefaultTextColor(QColor("#334d64"));
+                t->setDefaultTextColor(QColor(highlighted ? "#92400e" : "#334d64"));
                 QRectF tb = t->boundingRect();
                 QPointF mid = (start + end) * 0.5;
                 QPointF labelPos = mid + perp * labelOffset - QPointF(tb.width()/2.0, tb.height()/2.0);
                 // draw white background rect so label never overlaps lines
                 QRectF bgRect(labelPos, tb.size());
                 bgRect.adjust(-4.0, -2.0, 4.0, 2.0);
-                QGraphicsRectItem* bg = s->addRect(bgRect, QPen(Qt::NoPen), QBrush(QColor("#f3f7fb")));
-                bg->setZValue(0.95);
+                QGraphicsRectItem* bg = s->addRect(bgRect, QPen(Qt::NoPen), QBrush(QColor(highlighted ? "#fef3c7" : "#f3f7fb")));
+                tag(bg, 0.95);
                 t->setPos(labelPos);
-                t->setZValue(1);
+                tag(t, 1);
         }
     }
 
@@ -228,7 +243,9 @@ void QuiverView::refresh()
         const auto* lvl = levels[i];
         const QPointF p = pos[i];
         double y = p.y();
-        QGraphicsLineItem* line = s->addLine(fLineStartX, y, fLineEndX, y, levelPen);
+        QPen currentLevelPen = levelPen;
+        if (lvl == fHighlightedLevel) currentLevelPen.setColor(QColor("#d97706"));
+        QGraphicsLineItem* line = s->addLine(fLineStartX, y, fLineEndX, y, currentLevelPen);
         line->setZValue(0);
         QString name = QString::fromStdString(lvl->GetName());
         QGraphicsTextItem* ti = s->addText(name, nameFont);
@@ -250,6 +267,24 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
     }
     QPointF sp = mapToScene(event->pos());
 
+    // Pick the actual drawn label/arrow first, including labels over levels.
+    if (event->button() == Qt::LeftButton) {
+        for (auto* item : scene()->items(sp)) {
+            if (!item->data(0).isValid()) continue;
+            const int index = item->data(0).toInt();
+            fHighlightedTransition = fQuiver->GetTransitions().at(index);
+            fHighlightedLevel = nullptr;
+            fDraggingTransition = index;
+            fLastMousePos = event->pos();
+            setCursor(Qt::ClosedHandCursor);
+            refresh();
+            return;
+        }
+        fHighlightedTransition = nullptr;
+        fHighlightedLevel = nullptr;
+        refresh();
+    }
+
     // check levels (horizontal lines)
         for (int i=0;i<(int)fPositions.size();++i) {
             const QPointF& p = fPositions[i];
@@ -257,9 +292,11 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
             if (sp.x() >= fLineStartX - 6.0 && sp.x() <= fLineEndX + 6.0 && std::abs(sp.y() - y) <= (fLineHalfHeight + 6.0)) {
                 // clicked level i: left-drag to move, right-click for menu
                 if (event->button() == Qt::LeftButton) {
+                    fHighlightedLevel = fQuiver->GetLevels()[i];
                     fDraggingLevel = i;
                     fLastMousePos = event->pos();
                     setCursor(Qt::ClosedHandCursor);
+                    refresh();
                     return;
                 }
                 DecayLevel* lvl = fQuiver->GetLevels()[i];
@@ -331,7 +368,9 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
             if (dist2 <= 12.0*12.0) {
                 // left-drag to move transition horizontally; right-click for menu
                 if (event->button() == Qt::LeftButton) {
+                    fHighlightedTransition = tr;
                     fDraggingTransition = ti;
+                    refresh();
                     fLastMousePos = event->pos();
                     setCursor(Qt::ClosedHandCursor);
                     return;

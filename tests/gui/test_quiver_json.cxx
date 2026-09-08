@@ -36,6 +36,8 @@ int main() {
     assert(terms[1].path.GetSource() == document.quiver->GetLevel("d1"));
     assert(terms[1].coefficient == -0.3);
     assert(Studio::readJson(R"({"levels":[],"transitions":[]})").vectors.empty());
+    assert(Studio::readJson(R"({"levels":[],"transitions":[]})").title.isEmpty());
+    assert(Studio::readJson(R"({"title":"56Fe levels","levels":[],"transitions":[]})").title == "56Fe levels");
 
     const auto reject = [](const QByteArray& json) {
         bool threw = false;

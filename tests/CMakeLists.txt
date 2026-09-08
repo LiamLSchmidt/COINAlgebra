@@ -1,7 +1,7 @@
 # Run the ROOT macros with interpreter errors and reported failures detected.
 if(BUILD_WITH_ROOT)
     set(root_macros
-        core/test_path.C core/test_quiver.C core/test_vector.C
+        core/test_path.C core/test_quiver.C core/test_vector.C core/test_coin.C
         algebra/test_pathalgebra.C algebra/test_forms_projectors.C
         nuclear_data/test_decay_readers.C
         integration/test_22Mg_gamma_quiver.C
@@ -21,7 +21,7 @@ if(BUILD_WITH_ROOT)
 endif()
 
 # Run the existing core assertions against the standalone library as well.
-foreach(name IN ITEMS path quiver vector)
+foreach(name IN ITEMS path quiver vector coin)
     file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/test_${name}_main.cxx
         "void test_${name}();\nint main() { test_${name}(); }\n")
     add_executable(test_native_${name} core/test_${name}.C

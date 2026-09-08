@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QIcon>
 #include "MainWindow.h"
 #include <cstdio>
 
@@ -33,9 +34,11 @@ int main(int argc, char** argv)
     app.setApplicationName("DecayQuiver Studio");
     app.setApplicationDisplayName("DecayQuiver Studio");
     app.setOrganizationName("COINAlgebra");
+    app.setDesktopFileName("DQStudio");
     app.setStyle("Fusion");
 
     MainWindow w;
+    app.setWindowIcon(w.windowIcon());
     w.show();
 
     return app.exec();

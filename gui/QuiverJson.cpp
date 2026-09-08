@@ -40,6 +40,8 @@ Studio::Document Studio::readJson(const QByteArray& bytes) {
     Document document{std::make_unique<DecayQuiver>(), {}};
     require(!root.contains("metadata") || root["metadata"].isObject(), "Metadata must be an object.");
     document.metadata = root["metadata"].toObject();
+    require(!root.contains("title") || root["title"].isString(), "Title must be a string.");
+    document.title = root["title"].toString();
     for (const auto value : root["levels"].toArray())
         document.quiver->AddLevel(name(value, "Level name").toStdString());
     const auto& levels = document.quiver->GetLevels();

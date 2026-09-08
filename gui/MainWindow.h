@@ -44,6 +44,7 @@ private:
     DecayVector currentDecay() const;
     
     QuiverView* fView;
+    QLineEdit* fQuiverTitle;
 
     QLineEdit* fLevelName;
     QPushButton* fAddLevel;

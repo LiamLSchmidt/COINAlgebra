@@ -3,9 +3,11 @@ set(COINALGEBRA_MODULE_FILES
     Core/DecayLevel
     Core/DecayTransition
     Core/DecayPath
+    Core/DecayCoin
     Core/DecayQuiver
     Core/DecayVector
     Algebra/PathAlgebra
+    Algebra/CAlgebra
     Algebra/PathProjectors
     Probability/DecayProbability
     Builders/DecayQuiverBuilder

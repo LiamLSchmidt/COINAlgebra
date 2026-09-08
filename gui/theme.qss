@@ -4,6 +4,7 @@ QWidget#header, QWidget#sidebar { background: #ffffff; border: 1px solid #dce4ed
 QLabel { background: transparent; border: none; }
 QLabel#workspaceTitle { font-size: 23px; font-weight: 600; color: #172b40; }
 QLabel#subtitle, QLabel#canvasHint { color: #61758a; }
+QLineEdit#quiverTitle { font-size: 18px; font-weight: 600; color: #172b40; }
 QLabel#sectionTitle { color: #5d7186; font-size: 10px; font-weight: bold; margin-top: 8px; }
 QLabel#badge { background: #e4f3ef; color: #0f766e; padding: 7px 12px; border-radius: 10px; font-weight: bold; }
 QLineEdit, QComboBox, QDoubleSpinBox, QListWidget {

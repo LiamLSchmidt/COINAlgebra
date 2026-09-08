@@ -169,6 +169,16 @@ MainWindow::MainWindow()
     body->addWidget(scroll);
 
     auto* canvas = new QVBoxLayout();
+    auto* titleRow = new QHBoxLayout();
+    auto* titleLabel = new QLabel("Quiver title", central);
+    fQuiverTitle = new QLineEdit(central);
+    fQuiverTitle->setObjectName("quiverTitle");
+    fQuiverTitle->setAccessibleName("Quiver title");
+    fQuiverTitle->setPlaceholderText("Enter a title, e.g. 56Fe levels");
+    titleLabel->setBuddy(fQuiverTitle);
+    titleRow->addWidget(titleLabel);
+    titleRow->addWidget(fQuiverTitle, 1);
+    canvas->addLayout(titleRow);
     auto* hint = new QLabel("DECAY SCHEME    ·    Drag to arrange  /  Right-click to edit", central);
     hint->setObjectName("canvasHint");
     canvas->addWidget(hint);
@@ -227,6 +237,9 @@ MainWindow::MainWindow()
     connect(fTransitionsList, &QListWidget::itemDoubleClicked, this, &MainWindow::editTransitionItem);
 
     setWindowTitle("DecayQuiver Studio");
+    auto* author = new QLabel("Developed by Liam L. Schmidt", this);
+    author->setObjectName("authorCredit");
+    statusBar()->addPermanentWidget(author);
     setMinimumSize(820, 640);
     resize(1440, 860);
 
@@ -324,6 +337,7 @@ void MainWindow::importQuiver()
         fQuiver = std::move(document.quiver);
         fVectors = std::move(document.vectors);
         fMetadata = document.metadata;
+        fQuiverTitle->setText(document.title);
         fView->setQuiver(fQuiver.get());
         fLevelName->clear();
         fProbability->setText("1.0");
@@ -341,6 +355,7 @@ void MainWindow::exportQuiver()
     const auto& trans = fQuiver->GetTransitions();
 
     QJsonObject root;
+    if (!fQuiverTitle->text().isEmpty()) root["title"] = fQuiverTitle->text();
     if (!fMetadata.isEmpty()) root["metadata"] = fMetadata;
     QJsonArray lvlArr;
     for (const auto* L : levels) {

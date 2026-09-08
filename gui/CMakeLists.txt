@@ -17,3 +17,8 @@ target_link_libraries(DQStudio PRIVATE COINAlgebraGuiWidgets)
 set_target_properties(DQStudio PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 install(TARGETS DQStudio RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+configure_file(DQStudio.desktop.in DQStudio.desktop @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/DQStudio.desktop
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+install(FILES ${PROJECT_SOURCE_DIR}/DQStudio_logo.jpeg
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/pixmaps RENAME DQStudio.jpeg)

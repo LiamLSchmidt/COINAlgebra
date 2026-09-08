@@ -13,6 +13,7 @@ struct Document {
     std::unique_ptr<DecayQuiver> quiver;
     std::vector<DecayVector> vectors;
     QJsonObject metadata;
+    QString title;
 };
 
 // Throws std::runtime_error/invalid_argument for invalid input. Builds a new

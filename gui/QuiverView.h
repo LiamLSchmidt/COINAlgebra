@@ -6,6 +6,7 @@
 
 class DecayQuiver;
 class DecayLevel;
+class DecayTransition;
 
 class QuiverView : public QGraphicsView
 {
@@ -23,6 +24,8 @@ public:
 private:
     DecayQuiver* fQuiver = nullptr;
     const DecayLevel* fTopLevel = nullptr;
+    const DecayTransition* fHighlightedTransition = nullptr;
+    const DecayLevel* fHighlightedLevel = nullptr;
     int fVisibleLevelCount = 0;
     std::vector<QPointF> fPositions;
     double fNodeRadius = 28.0;

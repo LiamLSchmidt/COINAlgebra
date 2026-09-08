@@ -11,6 +11,16 @@ Original project code and documentation are licensed under the [MIT License](LIC
 Bundled nuclear datasets and third-party dependencies retain their upstream
 terms; see [Third-party notices](THIRD_PARTY_NOTICES.md).
 
+## Documentation
+
+See the [class reference and mathematical guide](docs/class-reference.md) for
+all public library functions, mathematical definitions, ownership rules, and
+worked path/probability/coincidence examples.
+
+The [HTML documentation](docs/html/dist/index.html) provides searchable class and
+member indexes, rendered equations, and linked source views. See
+[HTML build instructions](docs/html/README.md) to regenerate it.
+
 ## Build
 
 Requirements: CMake 3.16+, a C++17 compiler, ROOT for the optional interactive

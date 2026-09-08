@@ -13,6 +13,11 @@ and export it first. Invalid files display an error and preserve the workspace.
 
 The format matches existing Studio exports:
 
+The editable **Quiver title** field above the canvas is saved in the optional
+top-level `title` string (for example, `"title": "56Fe levels"`). Older files
+without this field open with an empty title. Import replaces the title together
+with the quiver; failed or cancelled imports preserve the existing title.
+
 ```json
 {
   "levels": ["d2", "d1", "d0"],

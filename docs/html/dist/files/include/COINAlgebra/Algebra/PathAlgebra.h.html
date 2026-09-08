@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>include/COINAlgebra/Algebra/PathAlgebra.h — COINAlgebra</title><style>:root{--blue:#005baa;--navy:#143d62;--link:#245c8a;--line:#ced8e2;--soft:#f1f5f9;--ink:#243445;--muted:#617285;--sidebar:266px;--top:158px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:180px}body{margin:0;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif;background:white}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer;border:1px solid #bacbdc;border-radius:4px;background:#fff;color:var(--navy);padding:5px 12px}button:hover{background:#eaf1f7}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d69b28;outline-offset:3px}.project-header{height:110px;background:var(--blue);display:flex;align-items:center;padding:20px 32px;gap:20px;color:white}.brand-mark{border:1px solid #ffffff65;width:62px;height:62px;font-size:40px;line-height:60px;text-align:center;font-family:Georgia,serif}.brand-mark span{font-size:24px}.project-name{color:white;font-size:32px;letter-spacing:.2px;font-weight:600;line-height:1.2}.project-name span{font-size:14px;font-weight:normal;opacity:.85;margin-left:8px}.project-header p{margin:6px 0 0;font-size:15px;color:#dfedfb}.header-note{margin-left:auto;text-align:right;font-size:14px;color:#d8eafb}.top-nav{height:48px;display:flex;align-items:stretch;background:linear-gradient(#f5f8fc,#e1e9f3);border-bottom:1px solid #a8bcd2;position:sticky;top:0;z-index:20;padding:0 24px;box-shadow:0 2px 4px #1c3f6410}.top-nav>a{padding:11px 20px;font-size:14px;font-weight:600;border-right:1px solid #cad6e3;color:#284c71;white-space:nowrap}.top-nav>a.active{background:#d2e1f0;box-shadow:inset 0 -3px var(--blue)}.search-box{margin:auto 0 auto auto;position:relative}.search-box input{width:280px;border:1px solid #a9bdd0;border-radius:18px;background:white;padding:5px 34px 5px 14px;font-size:14px}.search-box kbd{position:absolute;right:12px;top:5px;color:#8190a0;font:14px monospace}.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr) 190px;min-height:calc(100vh - 158px)}#sidebar{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;border-right:1px solid var(--line);background:#f8fafc;padding:20px 12px;font-size:14px}#sidebar a{display:flex;align-items:center;gap:8px;padding:5px 10px;color:#344e67;overflow-wrap:anywhere}#sidebar a.active{background:#dce9f6;color:#174d7a;border-radius:3px;font-weight:600}#sidebar details{margin:8px 0}#sidebar summary{padding:4px 8px;font-weight:600;color:#314d68;cursor:pointer}#sidebar details a{padding-left:24px}.tree-root{font-weight:bold;margin-bottom:10px}.type-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;border:1px solid #84a6c4;background:#e7f1f9;color:#2b6b9c;font:12px/1 monospace;border-radius:3px}.sidebar-footer{border-top:1px solid var(--line);padding-top:14px;margin-top:22px}.sidebar-footer span{display:block;font-size:12px;color:var(--muted);padding:5px 10px}main{min-width:0;padding:24px 38px 40px}.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:25px}.breadcrumb span{margin-left:8px}.view-tools{float:right}h1{font-size:28px;font-weight:500;line-height:1.3;color:#223c55;margin:0 0 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}h2{font-size:24px;font-weight:500;color:#204b72;border-bottom:1px solid #c5d5e5;padding:10px 0 8px;margin:38px 0 18px}h3{font-size:19px;color:#2c506e;margin-top:28px}p{margin:15px 0}li{margin:6px 0}.permalink{opacity:0;margin-left:10px;color:#8ba8c1;font-size:16px}h2:hover .permalink,h3:hover .permalink,.permalink:focus{opacity:1}code{font-family:Consolas,'Liberation Mono',monospace;font-size:.9em;color:#214a6a}p code,li code,td code{background:#f0f4f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:4px}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}th{background:#eaf0f7;text-align:left;font-weight:600;color:#294d70}th,td{padding:12px 15px;border-bottom:1px solid #dbe3eb;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fafc}td:first-child{min-width:180px}tr:target{background:#fff3ce!important}pre{overflow-x:auto;font:14px/1.65 Consolas,'Liberation Mono',monospace;margin:0;padding:18px 20px;background:#f6f8fb;tab-size:4}.code-wrap{border:1px solid #cbd8e5;border-radius:4px;margin:22px 0;overflow:hidden}.code-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:#eaf0f7;font-size:12px;color:#526d85;border-bottom:1px solid #d4dfeb}.code-bar button{font-size:12px;padding:2px 9px}.equation{overflow-x:auto;padding:10px 4px}.on-page{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;padding:28px 15px 20px 5px;font-size:13px}.on-page strong{font-size:12px;letter-spacing:.8px;color:#758698}.on-page a{display:block;border-left:2px solid #e2e8f0;padding:7px 12px;line-height:1.5;margin-top:2px}.on-page a:hover{border-left-color:#005baa}.class-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:25px}.class-card{display:grid;grid-template-columns:20px 1fr;gap:4px 10px;border:1px solid #cfdae5;padding:16px;border-radius:4px;background:#fafcfe}.class-card:hover{background:#eef4fa;text-decoration:none;border-color:#93b0cb}.class-card strong{overflow-wrap:anywhere;font-size:15px}.class-card>span:last-child{grid-column:2;font-size:13px;color:#71849a}footer{margin-top:48px;border-top:1px solid var(--line);padding-top:15px;font-size:12px;color:#74879a}footer span{margin:0 6px}#search-results{position:fixed;right:24px;top:158px;width:min(640px,calc(100vw - 32px));max-height:65vh;overflow:auto;background:white;border:1px solid #bacbdc;border-radius:5px;box-shadow:0 8px 30px #143d6233;z-index:30;padding:16px}#search-status{font-size:14px;color:#617285;margin-bottom:10px}.search-result{display:block;padding:12px;border-top:1px solid #e3eaf1}.search-result strong{display:block;font-size:15px;overflow-wrap:anywhere}.search-result span{font-size:13px;color:#6d7f90}.search-result small{display:block;font-size:14px;color:#455c72}#close-search{margin-top:12px}#member-filter{display:block;width:min(100%,480px);padding:8px 12px;border:1px solid #adbed0;border-radius:4px;margin-top:6px}#member-count{font-size:14px;color:var(--muted)}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.skip{position:absolute;top:-100px;left:20px;z-index:100;background:white;padding:12px}.skip:focus{top:10px}#menu-toggle{display:none}.source-page main{padding:32px}.source-page h1{font-size:22px;margin-top:20px;overflow-wrap:anywhere}.source-line{display:block;min-height:23px}.source-line>a{display:inline-block;width:55px;text-align:right;padding-right:18px;color:#8494a5;user-select:none}.source-line:target{background:#fff1c6}.source-code{border:1px solid var(--line);padding:12px 0;white-space:pre}.source-code code{font-size:14px}@media(min-width:1450px){main{padding-right:55px;padding-left:55px}}@media(max-width:1150px){.layout{grid-template-columns:240px minmax(0,1fr)}.on-page{display:none}.top-nav{padding:0 12px}.top-nav>a{padding:11px 13px}.search-box input{width:230px}}@media(max-width:800px){.project-header{height:100px;padding:18px}.brand-mark{display:none}.project-name{font-size:27px}.header-note{display:none}.top-nav{height:auto;min-height:48px;flex-wrap:wrap;padding:0 8px}.top-nav>a{padding:12px 8px;font-size:13px}.search-box{width:100%;margin:6px 0 9px}.search-box input{width:100%}.layout{display:block}#sidebar{display:none;position:fixed;top:0;bottom:0;left:0;height:100vh;width:280px;z-index:40;box-shadow:8px 0 30px #143d6233;padding-top:24px}body.nav-open #sidebar{display:block}#menu-toggle{display:block;border:0;background:transparent;padding:6px}#menu-toggle span{display:none}main{padding:22px 18px}.view-tools{float:none;text-align:right;margin-bottom:14px}.class-grid{grid-template-columns:1fr}h1{font-size:25px}h2{font-size:22px}#search-results{top:110px;right:12px}.project-header p{font-size:13px}.breadcrumb{margin-bottom:14px}html{scroll-padding-top:125px}}@media print{.project-header,.top-nav,#sidebar,.on-page,.view-tools,#search-results,.code-bar button,.permalink,.breadcrumb{display:none!important}.layout{display:block}main{padding:0}#guide{display:block!important}#class-index,#member-index,#file-index{display:none!important}pre{white-space:pre-wrap}a{color:inherit}h2,h3{break-after:avoid}tr{break-inside:avoid}footer{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body class="source-page"><header class="project-header"><a class="project-name" href="../../../../index.html#files">COINAlgebra <span>Source reference</span></a></header><main><a href="../../../../index.html#files">← File list</a><h1>include/COINAlgebra/Algebra/PathAlgebra.h</h1><pre class="source-code"><code><span class="source-line" id="L1"><a href="#L1" aria-label="Line 1">1</a>#ifndef COINALGEBRA_PATHALGEBRA_H</span>
+<span class="source-line" id="L2"><a href="#L2" aria-label="Line 2">2</a>#define COINALGEBRA_PATHALGEBRA_H</span>
+<span class="source-line" id="L3"><a href="#L3" aria-label="Line 3">3</a></span>
+<span class="source-line" id="L4"><a href="#L4" aria-label="Line 4">4</a>#include &quot;COINAlgebra/Core/DecayVector.h&quot;</span>
+<span class="source-line" id="L5"><a href="#L5" aria-label="Line 5">5</a></span>
+<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a>#include &lt;cstddef&gt;</span>
+<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a></span>
+<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a></span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>class DecayQuiver;</span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a></span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a></span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>class PathAlgebra</span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>{</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>public:</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a></span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    // ========================================================</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    // Constructor</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    // ========================================================</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a></span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    // Constructs the path algebra associated with a decay</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    // quiver.</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    //</span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    // The quiver is not owned by PathAlgebra and must remain</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    // alive for the lifetime of this object.</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    //</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    PathAlgebra(</span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>        const DecayQuiver&amp; quiver</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>    );</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a></span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a></span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    // ========================================================</span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    // Identity</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // ========================================================</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    // Returns the global identity of the path algebra:</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    //</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    //     1 = sum_{v in Q_0} e_v</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    //</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    // where e_v is the stationary path associated with</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    // vertex v.</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    //</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    DecayVector Identity() const;</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a></span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a></span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>    // ========================================================</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    // Maximum path power</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    // ========================================================</span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a></span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    // Returns the maximum meaningful power for the quiver.</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    //</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    // For an acyclic quiver with |Q_0| vertices, the maximum</span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    // length of a non-stationary path is</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    //</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    //     |Q_0| - 1.</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    //</span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    // This is therefore the maximum power required for a</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    // complete finite power expansion.</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    //</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>    std::size_t MaxPower() const;</span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a></span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a></span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>    // ========================================================</span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>    // Quiver</span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    // ========================================================</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a></span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    // Returns the quiver associated with this path algebra.</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a>    //</span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    const DecayQuiver&amp; GetQuiver() const;</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a></span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a></span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    // ========================================================</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    // Multiplication</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    // ========================================================</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a></span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>    // Multiplies two decay vectors using the ordinary</span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    // path-algebra product.</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>    //</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    // For basis paths p and q:</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>    //</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    //     p * q = p.Compose(q)</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    //</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // when p and q are composable.</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    //</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    // Otherwise:</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    //</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    //     p * q = 0.</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    //</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    // The vector product is extended bilinearly.</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    //</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>    DecayVector Multiply(</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>        const DecayVector&amp; first,</span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>        const DecayVector&amp; second</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    ) const;</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a></span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a></span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    // ========================================================</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    // Powers</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    // ========================================================</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a></span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    // Returns the n-th power of a decay vector:</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    //</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    //     d^n.</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>    //</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>    // In particular:</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a>    //</span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    //     d^0 = 1</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>    //     d^1 = d</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>    //     d^2 = d*d</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>    //     ...</span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>    //</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    // where 1 is the global identity of the path algebra.</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>    //</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>    DecayVector Power(</span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>        const DecayVector&amp; d,</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>        std::size_t n</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>    ) const;</span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a></span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a></span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>    // ========================================================</span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a>    // Power expansion</span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>    // ========================================================</span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a></span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>    // Returns the finite power expansion</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    //</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>    //     1 + d + d^2 + ... + d^N</span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>    //</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>    // where N = maxPower.</span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    //</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    DecayVector PowerExpand(</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>        const DecayVector&amp; d,</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>        std::size_t maxPower</span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    ) const;</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a></span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a></span>
+<span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a>    // ========================================================</span>
+<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a>    // Bilinear forms</span>
+<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>    // ========================================================</span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a></span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>    // Source form</span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a></span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>    double SourceForm(</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>        const DecayVector&amp; first,</span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>        const DecayVector&amp; second</span>
+<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a>    ) const;</span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a></span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a></span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>    // Target form</span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a></span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>    double TargetForm(</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>        const DecayVector&amp; first,</span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>        const DecayVector&amp; second</span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>    ) const;</span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a></span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a></span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>    // Path form</span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a></span>
+<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>    double PathForm(</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>        const DecayVector&amp; first,</span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>        const DecayVector&amp; second</span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>    ) const;</span>
+<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a></span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a></span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>private:</span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a></span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>    // ========================================================</span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>    // Associated quiver</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>    // ========================================================</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a></span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>    // Non-owning pointer.</span>
+<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a>    //</span>
+<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>    // The quiver must outlive the PathAlgebra object.</span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>    //</span>
+<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a>    const DecayQuiver* fQuiver;</span>
+<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a>};</span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a></span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>#endif</span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a></span>
+<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a></span></code></pre></main></body></html>

@@ -45,8 +45,11 @@ int main(int argc, char** argv) {
     assert(logo && !logo->pixmap(Qt::ReturnByValue).isNull());
     assert(button(&window, "Import Quiver")->mapTo(&window, QPoint()).y() <
            button(&window, "Export Quiver")->mapTo(&window, QPoint()).y());
-    auto edits = window.findChildren<QLineEdit*>();
-    assert(edits.size() == 3);
+    QList<QLineEdit*> edits{window.findChild<QLineEdit*>("levelName"),
+                           window.findChild<QLineEdit*>("probability")};
+    auto* quiverTitle = window.findChild<QLineEdit*>("quiverTitle");
+    assert(quiverTitle && quiverTitle->text().isEmpty());
+    quiverTitle->setText("56Fe levels");
     for (const auto& name : {"d0", "d1", "d2"}) {
         edits[0]->setText(name);
         button(&window, "Add Level")->click();
@@ -86,6 +89,7 @@ int main(int argc, char** argv) {
     QFile file(output.path() + "/examples/" + files[0]);
     assert(file.open(QIODevice::ReadOnly));
     auto json = QJsonDocument::fromJson(file.readAll()).object();
+    assert(json["title"].toString() == "56Fe levels");
     assert(json["levels"].toArray().size() == 3);
     auto transitions = json["transitions"].toArray();
     assert(transitions.size() == 1);
@@ -133,11 +137,13 @@ int main(int argc, char** argv) {
     assert(combos[0]->count() == 3);
 
     // An invalid document must not partially replace the open workspace.
+    assert(quiverTitle->text() == "56Fe levels");
     QFile invalid(output.path() + "/invalid.json");
     assert(invalid.open(QIODevice::WriteOnly));
     invalid.write(R"({"levels":["bad"],"transitions":[{"name":"broken","source_index":0,"target_index":99,"probability":1}]})");
     invalid.close();
     import(invalid.fileName(), "Import Failed", QMessageBox::Ok);
+    assert(quiverTitle->text() == "56Fe levels");
     assert(lists[0]->count() == 3 && lists[0]->item(0)->text() == "d0");
     assert(lists[1]->count() == 1);
 

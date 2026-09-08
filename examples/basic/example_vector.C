@@ -5,6 +5,8 @@
 #include "COINAlgebra/Core/DecayVector.h"
 #include "COINAlgebra/Algebra/PathAlgebra.h"
 #include "COINAlgebra/Algebra/PathProjectors.h"
+#include "COINAlgebra/Algebra/CAlgebra.h"
+#include "COINAlgebra/Probability/DecayProbability.h"
 #include <cassert>
 #include <cmath>
 #include <iomanip>
@@ -167,12 +169,11 @@ void example_vector()
     // ========================================================
     // 5. Construct the decay vector
     //
-    // For this example we explicitly choose the coefficients
-    // to equal the intrinsic decay probabilities:
+    // Stationary coefficients are initial branching populations,
+    // chosen below to sum to one. Single-transition coefficients
+    // equal their intrinsic transition probabilities:
     //
-    //     coefficient(path) = path.GetProbability()
-    //
-    // Thus the stationary paths receive coefficient 1.
+    //     coefficient(transition) = path.GetProbability()
     // ========================================================
 
     DecayVector decay_vector;
@@ -325,9 +326,58 @@ void example_vector()
 
     std::cout
         << "\n============================================\n";
-    // Probability vector testing: 
-    PathAlgebra algebra(quiver);
+    // ========================================================
+    // 10. Probability vector in the coincidence algebra
+    //
+    // Split d = b + tau, then compute P = b *d tau in C_d.
+    // For a branch e_i and transition p, the coefficient is
+    // b_i c_d(e_i,p) tau_p: initial population times the sum
+    // of connecting-path weights times the transition weight.
+    //
+    // A separated branching level remains a stationary tensor
+    // factor, preserving where the decay started. If it is the
+    // transition's source, the local identity reduces e_i tensor p
+    // to p. Every resulting term has coincidence degree one.
+    // ========================================================
+
     PathProjectors projectors;
+    DecayVector branching_vector =
+        projectors.BranchingProjector(decay_vector);
+    DecayVector transition_vector = decay_vector - branching_vector;
+
+    // Explicit physical order, highest first. In this fully connected
+    // quiver this also orders levels by decreasing outgoing-arrow count.
+    CAlgebra coincidence_algebra(quiver, {d4, d3, d2, d1, d0}, decay_vector);
+    CAlgebra::Vector probability_vector = coincidence_algebra.Multiply(
+        coincidence_algebra.Embed(branching_vector),
+        coincidence_algebra.Embed(transition_vector)
+    );
+
+    std::cout
+        << "\n============================================\n"
+        << "     COINCIDENCE PROBABILITY VECTOR\n"
+        << "              P = b *d tau\n"
+        << "============================================\n\n"
+        << std::left << std::setw(18) << "Coefficient"
+        << "Coincidence basis\n";
+
+    for (const auto& term : probability_vector)
+    {
+        std::cout
+            << std::left << std::setw(18) << std::setprecision(10)
+            << term.coefficient << term.coin.ToString() << "\n";
+    }
+    std::cout << "Number of probability-vector terms: "
+              << probability_vector.size() << "\n";
+
+    // ========================================================
+    // 11. Existing path-algebra probability calculations
+    //
+    // FeedingVector combines contributions from all initial branches
+    // for each transition. P above retains the separate branch factors.
+    // ========================================================
+
+    PathAlgebra algebra(quiver);
     DecayProbability pb(algebra,projectors);
     DecayVector feedingVector = pb.FeedingVector(decay_vector);
     feedingVector.PrintTable();

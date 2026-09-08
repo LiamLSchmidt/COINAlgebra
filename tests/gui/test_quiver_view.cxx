@@ -192,5 +192,43 @@ int main(int argc, char** argv) {
     assert(lanes().empty());
     view.setQuiver(&quiver);
     assert(lanes().size() == 12);
+    const auto click = [&](QPointF point) {
+        auto p = view.mapFromScene(point);
+        QMouseEvent down(QEvent::MouseButtonPress, p, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QApplication::sendEvent(view.viewport(), &down);
+        QMouseEvent up(QEvent::MouseButtonRelease, p, Qt::LeftButton, Qt::NoButton, Qt::NoModifier);
+        QApplication::sendEvent(view.viewport(), &up);
+    };
+    const auto part = [&](int index, bool label) -> QGraphicsItem* {
+        for (auto* item : view.scene()->items()) {
+            if (!item->data(0).isValid() || item->data(0).toInt() != index) continue;
+            if (label && dynamic_cast<QGraphicsTextItem*>(item)) return item;
+            if (!label && dynamic_cast<QGraphicsLineItem*>(item)) return item;
+        }
+        assert(false); return nullptr;
+    };
+    click(part(0, true)->sceneBoundingRect().center());
+    assert(dynamic_cast<QGraphicsLineItem*>(part(0, false))->pen().color() == QColor("#d97706"));
+    assert(dynamic_cast<QGraphicsTextItem*>(part(0, true))->defaultTextColor() == QColor("#92400e"));
+    auto* arrow = dynamic_cast<QGraphicsLineItem*>(part(1, false));
+    click(arrow->mapToScene(arrow->line().pointAt(0.2)));
+    assert(dynamic_cast<QGraphicsTextItem*>(part(1, true))->defaultTextColor() == QColor("#92400e"));
+    assert(dynamic_cast<QGraphicsLineItem*>(part(0, false))->pen().color() == QColor("#647b91"));
+    click(QPointF(5, 5));
+    assert(dynamic_cast<QGraphicsLineItem*>(part(1, false))->pen().color() == QColor("#647b91"));
+    click(QPointF(view.viewport()->width() * 0.85, levelY("upper")));
+    for (int i = 1; i < 12; ++i) {
+        assert(dynamic_cast<QGraphicsLineItem*>(part(i, false))->pen().color() == QColor("#d97706"));
+        assert(dynamic_cast<QGraphicsTextItem*>(part(i, true))->defaultTextColor() == QColor("#92400e"));
+    }
+    assert(dynamic_cast<QGraphicsLineItem*>(part(0, false))->pen().color() == QColor("#647b91"));
+    click(QPointF(view.viewport()->width() * 0.85, levelY("middle")));
+    assert(dynamic_cast<QGraphicsLineItem*>(part(0, false))->pen().color() == QColor("#d97706"));
+    assert(dynamic_cast<QGraphicsLineItem*>(part(1, false))->pen().color() == QColor("#647b91"));
+    click(part(1, true)->sceneBoundingRect().center());
+    assert(dynamic_cast<QGraphicsLineItem*>(part(0, false))->pen().color() == QColor("#647b91"));
+    click(QPointF(view.viewport()->width() * 0.85, levelY("ground")));
+    for (int i = 0; i < 12; ++i)
+        assert(dynamic_cast<QGraphicsLineItem*>(part(i, false))->pen().color() == QColor("#647b91"));
     std::cout << "PASS: level layout, transition editing, even lanes, resize and dragging\n";
 }

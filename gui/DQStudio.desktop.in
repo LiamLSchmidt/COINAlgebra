@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=DecayQuiver Studio
+Comment=Build and analyze nuclear decay schemes
+Exec=@CMAKE_INSTALL_PREFIX@/bin/DQStudio
+Icon=@CMAKE_INSTALL_PREFIX@/share/pixmaps/DQStudio.jpeg
+Terminal=false
+Categories=Education;Science;
+StartupWMClass=DQStudio
