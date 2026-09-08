@@ -1,271 +1,116 @@
 # COINAlgebra
 
-**COINAlgebra** is a C++ toolkit for representing nuclear decay schemes as **decay quivers** and constructing the associated **coincidence algebra**.
+COINAlgebra is a C++17 toolkit for representing nuclear decay schemes as decay
+quivers and constructing path, probability, and coincidence-algebra machinery.
+It includes a ROOT interactive environment and **DecayQuiver Studio**, a Qt
+quiver-builder GUI.
 
-The project provides a computational framework for building decay networks from nuclear-level data, composing decay paths, and evaluating feeding and coincidence probabilities. It is designed to work directly with the Geant4 radioactive-decay and photon-evaporation databases, which are used as the source of nuclear-level and transition information.
+## Build
 
-## Features
-
-* **Decay levels** represented as vertices of a quiver.
-* **Decay transitions** represented as directed arrows with associated probabilities.
-* **Decay paths** constructed from composable transitions.
-* **Decay vectors** formed as linear combinations of decay paths.
-* **Decay quivers** supporting:
-
-  * level and transition management,
-  * path composability,
-  * direct-transition checks,
-  * transition-probability normalization.
-* **Path algebra** for multiplication, powers, and bilinear forms on decay vectors.
-* **Feeding and coincidence probabilities** computed from path and vertex projectors.
-* **Geant4 data readers** for the radioactive-decay and photon-evaporation databases.
-* ROOT-compatible classes and dictionaries for interactive use.
-* Interactive `COINAlgebra` environment based on ROOT's `TRint`.
-* Test macros demonstrating the current functionality.
-
-## Repository Structure
-
-```text
-COINAlgebra/
-├── CMakeLists.txt
-├── README.md
-├── setup.sh
-├── rebuild.sh
-├── regit.sh
-│
-├── include/COINAlgebra/
-│   ├── COINAlgebra.h
-│   ├── Commands.h
-│   ├── DecayLevel.h
-│   ├── DecayPath.h
-│   ├── DecayProbability.h
-│   ├── DecayQuiver.h
-│   ├── DecayQuiverBuilder.h
-│   ├── DecayTransition.h
-│   ├── DecayVector.h
-│   ├── LinkDef.h
-│   ├── PathAlgebra.h
-│   ├── PathProjectors.h
-│   ├── PhotonEvaporationReader.h
-│   └── RadioactiveDecayReader.h
-│
-├── src/
-│   ├── COINAlgebra.cxx
-│   ├── Commands.cxx
-│   ├── DecayLevel.cxx
-│   ├── DecayPath.cxx
-│   ├── DecayProbability.cxx
-│   ├── DecayQuiver.cxx
-│   ├── DecayQuiverBuilder.cxx
-│   ├── DecayTransition.cxx
-│   ├── DecayVector.cxx
-│   ├── main.cxx
-│   ├── PathAlgebra.cxx
-│   ├── PathProjectors.cxx
-│   ├── PhotonEvaporationReader.cxx
-│   └── RadioactiveDecayReader.cxx
-│
-├── examples/
-│   └── example_vector.C
-│
-├── tests/
-│   ├── test_path.C
-│   ├── test_quiver.C
-│   └── test_vector.C
-│
-├── config/
-│   ├── COINAlgebraLogon.C
-│   └── COINAlgebraLogon.h
-│
-├── data/
-├── macros/
-├── PhotonEvaporation5.5/
-│   └── README-LevelGammaData
-├── RadioactiveDecay5.5/
-│   └── README_RDM
-├── bin/
-├── lib/
-└── build/
-```
-
-## Core modules and their purpose
-
-The project now includes a more complete set of algebraic and data-access components. The most important ones are:
-
-* `COINAlgebra.h` / `COINAlgebra.cxx`  
-  Top-level library interface and ROOT integration entry points.
-
-* `Commands.h` / `Commands.cxx`  
-  Commands exposed in the interactive ROOT shell for quick access to library functionality.
-
-* `DecayLevel.h` / `DecayLevel.cxx`  
-  Represents a nuclear level or quiver vertex, including its identity and decay-related metadata.
-
-* `DecayTransition.h` / `DecayTransition.cxx`  
-  Represents a directed decay transition between levels, including the transition label, connection, and associated probability.
-
-* `DecayPath.h` / `DecayPath.cxx`  
-  Represents a sequence of connected transitions; this is the primitive object used to build decay chains.
-
-* `DecayVector.h` / `DecayVector.cxx`  
-  Represents a linear combination of decay paths with coefficients and algebraic operations.
-
-* `DecayQuiver.h` / `DecayQuiver.cxx`  
-  Stores the graph of levels and transitions, handles path composition, and provides the quiver structure underlying the algebra.
-
-* `DecayProbability.h` / `DecayProbability.cxx`  
-  Computes feeding vectors, feeding probabilities, path connections, and coincidence probabilities with respect to a given decay vector and set of path projectors.
-
-* `PathAlgebra.h` / `PathAlgebra.cxx`  
-  Defines the path-algebra product, powers, identities, and bilinear forms needed for algebraic manipulations of decay vectors.
-
-* `PathProjectors.h` / `PathProjectors.cxx`  
-  Implements source/target and branching projections that isolate specific path subspaces and stationary contributions within a decay vector.
-
-* `DecayQuiverBuilder.h` / `DecayQuiverBuilder.cxx`  
-  Builds a gamma-decay quiver by matching radioactive-decay daughter energies to photon-evaporation levels and selecting physically relevant decay channels.
-
-* `RadioactiveDecayReader.h` / `RadioactiveDecayReader.cxx`  
-  Parses the Geant4 radioactive-decay data files (`z*.a*` files), reads parent states, decay modes, and branching channels, and converts the text tables into structured C++ objects.
-
-* `PhotonEvaporationReader.h` / `PhotonEvaporationReader.cxx`  
-  Parses the Geant4 photon-evaporation level-gamma data and stores excitation energies, half-lives, JPi information, and gamma deexcitation transitions for each isotope.
-
-* `main.cxx`  
-  Entry point for the interactive ROOT application.
-
-* `LinkDef.h`  
-  ROOT dictionary definitions for exposing COINAlgebra classes to the interpreter.
-
-## Nuclear data sources
-
-The library is designed around the Geant4 nuclear data files distributed with Geant4. The data files in the directories `PhotonEvaporation5.5/` and `RadioactiveDecay5.5/` are not custom local tables; they are the standard Geant4 nuclear decay datasets used for level structure, gamma branching, and radioactive decay channels.
-
-These readers load the Geant4 files and convert them into C++ objects that the quiver and probability infrastructure can manipulate.
-
-## Requirements
-
-* CMake ≥ 3.16
-* C++17 compiler
-* CERN ROOT
-* ROOT's CMake integration
-
-The current development environment has been tested with **ROOT 6.26.10** and **GCC 11**.
-
-## Building
-
-From the repository root:
+Requirements: CMake 3.16+, a C++17 compiler, ROOT for the optional interactive
+build, and Qt5 Widgets for the optional GUI. The standalone library requires
+neither ROOT nor Qt.
 
 ```bash
-rm -rf build
-mkdir build
-cd build
-
-cmake ..
-make -j4
-```
-
-The executable and library are placed directly in the repository:
-
-```text
-bin/coinalgebra
-lib/libCOINAlgebra.so
-```
-
-Run the interactive environment with:
-
-```bash
+cmake -S . -B build -DBUILD_WITH_ROOT=ON -DBUILD_GUI=ON
+cmake --build build -j4
+source setup.sh
 ./bin/coinalgebra
 ```
 
-## Interactive Environment
+`BUILD_WITH_ROOT` and `BUILD_GUI` default to `ON`. Missing ROOT is an error when
+requested; missing Qt5 Widgets skips the GUI with a configure-time message.
+Use `-DBUILD_WITH_ROOT=OFF` for a standalone library and optional GUI build.
+Use `-DBUILD_GUI=OFF` to skip Qt entirely. `BUILD_TESTING` defaults to `ON`.
 
-COINAlgebra provides a ROOT-based interactive environment:
+Development outputs retain their existing locations:
 
-```text
-COINAlgebra [0]>
-```
+- `lib/libCOINAlgebraCore.a`: standalone mathematical/data library.
+- `lib/libCOINAlgebra.so` and dictionary files: optional ROOT library.
+- `bin/coinalgebra`: optional ROOT interpreter.
+- `gui/bin/DQStudio`: DecayQuiver Studio. After sourcing `setup.sh`, run
+  `DQStudio` from any directory. A user-local launcher in `~/.local/bin` also
+  makes the command available without sourcing the project setup.
 
-ROOT commands can be used normally, for example:
+Different build directories share these development outputs; build them
+sequentially. The GUI exports timestamped JSON files into `examples/`.
+Use **Import Quiver** (above **Export Quiver**) to open an existing JSON quiver.
+Imports are validated before replacing the workspace and include saved vectors.
+Levels are placed from bottom to top in insertion order. Right-click a
+transition and choose **Edit properties** to edit its source, target and
+probability together. The logo and slate/teal theme are embedded in the executable. See
+[the Studio JSON format](docs/studio-json.md) for supported fields.
 
-```text
-.L tests/test_quiver.C
-test_quiver()
-```
-
-The current command interface also provides:
-
-```text
-help()
-version()
-```
-
-## Example
-
-A simple decay scheme can be constructed from levels and transitions:
+In the ROOT environment:
 
 ```cpp
-DecayLevel* d0 = quiver.AddLevel("d0");
-DecayLevel* d1 = quiver.AddLevel("d1");
-DecayLevel* d2 = quiver.AddLevel("d2");
-
-quiver.AddTransition("gamma1", d2, d1, 0.6);
-quiver.AddTransition("gamma2", d1, d0, 1.0);
-quiver.AddTransition("gamma3", d2, d0, 0.4);
+help();
+version();
+.x tests/core/test_quiver.C
+.x tests/integration/test_reader_gamma_quiver.C(12,22,11,22)
 ```
 
-Paths can then be constructed from composable transitions:
+## Layout
+
+Public headers under `include/COINAlgebra/` mirror implementations under `src/`:
+
+| Module | Responsibility |
+| --- | --- |
+| `Core/` | Decay levels, transitions, paths, quivers, vectors |
+| `Algebra/` | Path algebra and projectors |
+| `Probability/` | Decay probability calculations |
+| `Detection/` | Reserved for efficiencies and detector response |
+| `Builders/` | Construct quivers from nuclear records |
+| `NuclearData/` | Nuclear records and Geant4 readers |
+| `IO/` | Reserved for common import/export functionality |
+| `ROOT/` | ROOT application wrapper, commands, dictionary configuration |
+
+The existing records remain with their reader headers. This structural refactor
+does not redesign mathematical definitions or record types.
 
 ```text
-d2 -[gamma1]-> d1
-d1 -[gamma2]-> d0
-
-d2 -[gamma1]-> d1 -[gamma2]-> d0
+apps/root/             ROOT executable entry point
+cmake/                 Shared source/header list
+config/                ROOT startup macros
+include/COINAlgebra/    Modular headers and legacy forwarding headers
+src/                   Module implementations
+gui/                   Qt client of COINAlgebraCore
+examples/              Basic macro, sample JSON, future module examples
+tests/                 Core, algebra, reader, integration and GUI tests
+validation/            Future matrix/Geant4 comparisons, datasets and results
+data/                  Future curated examples and external-data configuration
+external/              Future third-party dependency support
+tools/                 Future CLI tools
+bindings/python/       Future Python bindings and tests
+docs/                  Architecture, mathematics, tutorials, API and paper
+scripts/               Build and test entry points
+.github/workflows/     Reserved for future CI workflows
 ```
 
-Decay vectors allow linear combinations of such paths:
+Empty extension locations contain `.gitkeep`; they are not implemented features.
+The existing `PhotonEvaporation5.5/` and `RadioactiveDecay5.5/` datasets remain in
+place because current readers/tests use them. External-data migration is a later
+roadmap item.
 
-```text
-v = 2 p1 + 3 p3
+New code can include `COINAlgebra/Core/DecayQuiver.h`,
+`COINAlgebra/Algebra/PathAlgebra.h`, etc. Legacy flat includes such as
+`COINAlgebra/DecayQuiver.h` still forward to the corresponding module. The legacy
+`COINAlgebra/COINAlgebra.h` continues to expose the ROOT application wrapper.
+CMake consumers in this build can link `COINAlgebra::Core`.
+
+## Tests
+
+```bash
+ctest --test-dir build --output-on-failure
 ```
 
-The algebraic structure will be extended to incorporate coincidence products and the associated probability calculations.
+The algebra macros use quiver-bound constructors and test vertex projectors
+that aggregate coefficients across all source or target vertices.
 
-## Development Status
+CTest also runs the existing core assertions as compiled C++ tests and, when Qt
+is available, an offscreen GUI smoke test covering levels, a transition, scene
+creation, a single-transition path/vector, and JSON export. It does not replace
+manual testing of dragging, editing or multi-transition vectors.
 
-COINAlgebra is currently under active development.
-
-The present implementation establishes the basic computational objects:
-
-$$
-\text{Decay Quiver}
-\longrightarrow
-\text{Decay Paths}
-\longrightarrow
-\text{Decay Vectors}.
-$$
-
-Future development will build the coincidence algebra on top of these structures, including multiplication, coincidence probabilities, detection efficiencies, and related nuclear-decay calculations.
-
-## Documentation
-
-Detailed mathematical and software documentation is maintained separately from this README.
-
-The documentation covers:
-
-* the mathematical motivation for the coincidence algebra,
-* decay quivers,
-* decay levels and transitions,
-* paths and path composition,
-* decay vectors,
-* probability normalization,
-* ROOT integration,
-* the CMake build system,
-* adding new source files,
-* ROOT dictionary generation,
-* testing and development workflow.
-
-## License
-
-License information will be added as the project develops.
-
+See [docs/architecture.md](docs/architecture.md) for module boundaries and
+[docs/studio-json.md](docs/studio-json.md) for the Studio file format.

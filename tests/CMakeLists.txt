@@ -1,0 +1,67 @@
+# Run the ROOT macros with interpreter errors and reported failures detected.
+if(BUILD_WITH_ROOT)
+    set(root_macros
+        core/test_path.C core/test_quiver.C core/test_vector.C
+        algebra/test_pathalgebra.C algebra/test_forms_projectors.C
+        nuclear_data/test_decay_readers.C
+        integration/test_22Mg_gamma_quiver.C
+        integration/test_133Ba_gamma_quiver.C
+        integration/test_reader_gamma_quiver_smoke.C)
+    foreach(macro IN LISTS root_macros)
+        get_filename_component(name ${macro} NAME_WE)
+        set(arguments "")
+        add_test(NAME root.${name} COMMAND $<TARGET_FILE:coinalgebra>
+            -l -b -q "${CMAKE_CURRENT_SOURCE_DIR}/${macro}${arguments}")
+        set_tests_properties(root.${name} PROPERTIES
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+            ENVIRONMENT "COINALGEBRA_HOME=${PROJECT_SOURCE_DIR};ROOT_INCLUDE_PATH=${PROJECT_SOURCE_DIR}/include"
+            TIMEOUT 60 LABELS "root"
+            FAIL_REGULAR_EXPRESSION "FAIL;error:;Error in;Exception")
+    endforeach()
+endif()
+
+# Run the existing core assertions against the standalone library as well.
+foreach(name IN ITEMS path quiver vector)
+    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/test_${name}_main.cxx
+        "void test_${name}();\nint main() { test_${name}(); }\n")
+    add_executable(test_native_${name} core/test_${name}.C
+        ${CMAKE_CURRENT_BINARY_DIR}/test_${name}_main.cxx)
+    target_link_libraries(test_native_${name} PRIVATE COINAlgebra::Core)
+    target_compile_options(test_native_${name} PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-UNDEBUG>
+        $<$<CXX_COMPILER_ID:MSVC>:/UNDEBUG>)
+    add_test(NAME native.${name} COMMAND test_native_${name})
+    set_tests_properties(native.${name} PROPERTIES LABELS "native")
+endforeach()
+
+if(TARGET COINAlgebraGuiWidgets)
+    add_executable(test_gui gui/test_gui.cxx)
+    target_link_libraries(test_gui PRIVATE COINAlgebraGuiWidgets)
+    target_compile_options(test_gui PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-UNDEBUG>
+        $<$<CXX_COMPILER_ID:MSVC>:/UNDEBUG>)
+    add_test(NAME gui.smoke COMMAND test_gui)
+    set_tests_properties(gui.smoke PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen" TIMEOUT 30 LABELS "gui")
+endif()
+
+if(TARGET COINAlgebraGuiWidgets)
+    add_executable(test_quiver_json gui/test_quiver_json.cxx)
+    target_link_libraries(test_quiver_json PRIVATE COINAlgebraGuiWidgets)
+    target_compile_options(test_quiver_json PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-UNDEBUG>
+        $<$<CXX_COMPILER_ID:MSVC>:/UNDEBUG>)
+    add_test(NAME gui.json COMMAND test_quiver_json)
+    set_tests_properties(gui.json PROPERTIES TIMEOUT 30 LABELS "gui")
+endif()
+
+if(TARGET COINAlgebraGuiWidgets)
+    add_executable(test_quiver_view gui/test_quiver_view.cxx)
+    target_link_libraries(test_quiver_view PRIVATE COINAlgebraGuiWidgets)
+    target_compile_options(test_quiver_view PRIVATE
+        $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-UNDEBUG>
+        $<$<CXX_COMPILER_ID:MSVC>:/UNDEBUG>)
+    add_test(NAME gui.interaction COMMAND test_quiver_view)
+    set_tests_properties(gui.interaction PROPERTIES
+        ENVIRONMENT "QT_QPA_PLATFORM=offscreen" TIMEOUT 30 LABELS "gui")
+endif()

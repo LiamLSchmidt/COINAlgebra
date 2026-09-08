@@ -34,7 +34,7 @@ void COINAlgebraLogon()
     // --------------------------------------------------------
 
     gROOT->ProcessLine(
-        "#include \"COINAlgebra/Commands.h\""
+        "#include \"COINAlgebra/ROOT/Commands.h\""
     );
 
 

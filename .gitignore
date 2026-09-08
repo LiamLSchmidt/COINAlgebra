@@ -61,3 +61,14 @@ module.modulemap
 
 .DS_Store
 Thumbs.db
+
+# Local agent configuration and conversation/planning notes
+.agents/
+.codex/
+.codex-*/
+AGENTS.md
+AGENTS.override.md
+CODEX.md
+/PROJECT_CONTEXT.md
+/ROADMAP.md
+/docs/BUILD_VERIFICATION.md

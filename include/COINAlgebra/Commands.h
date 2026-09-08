@@ -1,9 +1,3 @@
-#ifndef COINALGEBRA_COMMANDS_H
-#define COINALGEBRA_COMMANDS_H
-
-void COINAlgebraHelp();
-
-void COINAlgebraVersion();
-
-#endif
-
+#pragma once
+// Compatibility header for the original flat include layout.
+#include "COINAlgebra/ROOT/Commands.h"
