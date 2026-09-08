@@ -1,0 +1,7 @@
+# 220PA (  0.78 US  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X      7.8e-07
+                                  Alpha            0               1
+                               BetaPlus            0           3e-09
+                                  Alpha            0  -          100         9649
+                               BetaPlus            0  -        3e-07         5549

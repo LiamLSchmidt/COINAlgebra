@@ -1,0 +1,29 @@
+# 92RB ( 4.48 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         4.48
+                              BetaMinus            0               1
+                              BetaMinus            0  -       95.241      8094.87
+                              BetaMinus       814.98  -       1.0004      7279.89    uniqueFirstForbidden
+                              BetaMinus      1384.79  -      0.43018      6710.08    uniqueFirstForbidden
+                              BetaMinus      1778.33  -      0.11005      6316.54    uniqueFirstForbidden
+                              BetaMinus       2053.9  -     0.035015      6040.97    uniqueFirstForbidden
+                              BetaMinus      2088.39  -      0.14106      6006.48
+                              BetaMinus      2140.82  -      0.15006      5954.05
+                              BetaMinus      2527.18  -      0.31013      5567.69    uniqueFirstForbidden
+                              BetaMinus      2820.89  -      0.54023      5273.98
+                              BetaMinus       2849.6  -     0.051022      5245.27
+                              BetaMinus       4637.8  -      0.33014      3457.07
+                              BetaMinus       5053.8  -      0.22009      3041.07
+                              BetaMinus       5738.4  -      0.17007      2356.47
+                              BetaMinus       5893.6  -      0.16007      2201.27
+                              BetaMinus       5901.1  -      0.17007      2193.77
+                              BetaMinus       6003.5  -      0.30013      2091.37
+                              BetaMinus         6030  -      0.22009      2064.87
+                              BetaMinus       6116.1  -      0.16007      1978.77
+                              BetaMinus         7363  -      0.26011       731.87
+P       284.31  -      5.4e-08
+                                     IT            0               1
+P       431.62  -        5e-09
+                                     IT            0               1
+P       1958.3  -        7e-09
+                                     IT            0               1

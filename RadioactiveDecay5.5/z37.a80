@@ -1,0 +1,35 @@
+# 80RB (  34 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         33.4
+                               MshellEC            0      0.00033184
+                               BetaPlus            0         0.98404
+                               KshellEC            0        0.014007
+                               LshellEC            0       0.0016171
+                               MshellEC            0  -     0.021087      5717.85
+                               MshellEC        616.6  -    0.0091909      5101.25
+                               MshellEC      1256.24  -    0.0014849      4461.61
+                               MshellEC      1320.51  -     0.001421      4397.34
+                               BetaPlus            0  -       73.301      5717.85
+                               BetaPlus        616.6  -       21.287      5101.25
+                               BetaPlus      1256.24  -       2.0083      4461.61
+                               BetaPlus      1320.51  -       1.8074      4397.34
+                               KshellEC            0  -      0.89033      5717.85
+                               KshellEC        616.6  -      0.38783      5101.25
+                               KshellEC      1256.24  -     0.062574      4461.61
+                               KshellEC      1320.51  -     0.059933      4397.34
+                               LshellEC            0  -      0.10275      5717.85
+                               LshellEC        616.6  -     0.044791      5101.25
+                               LshellEC      1256.24  -    0.0072339      4461.61
+                               LshellEC      1320.51  -    0.0069266      4397.34
+P        334.5  -      3.5e-09
+                                     IT            0               1
+P        397.6  -      2.7e-09
+                                     IT            0               1
+P        418.5  -     1.11e-09
+                                     IT            0               1
+P        472.5  -      4.9e-09
+                                     IT            0               1
+P        493.9  -     1.63e-06
+                                     IT            0               1
+P        650.7  -     1.39e-08
+                                     IT            0               1

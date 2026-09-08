@@ -1,0 +1,27 @@
+# 132PM ( 6.3 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          6.2
+                               MshellEC            0      0.00096758
+                               BetaPlus            0         0.97116
+                               KshellEC            0        0.024463
+                               LshellEC            0       0.0034072
+                               MshellEC       213.16  -     0.046444      9584.84
+                               MshellEC       610.85  -     0.020029      9187.15
+                               MshellEC       823.54  -      0.01997      8974.46
+                               MshellEC      1117.65  -    0.0073126      8680.35
+                               MshellEC         1388  -    0.0030027         8410
+                               BetaPlus       213.16  -       51.531      9584.84
+                               BetaPlus       610.85  -       20.216      9187.15
+                               BetaPlus       823.54  -       17.243      8974.46
+                               BetaPlus      1117.65  -       5.9459      8680.35
+                               BetaPlus         1388  -       2.1802         8410
+                               KshellEC       213.16  -       1.1773      9584.84
+                               KshellEC       610.85  -      0.50375      9187.15
+                               KshellEC       823.54  -      0.50491      8974.46
+                               KshellEC      1117.65  -      0.18468      8680.35
+                               KshellEC         1388  -     0.075642         8410
+                               LshellEC       213.16  -      0.16363      9584.84
+                               LshellEC       610.85  -     0.070809      9187.15
+                               LshellEC       823.54  -     0.069708      8974.46
+                               LshellEC      1117.65  -     0.026028      8680.35
+                               LshellEC         1388  -     0.010544         8410

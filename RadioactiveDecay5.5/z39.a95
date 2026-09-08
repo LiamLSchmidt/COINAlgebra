@@ -1,0 +1,30 @@
+# 95Y (  10.3 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          618
+                              BetaMinus            0               1
+                              BetaMinus            0  -        63.62      4450.24    uniqueFirstForbidden
+                              BetaMinus       953.97  -       1.8887      3496.27
+                              BetaMinus       1323.8  -      0.89465      3126.44
+                              BetaMinus      1618.35  -      0.95429      2831.89
+                              BetaMinus       1721.5  -     0.039762      2728.74
+                              BetaMinus      1892.66  -     0.049703      2557.58
+                              BetaMinus      1903.97  -      0.17893      2546.27
+                              BetaMinus      1940.24  -      0.47715         2510
+                              BetaMinus      1955.92  -     0.059643      2494.32
+                              BetaMinus       2253.7  -      0.46721      2196.54
+                              BetaMinus      2372.27  -       3.7675      2077.97
+                              BetaMinus      3129.55  -       9.6423      1320.69
+                              BetaMinus       3249.1  -        3.519      1201.14
+                              BetaMinus      3451.15  -      0.96423       999.09
+                              BetaMinus      3575.83  -        7.356       874.41
+                              BetaMinus       3586.3  -       5.2685       863.94
+                              BetaMinus      3684.89  -      0.61631       765.35
+                              BetaMinus         3887  -     0.021869       563.24
+                              BetaMinus       3926.1  -     0.015905       524.14
+                              BetaMinus       4070.5  -      0.19881       379.74
+P       1087.6  -     5.26e-05
+                                     IT            0               1
+P       3142.5  -      1.6e-08
+                                     IT            0               1
+P       5022.2  -      6.5e-08
+                                     IT            0               1

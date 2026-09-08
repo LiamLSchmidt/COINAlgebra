@@ -1,0 +1,21 @@
+# 13N ( 9.965 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        597.9
+                               BetaPlus            0         0.99804
+                               KshellEC            0         0.00186
+                               LshellEC            0        0.000104
+                               BetaPlus            0  -       99.804     2220.472
+                               KshellEC            0  -        0.186     2220.472
+                               LshellEC            0  -       0.0104     2220.472
+P         3502  -    7.3501e-21
+                                 Proton            0               1
+                                 Proton            0  -          100      1558.51
+P         7376  -   6.07608e-21
+                                 Proton            0               1
+                                 Proton            0  -          100      5432.51
+P         8918  -   1.98133e-21
+                                 Proton            0               1
+                                 Proton            0  -          100      6974.51
+P         9476  -   1.51902e-20
+                                 Proton            0               1
+                                 Proton            0  -          100      7532.51

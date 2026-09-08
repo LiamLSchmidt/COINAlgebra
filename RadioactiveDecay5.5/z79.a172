@@ -1,0 +1,13 @@
+# 172AU ( 22 MS     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.022
+                                  Alpha            0          0.9998
+                                 Proton            0      0.00019996
+                                  Alpha            0  -          100       6923.2
+                                 Proton            0  -         0.02          812
+P            0 +X       0.0077
+                                  Alpha            0          0.9998
+                                 Proton            0      0.00019996
+                                  Alpha            0 +X       70.707       6923.2
+                                  Alpha           72  -       29.293       6851.2
+                                 Proton            0  -         0.02          812

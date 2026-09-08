@@ -1,0 +1,23 @@
+# 184AU ( 2.0600e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         20.6
+                                  Alpha            0      0.00019996
+                               BetaPlus            0          0.9998
+                                  Alpha            0  -         0.02       5233.9
+                               BetaPlus            0  -          100       7020.1
+P        68.46  -         47.6
+                                  Alpha            0      0.00015997
+                               BetaPlus            0         0.69989
+                                     IT            0         0.29995
+                                  Alpha            0  -    0.0041161      5302.36
+                                  Alpha         80.4  -    0.0074795      5221.96
+                                  Alpha          114  -     0.001041      5188.36
+                                  Alpha          167  -    0.0016496      5135.36
+                                  Alpha          212  -    0.0017137      5090.36
+                               BetaPlus            0  -           70      7157.06
+P        228.4  -      6.9e-08
+                                     IT            0               1
+P       320.51  -        2e-09
+                                     IT            0               1
+P       490.91  -        2e-09
+                                     IT            0               1

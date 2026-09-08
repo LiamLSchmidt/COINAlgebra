@@ -1,0 +1,5 @@
+# 88RU ( 1.2000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          1.2
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         7282

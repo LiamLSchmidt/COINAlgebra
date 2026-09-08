@@ -1,0 +1,9 @@
+# 81ZR ( 5.5000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          5.5
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         7315
+P        133.2  -      2.8e-08
+                                     IT            0               1
+P       191.85  -      2.8e-08
+                                     IT            0               1

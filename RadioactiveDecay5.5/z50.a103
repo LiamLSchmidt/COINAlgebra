@@ -1,0 +1,31 @@
+# 103SN ( 7.0 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -            7
+                               MshellEC            0       0.0028315
+                               BetaPlus            0         0.89837
+                               KshellEC            0        0.087634
+                               LshellEC            0        0.011163
+                               MshellEC      1669.64  -     0.015629      5990.36
+                               MshellEC         2025  -     0.004679         5635
+                               MshellEC      2176.83  -     0.004683      5483.17
+                               MshellEC       2812.7  -     0.078457       4847.3
+                               MshellEC       3280.6  -      0.15621       4379.4
+                               MshellEC       3462.1  -      0.02349       4197.9
+                               BetaPlus      1669.64  -       11.791      5990.36
+                               BetaPlus         2025  -       2.8074         5635
+                               BetaPlus      2176.83  -       2.8074      5483.17
+                               BetaPlus       2812.7  -       28.074       4847.3
+                               BetaPlus       3280.6  -       39.304       4379.4
+                               BetaPlus       3462.1  -       5.0533       4197.9
+                               KshellEC      1669.64  -      0.48424      5990.36
+                               KshellEC         2025  -      0.14536         5635
+                               KshellEC      2176.83  -      0.14531      5483.17
+                               KshellEC       2812.7  -       2.4188       4847.3
+                               KshellEC       3280.6  -       4.8434       4379.4
+                               KshellEC       3462.1  -      0.72625       4197.9
+                               LshellEC      1669.64  -     0.061618      5990.36
+                               LshellEC         2025  -     0.018404         5635
+                               LshellEC      2176.83  -     0.018448      5483.17
+                               LshellEC       2812.7  -      0.31011       4847.3
+                               LshellEC       3280.6  -      0.61524       4379.4
+                               LshellEC       3462.1  -     0.092483       4197.9

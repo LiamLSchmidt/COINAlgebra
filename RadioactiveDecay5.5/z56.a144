@@ -1,0 +1,26 @@
+# 144BA ( 11.5 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         11.5
+                              BetaMinus            0               1
+                              BetaMinus      103.855  -       3.2448     2978.745    uniqueFirstForbidden
+                              BetaMinus       172.83  -       3.7518      2909.77    uniqueFirstForbidden
+                              BetaMinus      185.681  -       1.6224     2896.919
+                              BetaMinus      215.167  -        5.577     2867.433
+                              BetaMinus       294.72  -      0.81119      2787.88
+                              BetaMinus       300.68  -       2.2308      2781.92
+                              BetaMinus       382.94  -       1.2168      2699.66
+                              BetaMinus       401.23  -       0.2028      2681.37
+                              BetaMinus       474.57  -       1.3182      2608.03
+                              BetaMinus       475.47  -       2.3322      2607.13
+                              BetaMinus       477.45  -        1.014      2605.15
+                              BetaMinus       549.98  -      0.02028      2532.62    uniqueFirstForbidden
+                              BetaMinus       603.37  -       41.574      2479.23
+                              BetaMinus       655.18  -       0.3042      2427.42
+                              BetaMinus       669.88  -       0.3042      2412.72
+                              BetaMinus        740.6  -       0.6084         2342
+                              BetaMinus       756.18  -       19.469      2326.42
+                              BetaMinus       990.61  -       9.3287      2091.99
+                              BetaMinus      1085.82  -       2.6364      1996.78
+                              BetaMinus      1117.05  -       0.7098      1965.55
+                              BetaMinus      1223.86  -       1.3182      1858.74
+                              BetaMinus      1240.19  -       0.4056      1842.41

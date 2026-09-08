@@ -1,0 +1,9 @@
+# 176W ( 9.0000e+03)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         9000
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100        723.8
+P         3747  -      4.1e-08
+                                     IT            0               1
+P       4894.7  -        1e-08
+                                     IT            0               1

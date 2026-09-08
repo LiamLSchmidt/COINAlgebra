@@ -1,0 +1,18 @@
+# 109TE ( 4.6 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          4.6
+                                  Alpha            0           0.039
+                               BetaPlus            0           0.961
+                                  Alpha            0  -          3.9      3197.68
+                               BetaPlus          402  -       8.0083      8133.66
+                               BetaPlus        752.3  -       8.0083      7783.36
+                               BetaPlus        832.2  -       8.0083      7703.46
+                               BetaPlus       1100.9  -       8.0083      7434.76
+                               BetaPlus       1330.8  -       8.0083      7204.86
+                               BetaPlus       1591.8  -       8.0083      6943.86
+                               BetaPlus       1619.5  -       8.0083      6916.16
+                               BetaPlus       1837.4  -       8.0083      6698.26
+                               BetaPlus       1968.8  -       8.0083      6566.86
+                               BetaPlus         2019  -       8.0083      6516.66
+                               BetaPlus       2045.5  -       8.0083      6490.16
+                               BetaPlus         2106  -       8.0083      6429.66

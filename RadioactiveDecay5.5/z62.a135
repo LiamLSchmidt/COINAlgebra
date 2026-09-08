@@ -1,0 +1,7 @@
+# 135SM ( 1.0300e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         10.3
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         7170
+P          100 +Y      2.1e-08
+                                     IT            0               1

@@ -1,0 +1,8 @@
+# 192OS ( 5.9 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P       2015.4  -          5.9
+                              BetaMinus            0            0.13
+                                     IT            0            0.87
+                              BetaMinus            0  -           13       2984.5
+P       4113.8  -      1.9e-07
+                                     IT            0               1

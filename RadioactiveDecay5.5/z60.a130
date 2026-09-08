@@ -1,0 +1,13 @@
+# 130ND ( 21 S      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           13
+                               BetaPlus            0               1
+                               BetaPlus         92.3  -       11.111       4486.9
+                               BetaPlus        138.9  -       11.111       4440.3
+                               BetaPlus        188.9  -       11.111       4390.3
+                               BetaPlus        196.8  -       11.111       4382.4
+                               BetaPlus        262.5  -       11.111       4316.7
+                               BetaPlus        301.4  -       11.111       4277.8
+                               BetaPlus        397.9  -       11.111       4181.3
+                               BetaPlus        422.3  -       11.111       4156.9
+                               BetaPlus        434.4  -       11.111       4144.8

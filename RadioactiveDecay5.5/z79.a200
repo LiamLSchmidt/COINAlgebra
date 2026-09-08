@@ -1,0 +1,22 @@
+# 200AU ( 48.4 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         2904
+                              BetaMinus            0               1
+                              BetaMinus            0  -       78.832       2263.4
+                              BetaMinus      367.943  -         4.69     1895.457
+                              BetaMinus     1029.344  -      0.22951     1234.056
+                              BetaMinus     1254.097  -      0.13471     1009.303
+                              BetaMinus     1570.275  -      0.61869      693.125
+                              BetaMinus     1593.423  -       10.877      669.977
+                              BetaMinus     1630.896  -       3.7919      632.504
+                              BetaMinus     1641.443  -      0.15966      621.957
+                              BetaMinus     1718.303  -      0.17962      545.097
+                              BetaMinus     1730.924  -      0.01397      532.476
+                              BetaMinus      1856.78  -   0.00052888       406.62
+                              BetaMinus     1882.857  -      0.21953      380.543
+                              BetaMinus     1972.276  -      0.16964      291.124
+                              BetaMinus     2061.253  -     0.082824      202.147
+P          962  -        67320
+                              BetaMinus            0            0.84
+                                     IT            0            0.16
+                              BetaMinus      2641.54  -           84       583.86

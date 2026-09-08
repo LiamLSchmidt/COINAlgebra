@@ -1,0 +1,14 @@
+# 17O
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P       4553.8  -  4.74694e-21
+                                Neutron            0               1
+                                Neutron            0  -          100       410.72
+P       5084.8  -  4.74694e-21
+                                Neutron            0               1
+                                Neutron            0  -          100       941.72
+P       5379.2  -  1.62752e-20
+                                Neutron            0               1
+                                Neutron            0  -          100      1236.12
+P         5939  -  1.42408e-20
+                                Neutron            0               1
+                                Neutron            0  -          100      1795.92

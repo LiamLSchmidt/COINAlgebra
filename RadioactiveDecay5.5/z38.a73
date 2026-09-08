@@ -1,0 +1,5 @@
+# 73SR (  25 MS    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.025
+                               BetaPlus            0               1
+                               BetaPlus         3210  -          100        10921

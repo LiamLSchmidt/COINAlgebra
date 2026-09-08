@@ -1,0 +1,27 @@
+# 60ZN ( 2.38 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        142.8
+                               MshellEC            0      0.00057273
+                               BetaPlus            0          0.9661
+                               KshellEC            0        0.030051
+                               LshellEC            0       0.0032788
+                               MshellEC         62.2  -    0.0066538      4108.62
+                               MshellEC       335.64  -    0.0016636      3835.18
+                               MshellEC        364.5  -     0.001431      3806.32
+                               MshellEC       670.07  -     0.046645      3500.75
+                               MshellEC        947.1  -   0.00087989      3223.72
+                               BetaPlus         62.2  -       19.716      4108.62
+                               BetaPlus       335.64  -       3.9433      3835.18
+                               BetaPlus        364.5  -        3.056      3806.32
+                               BetaPlus       670.07  -       69.007      3500.75
+                               BetaPlus        947.1  -      0.88723      3223.72
+                               KshellEC         62.2  -      0.34955      4108.62
+                               KshellEC       335.64  -     0.087387      3835.18
+                               KshellEC        364.5  -     0.075151      3806.32
+                               KshellEC       670.07  -       2.4467      3500.75
+                               KshellEC        947.1  -     0.046312      3223.72
+                               LshellEC         62.2  -     0.038127      4108.62
+                               LshellEC       335.64  -    0.0095307      3835.18
+                               LshellEC        364.5  -     0.008198      3806.32
+                               LshellEC       670.07  -      0.26697      3500.75
+                               LshellEC        947.1  -    0.0050565      3223.72

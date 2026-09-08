@@ -1,0 +1,20 @@
+# 249BK ( 330 D     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -   2.8512e+07
+                                  Alpha            0        1.45e-05
+                              BetaMinus            0         0.99999
+                              SpFission            0      4.6999e-10
+                                  Alpha            0  -   7.0161e-05      5523.38
+                                  Alpha         19.2  -    0.0010933      5504.18
+                                  Alpha        47.07  -   0.00023387      5476.31
+                                  Alpha        87.65  -   2.1925e-05      5435.73
+                                  Alpha          117  -   7.0161e-07      5406.38
+                                  Alpha       124.59  -   1.0817e-06      5398.79
+                                  Alpha       190.82  -   1.4617e-06      5332.56
+                                  Alpha          290  -   5.5544e-07      5233.38
+                                  Alpha      327.428  -    2.631e-05     5195.952
+                                  Alpha          398  -   5.8468e-07      5125.38
+                              BetaMinus            0  -          100       124.61
+                              SpFission            0  -      4.7e-08        1e-06
+P        8.777  -       0.0003
+                                     IT            0               1

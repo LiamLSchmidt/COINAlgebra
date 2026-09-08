@@ -1,0 +1,16 @@
+# 136PM ( 47 S      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X           47
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100       8018.8
+P            0 +Y          107
+                               BetaPlus            0               1
+                               BetaPlus       976.37  -       11.111      7042.43
+                               BetaPlus      1230.94  -       11.111      6787.86
+                               BetaPlus      1541.67  -       11.111      6477.13
+                               BetaPlus       1746.7  -       11.111       6272.1
+                               BetaPlus      1925.94  -       11.111      6092.86
+                               BetaPlus       2035.6  -       11.111       5983.2
+                               BetaPlus      2045.55  -       11.111      5973.25
+                               BetaPlus       2349.3  -       11.111       5669.5
+                               BetaPlus       2439.9  -       11.111       5578.9

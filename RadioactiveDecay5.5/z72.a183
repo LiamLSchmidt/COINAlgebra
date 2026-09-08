@@ -1,0 +1,12 @@
+# 183HF (   1.067 H )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       3841.2
+                              BetaMinus            0               1
+                              BetaMinus       459.07  -       25.654      1550.93
+                              BetaMinus       735.06  -      0.57465      1274.94
+                              BetaMinus      856.929  -       69.779     1153.071
+                              BetaMinus       960.07  -      0.15393      1049.93
+                              BetaMinus      1030.28  -      0.17445       979.72
+                              BetaMinus      1150.77  -      0.30785       859.23
+                              BetaMinus      1543.41  -       3.2837       466.59
+                              BetaMinus      1784.32  -     0.071832       225.68

@@ -1,0 +1,20 @@
+# 8LI ( 839.9 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       0.8399
+                              BetaMinus            0               1
+                              BetaMinus         3030  -          100     12974.13
+P         3210  -     4.22e-21
+                                Neutron            0               1
+                                Neutron        477.6  -           50        700.1
+                                Neutron            0  -           50       1177.7
+P         5400  -     4.22e-21
+                                Neutron            0               1
+                                Neutron        477.6  -           50       2890.1
+                                Neutron            0  -           50       3367.7
+                              
+P         9670  -     4.22e-21
+                                 Triton            0            0.80
+                                Neutron            0            0.20
+                                 Triton            0  -           80       4280.0
+                                Neutron        477.6  -           10       7160.1
+                                Neutron            0  -           10       7637.7  

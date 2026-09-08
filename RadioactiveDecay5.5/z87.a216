@@ -1,0 +1,10 @@
+# 216FR ( 0.70 US   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        7e-07
+                                  Alpha            0               1
+                                  Alpha            0  -       99.269      9174.21
+                                  Alpha        160.4  -      0.52247      9013.81
+                                  Alpha        205.6  -      0.20899      8968.61
+P        133.3  -      7.1e-08
+                                  Alpha            0               1
+                                  Alpha        205.6  -           50      9101.91

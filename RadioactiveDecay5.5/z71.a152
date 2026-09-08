@@ -1,0 +1,11 @@
+# 152LU ( 0.7 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          0.7
+                               MshellEC            0       0.0018133
+                               BetaPlus            0         0.95406
+                               KshellEC            0         0.03828
+                               LshellEC            0       0.0058428
+                               MshellEC       2202.7  -      0.18133      10696.3
+                               BetaPlus       2202.7  -       95.406      10696.3
+                               KshellEC       2202.7  -        3.828      10696.3
+                               LshellEC       2202.7  -      0.58428      10696.3

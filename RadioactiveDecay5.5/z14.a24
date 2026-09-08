@@ -1,0 +1,14 @@
+# 24SI ( 140 MS    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         0.14
+                               BetaPlus            0               1
+                               BetaPlus         3000  -           10         7792
+                               BetaPlus         3370  -           10         7422
+                               BetaPlus         4400  -           10         6392
+                               BetaPlus         4670  -           10         6122
+                               BetaPlus         4970  -           10         5822
+                               BetaPlus         5430  -           10         5362
+                               BetaPlus         5760  -           10         5032
+                               BetaPlus         5960  -           10         4832
+                               BetaPlus         6250  -           10         4542
+                               BetaPlus         6530  -           10         4262

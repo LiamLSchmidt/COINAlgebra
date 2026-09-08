@@ -1,0 +1,5 @@
+# 162EU ( 1.0600e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         10.6
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100         5585

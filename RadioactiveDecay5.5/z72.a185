@@ -1,0 +1,5 @@
+# 185HF (  3.5 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          210
+                              BetaMinus            0               1
+                              BetaMinus        164.5  -          100       2912.1

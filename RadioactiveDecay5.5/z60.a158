@@ -1,0 +1,5 @@
+# 158ND ( 5.0000e-08)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        5e-08
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100         5035

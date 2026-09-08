@@ -1,0 +1,32 @@
+# 250BK ( 3.212 H   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      11563.2
+                              BetaMinus            0               1
+                              BetaMinus            0  -       4.8942      1779.58    uniqueFirstForbidden
+                              BetaMinus       42.721  -       4.8942     1736.859
+                              BetaMinus      141.875  -      0.34958     1637.705    uniqueFirstForbidden
+                              BetaMinus       871.57  -     0.059929       908.01
+                              BetaMinus       905.89  -   9.9881e-28       873.69
+                              BetaMinus     1031.852  -       83.301      747.728
+                              BetaMinus      1071.37  -       6.2226       708.21
+                              BetaMinus      1154.24  -    0.0014982       625.34    uniqueFirstForbidden
+                              BetaMinus      1175.52  -      0.05893       604.06
+                              BetaMinus      1189.39  -     0.016081       590.19
+                              BetaMinus      1209.97  -     0.026968       569.61
+                              BetaMinus       1218.2  -     0.006692       561.38
+                              BetaMinus       1244.5  -    0.0064923       535.08
+                              BetaMinus       1266.6  -    0.0079905       512.98    uniqueFirstForbidden
+                              BetaMinus       1296.6  -     0.020975       482.98
+                              BetaMinus       1385.5  -    0.0038954       394.08
+                              BetaMinus      1411.33  -     0.003396       368.25
+                              BetaMinus      1426.86  -     0.007591       352.72
+                              BetaMinus         1658  -      0.11686       121.58
+                              BetaMinus      1695.15  -    0.0014982        84.43
+P        35.59  -      2.9e-05
+                                     IT            0               1
+P           86  -     0.000213
+                                     IT            0               1
+P        97.49  -      3.8e-08
+                                     IT            0               1
+P       175.13  -      4.2e-08
+                                     IT            0               1

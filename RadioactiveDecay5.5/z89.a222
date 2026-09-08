@@ -1,0 +1,8 @@
+# 222AC ( 5.0 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -            5
+                                  Alpha            0               1
+                                  Alpha            0  -        93.06      7137.36
+                                  Alpha           46  -         5.94      7091.36
+P            0 +X           63
+                                     IT            0               1

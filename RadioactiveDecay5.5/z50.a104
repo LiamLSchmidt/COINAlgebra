@@ -1,0 +1,29 @@
+# 104SN ( 20.8 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         20.8
+                               MshellEC            0       0.0099375
+                               BetaPlus            0         0.64458
+                               KshellEC            0         0.30617
+                               LshellEC            0        0.039318
+                               MshellEC      1139.25  -      0.42073      3416.37
+                               MshellEC       1382.4  -     0.028032      3173.22
+                               MshellEC       1441.6  -      0.19932      3114.02
+                               MshellEC       1633.3  -      0.33717      2922.32
+                               MshellEC         2072  -    0.0084909      2483.62
+                               BetaPlus      1139.25  -       37.149      3416.37
+                               BetaPlus       1382.4  -        2.008      3173.22
+                               BetaPlus       1441.6  -       11.044      3114.02
+                               BetaPlus       1633.3  -       14.056      2922.32
+                               BetaPlus         2072  -       0.2008      2483.62
+                               KshellEC      1139.25  -       12.977      3416.37
+                               KshellEC       1382.4  -      0.86521      3173.22
+                               KshellEC       1441.6  -       6.1428      3114.02
+                               KshellEC       1633.3  -       10.373      2922.32
+                               KshellEC         2072  -       0.2592      2483.62
+                               LshellEC      1139.25  -       1.6627      3416.37
+                               LshellEC       1382.4  -      0.11078      3173.22
+                               LshellEC       1441.6  -      0.78642      3114.02
+                               LshellEC       1633.3  -       1.3384      2922.32
+                               LshellEC         2072  -     0.033517      2483.62
+P       2257.2  -      1.5e-09
+                                     IT            0               1

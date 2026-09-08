@@ -1,0 +1,42 @@
+# 130PR ( 40.0 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           40
+                               BetaPlus            0               1
+                               BetaPlus       253.85  -       2.8571      7993.55
+                               BetaPlus       710.37  -       2.8571      7537.03
+                               BetaPlus       834.55  -       2.8571      7412.85
+                               BetaPlus       1025.7  -       2.8571       7221.7
+                               BetaPlus      1177.37  -       2.8571      7070.03
+                               BetaPlus      1322.83  -       2.8571      6924.57
+                               BetaPlus       1324.1  -       2.8571       6923.3
+                               BetaPlus      1356.43  -       2.8571      6890.97
+                               BetaPlus      1671.99  -       2.8571      6575.41
+                               BetaPlus       1755.4  -       2.8571         6492
+                               BetaPlus      1759.94  -       2.8571      6487.46
+                               BetaPlus      1833.19  -       2.8571      6414.21
+                               BetaPlus      1854.47  -       2.8571      6392.93
+                               BetaPlus       1866.6  -       2.8571       6380.8
+                               BetaPlus       1897.6  -       2.8571       6349.8
+                               BetaPlus       1954.8  -       2.8571       6292.6
+                               BetaPlus      2011.15  -       2.8571      6236.25
+                               BetaPlus      2033.02  -       2.8571      6214.38
+                               BetaPlus       2059.3  -       2.8571       6188.1
+                               BetaPlus      2068.32  -       2.8571      6179.08
+                               BetaPlus       2115.8  -       2.8571       6131.6
+                               BetaPlus      2153.75  -       2.8571      6093.65
+                               BetaPlus         2227  -       2.8571       6020.4
+                               BetaPlus      2299.69  -       2.8571      5947.71
+                               BetaPlus         2381  -       2.8571       5866.4
+                               BetaPlus       2424.2  -       2.8571       5823.2
+                               BetaPlus       2526.1  -       2.8571       5721.3
+                               BetaPlus       2551.6  -       2.8571       5695.8
+                               BetaPlus       2624.3  -       2.8571       5623.1
+                               BetaPlus       2657.5  -       2.8571       5589.9
+                               BetaPlus       2704.3  -       2.8571       5543.1
+                               BetaPlus       2760.9  -       2.8571       5486.5
+                               BetaPlus       2852.5  -       2.8571       5394.9
+                               BetaPlus      2868.58  -       2.8571      5378.82
+                               BetaPlus       3020.9  -       2.8571       5226.5
+P            0 +X           40
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100       8247.4

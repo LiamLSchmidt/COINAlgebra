@@ -1,0 +1,12 @@
+# 157TB (    71 Y   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -  2.24059e+09
+                               MshellEC            0         0.22654
+                               KshellEC            0         0.15589
+                               LshellEC            0         0.61757
+                               MshellEC            0  -       22.544       60.044
+                               MshellEC       54.533  -         0.11        5.511
+                               KshellEC            0  -       15.589       60.044
+                               KshellEC       54.533  -        1e-25        5.511
+                               LshellEC            0  -       61.757       60.044
+                               LshellEC       54.533  -        1e-25        5.511

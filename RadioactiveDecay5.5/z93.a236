@@ -1,0 +1,38 @@
+# 236NP ( 153E+3 Y  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 4.828313e+12
+                                  Alpha            0       0.0016006
+                              BetaMinus            0         0.13505
+                               MshellEC            0        0.064223
+                               KshellEC            0         0.62301
+                               LshellEC            0         0.17612
+                                  Alpha            0  -         0.16       5006.5
+                              BetaMinus       147.45  -       1.7419       329.15
+                              BetaMinus        305.8  -       11.758        170.8
+                               MshellEC      149.477  -      0.56917      783.423
+                               MshellEC      309.785  -       5.8136      623.115
+                               MshellEC        848.1  -     0.036959         84.8
+                               KshellEC      149.477  -       4.3788      783.423
+                               KshellEC      309.785  -       57.897      623.115
+                               KshellEC        848.1  -     8.63e-26         84.8
+                               LshellEC      149.477  -         1.52      783.423
+                               LshellEC      309.785  -       16.029      623.115
+                               LshellEC        848.1  -     0.055439         84.8
+P            0 +X        81000
+                                  Alpha            0       0.0015974
+                              BetaMinus            0          0.4992
+                               MshellEC            0        0.032883
+                               KshellEC            0         0.37395
+                               LshellEC            0        0.092371
+                                  Alpha            0  -         0.16       5006.5
+                              BetaMinus            0  -           40        476.6
+                              BetaMinus        44.63  -           10       431.97
+                               MshellEC            0  -       2.3405        932.9
+                               MshellEC       45.244  -      0.78742      887.656
+                               MshellEC       687.59  -      0.16563       245.31
+                               KshellEC            0  -       27.349        932.9
+                               KshellEC       45.244  -       9.0922      887.656
+                               KshellEC       687.59  -       1.0131       245.31
+                               LshellEC            0  -       6.6005        932.9
+                               LshellEC       45.244  -       2.2171      887.656
+                               LshellEC       687.59  -      0.43418       245.31

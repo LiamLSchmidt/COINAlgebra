@@ -1,0 +1,10 @@
+# 89TC (   12.8 S  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         12.8
+                               BetaPlus            0               1
+                               BetaPlus            0  -           50      7620.09
+                               BetaPlus        118.8  -           50      7501.29
+P         62.6  -         12.9
+                               BetaPlus            0          0.9999
+                                     IT            0       9.999e-05
+                               BetaPlus        387.5  -          100      7295.19

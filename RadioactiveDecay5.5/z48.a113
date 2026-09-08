@@ -1,0 +1,11 @@
+# 113CD ( 8.04E15 Y )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 2.537231e+23
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100      322.571
+P       263.54  - 4.449622e+08
+                              BetaMinus            0          0.9986
+                                     IT            0          0.0014
+                              BetaMinus            0  -        99.86      586.111
+P      316.206  -     1.08e-08
+                                     IT            0               1

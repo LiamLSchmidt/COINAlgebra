@@ -1,0 +1,17 @@
+# 174HF ( 2.0E+15 Y )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -  6.31152e+22
+                                  Alpha            0               1
+                                  Alpha            0  -          100      2493.15
+P       90.985  -     1.66e-09
+                                     IT            0               1
+P       1319.4  -        5e-09
+                                     IT            0               1
+P      1503.29  -        5e-09
+                                     IT            0               1
+P       1549.3  -     1.38e-07
+                                     IT            0               1
+P       1797.5  -     2.39e-06
+                                     IT            0               1
+P       3311.7  -      3.7e-06
+                                     IT            0               1

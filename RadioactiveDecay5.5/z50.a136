@@ -1,0 +1,7 @@
+# 136SN ( 2.9000e-01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         0.29
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100         8611
+P         1295  -      4.6e-08
+                                     IT            0               1

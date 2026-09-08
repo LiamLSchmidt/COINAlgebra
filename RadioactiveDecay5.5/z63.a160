@@ -1,0 +1,6 @@
+# 160EU ( 38 S      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           38
+                              BetaMinus            0               1
+                              BetaMinus            0  -           52      4460.48
+                              BetaMinus      1996.67  -           48      2463.81

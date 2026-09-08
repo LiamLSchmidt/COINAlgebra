@@ -1,0 +1,7 @@
+# 148ER ( 4.6000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          4.6
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100       6512.2
+P       2913.2  -      1.3e-05
+                                     IT            0               1

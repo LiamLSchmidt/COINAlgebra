@@ -1,0 +1,20 @@
+# 151HO ( 35.2 S    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         35.2
+                                  Alpha            0            0.22
+                               BetaPlus            0            0.78
+                                  Alpha            0  -    0.0087928      4695.01
+                                  Alpha         50.6  -       21.982      4644.41
+                                  Alpha       253.19  -    0.0021982      4441.82
+                                  Alpha       353.98  -    0.0070342      4341.03
+                               BetaPlus        527.4  -           78      4602.13
+P           41  -         47.2
+                                  Alpha            0          0.7767
+                               BetaPlus            0          0.2233
+                                  Alpha            0  -       79.748      4736.01
+                                  Alpha         50.6  -     0.047945      4685.41
+                                  Alpha       253.19  -     0.015982      4482.82
+                                  Alpha       353.98  -      0.18778      4382.03
+                               BetaPlus            0  -           23      5170.53
+P       8340.9  -      9.2e-09
+                                     IT            0               1

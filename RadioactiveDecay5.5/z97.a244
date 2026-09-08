@@ -1,0 +1,13 @@
+# 244BK (  4.35 H   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        15660
+                                  Alpha            0      6.0002e-05
+                               BetaPlus            0         0.99994
+                                  Alpha            0  -        0.003       6778.8
+                                  Alpha           43  -        0.003       6735.8
+                               BetaPlus            0  -        99.99       2261.9
+P            0 +X      8.2e-07
+                                  Alpha            0      6.0002e-05
+                               BetaPlus            0         0.99994
+                                  Alpha            0  -        0.006       6778.8
+                               BetaPlus            0  -        99.99       2261.9

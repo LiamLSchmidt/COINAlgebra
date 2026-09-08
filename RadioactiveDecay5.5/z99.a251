@@ -1,0 +1,27 @@
+# 251ES ( 33 H      )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       118800
+                                  Alpha            0           0.005
+                               MshellEC            0         0.13325
+                               KshellEC            0         0.53675
+                               LshellEC            0           0.325
+                                  Alpha            0  -        0.405       6597.8
+                                  Alpha         29.9  -        0.047       6567.9
+                                  Alpha         40.8  -       0.0165         6557
+                                  Alpha         71.6  -        0.015       6526.2
+                                  Alpha         82.8  -       0.0165         6515
+                               MshellEC            0  -       8.5319       377.22
+                               MshellEC       24.826  -     9.95e-26      352.394
+                               MshellEC       47.832  -     9.95e-26      329.388
+                               MshellEC      177.602  -       4.5268      199.618
+                               MshellEC       211.53  -      0.26636       165.69
+                               KshellEC            0  -       47.157       377.22
+                               KshellEC       24.826  -     9.95e-26      352.394
+                               KshellEC       47.832  -     9.95e-26      329.388
+                               KshellEC      177.602  -        6.397      199.618
+                               KshellEC       211.53  -      0.12063       165.69
+                               LshellEC            0  -       21.592       377.22
+                               LshellEC       24.826  -     9.95e-26      352.394
+                               LshellEC       47.832  -     9.95e-26      329.388
+                               LshellEC      177.602  -       10.329      199.618
+                               LshellEC       211.53  -      0.57903       165.69

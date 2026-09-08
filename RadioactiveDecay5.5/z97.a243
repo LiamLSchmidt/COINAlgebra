@@ -1,0 +1,19 @@
+# 243BK ( 4.5 H     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        16560
+                                  Alpha            0          0.0015
+                               BetaPlus            0          0.9985
+                                  Alpha            0  -     0.023077      6874.27
+                                  Alpha         40.7  -     0.018731      6833.57
+                                  Alpha           94  -    0.0017982      6780.27
+                                  Alpha          156  -     0.001049      6718.27
+                                  Alpha        187.1  -     0.038362      6687.17
+                                  Alpha          220  -     0.029071      6654.27
+                                  Alpha          260  -      0.01034      6614.27
+                                  Alpha          317  -     0.001049      6557.27
+                                  Alpha          370  -    0.0002997      6504.27
+                                  Alpha          557  -      0.02038      6317.27
+                                  Alpha          586  -    0.0058442      6288.27
+                               BetaPlus            0  -        99.85      1507.59
+P         2200  -        5e-09
+                                     IT            0               1

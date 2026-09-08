@@ -1,0 +1,7 @@
+# 196RE ( 3.0000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -            3
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100         3737
+P            0 +X      3.6e-06
+                                     IT            0               1

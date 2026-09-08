@@ -1,0 +1,30 @@
+# 133BA ( 10.551 Y  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 3.329642e+08
+                               MshellEC            0         0.07384
+                               KshellEC            0         0.68638
+                               LshellEC            0         0.23978
+                               MshellEC      80.9979  -    0.0071719     436.3451
+                               MshellEC     160.6121  -    0.0037076     356.7309
+                               MshellEC     383.8491  -      0.74878     133.4939
+                               MshellEC     437.0113  -       6.6243      80.3317
+                               KshellEC      80.9979  -      0.16689     436.3451
+                               KshellEC     160.6121  -     0.082954     356.7309
+                               KshellEC     383.8491  -       11.182     133.4939
+                               KshellEC     437.0113  -       57.206      80.3317
+                               LshellEC      80.9979  -     0.025536     436.3451
+                               LshellEC     160.6121  -     0.013139     356.7309
+                               LshellEC     383.8491  -       2.5398     133.4939
+                               LshellEC     437.0113  -       21.399      80.3317
+P       12.327  -        7e-09
+                                     IT            0               1
+P      288.252  -       140148
+                               MshellEC            0        0.022787
+                               KshellEC            0         0.39868
+                               LshellEC            0        0.078556
+                                     IT            0         0.49997
+                               MshellEC       632.56  -       4.5571      173.035
+                               KshellEC       632.56  -       79.732      173.035
+                               LshellEC       632.56  -        15.71      173.035
+P      1942.07  -      3.5e-09
+                                     IT            0               1

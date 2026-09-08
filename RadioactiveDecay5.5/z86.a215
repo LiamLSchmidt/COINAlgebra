@@ -1,0 +1,7 @@
+# 215RN ( 2.30 US   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      2.3e-06
+                                  Alpha            0               1
+                                  Alpha            0  -          100      8839.02
+P       1804.8 +X      5.7e-08
+                                     IT            0               1

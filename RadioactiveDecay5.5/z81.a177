@@ -1,0 +1,10 @@
+# 177TL ( 18 MS     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.018
+                                  Alpha            0            0.73
+                                 Proton            0            0.27
+                                  Alpha            0  -           73      7066.92
+                                 Proton            0  -           27       1159.7
+P          807  -      0.00023
+                                  Alpha            0               1
+                                  Alpha          214  -           49      7659.92

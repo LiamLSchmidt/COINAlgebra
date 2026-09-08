@@ -1,0 +1,7 @@
+# 232AM ( 7.9000e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           79
+                                  Alpha            0            0.03
+                               BetaPlus            0            0.97
+                                  Alpha            0  -            3         7247
+                               BetaPlus            0  -           97         4905

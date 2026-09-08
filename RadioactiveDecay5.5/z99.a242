@@ -1,0 +1,7 @@
+# 242ES ( 1.3500e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         13.5
+                                  Alpha            0            0.57
+                               BetaPlus            0            0.43
+                                  Alpha            0  -           57         8160
+                               BetaPlus            0  -           43         5415

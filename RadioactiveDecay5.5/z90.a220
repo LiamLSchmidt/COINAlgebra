@@ -1,0 +1,7 @@
+# 220TH ( 9.7 US    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -      9.7e-06
+                                  Alpha            0               1
+                               BetaPlus            0           2e-09
+                                  Alpha            0  -          100         8953
+                               BetaPlus            0  -        2e-07        925.2

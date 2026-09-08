@@ -1,0 +1,18 @@
+# 181PT (   52.0 S  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -           52
+                                  Alpha            0      0.00074004
+                               BetaPlus            0         0.99926
+                                  Alpha            0  -     0.071188      5149.96
+                                  Alpha           88  -     0.002812      5061.96
+                               BetaPlus       111.99  -       14.274      4985.31
+                               BetaPlus       289.33  -       14.274      4807.97    uniqueFirstForbidden
+                               BetaPlus      1551.75  -       14.274      3545.55
+                               BetaPlus      1667.76  -       14.274      3429.54
+                               BetaPlus      1680.76  -       14.274      3416.54
+                               BetaPlus      1698.91  -       14.274      3398.39
+                               BetaPlus      1749.92  -       14.274      3347.38
+P       116.65  -        3e-07
+                                     IT            0               1
+P       275.99  -      9.9e-08
+                                     IT            0               1

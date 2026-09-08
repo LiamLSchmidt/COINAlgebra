@@ -1,0 +1,5 @@
+# 84MO ( 2.3000e+00)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          2.3
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100         6519

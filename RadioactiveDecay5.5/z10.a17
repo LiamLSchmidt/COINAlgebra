@@ -1,0 +1,19 @@
+# 17NE ( 109.2 MS  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       0.1092
+                               BetaPlus            0               1
+                               BetaPlus            0  -      0.55125     14548.75    uniqueFirstForbidden
+                               BetaPlus       495.33  -      0.61138     14053.42
+                               BetaPlus         3104  -      0.11025     11444.75
+                               BetaPlus         4640  -       16.577     9908.749
+                               BetaPlus         5488  -       59.334     9060.749
+                               BetaPlus         6037  -       7.8177     8511.749
+                               BetaPlus         8075  -       7.3165     6473.749
+                               BetaPlus         8200  -       1.7039     6348.749
+                               BetaPlus         8436  -       4.0091     6112.749
+                               BetaPlus         9450  -      0.60136     5098.749
+                               BetaPlus        10030  -      0.70159     4518.749
+                               BetaPlus        10660  -    0.0070159     3888.749
+                               BetaPlus        10910  -     0.016036     3638.749
+                               BetaPlus      11192.9  -      0.64145     3355.849
+                               BetaPlus        12250  -    0.0010023     2298.749

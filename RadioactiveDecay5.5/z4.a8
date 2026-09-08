@@ -1,0 +1,14 @@
+# 8BE ( 8.1814e-17)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 8.181436e-17
+                                  Alpha            0               1
+                                  Alpha            0  -          100        91.84
+P         3030  -     1.30e-22
+                                  Alpha            0               1
+                                  Alpha            0  -          100      3121.84
+P        11350  -     1.30e-22
+                                  Alpha            0               1
+                                  Alpha            0  -          100     11441.84
+P        16626  -     4.22e-21
+                                  Alpha            0               1
+                                  Alpha            0  -          100     16717.84

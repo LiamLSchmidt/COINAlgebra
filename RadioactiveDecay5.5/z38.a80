@@ -1,0 +1,27 @@
+# 80SR (  106.3 M  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         6378
+                               MshellEC            0        0.019584
+                               BetaPlus            0          0.0998
+                               KshellEC            0         0.78798
+                               LshellEC            0        0.092636
+                               MshellEC            0  -      0.67016      1863.99
+                               MshellEC       175.25  -     0.051993      1688.74
+                               MshellEC        235.9  -     0.060652      1628.09
+                               MshellEC        553.7  -      0.26116      1310.29
+                               MshellEC        589.2  -      0.91442      1274.79
+                               BetaPlus            0  -       9.1816      1863.99
+                               BetaPlus       175.25  -      0.31936      1688.74
+                               BetaPlus        235.9  -      0.26946      1628.09
+                               BetaPlus        553.7  -      0.06986      1310.29
+                               BetaPlus        589.2  -      0.13972      1274.79
+                               KshellEC            0  -       27.096      1863.99
+                               KshellEC       175.25  -       2.0971      1688.74
+                               KshellEC        235.9  -       2.4469      1628.09
+                               KshellEC        553.7  -        10.48      1310.29
+                               KshellEC        589.2  -       36.678      1274.79
+                               LshellEC            0  -       3.1719      1863.99
+                               LshellEC       175.25  -      0.24611      1688.74
+                               LshellEC        235.9  -      0.28689      1628.09
+                               LshellEC        553.7  -       1.2347      1310.29
+                               LshellEC        589.2  -       4.3239      1274.79

@@ -1,0 +1,13 @@
+# 82NB ( 50 MS     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         0.05
+                               MshellEC            0      5.1444e-05
+                               BetaPlus            0          0.9978
+                               KshellEC            0       0.0019166
+                               LshellEC            0        0.000232
+                               MshellEC            0  -    0.0051444        11742
+                               BetaPlus            0  -        99.78        11742
+                               KshellEC            0  -      0.19166        11742
+                               LshellEC            0  -       0.0232        11742
+P         1180  -      9.2e-08
+                                     IT            0               1

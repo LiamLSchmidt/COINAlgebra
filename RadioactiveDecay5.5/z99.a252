@@ -1,0 +1,28 @@
+# 252ES ( 471.7 D   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 4.075488e+07
+                                  Alpha            0            0.78
+                               MshellEC            0           0.055
+                               KshellEC            0          0.0484
+                               LshellEC            0          0.1166
+                                  Alpha            0 +Y       62.556         6789
+                                  Alpha     70.65001  -       10.608      6718.35
+                                  Alpha          136  -       0.2418         6653
+                                  Alpha        151.3  -       1.7082       6637.7
+                                  Alpha        171.5  -        0.195       6617.5
+                                  Alpha        212.6  -        0.351       6576.4
+                                  Alpha          262  -       0.0546         6527
+                                  Alpha          339  -       0.0312         6450
+                                  Alpha          373  -        0.585         6416
+                                  Alpha        399.7  -       0.4446       6389.3
+                                  Alpha          424  -        0.078         6365
+                                  Alpha          458  -       0.0624         6331
+                                  Alpha          483  -       0.0312         6306
+                                  Alpha        529.1  -       0.0936       6259.9
+                                  Alpha          590  -       0.7956         6199
+                                  Alpha          624  -       0.0936         6165
+                                  Alpha          657  -        0.039         6132
+                                  Alpha          700  -       0.0312         6089
+                               MshellEC        969.8  -          5.5        290.2
+                               KshellEC        969.8  -         4.84        290.2
+                               LshellEC        969.8  -        11.66        290.2

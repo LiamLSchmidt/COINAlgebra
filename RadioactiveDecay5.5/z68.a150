@@ -1,0 +1,35 @@
+# 150ER (  18.5 S   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         18.5
+                               MshellEC            0        0.022503
+                               BetaPlus            0         0.39884
+                               KshellEC            0          0.5025
+                               LshellEC            0        0.076158
+                               MshellEC       130.01  -     0.024236      3984.59
+                               MshellEC       476.16  -       2.1303      3638.44
+                               MshellEC      1152.01  -     0.039498      2962.59
+                               MshellEC      1450.77  -     0.015473      2663.83
+                               MshellEC      1490.28  -     0.040803      2624.32
+                               BetaPlus       130.01  -      0.65029      3984.59
+                               BetaPlus       476.16  -       38.717      3638.44
+                               BetaPlus      1152.01  -      0.29013      2962.59
+                               BetaPlus      1450.77  -     0.066029      2663.83
+                               BetaPlus      1490.28  -      0.16007      2624.32
+                               KshellEC       130.01  -      0.54389      3984.59
+                               KshellEC       476.16  -       47.585      3638.44
+                               KshellEC      1152.01  -       0.8773      2962.59
+                               KshellEC      1450.77  -      0.34236      2663.83
+                               KshellEC      1490.28  -      0.90164      2624.32
+                               LshellEC       130.01  -     0.082164      3984.59
+                               LshellEC       476.16  -       7.2096      3638.44
+                               LshellEC      1152.01  -      0.13366      2962.59
+                               LshellEC      1450.77  -     0.052352      2663.83
+                               LshellEC      1490.28  -      0.13804      2624.32
+P       2733.3  -        2e-08
+                                     IT            0               1
+P       2796.5  -     2.55e-06
+                                     IT            0               1
+P       7371.9  -      1.5e-08
+                                     IT            0               1
+P       9508.6  -      4.3e-08
+                                     IT            0               1

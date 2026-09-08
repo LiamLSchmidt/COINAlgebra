@@ -1,0 +1,9 @@
+# 28AL ( 2.245 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        134.7
+                              BetaMinus            0               1
+                              BetaMinus      1779.03  -          100     2863.234
+P      30.6382  -     2.07e-09
+                                     IT            0               1
+P       6004.8  -      3.5e-08
+                                     IT            0               1

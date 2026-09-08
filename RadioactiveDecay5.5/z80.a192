@@ -1,0 +1,30 @@
+# 192HG ( 4.85 H    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        17460
+                               MshellEC            0        0.058072
+                               KshellEC            0         0.76769
+                               LshellEC            0         0.17424
+                               MshellEC       157.28  -       1.0374       607.52
+                               MshellEC       167.49  -      0.11628       597.31
+                               MshellEC       245.44  -      0.44976       519.36
+                               MshellEC       262.59  -      0.35415       502.21
+                               MshellEC       306.47  -       3.7605       458.33
+                               MshellEC       436.59  -     0.089074       328.21
+                               KshellEC       157.28  -       14.786       607.52
+                               KshellEC       167.49  -       1.6495       597.31
+                               KshellEC       245.44  -       6.0915       519.36
+                               KshellEC       262.59  -       4.7425       502.21
+                               KshellEC       306.47  -       48.531       458.33
+                               KshellEC       436.59  -       0.9686       328.21
+                               LshellEC       157.28  -       3.1427       607.52
+                               LshellEC       167.49  -      0.35223       597.31
+                               LshellEC       245.44  -       1.3532       519.36
+                               LshellEC       262.59  -       1.0649       502.21
+                               LshellEC       306.47  -        11.25       458.33
+                               LshellEC       436.59  -      0.26128       328.21
+P      1977.03  -     1.04e-09
+                                     IT            0               1
+P       2507.3  -      3.6e-09
+                                     IT            0               1
+P       2535.5  -     1.11e-08
+                                     IT            0               1

@@ -1,0 +1,39 @@
+# 87Y ( 79.8 H    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       287280
+                               MshellEC            0        0.022745
+                               BetaPlus            0       0.0018004
+                               KshellEC            0          0.8714
+                               LshellEC            0         0.10406
+                               MshellEC      388.533  -      0.14455     1473.157
+                               MshellEC      873.343  -       2.1299      988.347
+                               BetaPlus      388.533  -      0.18004     1473.157
+                               BetaPlus      873.343  -   1.0002e-27      988.347
+                               KshellEC      388.533  -       5.5945     1473.157
+                               KshellEC      873.343  -       81.545      988.347
+                               LshellEC      388.533  -      0.66221     1473.157
+                               LshellEC      873.343  -       9.7436      988.347
+P       380.82  -        48132
+                               MshellEC            0      0.00018393
+                               BetaPlus            0          0.0075
+                               KshellEC            0       0.0071728
+                               LshellEC            0      0.00084324
+                                     IT            0          0.9843
+                               MshellEC            0  -     0.018393      2242.51
+                               BetaPlus            0  -         0.75      2242.51
+                               KshellEC            0  -      0.71728      2242.51
+                               LshellEC            0  -     0.084324      2242.51
+P       793.73  -        1e-08
+                                     IT            0               1
+P      1404.43  -        1e-08
+                                     IT            0               1
+P      1404.93  -        1e-08
+                                     IT            0               1
+P       1590.9  -        1e-08
+                                     IT            0               1
+P      2038.03  -        1e-08
+                                     IT            0               1
+P      2366.88  -        1e-08
+                                     IT            0               1
+P      2428.05  -        1e-08
+                                     IT            0               1

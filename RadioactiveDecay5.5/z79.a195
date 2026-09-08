@@ -1,0 +1,33 @@
+# 195AU ( 186.01 D  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 1.607126e+07
+                               MshellEC            0         0.17088
+                               KshellEC            0         0.38609
+                               LshellEC            0         0.44303
+                               MshellEC            0  -      0.77286       226.82
+                               MshellEC        98.88  -       8.7172       127.94
+                               MshellEC      129.772  -        7.572       97.048
+                               MshellEC      199.532  -    0.0071047       27.288
+                               MshellEC      211.406  -     0.018537       15.414
+                               KshellEC            0  -       6.5128       226.82
+                               KshellEC        98.88  -       26.361       127.94
+                               KshellEC      129.772  -       5.7354       97.048
+                               KshellEC      199.532  -        1e-25       27.288
+                               KshellEC      211.406  -        1e-25       15.414
+                               LshellEC            0  -       2.2207       226.82
+                               LshellEC        98.88  -        23.16       127.94
+                               LshellEC      129.772  -       18.914       97.048
+                               LshellEC      199.532  -    0.0071047       27.288
+                               LshellEC      211.406  -   0.00097565       15.414
+P       61.434  -        3e-09
+                                     IT            0               1
+P       318.58  -         30.5
+                                     IT            0               1
+P       1813.1  -     8.04e-09
+                                     IT            0               1
+P      1979.49  -      3.5e-09
+                                     IT            0               1
+P       2418.2  -      6.9e-08
+                                     IT            0               1
+P      2460.84 +X    1.289e-05
+                                     IT            0               1

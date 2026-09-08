@@ -1,0 +1,12 @@
+# 150ND ( 1.1e19 y )
+#
+# 20 February 2014
+# Dennis Wright - for consistency with new G4NuclideTable, add observationally
+#                 stable ground state expected to undergo double beta- decay
+#
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -   3.4713e+26
+                             Beta2Minus       0.0000      1.0000e+00
+                             Beta2Minus            0  -   1.0000e+02      3367.68
+P       130.21  -   1.4920e-09
+                                     IT       0.0000      1.0000e+00

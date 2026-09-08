@@ -1,0 +1,8 @@
+# 218PO (   3.098 M )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       185.88
+                                  Alpha            0          0.9998
+                              BetaMinus            0          0.0002
+                                  Alpha            0  -       99.979      6114.68
+                                  Alpha          835  -    0.0010998      5279.68
+                              BetaMinus            0  -         0.02        259.7

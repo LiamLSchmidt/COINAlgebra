@@ -1,0 +1,30 @@
+# 113AG ( 5.37 H    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        19332
+                              BetaMinus            0               1
+                              BetaMinus            0  -       84.694       2016.5
+                              BetaMinus      298.597  -       9.3662     1717.903
+                              BetaMinus      316.206  -       1.6939     1700.294    uniqueFirstForbidden
+                              BetaMinus      583.962  -      0.12953     1432.538    uniqueFirstForbidden
+                              BetaMinus      680.526  -       0.9964     1335.974
+                              BetaMinus      708.571  -     0.019928     1307.929    uniqueFirstForbidden
+                              BetaMinus       883.62  -      0.28896      1132.88
+                              BetaMinus        988.4  -      0.44838       1028.1
+                              BetaMinus       1049.9  -     0.064766        966.6
+                              BetaMinus      1126.25  -     0.085691       890.25
+                              BetaMinus       1194.6  -       2.0924        821.9
+                              BetaMinus      1479.08  -      0.11957       537.42
+P         43.5  -         68.7
+                              BetaMinus            0            0.36
+                                     IT            0            0.64
+                              BetaMinus      316.206  -       10.637     1743.794
+                              BetaMinus      458.633  -       1.1004     1601.367
+                              BetaMinus      583.962  -       4.4014     1476.038
+                              BetaMinus      708.571  -       16.322     1351.429
+                              BetaMinus       1007.2  -       1.8156       1052.8
+                              BetaMinus      1047.65  -      0.80693      1012.35
+                              BetaMinus       1195.3  -      0.91696        864.7
+P       222.08  -      2.3e-08
+                                     IT            0               1
+P       273.59  -        3e-08
+                                     IT            0               1

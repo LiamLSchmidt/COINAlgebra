@@ -1,0 +1,9 @@
+# 108I ( 3.6000e-02)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        0.036
+                                  Alpha            0         0.90099
+                               BetaPlus            0        0.089109
+                                 Proton            0        0.009901
+                                  Alpha            0  -           91       4099.1
+                               BetaPlus            0  -            9        13135
+                                 Proton            0  -            1          601

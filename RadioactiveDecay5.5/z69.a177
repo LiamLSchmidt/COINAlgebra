@@ -1,0 +1,5 @@
+# 177TM (  90 S     )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X           90
+                              BetaMinus            0               1
+                              BetaMinus          622  -          100         2894

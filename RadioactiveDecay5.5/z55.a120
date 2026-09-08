@@ -1,0 +1,6 @@
+# 120CS ( 5.7000e+01)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0 +X           57
+                               BetaPlus            0             0.5
+                                     IT            0             0.5
+                               BetaPlus            0  -          100       8283.8

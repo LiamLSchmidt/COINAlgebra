@@ -1,0 +1,17 @@
+# 202PO ( 44.6 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -         2676
+                                  Alpha            0          0.0192
+                               BetaPlus            0          0.9808
+                                  Alpha            0  -         1.92      5701.05
+                               BetaPlus            0  -        98.08       2816.6
+P       1691.5 +X      1.1e-07
+                                     IT            0               1
+P       2218.1 +X      1.5e-09
+                                     IT            0               1
+P       2604.1 +X      8.5e-08
+                                     IT            0               1
+P       3040.5 +X      1.9e-08
+                                     IT            0               1
+P       3573.5 +X      1.1e-08
+                                     IT            0               1

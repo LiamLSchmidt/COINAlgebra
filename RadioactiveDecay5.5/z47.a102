@@ -1,0 +1,55 @@
+# 102AG (  12.9 M   )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -          774
+                               BetaPlus            0               1
+                               BetaPlus            0  -          100      5684.46
+P          9.4  -          462
+                               MshellEC            0       0.0055175
+                               BetaPlus            0         0.46045
+                               KshellEC            0         0.18241
+                               LshellEC            0        0.022768
+                                     IT            0         0.32886
+                               MshellEC       556.44  -     0.015058      5137.42
+                               MshellEC      1534.48  -      0.02462      4159.38
+                               MshellEC       2248.8  -     0.025198      3445.06
+                               MshellEC       2391.2  -      0.13112      3302.66
+                               MshellEC       2574.3  -     0.045431      3119.56
+                               MshellEC      2610.78  -      0.11079      3083.08
+                               MshellEC       2716.3  -       0.1263      2977.56
+                               MshellEC         2737  -       0.0858      2956.86
+                               MshellEC       3123.3  -     0.055623      2570.56
+                               MshellEC      3238.17  -      0.20216      2455.69
+                               BetaPlus       556.44  -       11.563      5137.42
+                               BetaPlus      1534.48  -       6.9378      4159.38
+                               BetaPlus       2248.8  -       3.4689      3445.06
+                               BetaPlus       2391.2  -       13.876      3302.66
+                               BetaPlus       2574.3  -       3.6616      3119.56
+                               BetaPlus      2610.78  -       8.4795      3083.08
+                               BetaPlus       2716.3  -       8.4795      2977.56
+                               BetaPlus         2737  -        5.396      2956.86
+                               BetaPlus       3123.3  -       1.7344      2570.56
+                               BetaPlus      3238.17  -       5.0106      2455.69
+                               KshellEC       556.44  -      0.50091      5137.42
+                               KshellEC      1534.48  -      0.81803      4159.38
+                               KshellEC       2248.8  -       0.8343      3445.06
+                               KshellEC       2391.2  -        4.339      3302.66
+                               KshellEC       2574.3  -       1.5016      3119.56
+                               KshellEC      2610.78  -       3.6716      3083.08
+                               KshellEC       2716.3  -       4.1706      2977.56
+                               KshellEC         2737  -       2.8367      2956.86
+                               KshellEC       3123.3  -       1.8348      2570.56
+                               KshellEC      3238.17  -       6.6713      2455.69
+                               LshellEC       556.44  -     0.062178      5137.42
+                               LshellEC      1534.48  -      0.10166      4159.38
+                               LshellEC       2248.8  -      0.10408      3445.06
+                               LshellEC       2391.2  -      0.54047      3302.66
+                               LshellEC       2574.3  -      0.18742      3119.56
+                               LshellEC      2610.78  -      0.45734      3083.08
+                               LshellEC       2716.3  -      0.52099      2977.56
+                               LshellEC         2737  -      0.35371      2956.86
+                               LshellEC       3123.3  -      0.22945      2570.56
+                               LshellEC      3238.17  -      0.83517      2455.69
+P          141  -      3.5e-09
+                                     IT            0               1
+P         2117  -      2.8e-09
+                                     IT            0               1

@@ -1,0 +1,5 @@
+# 101KR ( 6.3500e-07)
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -     6.35e-07
+                              BetaMinus            0               1
+                              BetaMinus            0  -          100        13684

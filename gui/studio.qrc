@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/studio">
+    <file alias="logo.jpeg">../DQStudio_logo.jpeg</file>
+    <file alias="theme.qss">theme.qss</file>
+  </qresource>
+</RCC>

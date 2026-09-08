@@ -1,0 +1,218 @@
+
+*****************************************************************************
+               History file for Radioactive Decay Database
+     Please update in reverse chronological order (latest change first)
+*****************************************************************************
+
+Version 5.4 (Jan-October 2019) Laurent Desorgher 
+-----------------------------------------------------------------
+Update z2.a8, z3.a8, and z4.a8 and add z4.a9 for 9Li and 8He decays. 
+Courtesy from Anselmo Meregaglia.
+
+Correct  capture data for I-1125
+Update Er-169(z68.a169) according to DDEP.
+Add firstForbidden flags to Tb-161 (z65.a161)
+Add M-shell and N-shell capture to Sc-44 (z21.a44) 
+
+Version 5.3 (Jan-October 2018) Laurent Desorgher 
+------------------------------------------------------------------
+Add capture from N shell for I-125, z53.a125. Data taken from DDEP.
+Add alpha decay line in z88.a223 (Ra223). Data taken from DDEP
+Update alpha decay in z86.a219 (Rn219). Data taken from DDEP
+Correction of energy level in z85.a215 (At215). 
+Slight update alpha decay in z84.a215 (Po215). 
+Add firstForbidden tag in beta decay channel of z83.a211 (Bi211).  Taken from DDEP.
+Add firstForbidden tags in beta decay channels of z81.a207 (Tl207). Taken frpm DDEP.  
+Update data for  z37.a82 (Rb82). Data taken from DDEP
+
+
+
+Version 5.2 (July 2017) Laurent Desorgher 
+------------------------------------------------------------------
+Modify z33.a83 to force beta- decay of As83 directly to the ground of 83Se. 
+The populating of the excited levels of 83SE is poorly know and the gamma spectrum
+will be anyway not correct (Not enough ENSDF data). Therefore this solution. Modification to solve a bug reported by 
+.
+
+
+Version 5.1.1 (Jan 2017) Laurent Desorgher 
+------------------------------------------------------------------
+Correction of negative Q value for metastable 190+X level in z77.a194. 
+Bug mentioned by D. Wright.
+
+Correction of z38.a85 (Sr-85) with input data from DDEP following suggestion of 
+Gilles Gregoire. (bug 1922)
+
+
+Version 5.1  (Octb 2016) Laurent Desorgher 
+------------------------------------------------------------------
+Correction in Mn54 z25.a54 to solve bug 1852. 
+
+Corrections for some daughter levels of U235,TH232,PA233,U239.
+
+Add proton decay for excited levels of 13N for the simulation of beta plus proton 
+delayed decay of 13O.
+
+Add neutron decay for excited levels of 16N and 17O in order to simulate the beta 
+minus neutron delayed decay of 16C and 17N.
+
+Version 5.0  (June 2016) Laurent Desorgher (entered by D.H. Wright)
+------------------------------------------------------------------
+New version with floating levels (X, Y, Z, etc.) 
+
+Version 4.4.1 (May 2016)  Laurent Desorgher
+------------------------------------------
+Correction of Fe55
+KM coefficients for e- capture  added and taken from DDEP data.-
+
+Correct 0 lifetime for Ac225 (reported by D. Wright)
+
+Version 4.4 (March 2016) Gunter Folger
+------------------------------------------
+Bug correction in packaging of download file.
+  - actual data identical to 4.3.1
+
+Version 4.3.1 (February 2016)  Laurent Desorgher
+------------------------------------------
+Bug corrections:
+z71.a157(Lu157), z55.a136(Cs136),z59.a129(Pr129)
+ Replace NAN values for intensity by 1. (Pointed out by J. Yarba et D. Wright)
+
+ 
+
+Version 4.3 (November 2015)  Dennis Wright
+------------------------------------------
+- Laurent Desorgher produced new files with February 2015 input data from ENSDF 
+  and nuclear wallet cards.  Q values were computed with QCalc.  Data 
+  overlapping with those in PhotonEvaporation3.2 and G4ENDSFSTATE are intended 
+  to be consistent.
+  
+- Luis Sarmiento's proton, neutron emission and spontaneuos fission lines,
+    files added
+
+- for detailed comments from Laurent on buidling the database for this version, 
+    see file README_build
+
+Version 4.2 (November 2014)  Dennis Wright
+------------------------------------------
+- added Laurent's new files which fill in missing alpha levels and remove
+  spurious ones:
+  z53.a113
+  z54.a111
+  z60.a144
+  z66.a156, a158, a160, a161, a162
+  z69.a155
+  z71.a155, a159
+  z72.a159, a164, a174
+  z73.a158, a163, a164
+  z74.a163, a164, a167, a168
+  z75.a163, a165, a167, a168, a169
+  z76.a163, a164, a168, a172, a186
+  z77.a167, a168, a170
+  z78.a172, a184, a185, a186, a192, a194, a195, a196, a198
+  z79.a179, a180, a187
+  z80.a172, a178, a186
+  z81.a181
+  z82.a182, a184, a192, a194
+  z83.a184, a185
+  z84.a186
+  z85.a193, a194
+  z86.a214, z86.a216
+  z87.a199, a223
+  z88.a202, a216, a218
+  z90.a212, z90.a214, a220
+  z91.a214, a220
+  z92.a218, a222, a224
+  z93.a227, a228, a230, a231, a233, a236
+  z94.a228, a229, a230, a233
+  z95.a234, a235, a236
+  z96.a233, a237
+  z98.a237, a239, a241
+  z99.a244
+
+- added Laurent's new files which fill in missing beta- levels
+  z19.a53
+  z25.a62
+  z27.a73
+  z35.a78
+  z39.a102
+  z41.a104
+  z46.a115
+  z47.a118
+  z67.a168
+  z75.a187
+  z82.a115
+  z83.a212
+  z99.a254
+
+- added Laurent's updated beta+ files
+  z38.a78
+  z43.a94
+  z47.a102
+  z48.a96
+  z49.a104
+  z55.a116, a119
+  z59.a134
+  z60.a133, a135
+  z61.a136
+  z66.a145
+  z67.a151, a153
+  z69.a154, a160
+  z72.a160
+  z73.a156
+  z77.a172
+  z79.a178, a189, a192
+  z80.a189, a191
+  z81.a184
+  z82.a189, a199
+  z83.a197, a200
+  z84.a201
+  z95.a235
+  z99.a242
+  z100.a253
+
+- files z55.a136 (IT) and z58.a129 (beta) had  nan  in place of intensity value -
+  replaced with value of 1.00
+
+Version 4.1 (February 2014)  Dennis Wright
+------------------------------------------
+- contains Laurent Desorgher's corrections for X,Y,Z,W and A levels.
+  For consistency it should be used only with PhotonEvaporation3.1 or later
+- D.H. Wright: added observationally stable (very long lifetime) ground states
+               to 20 nuclides.  4 are thought to decay by alpha emission, 6 by
+               double beta+ decay and 10 by double beta- decay.
+               G4RadioactiveDecay.cc now recognizes double beta- and double
+               beta+ decays, but currently does nothing when they occur.
+
+Version 4.0 (September 2013)
+----------------------------
+- update to ENSDF 2012 by Laurent Desorgher
+
+Version 3.7 (7 June 2013)
+-------------------------
+- 24 files were found in which entries for a given nuclear level and lifetime
+  were entered twice.  Duplicate entries were removed from these files:
+  z37.a98, z37.a99, z38.a98, z38.a99, z39.a98, z39.a99,  z40.a98,  z40.a99,
+  z41.a98, z41.a99, z42.a99, z43.a98, z43.a99, z45.a114, z45.a98,  z45.a99,
+  z46.a98, z46.a99, z47.a98, z47.a99, z48.a98, z48.a99,  z68.a147, z70.a151
+
+  Missing decay information for excited states added to: 
+  z47.a100, z60.a133
+
+  Correct half-life and add missing decay information to:
+  z20.a48
+
+  Correct BetaMinus level 73.92 to 78.92 for
+  z90.a234
+
+  Recompute from latest ENSDF:
+  z41.a100
+
+  Remove BetaPlus and add Alpha decays:
+  z100.a250
+
+Version 3.6:
+-----------
+- Added new files containing the forbidden Beta decay information for all
+  nucleus known to have such decays in the ENSDF database.
+

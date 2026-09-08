@@ -1,0 +1,7 @@
+# 241CF ( 3.78 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        226.8
+                                  Alpha            0            0.25
+                               BetaPlus            0            0.75
+                                  Alpha          194  -           25         7461
+                               BetaPlus            0  -           75         3293

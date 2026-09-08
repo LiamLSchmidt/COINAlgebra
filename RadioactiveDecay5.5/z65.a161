@@ -1,0 +1,13 @@
+# 161TB (    6.89 D )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -       595296
+                              BetaMinus            0               1
+                              BetaMinus            0  -       4.9562       593.67   
+                              BetaMinus     25.65136  -       4.9562     568.0186    firstForbidden
+                              BetaMinus     74.56668  -       64.431     519.1033    firstForbidden
+                              BetaMinus     131.7587  -       25.475     461.9113    firstForbidden
+                              BetaMinus      212.952  -     0.011598      380.718    uniqueFirstForbidden
+                              BetaMinus     366.9749  -     0.064431     226.6951	 firstForbidden
+                              BetaMinus     418.2337  -      0.03281     175.4363	 firstForbidden
+                              BetaMinus      451.432  -    0.0099124      142.238	 firstForbidden
+                              BetaMinus     550.2535  -     0.063439      43.4165

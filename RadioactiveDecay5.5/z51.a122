@@ -1,0 +1,30 @@
+# 122SB ( 2.7238 D  )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -     235336.3
+                              BetaMinus            0          0.9759
+                               MshellEC            0      0.00073102
+                               BetaPlus            0      6.0595e-05
+                               KshellEC            0        0.020487
+                               LshellEC            0       0.0028216
+                              BetaMinus            0  -       26.114      1980.82    uniqueFirstForbidden
+                              BetaMinus      564.094  -       66.836     1416.726
+                              BetaMinus     1181.248  -     0.012007      799.572    uniqueFirstForbidden
+                              BetaMinus     1256.953  -       4.6025      723.867
+                              BetaMinus     1357.401  -     0.010806      623.419    uniqueFirstForbidden
+                              BetaMinus      1752.62  -     0.014008        228.2
+                               MshellEC            0  -     0.049518      1607.92
+                               MshellEC      1140.51  -     0.023585       467.41
+                               BetaPlus            0  -    0.0060595      1607.92    uniqueFirstForbidden
+                               BetaPlus      1140.51  -   9.9336e-28       467.41
+                               KshellEC            0  -        1.408      1607.92
+                               KshellEC      1140.51  -      0.64067       467.41
+                               LshellEC            0  -      0.19146      1607.92
+                               LshellEC      1140.51  -       0.0907       467.41
+P      61.4131  -     1.86e-06
+                                     IT            0               1
+P     121.4967  -      6.3e-09
+                                     IT            0               1
+P     137.4726  -      0.00053
+                                     IT            0               1
+P     163.5591  -       251.46
+                                     IT            0               1

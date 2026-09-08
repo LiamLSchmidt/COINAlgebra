@@ -1,0 +1,27 @@
+# 145CE ( 3.01 M    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  -        180.6
+                              BetaMinus            0               1
+                              BetaMinus        62.65  -        1.552      2496.25
+                              BetaMinus       347.18  -      0.53802      2211.72
+                              BetaMinus       540.09  -       1.0347      2018.81
+                              BetaMinus       554.81  -      0.64148      2004.09
+                              BetaMinus       786.91  -       68.287      1771.99
+                              BetaMinus       845.93  -       3.2074      1712.97
+                              BetaMinus        948.4  -      0.14485       1610.5
+                              BetaMinus      1046.97  -      0.47594      1511.93
+                              BetaMinus      1110.56  -        3.104      1448.34
+                              BetaMinus      1210.54  -       19.141      1348.36
+                              BetaMinus       1318.4  -     0.085876       1240.5
+                              BetaMinus       1330.1  -      0.10347       1228.8
+                              BetaMinus         1420  -      0.26901       1138.9
+                              BetaMinus      1560.46  -      0.20693       998.44
+                              BetaMinus       1608.8  -       0.3104        950.1
+                              BetaMinus         1700  -      0.20279        858.9
+                              BetaMinus         1800  -       0.1821        758.9
+                              BetaMinus         1900  -     0.074495        658.9
+                              BetaMinus         2000  -     0.042421        558.9
+                              BetaMinus         2100  -      0.10657        458.9
+                              BetaMinus         2200  -       0.2897        358.9
+P         64.3  -      1.3e-08
+                                     IT            0               1

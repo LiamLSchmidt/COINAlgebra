@@ -1,0 +1,12 @@
+# 151SM (   90 Y    )
+#  Excitation  flag   Halflife  Mode    Daughter Ex flag   Intensity          Q
+P            0  - 2.840184e+09
+                              BetaMinus            0               1
+                              BetaMinus            0  -        99.09       76.376
+                              BetaMinus       21.541  -         0.91       54.835
+P        4.821  -      3.5e-08
+                                     IT            0               1
+P       91.532  -      7.8e-08
+                                     IT            0               1
+P       261.13  -      1.4e-06
+                                     IT            0               1
