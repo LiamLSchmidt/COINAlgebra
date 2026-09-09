@@ -10,6 +10,7 @@ set(COINALGEBRA_MODULE_FILES
     Algebra/CAlgebra
     Algebra/PathProjectors
     Probability/DecayProbability
+    Detection/DetectionMaps
     Builders/DecayQuiverBuilder
     NuclearData/RadioactiveDecayReader
     NuclearData/PhotonEvaporationReader)

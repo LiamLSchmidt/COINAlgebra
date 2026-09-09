@@ -2,12 +2,18 @@
 #include "COINAlgebra/Algebra/PathAlgebra.h"
 #include "COINAlgebra/Algebra/PathProjectors.h"
 #include "COINAlgebra/Probability/DecayProbability.h"
+#include "COINAlgebra/Detection/DetectionMaps.h"
 
 #include <iostream>
+#include <cmath>
 #include <stdexcept>
 
 void test_133Ba_gamma_quiver()
 {
+    // Detector setup: whole-array total efficiency, conditional on gamma emission.
+    const double totalEfficiency = 0.7;
+    const std::size_t detectorCount = 64; // Set to the number of detectors in your array.
+
     std::cout
         << "============================================================"
         << std::endl;
@@ -127,13 +133,20 @@ void test_133Ba_gamma_quiver()
     // come from Cs-133 PhotonEvaporation data.
     // ========================================================
 
+    std::unordered_map<std::string, double> conversionCoefficients;
     DecayQuiver quiver =
         DecayQuiverBuilder::BuildGammaQuiver(
             ba133,
             cs133,
+            conversionCoefficients,
             "EC"
         );
 
+
+    if (conversionCoefficients.size() != quiver.GetTransitions().size() ||
+        std::abs(conversionCoefficients.at("gamma_81_to_0_0") - 1.703) > 1e-12 ||
+        std::abs(conversionCoefficients.at("gamma_437_to_384_0") - 5.66) > 1e-12)
+        throw std::runtime_error("Incorrect extracted Ba-133 conversion coefficients");
 
     // ========================================================
     // Print resulting quiver
@@ -198,7 +211,7 @@ void test_133Ba_gamma_quiver()
     DecayTransition* g32 = quiver.GetTransition("gamma_384_to_161_0");
     DecayTransition* g42 = quiver.GetTransition("gamma_437_to_161_1");
     DecayTransition* g43 = quiver.GetTransition("gamma_437_to_384_0");
-    
+
     DecayPath p0(e0);
     DecayPath p1(e1);
     DecayPath p2(e2);
@@ -253,5 +266,62 @@ void test_133Ba_gamma_quiver()
     PathProjectors projectors;
     DecayProbability pb(algebra,projectors);
     DecayVector feedingVector = pb.FeedingVector(decay_vector);
+    std::cout << "Total transition feeding (gamma + IC):\n";
     feedingVector.PrintTable();
+    std::cout << "Gamma emission feeding:\n";
+    pb.EmissionFeedingVector(decay_vector, conversionCoefficients).PrintTable();
+
+    std::vector<double> initialPopulations(quiver.GetLevels().size(), 0.0);
+    for(const auto& term:decay_vector.GetTerms()) if(term.path.IsStationary())
+        for(std::size_t i=0;i<quiver.GetLevels().size();++i)
+            if(term.path.GetSource()==quiver.GetLevels()[i]) initialPopulations[i]+=term.coefficient;
+    quiver.ExportJson("examples/133Ba_gamma_quiver.json",
+                      {decay_vector}, "133Ba -> EC -> 133Cs",
+                      conversionCoefficients, initialPopulations);
+
+    std::unordered_map<std::string, double> efficiencies;
+    efficiencies["gamma_81_to_0_0"] = 0.455954;
+    efficiencies["gamma_161_to_81_0"] = 0.455949;
+    efficiencies["gamma_161_to_0_1"] = 0.40154;
+    efficiencies["gamma_384_to_0_2"] = 0.239605;
+    efficiencies["gamma_384_to_81_1"] = 0.283232;
+    efficiencies["gamma_437_to_81_2"] = 0.253294;
+    efficiencies["gamma_384_to_161_0"] = 0.34334284;
+    efficiencies["gamma_437_to_161_1"] = 0.30135745;
+    efficiencies["gamma_437_to_384_0"] = 0.44011142;
+
+    DecayVector feedingEfficiencyVector = pb.DetectionFeedingVector(decay_vector, efficiencies, conversionCoefficients);
+    std::cout << "Gamma detection feeding (including IC):\n";
+    feedingEfficiencyVector.PrintTable();
+    for (const auto& term : feedingVector.GetTerms())
+    {
+        const double expected = term.coefficient *
+            efficiencies.at(term.path.GetTransitions().front().GetName()) /
+            (1.0 + conversionCoefficients.at(term.path.GetTransitions().front().GetName()));
+        const double actual = algebra.PathForm(
+            feedingEfficiencyVector, DecayVector(term.path, 1.0));
+        if (std::abs(actual - expected) > 1e-12)
+            throw std::runtime_error("Incorrect detected feeding probability");
+    }
+    std::unordered_map<std::string, double> totalEfficiencies;
+    for (const auto* transition : quiver.GetTransitions())
+        totalEfficiencies[transition->GetName()] = totalEfficiency;
+
+    {
+        std::cout << "Summing setup: " << detectorCount
+                  << " detector(s), uniform whole-array total efficiency = "
+                  << totalEfficiency << '\n';
+        DetectionMaps maps(efficiencies, totalEfficiencies, detectorCount, conversionCoefficients);
+        const auto summed = pb.SummingFeedingVector(decay_vector, maps);
+        std::cout << "Connected summing contributions (separate paths):\n";
+        summed.PrintTable();
+        DecayVector peaks;
+        for (const auto* transition : quiver.GetTransitions()) {
+            DecayPath path(*transition);
+            peaks.AddTerm(path, algebra.PathForm(summed, DecayVector(path)));
+        }
+        std::cout << "Connected summing-corrected peaks (equivalent endpoints combined):\n";
+        peaks.PrintTable();
+
+    }
 }

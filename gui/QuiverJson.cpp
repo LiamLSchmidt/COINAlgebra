@@ -1,8 +1,11 @@
 #include "QuiverJson.h"
+#include "StudioModel.h"
+#include "ViewState.h"
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonParseError>
+#include <QRegularExpression>
 #include <cmath>
 #include <stdexcept>
 
@@ -45,6 +48,32 @@ Studio::Document Studio::readJson(const QByteArray& bytes) {
     for (const auto value : root["levels"].toArray())
         document.quiver->AddLevel(name(value, "Level name").toStdString());
     const auto& levels = document.quiver->GetLevels();
+    // Canonical energies are aligned with the names array. Explicit null remains
+    // unknown, even if a display label happens to contain a numeric energy.
+    require(!root.contains("level_energies_keV") || root["level_energies_keV"].isArray(),
+            "level_energies_keV must be an array aligned with levels.");
+    const auto energies=root["level_energies_keV"].toArray();
+    require(!root.contains("level_energies_keV") || energies.size()==int(levels.size()),
+            "Provide one energy (or null) per level.");
+    const auto legacyValue=document.metadata.value("level_energies_keV");
+    require(legacyValue.isUndefined() || legacyValue.isObject(),"Legacy level energies must be an object.");
+    const auto legacy=legacyValue.toObject();
+    for(auto it=legacy.begin();it!=legacy.end();++it) {
+        bool ok; int i=it.key().toInt(&ok);
+        require(ok && i>=0 && i<int(levels.size()),"Legacy energy references an unknown level.");
+        require(number(it.value(),"Level energy")>=0,"Level energies must be nonnegative.");
+    }
+    for(int i=0;i<int(levels.size());++i) {
+        if(root.contains("level_energies_keV")) {
+            if(!energies[i].isNull()) levels[i]->SetEnergy(number(energies[i],"Level energy"));
+        } else if(legacy.contains(QString::number(i))) {
+            levels[i]->SetEnergy(number(legacy[QString::number(i)],"Level energy"));
+        } else {
+            const auto match=QRegularExpression("(?:level_)?([0-9]+(?:\\.[0-9]+)?)keV$").match(QString::fromStdString(levels[i]->GetName()));
+            if(match.hasMatch()) levels[i]->SetEnergy(match.captured(1).toDouble());
+        }
+    }
+    document.metadata.remove("level_energies_keV");
     for (const auto value : root["transitions"].toArray()) {
         require(value.isObject(), "Each transition must be an object.");
         const auto t = value.toObject();
@@ -90,6 +119,8 @@ Studio::Document Studio::readJson(const QByteArray& bytes) {
         }
         document.vectors.push_back(std::move(vector));
     }
+    validateStudio(*document.quiver, document.metadata);
+    document.metadata=normalizeViewMetadata(document.metadata);
     return document;
 }
 
@@ -98,7 +129,9 @@ DecayVector Studio::createDecayVector(const DecayQuiver& quiver, const QJsonObje
     DecayVector result;
     for (const auto* t : quiver.GetTransitions())
         result.AddTerm(DecayPath(std::vector<DecayTransition>{*t}), t->GetProbability());
-    if (metadata.contains("feeding_modes")) {
+    if (metadata.contains("branching")) {
+        return result + branchingVector(quiver, metadata);
+    } else if (metadata.contains("feeding_modes")) {
         require(metadata["feeding_modes"].isArray() && !metadata["feeding_modes"].toArray().empty(),
                 "Source feeding metadata is missing or invalid.");
         const double tolerance = metadata.value("energy_tolerance_keV").toDouble(1.0);
@@ -115,13 +148,11 @@ DecayVector Studio::createDecayVector(const DecayQuiver& quiver, const QJsonObje
                 require(coefficient >= 0 && coefficient <= 1, "Invalid feeding percentage.");
                 DecayLevel* best = nullptr;
                 double distance = tolerance;
-                const QString prefix = daughter + ":level_";
                 for (auto* level : quiver.GetLevels()) {
                     const auto label = QString::fromStdString(level->GetName());
-                    if (!label.startsWith(prefix) || !label.endsWith("keV")) continue;
-                    bool ok = false;
-                    const double e = label.mid(prefix.size(), label.size()-prefix.size()-3).toDouble(&ok);
-                    if (ok && std::abs(e-energy) <= distance) { best = level; distance = std::abs(e-energy); }
+                    if (!label.startsWith(daughter + ":") || !level->HasEnergy()) continue;
+                    const double e = level->GetEnergy();
+                    if (std::abs(e-energy) <= distance) { best = level; distance = std::abs(e-energy); }
                 }
                 require(best != nullptr, "Cannot match feeding level; restore its imported name or reimport the source.");
                 result.AddTerm(DecayPath(best), coefficient);

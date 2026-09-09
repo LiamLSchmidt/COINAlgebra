@@ -35,10 +35,21 @@ private slots:
     void showPathVectorBuilder();
     void createDecayVector();
     void calculateFeeding();
+    void calculateCoincidence();
     void showDecayTable();
     void showFeedingTable();
 
 private:
+    void removeLevel(int index);
+    void editPopulations();
+    void editGroups();
+    void editSubquivers();
+    void editViewSettings();
+    void manageViews();
+    void importEfficiencies();
+    void showDetectionTable();
+    void showEmissionTable();
+    void showEfficiencyTable();
     void updateUI();
     void showVectorTable(const DecayVector& vector, const QString& title);
     DecayVector currentDecay() const;
@@ -47,6 +58,7 @@ private:
     QLineEdit* fQuiverTitle;
 
     QLineEdit* fLevelName;
+    QLineEdit* fLevelEnergy;
     QPushButton* fAddLevel;
     QPushButton* fExportButton;
 
@@ -64,4 +76,9 @@ private:
     QJsonObject fMetadata;
     QLineEdit* fFeedingTransition;
     QLabel* fAnalysisResult;
+    QComboBox* fCoincidenceA;
+    QComboBox* fCoincidenceB;
+    QPushButton* fCalculateCoincidence;
+    QLabel* fCoincidenceResult;
+    void invalidateCoincidence();
 };

@@ -1,0 +1,235 @@
+{
+  "title": "Synthetic band-layout demonstration",
+  "levels": [
+    "Ground",
+    "A2",
+    "A4",
+    "B2",
+    "B4",
+    "Feeding level"
+  ],
+  "transitions": [
+    {
+      "name": "A4-A2",
+      "source_index": 2,
+      "target_index": 1,
+      "probability": 0.7
+    },
+    {
+      "name": "A4-B2",
+      "source_index": 2,
+      "target_index": 3,
+      "probability": 0.3
+    },
+    {
+      "name": "A2-ground",
+      "source_index": 1,
+      "target_index": 0,
+      "probability": 1
+    },
+    {
+      "name": "B4-B2",
+      "source_index": 4,
+      "target_index": 3,
+      "probability": 0.8
+    },
+    {
+      "name": "B4-A2",
+      "source_index": 4,
+      "target_index": 1,
+      "probability": 0.2
+    },
+    {
+      "name": "B2-ground",
+      "source_index": 3,
+      "target_index": 0,
+      "probability": 1
+    },
+    {
+      "name": "feed-A4",
+      "source_index": 5,
+      "target_index": 2,
+      "probability": 0.6
+    },
+    {
+      "name": "feed-B4",
+      "source_index": 5,
+      "target_index": 4,
+      "probability": 0.4
+    }
+  ],
+  "metadata": {
+    "branching": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "groups": [
+      {
+        "id": "band-a",
+        "name": "Band A",
+        "kind": "band",
+        "levels": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "band-b",
+        "name": "Band B",
+        "kind": "band",
+        "levels": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "feeding",
+        "name": "Feeding",
+        "kind": "group",
+        "levels": [
+          5
+        ]
+      }
+    ],
+    "subquivers": [
+      {
+        "id": "branch",
+        "name": "A4 to A2 branch",
+        "levels": [
+          1,
+          2
+        ],
+        "transitions": [
+          "A4-A2"
+        ]
+      }
+    ],
+    "view": {
+      "mode": 1,
+      "energy_scale": 1,
+      "energy": {
+        "mode": "physical"
+      },
+      "group_layout": {
+        "band-a": {
+          "x": 180,
+          "width": 160,
+          "color": "#0f8b80"
+        },
+        "band-b": {
+          "x": 440,
+          "width": 160,
+          "color": "#805ad5"
+        },
+        "feeding": {
+          "x": 700,
+          "width": 160,
+          "color": "#b7791f"
+        }
+      }
+    },
+    "saved_views": [
+      {
+        "name": "Band overview",
+        "state": {
+          "mode": 1,
+          "energy_scale": 1,
+          "energy": {
+            "mode": "physical"
+          },
+          "group_layout": {
+            "band-a": {
+              "x": 180,
+              "width": 160,
+              "color": "#0f8b80"
+            },
+            "band-b": {
+              "x": 440,
+              "width": 160,
+              "color": "#805ad5"
+            },
+            "feeding": {
+              "x": 700,
+              "width": 160,
+              "color": "#b7791f"
+            }
+          }
+        }
+      },
+      {
+        "name": "Selected branch with context",
+        "state": {
+          "mode": 2,
+          "energy_scale": 1,
+          "energy": {
+            "mode": "physical"
+          },
+          "group_layout": {
+            "band-a": {
+              "x": 180,
+              "width": 160,
+              "color": "#0f8b80"
+            },
+            "band-b": {
+              "x": 440,
+              "width": 160,
+              "color": "#805ad5"
+            },
+            "feeding": {
+              "x": 700,
+              "width": 160,
+              "color": "#b7791f"
+            }
+          },
+          "focus": {
+            "type": "subquiver",
+            "id": "branch",
+            "context": "both",
+            "depth": 1
+          }
+        }
+      },
+      {
+        "name": "Collapsed Band B",
+        "state": {
+          "mode": 1,
+          "energy_scale": 1,
+          "energy": {
+            "mode": "physical"
+          },
+          "group_layout": {
+            "band-a": {
+              "x": 180,
+              "width": 160,
+              "color": "#0f8b80"
+            },
+            "band-b": {
+              "x": 440,
+              "width": 160,
+              "color": "#805ad5",
+              "collapsed": true
+            },
+            "feeding": {
+              "x": 700,
+              "width": 160,
+              "color": "#b7791f"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "level_energies_keV": [
+    0,
+    300,
+    1000,
+    450,
+    1400,
+    2200
+  ]
+}

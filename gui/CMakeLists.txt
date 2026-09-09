@@ -5,8 +5,8 @@ if(NOT TARGET Qt5::Widgets)
 endif()
 
 add_library(COINAlgebraGuiWidgets STATIC
-    MainWindow.cpp MainWindow.h QuiverView.cpp QuiverView.h
-    QuiverJson.cpp QuiverJson.h TransitionEditor.cpp TransitionEditor.h studio.qrc)
+    MainWindow.cpp MainWindowViews.cpp MainWindow.h QuiverView.cpp QuiverView.h
+    ViewState.cpp ViewState.h StudioModel.cpp StudioModel.h QuiverJson.cpp QuiverJson.h TransitionEditor.cpp TransitionEditor.h studio.qrc)
 set_target_properties(COINAlgebraGuiWidgets PROPERTIES AUTOMOC ON AUTOUIC ON AUTORCC ON)
 target_include_directories(COINAlgebraGuiWidgets PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(COINAlgebraGuiWidgets PUBLIC COINAlgebra::Core Qt5::Widgets)

@@ -1,5 +1,16 @@
 #include "QuiverView.h"
 #include "TransitionEditor.h"
+#include "StudioModel.h"
+#include "ViewState.h"
+#include <QDialog>
+#include <QFormLayout>
+#include <QDialogButtonBox>
+#include <QDoubleSpinBox>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QJsonArray>
+#include <QWheelEvent>
+#include <QColorDialog>
 
 #include <QPainter>
 #include <QFontMetrics>
@@ -27,6 +38,8 @@ QuiverView::QuiverView(QWidget* parent)
     : QGraphicsView(parent)
 {
     setScene(new QGraphicsScene(this));
+    setDragMode(QGraphicsView::ScrollHandDrag);
+    setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
     setBackgroundBrush(QColor("#f3f7fb"));
     setRenderHint(QPainter::Antialiasing);
 }
@@ -41,6 +54,9 @@ void QuiverView::setQuiver(DecayQuiver* q)
     fTransitionPinned.clear();
     fDraggingLevel = fDraggingTransition = -1;
     unsetCursor();
+    fMetadata={};
+    fMode=0; fEnergyScale=1; fDraggingGroup=-1;
+    resetTransform();
     fQuiver = q;
     refresh();
 }
@@ -127,6 +143,67 @@ void QuiverView::refresh()
         }
         fPositions = pos;
     }
+    fLeft.assign(n,startX); fRight.assign(n,endX); fVisible.assign(n,true);
+    auto groups=Studio::layoutGroups(fMetadata);
+    auto selection=Studio::selectGraph(*fQuiver,fMetadata,fMode==2);
+    fEdgeVisible=selection.transitions;
+    for(int i=0;i<n;++i) fVisible[i]=selection.levels[i];
+    std::vector<int> columns(n,-1);
+    fCollapsed.assign(n,-1); fGroupCenters.assign(groups.size(),QPointF());
+    for(int g=0;g<groups.size();++g) for(auto id:groups[g].toObject()["levels"].toArray())
+        if(id.toInt()>=0 && id.toInt()<n && columns[id.toInt()]<0) columns[id.toInt()]=g;
+    for(int i=0;i<n;++i) {
+        if(fMode==1) {
+            double cell=(endX-startX)/(groups.size()+1.0);
+            int column=columns[i]<0?groups.size():columns[i];
+            auto group=columns[i]<0?QJsonObject{}:groups[columns[i]].toObject();
+            double x=group.value("x").toDouble(startX+(column+.5)*cell);
+            double width=group.value("width").toDouble(cell*.76);
+            fLeft[i]=x-width/2; fRight[i]=x+width/2; pos[i].setX(x);
+        }
+        if(columns[i]>=0) {
+            auto g=groups[columns[i]].toObject();
+            if(g["hidden"].toBool()) fVisible[i]=false;
+            else if(g["collapsed"].toBool()) fCollapsed[i]=columns[i];
+        }
+    }
+    try {
+        auto coordinates=Studio::energyCoordinates(*fQuiver,fMetadata,fVisible);
+        auto energyMode=fMetadata["view"].toObject()["energy"].toObject().value("mode").toString("auto");
+        // Retain manual vertical arrangements for legacy, uncalibrated schemes.
+        bool known=true;
+        for(int i=0;i<n;++i) if(fVisible[i]) try { Studio::levelEnergy(*fQuiver,fMetadata,i); } catch(const std::exception&) {known=false;}
+        if(known || energyMode!="auto" || fMode==2 || fEnergyScale!=1)
+            for(int i=0;i<n;++i) pos[i].setY(h-20-coordinates[i]*availableH*fEnergyScale);
+    } catch(const std::exception& error) {
+        auto* warning=s->addText(QString::fromUtf8(error.what())); warning->setDefaultTextColor(Qt::darkRed); warning->setPos(startX,-55);
+    }
+    auto manual=fMetadata["view"].toObject()["level_y"].toObject();
+    if(fMetadata["view"].toObject()["energy"].toObject().value("mode").toString("auto")=="auto")
+        for(int i=0;i<n;++i) if(manual.contains(QString::number(i))) {
+            bool calibrated=true;try {Studio::levelEnergy(*fQuiver,fMetadata,i);}catch(const std::exception&){calibrated=false;}
+            if(!calibrated)pos[i].setY(manual[QString::number(i)].toDouble());
+        }
+    for(int g=0;g<groups.size();++g) {
+        auto group=groups[g].toObject(); double cell=(endX-startX)/(groups.size()+1.0);
+        double x=group.value("x").toDouble(startX+(g+.5)*cell), y=0; int count=0;
+        for(int i=0;i<n;++i) if(columns[i]==g && fVisible[i]) {y+=pos[i].y();++count;}
+        fGroupCenters[g]=QPointF(x,count?y/count:h/2);
+        if(group["hidden"].toBool() || !count) continue;
+        if(group["collapsed"].toBool()) {
+            QPointF center=fGroupCenters[g];
+            auto* box=s->addRect(QRectF(center.x()-75,center.y()-24,150,48),QPen(QColor(group.value("color").toString("#0f8b80"))),QBrush(Qt::white));
+            box->setData(1,g); box->setData(2,"summary"); box->setZValue(2);
+            auto* title=s->addText(group["name"].toString()+QString("\n%1 visible levels").arg(count));
+            title->setPos(center.x()-70,center.y()-23);title->setData(1,g);title->setZValue(3);
+            title->setToolTip("Drag horizontally to move; right-click to expand.");
+        } else if(fMode==1) {
+            auto* title=s->addText(group["name"].toString());
+            title->setDefaultTextColor(QColor(group.value("color").toString("#0f8b80")));
+            title->setPos(x-title->boundingRect().width()/2,-35);title->setData(1,g);
+            title->setToolTip("Drag to move band; right-click to collapse.");
+        }
+    }
     fPositions = pos; // Keep hit testing aligned after a horizontal resize.
     fLineStartX = startX;
     fLineEndX = endX;
@@ -149,13 +226,18 @@ void QuiverView::refresh()
         fTransitionPinned.assign(transitions.size(), 0);
     }
 
+    auto savedOffsets=fMetadata["view"].toObject()["transition_offsets"].toObject();
+    for(std::size_t i=0;i<transitions.size();++i) {
+        QString name=QString::fromStdString(transitions[i]->GetName());
+        if(savedOffsets.contains(name) && fDraggingTransition!=int(i)) {fTransitionOffsets[i]=savedOffsets[name].toDouble();fTransitionPinned[i]=1;}
+    }
     // Place upper-source transitions first from left to right. Keep the input
     // order within a source level and leave quiver/path identities unchanged.
     std::map<const DecayLevel*, double> sourceY;
-    for (int i = 0; i < n; ++i) sourceY[levels[i]] = pos[i].y();
+    for (int i = 0; i < n; ++i) if(fVisible[i]) sourceY[levels[i]] = pos[i].y();
     std::vector<std::size_t> laneOrder;
     for (std::size_t i = 0; i < transitions.size(); ++i)
-        if (sourceY.count(transitions[i]->GetSource()) && sourceY.count(transitions[i]->GetTarget()))
+        if (fEdgeVisible[i] && sourceY.count(transitions[i]->GetSource()) && sourceY.count(transitions[i]->GetTarget()))
             laneOrder.push_back(i);
     std::stable_sort(laneOrder.begin(), laneOrder.end(), [&](std::size_t a, std::size_t b) {
         return sourceY.at(transitions[a]->GetSource()) < sourceY.at(transitions[b]->GetSource());
@@ -166,9 +248,12 @@ void QuiverView::refresh()
     for (std::size_t lane = 0; lane < laneOrder.size(); ++lane) {
         const auto i = laneOrder[lane];
         if (!fTransitionPinned[i])
-            fTransitionOffsets[i] = startX + (lane + 1) * laneSpacing - centerX;
+            fTransitionOffsets[i] = fMode==1
+                ? ((lane+1.0)/(laneOrder.size()+1.0)-.5)*(endX-startX)/(groups.size()+1.0)*.7
+                : startX + (lane + 1) * laneSpacing - centerX;
     }
 
+    std::map<std::pair<int,int>,std::vector<int>> aggregated;
     for (int tr_i=0; tr_i<(int)transitions.size(); ++tr_i) {
         const auto* tr = transitions[tr_i];
         int si=-1, ti_idx=-1;
@@ -176,12 +261,18 @@ void QuiverView::refresh()
             if (levels[i] == tr->GetSource()) si = i;
             if (levels[i] == tr->GetTarget()) ti_idx = i;
         }
-        if (si<0 || ti_idx<0) continue;
+        if (si<0 || ti_idx<0 || !fVisible[si] || !fVisible[ti_idx] || !fEdgeVisible[tr_i]) continue;
+        if(fCollapsed[si]>=0 || fCollapsed[ti_idx]>=0) {
+            if(fCollapsed[si]>=0 && fCollapsed[si]==fCollapsed[ti_idx]) continue;
+            int a=fCollapsed[si]>=0?-fCollapsed[si]-1:si;
+            int b=fCollapsed[ti_idx]>=0?-fCollapsed[ti_idx]-1:ti_idx;
+            aggregated[{a,b}].push_back(tr_i); continue;
+        }
 
         QPointF a = pos[si];
         QPointF b = pos[ti_idx];
 
-        const double offsetX = fTransitionOffsets[tr_i];
+        const double offsetX = fMode==1 ? std::clamp(fTransitionOffsets[tr_i],-std::min(fRight[si]-fLeft[si],fRight[ti_idx]-fLeft[ti_idx])*.45,std::min(fRight[si]-fLeft[si],fRight[ti_idx]-fLeft[ti_idx])*.45) : fTransitionOffsets[tr_i];
         a += QPointF(offsetX, 0);
         b += QPointF(offsetX, 0);
 
@@ -190,10 +281,14 @@ void QuiverView::refresh()
         QPointF end = b - QPointF(0, (b.y() > a.y()) ? (fLineHalfHeight + 4.0) : -(fLineHalfHeight + 4.0));
 
         const bool highlighted = tr == fHighlightedTransition || tr->GetSource() == fHighlightedLevel;
-        QPen transitionPen = edgePen;
+        QString groupId=columns[si]>=0 && columns[si]==columns[ti_idx]?groups[columns[si]].toObject()["id"].toString():QString();
+        auto style=Studio::objectStyle(fMetadata,groupId,QString::fromStdString(tr->GetName()),true);
+        QPen transitionPen(QColor(style["color"].toString())); transitionPen.setWidthF(style["line_width"].toDouble());
+        transitionPen.setStyle(style["line_style"]=="dash"?Qt::DashLine:style["line_style"]=="dot"?Qt::DotLine:Qt::SolidLine);
         if (highlighted) { transitionPen.setColor(QColor("#d97706")); transitionPen.setWidth(4); }
         const auto tag = [&](QGraphicsItem* item, double z) {
             item->setData(0, tr_i);
+            if(selection.contextTransitions[tr_i]) item->setOpacity(.35);
             item->setToolTip(QString::fromStdString(tr->GetName()));
             item->setZValue(highlighted ? z + 3 : z);
         };
@@ -215,12 +310,18 @@ void QuiverView::refresh()
             tri << p1 << p2 << p3;
             tag(s->addPolygon(tri, transitionPen, QBrush(transitionPen.color())), 0.5);
 
+                if(!style["labels"].toBool()) continue;
                 // probability label slightly offset perpendicular to the arrow
                 QString label = QString::number(tr->GetProbability(), 'g', 3);
                 QGraphicsTextItem* t = s->addText(label, probFont);
                 t->setDefaultTextColor(QColor(highlighted ? "#92400e" : "#334d64"));
                 QRectF tb = t->boundingRect();
-                QPointF mid = (start + end) * 0.5;
+                double labelFraction=.5;
+                if(fMode==1) {
+                    auto rank=std::find(laneOrder.begin(),laneOrder.end(),std::size_t(tr_i))-laneOrder.begin();
+                    labelFraction=.2+.6*(rank+.5)/std::max(std::size_t(1),laneOrder.size());
+                }
+                QPointF mid = start+(end-start)*labelFraction;
                 QPointF labelPos = mid + perp * labelOffset - QPointF(tb.width()/2.0, tb.height()/2.0);
                 // draw white background rect so label never overlaps lines
                 QRectF bgRect(labelPos, tb.size());
@@ -232,6 +333,21 @@ void QuiverView::refresh()
         }
     }
 
+    // Collapsed groups preserve directed external connectivity. Counts describe
+    // visual edges, not summed physical probabilities.
+    for(const auto& entry:aggregated) {
+        const auto endpoint=[&](int key){return key<0?fGroupCenters[-key-1]:pos[key];};
+        QPointF a=endpoint(entry.first.first), b=endpoint(entry.first.second);
+        QPointF d=b-a;double length=std::hypot(d.x(),d.y());if(length<1)continue;
+        QPointF u=d/length, perp(-u.y(),u.x());
+        double boxRadius=1/std::max(std::abs(u.x())/75,std::abs(u.y())/24);
+        QPointF start=a+u*(entry.first.first<0?boxRadius+4:10),end=b-u*(entry.first.second<0?boxRadius+4:10);
+        QPen pen(QColor("#647b91"),3); auto* edge=s->addLine(QLineF(start,end),pen);edge->setData(2,"aggregate");
+        QStringList names;for(int i:entry.second)names<<QString::fromStdString(transitions[i]->GetName());edge->setToolTip(names.join("\n"));
+        QPolygonF arrow;arrow<<end<<end-u*12+perp*6<<end-u*12-perp*6;s->addPolygon(arrow,pen,QBrush(pen.color()));
+        auto* label=s->addText(QString("%1 transition%2").arg(entry.second.size()).arg(entry.second.size()==1?"":"s"));label->setPos((start+end)/2+perp*12);label->setToolTip(names.join("\n"));
+    }
+
     // draw level lines with thicker stroke and distinct color
     QPen levelPen(QColor("#0f8b80"));
     levelPen.setWidth(4);
@@ -240,23 +356,32 @@ void QuiverView::refresh()
     nameFont.setBold(true);
     nameFont.setPointSizeF(std::max(10.0, nameFont.pointSizeF()+1));
     for (int i=0;i<n;++i) {
+        if(!fVisible[i] || fCollapsed[i]>=0) continue;
         const auto* lvl = levels[i];
         const QPointF p = pos[i];
         double y = p.y();
-        QPen currentLevelPen = levelPen;
+        auto style=Studio::objectStyle(fMetadata,columns[i]>=0?groups[columns[i]].toObject()["id"].toString():QString(),QString::number(i),false);
+        QPen currentLevelPen(QColor(style["color"].toString()));currentLevelPen.setWidthF(style["line_width"].toDouble());
+        currentLevelPen.setStyle(style["line_style"]=="dash"?Qt::DashLine:style["line_style"]=="dot"?Qt::DotLine:Qt::SolidLine);
         if (lvl == fHighlightedLevel) currentLevelPen.setColor(QColor("#d97706"));
-        QGraphicsLineItem* line = s->addLine(fLineStartX, y, fLineEndX, y, currentLevelPen);
+        QGraphicsLineItem* line = s->addLine(fLeft[i], y, fRight[i], y, currentLevelPen);
         line->setZValue(0);
+        if(selection.contextLevels[i]) line->setOpacity(.35);
+        if(!style["labels"].toBool()) continue;
         QString name = QString::fromStdString(lvl->GetName());
         QGraphicsTextItem* ti = s->addText(name, nameFont);
         ti->setDefaultTextColor(QColor("#233c53"));
         QRectF tb = ti->boundingRect();
         // place label to the left of the level line
-        ti->setPos(fLineStartX - tb.width() - 8.0, y - tb.height()/2.0);
+        ti->setPos(fMode==1 ? fLeft[i] : fLeft[i]-tb.width()-8, fMode==1 ? y-tb.height()-3 : y-tb.height()/2);
         ti->setZValue(1);
+        if(selection.contextLevels[i]) ti->setOpacity(.35);
     }
 
-    s->setSceneRect(0, 0, w, h);
+    if(std::none_of(fVisible.begin(),fVisible.end(),[](bool v){return v;})) {
+        auto* text=s->addText("No levels in this focus or energy window.");text->setPos(30,50);
+    }
+    s->setSceneRect(s->itemsBoundingRect().adjusted(-30,-30,30,30));
 }
 
 void QuiverView::mousePressEvent(QMouseEvent* event)
@@ -267,6 +392,16 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
     }
     QPointF sp = mapToScene(event->pos());
 
+    for(auto* item:scene()->items(sp)) if(item->data(1).isValid()) {
+        int g=item->data(1).toInt();
+        if(event->button()==Qt::LeftButton) {fDraggingGroup=g;fLastMousePos=event->pos();setCursor(Qt::ClosedHandCursor);return;}
+        if(event->button()==Qt::RightButton) {
+            auto groups=Studio::layoutGroups(fMetadata);auto group=groups[g].toObject();
+            QMenu menu;auto* toggle=menu.addAction(group["collapsed"].toBool()?"Expand group":"Collapse group");
+            if(menu.exec(event->globalPos())==toggle) {auto view=fMetadata["view"].toObject();auto layouts=view["group_layout"].toObject();auto l=layouts[group["id"].toString()].toObject();l["collapsed"]=!group["collapsed"].toBool();layouts[group["id"].toString()]=l;view["group_layout"]=layouts;fMetadata["view"]=view;persistView();refresh();}
+            return;
+        }
+    }
     // Pick the actual drawn label/arrow first, including labels over levels.
     if (event->button() == Qt::LeftButton) {
         for (auto* item : scene()->items(sp)) {
@@ -289,7 +424,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
         for (int i=0;i<(int)fPositions.size();++i) {
             const QPointF& p = fPositions[i];
             double y = p.y();
-            if (sp.x() >= fLineStartX - 6.0 && sp.x() <= fLineEndX + 6.0 && std::abs(sp.y() - y) <= (fLineHalfHeight + 6.0)) {
+            if (fVisible[i] && fCollapsed[i]<0 && sp.x() >= fLeft[i] - 6.0 && sp.x() <= fRight[i] + 6.0 && std::abs(sp.y() - y) <= (fLineHalfHeight + 6.0)) {
                 // clicked level i: left-drag to move, right-click for menu
                 if (event->button() == Qt::LeftButton) {
                     fHighlightedLevel = fQuiver->GetLevels()[i];
@@ -305,6 +440,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                 QAction* allA = menu.addAction("Show all levels");
                 allA->setEnabled(fTopLevel != nullptr);
                 menu.addSeparator();
+                QAction* colorA = menu.addAction("Style…");
                 QAction* renameA = menu.addAction("Rename");
                 QAction* delA = menu.addAction("Delete");
                 QAction* act = menu.exec(event->globalPos());
@@ -312,6 +448,8 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                     focusOnLevel(i);
                 } else if (act == allA) {
                     showAllLevels();
+                } else if (act == colorA) {
+                    setObjectStyle(i,false);
                 } else if (act == renameA) {
                     bool ok = false;
                     QString name = QInputDialog::getText(this, "Rename Level", "Name:", QLineEdit::Normal, QString::fromStdString(lvl->GetName()), &ok);
@@ -322,10 +460,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                     }
                 }
                 else if (act == delA) {
-                    if (fQuiver->RemoveLevel(lvl)) {
-                        refresh();
-                        emit levelRenamed(i, QString());
-                    }
+                    emit levelDeleteRequested(i);
                 }
                 return;
             }
@@ -344,11 +479,11 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
             if (levels[j] == tr->GetSource()) si = j;
             if (levels[j] == tr->GetTarget()) ti_idx = j;
         }
-        if (si<0 || ti_idx<0) continue;
+        if (si<0 || ti_idx<0 || !fVisible[si] || !fVisible[ti_idx] || !fEdgeVisible[ti] || fCollapsed[si]>=0 || fCollapsed[ti_idx]>=0) continue;
         QPointF a = fPositions[si];
         QPointF b = fPositions[ti_idx];
         // account for the per-transition horizontal offset used when drawing
-        const double offsetX = fTransitionOffsets[ti];
+        const double offsetX = fMode==1 ? std::clamp(fTransitionOffsets[ti],-(fRight[si]-fLeft[si])*.45,(fRight[si]-fLeft[si])*.45) : fTransitionOffsets[ti];
         a += QPointF(offsetX, 0);
         b += QPointF(offsetX, 0);
         // shorten by node radius
@@ -378,6 +513,7 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                 // clicked transition: offer Edit / Delete
                 QMenu menu;
                 QAction* editA = menu.addAction("Edit properties");
+                QAction* colorA = menu.addAction("Style…");
                 QAction* delA = menu.addAction("Delete");
                 QAction* act = menu.exec(event->globalPos());
                 if (act == editA) {
@@ -385,6 +521,8 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
                         refresh();
                         emit transitionEdited(ti, transitions[ti]->GetProbability());
                     }
+                } else if (act == colorA) {
+                    setObjectStyle(ti,true);
                 } else if (act == delA) {
                     if (fQuiver->RemoveTransition(tr)) {
                         refresh();
@@ -406,6 +544,12 @@ void QuiverView::mousePressEvent(QMouseEvent* event)
 
 void QuiverView::mouseMoveEvent(QMouseEvent* event)
 {
+    if(fDraggingGroup>=0) {
+        auto groups=Studio::layoutGroups(fMetadata); if(fDraggingGroup>=groups.size()) return;
+        auto id=groups[fDraggingGroup].toObject()["id"].toString();auto view=fMetadata["view"].toObject();auto layouts=view["group_layout"].toObject();auto l=layouts[id].toObject();
+        double dx=mapToScene(event->pos()).x()-mapToScene(fLastMousePos.toPoint()).x();fLastMousePos=event->pos();
+        l["x"]=fGroupCenters[fDraggingGroup].x()+dx;layouts[id]=l;view["group_layout"]=layouts;fMetadata["view"]=view;refresh();return;
+    }
     if (fDraggingLevel >= 0) {
         QPointF scenePos = mapToScene(event->pos());
         // clamp y
@@ -417,7 +561,7 @@ void QuiverView::mouseMoveEvent(QMouseEvent* event)
 
     if (fDraggingTransition >= 0) {
         // compute delta in pixels horizontally
-        QPointF delta = event->pos() - fLastMousePos;
+        QPointF delta = mapToScene(event->pos()) - mapToScene(fLastMousePos.toPoint());
         fLastMousePos = event->pos();
         fTransitionOffsets[fDraggingTransition] += delta.x();
         // mark this transition as user-adjusted so automatic spacing won't override it
@@ -432,9 +576,15 @@ void QuiverView::mouseMoveEvent(QMouseEvent* event)
 
 void QuiverView::mouseReleaseEvent(QMouseEvent* event)
 {
+    if(fDraggingGroup>=0) {fDraggingGroup=-1;unsetCursor();persistView();return;}
     if (fDraggingLevel >= 0 || fDraggingTransition >= 0) {
+        auto state=fMetadata["view"].toObject();
+        if(fDraggingLevel>=0) {auto ys=state["level_y"].toObject();ys[QString::number(fDraggingLevel)]=fPositions[fDraggingLevel].y();state["level_y"]=ys;}
+        if(fDraggingTransition>=0) {auto offsets=state["transition_offsets"].toObject();offsets[QString::fromStdString(fQuiver->GetTransitions()[fDraggingTransition]->GetName())]=fTransitionOffsets[fDraggingTransition];state["transition_offsets"]=offsets;}
+        fMetadata["view"]=state;
         fDraggingLevel = -1;
         fDraggingTransition = -1;
+        persistView();
         unsetCursor();
         emit transitionEdited(-1, 0.0);
         emit levelRenamed(-1, QString());
@@ -442,4 +592,68 @@ void QuiverView::mouseReleaseEvent(QMouseEvent* event)
     }
 
     QGraphicsView::mouseReleaseEvent(event);
+}
+
+void QuiverView::wheelEvent(QWheelEvent* event) {
+    double factor=event->angleDelta().y()>0?1.15:1/1.15;
+    double zoom=transform().m11()*factor;
+    if(zoom>=.1 && zoom<=20) scale(factor,factor);
+    event->accept();
+}
+
+void QuiverView::setMetadata(const QJsonObject& metadata) {
+    auto normalized=Studio::normalizeViewMetadata(metadata);
+    if(normalized!=fMetadata) fPositions.clear();
+    fMetadata=normalized;
+    auto state=fMetadata["view"].toObject();
+    fMode=state.value("mode").toInt(fMode);
+    fEnergyScale=state.value("energy_scale").toDouble(fEnergyScale);
+}
+QJsonObject QuiverView::viewState() const {
+    auto state=fMetadata["view"].toObject();state["mode"]=fMode;state["energy_scale"]=fEnergyScale;
+    auto center=mapToScene(viewport()->rect().center());
+    state["camera"]=QJsonObject{{"x",center.x()},{"y",center.y()},{"zoom",transform().m11()}};
+    if(fQuiver) {
+        const auto& levels=fQuiver->GetLevels();auto level=std::find(levels.begin(),levels.end(),fHighlightedLevel);
+        if(level!=levels.end())state["highlight_level"]=int(level-levels.begin());else state.remove("highlight_level");
+        if(fHighlightedTransition && std::find(fQuiver->GetTransitions().begin(),fQuiver->GetTransitions().end(),fHighlightedTransition)!=fQuiver->GetTransitions().end())state["highlight_transition"]=QString::fromStdString(fHighlightedTransition->GetName());else state.remove("highlight_transition");
+    }
+    return state;
+}
+void QuiverView::persistView() {emit appearanceChanged(fMetadata);}
+void QuiverView::configureView(const QJsonObject& state) {
+    fMetadata["view"]=state;fMode=state.value("mode").toInt(fMode);fEnergyScale=state.value("energy_scale").toDouble(fEnergyScale);
+    fHighlightedLevel=nullptr;fHighlightedTransition=nullptr;
+    if(fQuiver) {
+        int i=state.value("highlight_level").toInt(-1);if(i>=0 && i<int(fQuiver->GetLevels().size()))fHighlightedLevel=fQuiver->GetLevels()[i];
+        fHighlightedTransition=fQuiver->GetTransition(state.value("highlight_transition").toString().toStdString());
+        fTransitionPinned.assign(fQuiver->GetTransitions().size(),0);
+    }
+    fTopLevel=nullptr;fPositions.clear();refresh();persistView();
+}
+void QuiverView::restoreView(const QJsonObject& state) {
+    configureView(state);resetTransform();auto camera=state["camera"].toObject();
+    if(camera.isEmpty()) fitInView(sceneRect(),Qt::KeepAspectRatio);
+    else {scale(camera["zoom"].toDouble(),camera["zoom"].toDouble());centerOn(camera["x"].toDouble(),camera["y"].toDouble());}
+}
+void QuiverView::setMode(int mode) {
+    auto state=viewState();state["mode"]=mode;configureView(state);fitInView(sceneRect(),Qt::KeepAspectRatio);
+}
+void QuiverView::setEnergyScale(double scale) {
+    auto state=viewState();state["energy_scale"]=scale;configureView(state);
+}
+void QuiverView::setObjectStyle(int index,bool transition) {
+    const QString key=transition?"transition_styles":"level_styles";
+    const QString id=transition?QString::fromStdString(fQuiver->GetTransitions()[index]->GetName()):QString::number(index);
+    auto state=fMetadata["view"].toObject();auto styles=state[key].toObject();auto old=styles[id].toObject();
+    QDialog dialog(this);dialog.setWindowTitle("Object style");auto* form=new QFormLayout(&dialog);
+    auto* color=new QLineEdit(old.value("color").toString());color->setPlaceholderText("Blank inherits group/global colour");form->addRow("Colour (#rrggbb)",color);
+    auto* width=new QDoubleSpinBox();width->setRange(0,20);width->setSpecialValueText("Inherit");width->setValue(old["line_width"].toDouble());form->addRow("Line width",width);
+    auto* dash=new QComboBox();dash->addItems({"inherit","solid","dash","dot"});dash->setCurrentText(old.value("line_style").toString("inherit"));form->addRow("Line style",dash);
+    auto* labels=new QComboBox();labels->addItems({"Inherit","Show","Hide"});labels->setCurrentIndex(old.contains("labels")?(old["labels"].toBool()?1:2):0);form->addRow("Labels",labels);
+    auto* buttons=new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);form->addRow(buttons);
+    connect(buttons,&QDialogButtonBox::accepted,&dialog,[&]{if(color->text().isEmpty() || QColor(color->text()).isValid())dialog.accept();});connect(buttons,&QDialogButtonBox::rejected,&dialog,&QDialog::reject);
+    if(dialog.exec()!=QDialog::Accepted)return;
+    QJsonObject style;if(!color->text().isEmpty())style["color"]=color->text();if(width->value()>0)style["line_width"]=width->value();if(dash->currentIndex())style["line_style"]=dash->currentText();if(labels->currentIndex())style["labels"]=labels->currentIndex()==1;
+    if(style.isEmpty())styles.remove(id);else styles[id]=style;state[key]=styles;fMetadata["view"]=state;refresh();persistView();
 }

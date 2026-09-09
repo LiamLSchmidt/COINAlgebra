@@ -30,6 +30,7 @@ struct PhotonTransition
     // --------------------------------------------------------
 
     double energy_keV;
+    // Relative GAMMA intensity; total branch weight is this * (1 + alpha).
     double relativeIntensity;
 
     // Geant4 multipolarity encoding:

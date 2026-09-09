@@ -3,8 +3,61 @@
 #include "COINAlgebra/Algebra/PathAlgebra.h"
 #include "COINAlgebra/Algebra/PathProjectors.h"
 #include "COINAlgebra/Core/DecayQuiver.h"
+#include "COINAlgebra/Detection/DetectionMaps.h"
+#include <algorithm>
+#include <cmath>
 #include <map>
 #include <queue>
+#include <stdexcept>
+
+namespace {
+struct SummingContext {
+    std::size_t visited = 0;
+    DecayVector terminals;
+};
+
+SummingContext ValidateSummingDecay(const DecayQuiver& quiver, const DecayVector& decay)
+{
+    SummingContext context;
+    std::map<DecayLevel*, std::size_t> indegree;
+    std::map<DecayLevel*, std::vector<DecayLevel*>> outgoing;
+    std::map<DecayLevel*, double> total;
+    for (auto* level : quiver.GetLevels()) indegree[level] = 0;
+    for (const auto* edge : quiver.GetTransitions()) {
+        outgoing[edge->GetSource()].push_back(edge->GetTarget());
+        ++indegree[edge->GetTarget()];
+    }
+    for (const auto& term : decay.GetTerms()) {
+        if (term.path.Empty() || term.path.Length() > 1 ||
+            !indegree.count(term.path.GetSource()) || !indegree.count(term.path.GetTarget()) ||
+            !std::isfinite(term.coefficient) || term.coefficient < 0.0)
+            throw std::invalid_argument("DecayProbability: summing requires physical stationary/single-edge terms");
+        if (!term.path.IsStationary()) {
+            const auto& edges = quiver.GetTransitions();
+            if (std::none_of(edges.begin(), edges.end(), [&](const auto* edge) {
+                return DecayPath(*edge) == term.path;
+            })) throw std::invalid_argument("DecayProbability: summing transition outside quiver");
+            total[term.path.GetSource()] += term.coefficient;
+        }
+    }
+    std::queue<DecayLevel*> ready;
+    for (auto* level : quiver.GetLevels()) {
+        if (outgoing[level].empty()) context.terminals.AddTerm(DecayPath(level), 1.0);
+        else if (std::abs(total[level] - 1.0) > 1e-10)
+            throw std::invalid_argument("DecayProbability: summing requires normalized total outgoing branches");
+        if (indegree[level] == 0) ready.push(level);
+    }
+    while (!ready.empty()) {
+        auto* level = ready.front(); ready.pop();
+        ++context.visited;
+        for (auto* target : outgoing[level])
+            if (--indegree[target] == 0) ready.push(target);
+    }
+    if (context.visited != quiver.GetLevels().size())
+        throw std::invalid_argument("DecayProbability: summing requires an acyclic quiver");
+    return context;
+}
+}
 
 
 // ============================================================
@@ -159,6 +212,32 @@ DecayVector DecayProbability::FeedingVector(
 
 
     return result;
+}
+
+DecayVector DecayProbability::SummingFeedingVector(
+    const DecayVector& decay, const DetectionMaps& maps
+) const
+{
+    const auto context = ValidateSummingDecay(fAlgebra->GetQuiver(), decay);
+    const auto branching = fProjectors->BranchingProjector(decay);
+    const auto transition = decay - branching;
+    const auto avoidance = fAlgebra->PowerExpand(maps.SummingOut(transition), fAlgebra->MaxPower());
+    const auto above = fProjectors->TargetVertexProjector(fAlgebra->Multiply(branching, avoidance));
+    // Restrict the suffix to completed cascades. Summing all prefixes would
+    // count a downstream cascade once for each intermediate stopping point.
+    const auto below = fProjectors->SourceVertexProjector(fAlgebra->Multiply(avoidance, context.terminals));
+    const auto observed = maps.SummingInExpansion(*fAlgebra, transition);
+    return fAlgebra->Multiply(fAlgebra->Multiply(above, observed), below);
+}
+
+// Detection weights apply only to the observed path. Population flow uses
+// physical transition probabilities, including undetected transitions.
+DecayVector DecayProbability::DetectionFeedingVector(
+    const DecayVector& decay,
+    const std::unordered_map<std::string, double>& efficiencies
+) const
+{
+    return FeedingVector(decay).ApplyDetectionMap(efficiencies);
 }
 
 
@@ -399,4 +478,21 @@ double DecayProbability::CoincidenceProbability(
         );
 
     return feedingProbability * pathConnection;
+}
+
+DecayVector DecayProbability::EmissionFeedingVector(
+    const DecayVector& decay,
+    const std::unordered_map<std::string, double>& conversionCoefficients
+) const
+{
+    return FeedingVector(decay).ApplyConversionMap(conversionCoefficients);
+}
+
+DecayVector DecayProbability::DetectionFeedingVector(
+    const DecayVector& decay,
+    const std::unordered_map<std::string, double>& efficiencies,
+    const std::unordered_map<std::string, double>& conversionCoefficients
+) const
+{
+    return EmissionFeedingVector(decay, conversionCoefficients).ApplyDetectionMap(efficiencies);
 }

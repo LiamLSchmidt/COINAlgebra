@@ -3,6 +3,8 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <limits>
+#include <stdexcept>
 
 
 void test_quiver()
@@ -29,6 +31,25 @@ void test_quiver()
     // gamma2 = 1.0
     // gamma3 = 0.3
     // --------------------------------------------------------
+
+    // Energy is optional, validated and independent of names and graph identity.
+    DecayLevel unknown("unknown");
+    assert(!unknown.HasEnergy());
+    bool unsetThrows=false;
+    try { unknown.GetEnergy(); } catch(const std::logic_error&) { unsetThrows=true; }
+    assert(unsetThrows);
+    DecayLevel ground("ground",0.0);assert(ground.HasEnergy() && ground.GetEnergy()==0.0);
+    ground.SetEnergy(123.456789);ground.SetName("renamed");assert(ground.GetEnergy()==123.456789);
+    auto copy=ground;assert(copy.HasEnergy() && copy.GetEnergy()==ground.GetEnergy());
+    for(double bad:{-1.,std::numeric_limits<double>::infinity(),std::numeric_limits<double>::quiet_NaN()}) {
+        bool rejected=false;try{ground.SetEnergy(bad);}catch(const std::invalid_argument&){rejected=true;}
+        assert(rejected && ground.GetEnergy()==123.456789);
+    }
+    ground.ClearEnergy();assert(!ground.HasEnergy());
+    DecayQuiver energyQuiver;
+    auto* excited=energyQuiver.AddLevel("excited",200.5);assert(excited->GetEnergy()==200.5);
+    bool rejected=false;try{energyQuiver.AddLevel("invalid",-1);}catch(const std::invalid_argument&){rejected=true;}
+    assert(rejected && energyQuiver.GetLevels().size()==1);
 
     DecayQuiver quiver;
 

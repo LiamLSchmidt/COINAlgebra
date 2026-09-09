@@ -1,6 +1,7 @@
 #include "COINAlgebra/Builders/DecayQuiverBuilder.h"
 
 #include <iostream>
+#include <cassert>
 
 
 void test_22Mg_gamma_quiver()
@@ -45,6 +46,15 @@ void test_22Mg_gamma_quiver()
             "BetaPlus"
         );
 
+
+    // Preserve the reader's numeric energy, independent of rounded display names.
+    for (const auto& record : na22.levels()) {
+        const auto label="level_"+std::to_string(record.energy_keV)+"keV";
+        if (const auto* level=quiver.GetLevel(label)) {
+            assert(level->HasEnergy());
+            assert(level->GetEnergy()==record.energy_keV);
+        }
+    }
 
     // ------------------------------------------------------------------------
     // Print the resulting quiver

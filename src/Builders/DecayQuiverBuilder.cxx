@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <utility>
 
 
 // ============================================================
@@ -155,6 +156,20 @@ DecayQuiverBuilder::BuildGammaQuiver(
     double energyTolerance_keV
 )
 {
+    std::unordered_map<std::string, double> conversionCoefficients;
+    return BuildGammaQuiver(parent, daughter, conversionCoefficients,
+                            decayType, energyTolerance_keV);
+}
+
+DecayQuiver DecayQuiverBuilder::BuildGammaQuiver(
+    const RadioactiveIsotope& parent,
+    const PhotonIsotope& daughter,
+    std::unordered_map<std::string, double>& conversionCoefficients,
+    const std::string& decayType,
+    double energyTolerance_keV
+)
+{
+    std::unordered_map<std::string, double> coefficients;
     // --------------------------------------------------------
     // Validate input
     // --------------------------------------------------------
@@ -301,7 +316,7 @@ DecayQuiverBuilder::BuildGammaQuiver(
             std::to_string(level.energy_keV) +
             "keV";
 
-        quiver.AddLevel(name);
+        quiver.AddLevel(name, level.energy_keV);
     }
 
     // --------------------------------------------------------
@@ -333,7 +348,7 @@ DecayQuiverBuilder::BuildGammaQuiver(
         }
 
         // ----------------------------------------------------
-        // Calculate total relative gamma intensity for the
+        // Calculate total transition intensity (gamma + IC) for the
         // reachable transitions from this level.
         // ----------------------------------------------------
 
@@ -353,9 +368,17 @@ DecayQuiverBuilder::BuildGammaQuiver(
                 continue;
             }
 
-            totalIntensity +=
-                gamma.relativeIntensity;
+            if (!std::isfinite(gamma.conversionCoefficient) ||
+                gamma.conversionCoefficient < 0.0)
+                throw std::invalid_argument("DecayQuiverBuilder: invalid conversion coefficient");
+            const double weight = gamma.relativeIntensity * (1.0 + gamma.conversionCoefficient);
+            if (!std::isfinite(weight))
+                throw std::invalid_argument("DecayQuiverBuilder: invalid total transition intensity");
+            totalIntensity += weight;
         }
+
+        if (!std::isfinite(totalIntensity))
+            throw std::invalid_argument("DecayQuiverBuilder: total transition intensity overflow");
 
         // No gamma transitions from this level.
         // It is therefore a terminal/stable level in the
@@ -372,7 +395,7 @@ DecayQuiverBuilder::BuildGammaQuiver(
         // source level:
         //
         //     P(i -> j | i)
-        //       = I_ij / sum_k I_ik
+        //       = I_ij (1 + alpha_ij) / sum_k I_ik (1 + alpha_ik)
         //
         // ----------------------------------------------------
 
@@ -416,7 +439,7 @@ DecayQuiverBuilder::BuildGammaQuiver(
             }
 
             const double probability =
-                gamma.relativeIntensity /
+                gamma.relativeIntensity * (1.0 + gamma.conversionCoefficient) /
                 totalIntensity;
 
             // ------------------------------------------------
@@ -445,6 +468,7 @@ DecayQuiverBuilder::BuildGammaQuiver(
                 "_" +
                 std::to_string(i);
 
+            coefficients.emplace(transitionName, gamma.conversionCoefficient);
             quiver.AddTransition(
                 transitionName,
                 source,
@@ -454,5 +478,6 @@ DecayQuiverBuilder::BuildGammaQuiver(
         }
     }
 
+    conversionCoefficients = std::move(coefficients);
     return quiver;
 }

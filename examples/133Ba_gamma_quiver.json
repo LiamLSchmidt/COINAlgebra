@@ -1,0 +1,46 @@
+{
+  "title": "133Ba -> EC -> 133Cs",
+  "levels": ["level_0.000000keV", "level_80.997900keV", "level_160.612100keV", "level_383.849100keV", "level_437.011300keV"],
+  "level_energies_keV": [0, 80.997900000000001, 160.6121, 383.84910000000002, 437.01130000000001],
+  "transitions": [
+    {"name": "gamma_81_to_0_0", "source_index": 1, "target_index": 0, "probability": 1},
+    {"name": "gamma_161_to_81_0", "source_index": 2, "target_index": 1, "probability": 0.89892284379726051},
+    {"name": "gamma_161_to_0_1", "source_index": 2, "target_index": 0, "probability": 0.10107715620273963},
+    {"name": "gamma_384_to_161_0", "source_index": 3, "target_index": 2, "probability": 0.017284391903840547},
+    {"name": "gamma_384_to_81_1", "source_index": 3, "target_index": 1, "probability": 0.66527844890272247},
+    {"name": "gamma_384_to_0_2", "source_index": 3, "target_index": 0, "probability": 0.31743715919343685},
+    {"name": "gamma_437_to_384_0", "source_index": 4, "target_index": 3, "probability": 0.17006145788367211},
+    {"name": "gamma_437_to_161_1", "source_index": 4, "target_index": 2, "probability": 0.088200973468711211},
+    {"name": "gamma_437_to_81_2", "source_index": 4, "target_index": 1, "probability": 0.74173756864761675}
+  ],
+  "vectors": [
+    {"terms": [
+      {"path_names": [], "stationary_level": "level_383.849100keV", "coefficient": 0.14499999999999999},
+      {"path_names": [], "stationary_level": "level_437.011300keV", "coefficient": 0.85499999999999998},
+      {"path_names": ["gamma_81_to_0_0"], "coefficient": 1},
+      {"path_names": ["gamma_161_to_81_0"], "coefficient": 0.89892284379726051},
+      {"path_names": ["gamma_161_to_0_1"], "coefficient": 0.10107715620273963},
+      {"path_names": ["gamma_384_to_161_0"], "coefficient": 0.017284391903840547},
+      {"path_names": ["gamma_384_to_81_1"], "coefficient": 0.66527844890272247},
+      {"path_names": ["gamma_384_to_0_2"], "coefficient": 0.31743715919343685},
+      {"path_names": ["gamma_437_to_384_0"], "coefficient": 0.17006145788367211},
+      {"path_names": ["gamma_437_to_161_1"], "coefficient": 0.088200973468711211},
+      {"path_names": ["gamma_437_to_81_2"], "coefficient": 0.74173756864761675}
+    ]}
+  ],
+  "metadata": {
+    "transition_probability_basis": "gamma_plus_ic",
+    "conversion_coefficients": {
+      "gamma_81_to_0_0": 1.7030000000000001,
+      "gamma_161_to_81_0": 1.77,
+      "gamma_161_to_0_1": 0.29399999999999998,
+      "gamma_384_to_161_0": 0.097500000000000003,
+      "gamma_384_to_81_1": 0.043400000000000001,
+      "gamma_384_to_0_2": 0.020199999999999999,
+      "gamma_437_to_384_0": 5.6600000000000001,
+      "gamma_437_to_161_1": 0.056599999999999998,
+      "gamma_437_to_81_2": 0.025399999999999999
+    },
+    "branching": [0, 0, 0, 0.14499999999999999, 0.85499999999999998]
+  }
+}

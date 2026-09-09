@@ -19,8 +19,12 @@
 #include <QPushButton>
 #include <QTemporaryDir>
 #include <QTimer>
+#include <QTableWidget>
+#include <QPlainTextEdit>
+#include <QDialogButtonBox>
 #include <cassert>
 #include <iostream>
+#include <cmath>
 
 QPushButton* button(QWidget* parent, const QString& text) {
     for (auto* b : parent->findChildren<QPushButton*>())
@@ -52,10 +56,11 @@ int main(int argc, char** argv) {
     quiverTitle->setText("56Fe levels");
     for (const auto& name : {"d0", "d1", "d2"}) {
         edits[0]->setText(name);
+        window.findChild<QLineEdit*>("levelEnergy")->setText(QString::number(QString(name).right(1).toInt()*100));
         button(&window, "Add Level")->click();
     }
     auto combos = window.findChildren<QComboBox*>();
-    assert(combos.size() == 2);
+    assert(combos.size() == 5);
     assert(combos[0]->count() == 3);
     combos[0]->setCurrentText("d2");
     combos[1]->setCurrentText("d1");
@@ -91,6 +96,8 @@ int main(int argc, char** argv) {
     auto json = QJsonDocument::fromJson(file.readAll()).object();
     assert(json["title"].toString() == "56Fe levels");
     assert(json["levels"].toArray().size() == 3);
+    assert(json["level_energies_keV"].toArray()==QJsonArray({0,100,200}));
+    assert(!json["metadata"].toObject().contains("level_energies_keV"));
     auto transitions = json["transitions"].toArray();
     assert(transitions.size() == 1);
     assert(transitions[0].toObject()["probability"].toDouble() == 0.4);
@@ -172,7 +179,91 @@ int main(int argc, char** argv) {
         dialog->accept();
     });
     button(&window, "Print Decay Vector Table")->click();
+    // Exercise the document editors and saved-view controls through their real widgets.
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());assert(dialog);
+        auto* name=dialog->findChild<QLineEdit*>("groupName");assert(name);name->setText("Band A");
+        auto* members=dialog->findChild<QListWidget*>("groupLevels");members->item(1)->setSelected(true);members->item(2)->setSelected(true);
+        dialog->findChild<QDialogButtonBox*>()->button(QDialogButtonBox::Save)->click();
+    });button(&window,"Groups…")->click();
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());assert(dialog);
+        dialog->findChild<QLineEdit*>("subquiverName")->setText("Selected cascade");
+        dialog->findChild<QListWidget*>("subquiverTransitions")->item(0)->setSelected(true);
+        dialog->findChild<QDialogButtonBox*>()->button(QDialogButtonBox::Save)->click();
+    });button(&window,"Subquivers…")->click();assert(view->mode()==2);
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());assert(dialog);
+        dialog->findChild<QLineEdit*>("viewName")->setText("Focused cascade");
+        button(dialog,"Save current view")->click();assert(dialog->findChild<QListWidget*>("savedViews")->count()==1);dialog->reject();
+    });button(&window,"Saved views…")->click();
+    view->setMode(1);
+    QTimer::singleShot(0,[&]{auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());dialog->findChild<QListWidget*>("savedViews")->setCurrentRow(0);button(dialog,"Restore selected view")->click();dialog->reject();});
+    button(&window,"Saved views…")->click();assert(view->mode()==2);
+    QTimer::singleShot(0,[&]{auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());auto* table=dialog->findChild<QTableWidget*>();assert(table);for(int i=0;i<3;++i)table->item(i,2)->setText(QString::number(i*100));dialog->findChild<QDialogButtonBox*>()->button(QDialogButtonBox::Save)->click();});
+    button(&window,"Initial populations / energies…")->click();
+    QTimer::singleShot(0,[&]{auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());dialog->findChild<QComboBox*>("energyMode")->setCurrentText("compressed");dialog->findChild<QDialogButtonBox*>()->button(QDialogButtonBox::Apply)->click();dialog->reject();});
+    button(&window,"Focus / energy / style…")->click();
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QFileDialog*>(QApplication::activeModalWidget());assert(dialog);
+        const auto source=QDir(QFileInfo(QString::fromUtf8(__FILE__)).absolutePath()).filePath("../../data/GRIFFIN_Eff.csv");
+        dialog->selectFile(QFileInfo(source).absoluteFilePath());QMetaObject::invokeMethod(dialog,"accept",Qt::QueuedConnection);
+    });button(&window,"Import Efficiency CSV…")->click();
+    assert(window.findChild<QLabel*>("analysisResult")->text().contains("GRIFFIN_Eff.csv"));
+    // Changing the view must not drop newly imported physical calibration data.
+    view->setMode(0);
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());assert(dialog);
+        auto* table=dialog->findChild<QTableWidget*>();assert(table && table->rowCount()==1);
+        assert(table->item(0,1)->text().toDouble()==100.);
+        assert(std::abs(table->item(0,2)->text().toDouble()-.45137141695282584)<1e-11);dialog->accept();
+    });button(&window,"Show Transition Efficiencies")->click();
+    QTimer::singleShot(0,[&]{auto* dialog=qobject_cast<QMessageBox*>(QApplication::activeModalWidget());assert(dialog && dialog->windowTitle()=="Exported");dialog->accept();});
+    button(&window,"Export Quiver")->click();
+    bool foundView=false;
+    for(const auto& filename:QDir(output.path()+"/examples").entryList({"quiver-*.json"},QDir::Files)) {QFile savedFile(output.path()+"/examples/"+filename);assert(savedFile.open(QIODevice::ReadOnly));auto exported=QJsonDocument::fromJson(savedFile.readAll()).object();auto metadata=exported["metadata"].toObject();if(!metadata["saved_views"].toArray().empty()){foundView=true;assert(metadata["efficiency_samples"].toArray().size()==1991);assert(metadata["groups"].toArray().size()==1);assert(metadata["subquivers"].toArray()[0].toObject()["transitions"].toArray().size()==1);assert(metadata["view"].toObject()["energy"].toObject()["mode"]=="compressed");}}
+    assert(foundView);
+    view->setMode(1);
+    const auto baPath=QDir(QFileInfo(QString::fromUtf8(__FILE__)).absolutePath()).filePath("../../examples/133Ba_gamma_quiver.json");
+    import(QFileInfo(baPath).absoluteFilePath(),"Replace current quiver?",QMessageBox::Yes);
+    QTimer::singleShot(0,[&]{
+        auto* dialog=qobject_cast<QDialog*>(QApplication::activeModalWidget());assert(dialog && dialog->windowTitle().contains("IC-corrected"));
+        const auto table=dialog->findChild<QPlainTextEdit*>()->toPlainText();
+        assert(table.contains("0.33284709") && table.contains("0.61847632"));dialog->accept();
+    });button(&window,"Show Gamma Emission Probabilities")->click();
+    auto* coincidenceA=window.findChild<QComboBox*>("coincidenceA");
+    auto* coincidenceB=window.findChild<QComboBox*>("coincidenceB");
+    auto* coincidenceResult=window.findChild<QLabel*>("coincidenceResult");
+    assert(coincidenceA && coincidenceB && coincidenceResult);
+    coincidenceA->setCurrentText("gamma_437_to_81_2");coincidenceB->setCurrentText("gamma_81_to_0_0");
+    button(&window,"Calculate Coincidence Probability")->click();
+    auto result=coincidenceResult->text();assert(result.contains("Physical: 0.634185621194"));
+    const double expectedEmission=.634185621194/(1+.0254)/(1+1.703);
+    assert(result.contains("Gamma emission: "));
+    auto emissionLine=result.split('\n')[1];assert(std::abs(emissionLine.mid(QString("Gamma emission: ").size()).toDouble()-expectedEmission)<1e-11);
+    coincidenceA->setCurrentText("gamma_81_to_0_0");coincidenceB->setCurrentText("gamma_437_to_81_2");
+    assert(coincidenceResult->text()=="Ready to calculate.");button(&window,"Calculate Coincidence Probability")->click();assert(coincidenceResult->text()==result);
+    coincidenceB->setCurrentText("gamma_81_to_0_0");assert(!button(&window,"Calculate Coincidence Probability")->isEnabled());
+    coincidenceA->setCurrentText("gamma_437_to_161_1");coincidenceB->setCurrentText("gamma_437_to_81_2");
+    button(&window,"Calculate Coincidence Probability")->click();assert(coincidenceResult->text().startsWith("Physical: 0\nGamma emission: 0"));
+
+    QTimer::singleShot(0,[&]{auto* dialog=qobject_cast<QFileDialog*>(QApplication::activeModalWidget());assert(dialog);dialog->selectFile(QDir(QFileInfo(QString::fromUtf8(__FILE__)).absolutePath()).absoluteFilePath("../../data/GRIFFIN_Eff.csv"));QMetaObject::invokeMethod(dialog,"accept",Qt::QueuedConnection);});
+    button(&window,"Import Efficiency CSV…")->click();
+    coincidenceA->setCurrentText("gamma_437_to_81_2");coincidenceB->setCurrentText("gamma_81_to_0_0");
+    view->focusOnLevel(1); // Hidden transitions must still contribute to analysis.
+    button(&window,"Calculate Coincidence Probability")->click();
+    assert(coincidenceResult->text().contains("Detected: 0.0264318814936"));
     if (argc > 1) assert(window.grab().save(argv[1]));
+    QFile parallel(output.path()+"/parallel.json");assert(parallel.open(QIODevice::WriteOnly));
+    parallel.write(R"({"levels":["ground","middle","upper"],"transitions":[
+        {"name":"highA","source_index":2,"target_index":1,"probability":0.3},
+        {"name":"highB","source_index":2,"target_index":1,"probability":0.7},
+        {"name":"low","source_index":1,"target_index":0,"probability":0.8}],
+        "metadata":{"branching":[0,0,1],"conversion_coefficients":{"highA":1,"highB":0,"low":3}}})");parallel.close();
+    import(parallel.fileName(),"Replace current quiver?",QMessageBox::Yes);
+    coincidenceA->setCurrentText("highA");coincidenceB->setCurrentText("low");button(&window,"Calculate Coincidence Probability")->click();
+    assert(coincidenceResult->text().startsWith("Physical: 0.24\nGamma emission: 0.03"));
+
     window.close();
     std::cout << "PASS: GUI construction, levels, transition, scene, path/vector, JSON import/export and failed-import rollback\n";
 }

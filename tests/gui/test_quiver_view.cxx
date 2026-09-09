@@ -1,6 +1,7 @@
 #include "QuiverView.h"
 #include "COINAlgebra/Core/DecayQuiver.h"
 #include <QApplication>
+#include <QJsonArray>
 #include <QComboBox>
 #include <QDialog>
 #include <QDoubleSpinBox>
@@ -230,5 +231,20 @@ int main(int argc, char** argv) {
     click(QPointF(view.viewport()->width() * 0.85, levelY("ground")));
     for (int i = 0; i < 12; ++i)
         assert(dynamic_cast<QGraphicsLineItem*>(part(i, false))->pen().color() == QColor("#647b91"));
+    QJsonObject metadata{{"subquivers",QJsonArray{
+        QJsonObject{{"name","Band A"},{"kind","band"},{"color","#ff0000"},{"levels",QJsonArray{0,2}}},
+        QJsonObject{{"name","Band B"},{"kind","band"},{"color","#0000ff"},{"levels",QJsonArray{1}}}}},
+        {"focus_group",0}, {"level_energies_keV",QJsonObject{{"0",0},{"1",100},{"2",500}}}};
+    ground->SetEnergy(0);middle->SetEnergy(100);upper->SetEnergy(500);
+    view.setMetadata(metadata); view.setMode(1);
+    int shortLevels=0;
+    for(auto* item:view.scene()->items()) if(auto* line=dynamic_cast<QGraphicsLineItem*>(item))
+        if(std::abs(line->line().dy())<1e-8) { assert(line->line().length()<view.viewport()->width()/2); ++shortLevels; }
+    assert(shortLevels==3);
+    view.setMode(2);
+    for(auto* item:view.scene()->items()) if(auto* label=dynamic_cast<QGraphicsTextItem*>(item)) assert(label->toPlainText()!="middle");
+    assert(quiver.GetLevels().size()==3 && quiver.GetTransitions().size()==12);
+    view.setMode(1);
+    if(argc>2) assert(view.grab().save(argv[2]));
     std::cout << "PASS: level layout, transition editing, even lanes, resize and dragging\n";
 }

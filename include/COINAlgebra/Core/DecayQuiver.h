@@ -3,9 +3,11 @@
 
 #include "COINAlgebra/Core/DecayLevel.h"
 #include "COINAlgebra/Core/DecayTransition.h"
+#include "COINAlgebra/Core/DecayVector.h"
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 
 class DecayQuiver
@@ -23,6 +25,8 @@ public:
     DecayLevel* AddLevel(
         const std::string& name
     );
+
+    DecayLevel* AddLevel(const std::string& name, double energy_keV);
 
     DecayLevel* GetLevel(
         const std::string& name
@@ -87,6 +91,21 @@ public:
     // --------------------------------------------------------
 
     void Print() const;
+
+    // Write DQStudio JSON, optionally including vectors and a display title.
+    // Optional IC coefficients cover every transition (total alpha >= 0).
+    // Optional initial populations align with GetLevels() and sum to one.
+    // IC inputs require total gamma+IC physical transition branches.
+    // Overwrites filename. Parent directories must already exist.
+    // Throws invalid_argument for data that cannot round-trip through Studio,
+    // or runtime_error for file errors. No Qt or ROOT runtime is required.
+    void ExportJson(
+        const std::string& filename,
+        const std::vector<DecayVector>& vectors = {},
+        const std::string& title = "",
+        const std::unordered_map<std::string, double>& conversionCoefficients = {},
+        const std::vector<double>& initialPopulations = {}
+    ) const;
 
 private:
 

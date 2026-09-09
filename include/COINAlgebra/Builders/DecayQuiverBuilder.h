@@ -7,6 +7,7 @@
 
 #include <set>
 #include <string>
+#include <unordered_map>
 
 class DecayQuiverBuilder
 {
@@ -36,12 +37,22 @@ public:
     // levels reachable from the selected radioactive-decay
     // channels through gamma transitions.
     //
-    // Gamma transition probabilities are normalized
-    // conditionally for each excited level.
+    // Edge probabilities include gamma emission AND internal conversion:
+    // I_gamma * (1 + alpha), normalized for each excited level.
     //
     static DecayQuiver BuildGammaQuiver(
         const RadioactiveIsotope& parent,
         const PhotonIsotope& daughter,
+        const std::string& decayType = "BetaPlus",
+        double energyTolerance_keV = 1.0
+    );
+
+    // Also extract total internal conversion coefficients, keyed by the
+    // generated transition names. Replaces the output map on success.
+    static DecayQuiver BuildGammaQuiver(
+        const RadioactiveIsotope& parent,
+        const PhotonIsotope& daughter,
+        std::unordered_map<std::string, double>& conversionCoefficients,
         const std::string& decayType = "BetaPlus",
         double energyTolerance_keV = 1.0
     );

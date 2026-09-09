@@ -2,6 +2,10 @@
 
 The current manuscript is `APS_Coincidence_Algebra-14.pdf`.
 
+Track confirmed typos and unresolved paper–code differences in
+[the discrepancy register](ERRATA.md). A complete agreement audit is planned
+after the first build is agreed ready for validation.
+
 `DecayCoin` implements Definitions III.1-4: unordered input is canonicalized
 from highest to lowest, overlapping intervals are rejected, gaps and shared
 endpoints are allowed, and stationary endpoint factors reduce by Eq. (37).
@@ -35,3 +39,9 @@ auto first = algebra.Coin(std::vector<DecayTransition>{*upperTransition});
 auto second = algebra.Coin(std::vector<DecayTransition>{*lowerTransition});
 auto product = algebra.Multiply(first, second); // coefficient-weighted terms
 ```
+
+Detection maps and summing calculations are implemented in `DetectionMaps` and
+`DecayProbability`; see [the definitions and manuscript clarifications](../mathematics/detection-summing.md)
+for the path-algebra implementation of Eqs. (28)-(33), IC handling, and detector
+setup inputs. Eq. (32) is the target; the documentation records the current
+normalization and terminal-boundary adjustments to the printed equations.

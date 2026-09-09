@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <string>
 #include <iosfwd>
+#include <unordered_map>
 #include <vector>
 
 class DecayVector
@@ -78,6 +79,19 @@ public:
     );
 
     // --------------------------------------------------------
+    // Detection Maps
+    // --------------------------------------------------------
+    // Divide each non-stationary path by the product of (1 + alpha)
+    // over its transitions. Missing, negative or nonfinite alpha throws.
+    // Stationary coefficients are unchanged. Does not renormalize.
+    DecayVector ApplyConversionMap(
+        const std::unordered_map<std::string, double>& conversionCoefficients
+    ) const;
+
+    DecayVector ApplyDetectionMap(
+        const std::unordered_map<std::string, double>& efficiencies
+    ) const;
+    // --------------------------------------------------------
     // Display
     // --------------------------------------------------------
 
@@ -86,6 +100,7 @@ public:
     void Print() const;
     void PrintTable() const;
     void PrintTable(std::ostream& out) const;
+
 private:
 
     std::vector<Term> fTerms;
@@ -96,6 +111,7 @@ private:
     );
 
     void Simplify();
+
 };
 
 #endif

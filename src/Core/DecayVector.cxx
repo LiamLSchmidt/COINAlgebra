@@ -1,5 +1,5 @@
 #include "COINAlgebra/Core/DecayVector.h"
-
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -430,4 +430,141 @@ void DecayVector::PrintTable(std::ostream& out) const
         << std::string(probabilityWidth + 2, '-')
         << "+"
         << std::endl;
+}
+
+// --------------------------------------------------------
+// Detection map
+// --------------------------------------------------------
+
+DecayVector DecayVector::ApplyDetectionMap(
+    const std::unordered_map<std::string, double>& efficiencies
+) const
+{
+    DecayVector result;
+
+
+    for (const auto& term : fTerms)
+    {
+        const DecayPath& path = term.path;
+
+        double pathEfficiency = 1.0;
+
+
+        // ----------------------------------------------------
+        // Stationary paths
+        // ----------------------------------------------------
+        //
+        // A stationary path contains no physical transition.
+        //
+        // Therefore:
+        //
+        //      epsilon(e_v) = 1.
+        //
+        // Its coefficient is left unchanged.
+        // ----------------------------------------------------
+
+        if (!path.IsStationary())
+        {
+            const auto& transitions =
+                path.GetTransitions();
+
+
+            // ------------------------------------------------
+            // Non-stationary paths
+            // ------------------------------------------------
+            //
+            // For
+            //
+            //      p = gamma_1 ... gamma_n
+            //
+            // calculate
+            //
+            //      epsilon(p)
+            //          = product_i epsilon(gamma_i).
+            // ------------------------------------------------
+
+            for (const auto& transition : transitions)
+            {
+                const std::string& transitionName =
+                    transition.GetName();
+
+                const auto efficiencyIt =
+                    efficiencies.find(transitionName);
+
+
+                if (efficiencyIt == efficiencies.end())
+                {
+                    throw std::runtime_error(
+                        "DecayVector::ApplyDetectionMap: "
+                        "No detection efficiency provided for "
+                        "transition '" +
+                        transitionName +
+                        "'."
+                    );
+                }
+
+
+                const double efficiency =
+                    efficiencyIt->second;
+
+
+                if (!std::isfinite(efficiency))
+                {
+                    throw std::runtime_error(
+                        "DecayVector::ApplyDetectionMap: "
+                        "Detection efficiency for transition '" +
+                        transitionName +
+                        "' is not finite."
+                    );
+                }
+
+
+                if (efficiency < 0.0 ||
+                    efficiency > 1.0)
+                {
+                    throw std::runtime_error(
+                        "DecayVector::ApplyDetectionMap: "
+                        "Detection efficiency for transition '" +
+                        transitionName +
+                        "' must lie between 0 and 1."
+                    );
+                }
+
+
+                pathEfficiency *= efficiency;
+            }
+        }
+
+
+        // ----------------------------------------------------
+        // Apply detection factor to coefficient
+        // ----------------------------------------------------
+
+        result.AddTerm(
+            path,
+            term.coefficient * pathEfficiency
+        );
+    }
+
+
+    return result;
+}
+DecayVector DecayVector::ApplyConversionMap(
+    const std::unordered_map<std::string, double>& conversionCoefficients
+) const
+{
+    std::unordered_map<std::string, double> emissionFactors;
+    for (const auto& term : fTerms)
+        for (const auto& transition : term.path.GetTransitions())
+        {
+            const auto& name = transition.GetName();
+            const auto entry = conversionCoefficients.find(name);
+            if (entry == conversionCoefficients.end())
+                throw std::invalid_argument("DecayVector::ApplyConversionMap: missing coefficient for " + name);
+            const double alpha = entry->second;
+            if (!std::isfinite(alpha) || alpha < 0.0)
+                throw std::invalid_argument("DecayVector::ApplyConversionMap: invalid coefficient for " + name);
+            emissionFactors[name] = 1.0 / (1.0 + alpha);
+        }
+    return ApplyDetectionMap(emissionFactors);
 }
