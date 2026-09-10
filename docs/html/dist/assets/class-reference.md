@@ -5,11 +5,12 @@ including the mathematical core, path projectors, coincidence algebra,
 probability calculator, nuclear-data records/readers, builder, and ROOT wrapper.
 It describes current behavior, including implementation limitations, rather than
 assuming that every construction in the manuscript has already been implemented.
-Qt GUI internals are outside this library reference.
+DQStudio types, document metadata, view state, and analysis workflows are also documented.
 
 The mathematical source is [the manuscript](paper/APS_Coincidence_Algebra-14.pdf).
-Equation (40) is interpreted with the author's confirmed correction:
-`t(p_i tensor ... tensor p_n) = t(p_n)`.
+The implementation uses `t(p_i tensor ... tensor p_n) = t(p_n)` for Eq. (40).
+Paper discrepancies and their confirmation status are tracked in the
+[discrepancy register](paper/ERRATA.md).
 
 ## Contents
 
@@ -26,6 +27,8 @@ Equation (40) is interpreted with the author's confirmed correction:
 - [DecayProbability](#decayprobability)
 - [DecayCoin](#decaycoin)
 - [CAlgebra](#calgebra)
+- [DetectionMaps](#detectionmaps)
+- [DQStudio architecture](#dqstudio-architecture)
 - [Nuclear-data records and readers](#nuclear-data-records-and-readers)
 - [DecayQuiverBuilder](#decayquiverbuilder)
 - [ROOT environment](#root-environment)
@@ -173,12 +176,18 @@ only exact zeros. These numerical conventions can affect tiny contributions.
 ## DecayLevel
 
 Header: [`Core/DecayLevel.h`](../include/COINAlgebra/Core/DecayLevel.h).
-Represents a vertex; it does not store energy, spin, or an ordering rank.
+Represents a vertex with an optional physical energy in keV. Unknown energy is
+distinct from zero. Spin and algebra ordering rank are not stored.
 
 | Public function | Behavior |
 | --- | --- |
 | `DecayLevel()` | Constructs a level with an empty name. |
 | `explicit DecayLevel(const std::string& name)` | Stores the supplied name. |
+| `DecayLevel(name, energy_keV)` | Constructs with a finite nonnegative energy. |
+| `HasEnergy() const` | Reports whether energy is known. |
+| `GetEnergy() const` | Returns keV; throws `std::logic_error` when unknown. |
+| `SetEnergy(energy_keV)` | Validates finite nonnegative energy before replacing it. |
+| `ClearEnergy()` | Returns energy to unknown. |
 | `const std::string& GetName() const` | Borrows the stored name. |
 | `void SetName(const std::string& name)` | Replaces the name. Does not check other levels for uniqueness. |
 | `void Print() const` | Writes a vertex description to standard output. |
@@ -217,6 +226,8 @@ This is the owning graph container, not a probability vector or an algebra.
 | `DecayQuiver()` | Creates an empty graph. |
 | `~DecayQuiver()` | Deletes owned transitions, then levels. |
 | `AddLevel(name)` | Allocates a level and returns its pointer. Duplicate current name throws `std::invalid_argument`. |
+| `AddLevel(name, energy_keV)` | Adds an owned level with validated physical energy. |
+| `ExportJson(filename, vectors, title, conversionCoefficients, initialPopulations) const` | Exports graph, aligned energies, vectors and optional IC/population metadata. Validates supplied IC coverage and populations before opening the file. |
 | `GetLevel(name) const` | Finds the first matching name; returns `nullptr` when absent. |
 | `GetLevels() const` | Const reference to the vector of level pointers in insertion order. This is not necessarily descending physical order. |
 | `AddTransition(name, source, target, probability = 1.0)` | Allocates an edge. Rejects null endpoints, duplicate current transition names, and out-of-range probability. Returns its pointer. |
@@ -288,6 +299,8 @@ Represents `v = sum_p a_p p`, with public nested record
 | `operator*(double scalar) const` | Returns scalar multiple. |
 | `operator*=(double scalar)` | Scales in place, simplifies, returns `DecayVector&`. |
 | Free `operator*(double scalar, const DecayVector& vector)` | Supports `scalar * vector`. |
+| `ApplyConversionMap(conversionCoefficients) const` | Multiplies each path by the product of `1/(1+alpha)`; preserves stationary terms. Required alpha entries must be finite and nonnegative. |
+| `ApplyDetectionMap(efficiencies) const` | Multiplies each path by its edge efficiencies, each finite and in [0,1]. Required entries must be present. |
 | `ToString() const` | Algebraic expression, or `"0"` for zero. |
 | `Print() const` | Prints `ToString()` to standard output. |
 | `PrintTable() const` | Prints path/coefficient table to standard output. |
@@ -380,7 +393,11 @@ Provides the path-algebra probability calculations. Let
 | Public function | Meaning |
 | --- | --- |
 | `DecayProbability(const PathAlgebra& algebra, const PathProjectors& projectors)` | Borrows both dependencies; they must remain alive. |
-| `FeedingVector(decay) const` | Computes `F = V_t(b R) tau`, in API traversal order. Returns total emission weight for each transition after initial population propagation. |
+| `FeedingVector(decay) const` | Computes `F = V_t(b R) tau`, in API traversal order. Returns total physical feeding (gamma + IC when the input branches include both). |
+| `EmissionFeedingVector(decay, alpha) const` | Physical feeding followed by the gamma fraction; conversion still feeds daughter levels. |
+| `DetectionFeedingVector(decay, efficiencies) const` | Applies only the supplied efficiency to physical feeding. Does not add an IC correction. |
+| `DetectionFeedingVector(decay, efficiencies, alpha) const` | Gamma emission feeding followed by conditional detector efficiency. |
+| `SummingFeedingVector(decay, maps) const` | Connected-path summing with terminal-complete propagation and N^(k-1) detector scaling. Requires a DAG with normalized nonnegative outgoing physical branches. |
 | `FeedingProbability(decay, path) const` | `PathForm(FeedingVector(decay), DecayVector(path,1))`. Selects by endpoints, not exact transition identity. |
 | `PathConnection(decay, path_i, path_j) const` | `PathForm(V_t(e_t(path_i) R) tau, DecayVector(path_j,1))`. Includes the final transition coefficient. |
 | `CoincidenceProbability(decay, path_i, path_j) const` | `FeedingProbability(decay,path_i) * PathConnection(decay,path_i,path_j)`. Intended for ordered transition queries. |
@@ -554,6 +571,185 @@ from `p`, preserving initial branch information; it reduces when `i=s(p)`.
 No extra feeding factor should be applied afterward. Summing those coefficients
 for each transition gives its ordinary feeding weight.
 
+## DetectionMaps
+
+Header: [DetectionMaps.h](../include/COINAlgebra/Detection/DetectionMaps.h).
+A copied detector response model keyed by transition name. Efficiencies are
+whole-array probabilities conditional on gamma emission. Require positive N,
+finite `0 <= peak <= total <= 1`, and nonnegative finite alpha. Empty alpha maps
+mean no IC; nonempty maps must cover every used edge. Maps never renormalize
+physical branches or initial populations.
+
+| Public function | Behavior |
+| --- | --- |
+| `DetectionMaps(peak, total, detectorCount, conversion = {})` | Stores and validates response inputs. |
+| `DetectorCount() const` | Number of identical isotropic detectors. |
+| `FullEnergyHit(vector) const` | Path or coincidence vector: multiply observed edges by `q*peak`, with `q=1/(1+alpha)`. |
+| `TotalHit(vector) const` | Path or coincidence vector: multiply by `q*total/N` for one detector. |
+| `SummingOut(vector) const` | Path or coincidence vector: multiply by `1-q*total/N`. |
+| `AvoidDetectors(pathVector, m) const` | Multiply each path edge by `1-m*q*total/N`; require `m<=N`. Zero means identity. |
+| `SummingInExpansion(pathAlgebra, tau) const` | Connected sums: `h + h*h/N + ...`, positive powers only. |
+| `SummingInExpansion(coincidenceFiber, tau) const` | Also includes disconnected hits; products use the explicitly supplied fiber's connection weights. |
+
+Stationary factors are preserved. Summing expansions require original physical
+single-edge tau, not a previously mapped hit vector. A map on a coincidence
+vector changes observed factors only; construct a new CAlgebra from mapped tau
+to change hidden connection weights. This distinction implements the paper's
+separation between a fiber and the vectors being multiplied inside it.
+
+### Coincidence detection and summing example
+
+```cpp
+// b contains stationary initial populations, tau physical gamma+IC edges,
+// E stationary terminal levels. order lists every level from high to low.
+CAlgebra physical(quiver, order, b + tau);
+auto pairs = physical.Multiply(physical.Embed(b),
+                              physical.Power(physical.Embed(tau), 2));
+auto detectedPairs = maps.FullEnergyHit(pairs); // independent, no summing
+CAlgebra out(quiver, order, maps.SummingOut(tau));
+auto spectrum = out.Multiply(out.Multiply(out.Embed(b),
+    maps.SummingInExpansion(out, tau)), out.Embed(E)); // Eq. 70
+```
+
+For two distinct clean peaks, use `AvoidDetectors(tau,2)` as the fiber, two
+observed h factors, and multiply by `(N-1)/N`. For N=1 that observable is zero.
+General gated sums of photon groups are not implemented: photon membership in a
+summed tensor is not a resolved-energy gate. The Eq. (72) limitation and exact
+counterexample are in the [validation baseline](mathematics/coincidence-validation.md).
+
+The [Ba-133 macro](../tests/integration/test_133Ba_gamma_quiver.C) prints all
+nonzero physical, emission and detected coincidence orders, same-detector sums,
+clean pairs, and G1/G2 membership gates. Its detector responses are illustrative.
+The [synthetic calculation](../examples/calculations/coincidence.C) provides
+small reproducible numbers. [Independent enumeration tests](../tests/core/test_coincidence_detection.C)
+check cascade/subset weights, while [path summing tests](../tests/core/test_summing.C)
+check connected sums. See also [IC conventions](mathematics/internal-conversion.md)
+and [detection and summing](mathematics/detection-summing.md).
+
+## DQStudio architecture
+
+The physical `DecayQuiver` and its energies remain independent of presentation.
+`Studio::Document` owns the quiver, saved vectors, title and JSON metadata.
+Metadata holds initial populations, IC, efficiency calibration, named groups and
+explicit subquivers. Bands, cascades and user groups are document membership;
+colors, camera, highlights, collapse and energy scaling belong to views.
+Quiver, Band and Focus modes share the `QuiverView` renderer.
+
+```text
+DecayQuiver + DecayVector
+          |
+Studio::Document (JSON + physical analysis inputs)
+          |
+StudioModel          ViewState
+branching/response   membership/selection/style/energy coordinates
+          |                 |
+          MainWindow ---- QuiverView
+          analysis        shared renderer for Quiver/Band/Focus
+```
+
+Read the [view and band guide](dqstudio-bands.md),
+[JSON contract](studio-json.md), and [analysis workflow](studio-analysis.md)
+for persistence details and user-facing behavior. GUI components require Qt5;
+the core library remains independent of Qt and ROOT.
+
+### Document
+
+Header: [QuiverJson.h](../gui/QuiverJson.h). Qualified name: `Studio::Document`.
+
+| Member or operation | Purpose |
+| --- | --- |
+| `quiver` | Unique ownership of graph; vectors borrow its level pointers. |
+| `vectors` | Saved path vectors with physical coefficients. |
+| `metadata`, `title` | Analysis inputs, presentation state and document title. |
+| `Studio::readJson(bytes)` | Constructs and validates a new document; a failed load leaves the open document intact. |
+| `Studio::createDecayVector(quiver, metadata)` | Combines stationary initial populations and physical transition branches. |
+
+### StudioModel
+
+Namespace functions, not a C++ class. Header: [StudioModel.h](../gui/StudioModel.h).
+
+| Function | Purpose |
+| --- | --- |
+| `branchingVector(quiver, metadata)` | Stationary initial populations; distinct from outgoing transition probabilities. |
+| `transitionVector(quiver)` | Physical single-edge coefficients. |
+| `levelEnergy(quiver, metadata, index)` | Retrieves the core level energy used by analysis. |
+| `readEfficiencyCsv(bytes)` | Parses calibrated energy/efficiency samples, including GRIFFIN headers. |
+| `efficiencyMap(quiver, metadata)` | Interpolates at absolute endpoint-energy differences; no extrapolation. |
+| `conversionMap(quiver, metadata)` | Validated per-edge IC; absent metadata means alpha=0. |
+| `validateStudio(quiver, metadata)` | Checks analysis metadata and required response inputs. |
+
+The GRIFFIN CSV uses `Energy[keV], HPGe`; generic `energy_keV,efficiency` is
+also accepted. Efficiencies are fractions, not percentages. Known core energies
+are exported in aligned `level_energies_keV` entries; null means unknown.
+Legacy energy metadata is migrated on import. Physical, branching and transition
+vectors must remain distinct from response-weighted calculation results.
+
+### GraphSelection
+
+Header: [ViewState.h](../gui/ViewState.h). Qualified name: `Studio::GraphSelection`.
+
+| Field | Purpose |
+| --- | --- |
+| `levels`, `transitions` | Boolean membership masks for selected graph objects. |
+| `contextLevels`, `contextTransitions` | Context masks used by focus rendering. |
+
+### ViewState
+
+Namespace functions, not a C++ class. Header: [ViewState.h](../gui/ViewState.h).
+
+| Function | Purpose |
+| --- | --- |
+| `normalizeViewMetadata(metadata)` | Normalizes saved view state and defaults. |
+| `layoutGroups(metadata)` | Groups used for band layout. |
+| `selectGraph(quiver, metadata, focus)` | Computes selection and context masks. |
+| `objectStyle(metadata, groupId, objectId, transition)` | Resolves saved object styling. |
+| `validateViewMetadata(quiver, metadata)` | Checks membership and view references. |
+| `removeViewLevel(metadata, index)` | Remaps level references after deletion. |
+| `pruneViewTransitions(metadata, quiver)` | Removes stale transition references. |
+| `energyCoordinates(quiver, metadata, visible)` | Physical/compressed/uniform vertical coordinates; explicit energy modes require known energies. |
+
+### MainWindow
+
+Header: [MainWindow.h](../gui/MainWindow.h). Coordinates document editing,
+loading/export, branching input, efficiency import, analysis panels and saved
+views. View-related operations are implemented in `MainWindowViews.cpp`.
+| Public function | Purpose |
+| --- | --- |
+| `MainWindow()` | Constructs the editor and connects document, view and analysis controls. |
+
+The coincidence panel evaluates both allowed temporal orders for two distinct
+selected transitions, preserves individual parallel-arrow shares, and applies
+IC/efficiency to observed transitions. Its independent detection probability
+does not include general detector-pair summing corrections.
+
+### QuiverView
+
+Header: [QuiverView.h](../gui/QuiverView.h). Shared graphics renderer for all
+three views, with selection, pan/zoom, band movement, level scaling, styles,
+collapse and highlighting. Display transforms do not change physical energies.
+
+| Public function or signal | Purpose |
+| --- | --- |
+| `QuiverView(parent)` | Creates the graphics view. |
+| `setQuiver(q)` | Sets the borrowed graph rendered by this view. |
+| `setMetadata(metadata)` | Supplies document presentation metadata. |
+| `viewState()`, `restoreView(state)` | Read or restore camera/view state. |
+| `setMode(mode)`, `mode()` | Select or read the active view mode. |
+| `setEnergyScale(scale)`, `configureView(state)` | Configure energy scaling and saved view settings. |
+| `refresh()` | Rebuild the scene from current data. |
+| `focusOnLevel(index)`, `showAllLevels()` | Focus or restore the displayed level set. |
+| `levelDeleteRequested(index)`, `levelRenamed(index, newName)` | Report user edits to the controller. |
+| `transitionEdited(index, probability)` | Report edited transition probability. |
+| `appearanceChanged(metadata)` | Persist changes to presentation metadata. |
+
+### TransitionEditor
+
+Namespace function, not a C++ class. Header: [TransitionEditor.h](../gui/TransitionEditor.h).
+
+| Function | Purpose |
+| --- | --- |
+| `Studio::editTransition(parent, transition, levels)` | Applies accepted source, target and probability together; returns whether edits were accepted. |
+
 ## Nuclear-data records and readers
 
 These types preserve external records before constructing mathematical objects.
@@ -688,7 +884,7 @@ from the physical choice of populations and modeled transitions.
 ## DecayQuiverBuilder
 
 Header: [`Builders/DecayQuiverBuilder.h`](../include/COINAlgebra/Builders/DecayQuiverBuilder.h).
-One public static operation:
+Two overloads of the public static builder operation:
 
 ```cpp
 static DecayQuiver BuildGammaQuiver(
@@ -701,10 +897,11 @@ static DecayQuiver BuildGammaQuiver(
 The builder uses the **first parent state**, selects matching radioactive decay
 modes, matches channel daughter energies to photon levels within tolerance,
 and recursively includes levels reachable along the recorded gamma transitions.
-It normalizes positive outgoing relative intensities at each source:
+It converts gamma intensities to total gamma-plus-IC weights before normalizing
+positive outgoing branches at each source:
 
 \[
-P(i\to j\mid i)=I_{ij}/\sum_k I_{ik}.
+P(i\to j\mid i)=I_{ij}(1+\alpha_{ij})/\sum_k I_{ik}(1+\alpha_{ik}).
 \]
 
 `"EC"` and `"ElectronCapture"` combine the recognized EC modes including K-, L-,
@@ -714,9 +911,9 @@ use the last encountered level. Floating flags are not matched.
 
 The result is the daughter's gamma quiver. It does **not** insert the parent
 as a branch vertex or construct initial stationary population coefficients.
-It does not apply `gammaProbability()`/internal-conversion factors when
-normalizing relative intensities. Build the decay vector separately according
-to the physical model you intend.
+The resulting coefficients include conversion feeding. Apply `1/(1+alpha)`
+only when calculating gamma emission; do not apply it again to the physical
+branches. Build the initial-population vector separately.
 
 Empty inputs, missing modes, unmatched energies, and unavailable daughter levels
 report exceptions. Names are based on energy strings; equal formatted level
@@ -737,6 +934,11 @@ void reader_example()
     quiver.Print();
 }
 ```
+
+The builder also exposes an overload with an output conversion-coefficient map;
+it extracts alpha for each named transition while using gamma-plus-IC branches.
+Physical level energies are copied from reader records, not inferred from names.
+The exact overloads appear in the generated header appendix.
 
 ## ROOT environment
 
@@ -775,8 +977,9 @@ link to `COINAlgebra::Core`. ROOT wrapper methods require the ROOT-enabled libra
 
 The code currently implements the path machinery and one fixed coincidence
 fiber. Automatic `N(v)` ordering, a dedicated coincidence-vector arithmetic
-class, coincidence gate projectors, detection maps, fiber transport, and a full
-bundle API are not provided by these public headers. `PathProjectors` accepts
+class, reusable coincidence gate-projector class, fiber transport, and a full
+bundle API are not provided by these public headers. Detection maps are provided;
+transition-membership gate projectors are demonstrated locally in the Ba-133 macro. `PathProjectors` accepts
 `DecayVector`, not `CAlgebra::Vector`.
 
 Key distinctions when checking a calculation:
@@ -810,393 +1013,1289 @@ or `ctest --test-dir build --output-on-failure` for the configured suite.
 
 ## Complete public declarations
 
-The following declaration inventory includes every explicitly declared public
-constructor, destructor, method, overload, operator, and record field from the
-canonical library headers. Private helpers are omitted. Compiler-generated
-special members are not separately listed; this does not imply they are safe
-for owning types (see the quiver ownership discussion). The sections above
-explain semantics; this appendix supplies exact parameter and return types.
+This appendix is populated from the canonical library and DQStudio headers at
+build time, so new overloads cannot remain hidden behind a stale hand-copied
+inventory. Comments are omitted for compactness; access labels distinguish public
+APIs from private helpers. Follow the linked source pages for the original comments.
+Forwarding compatibility headers are omitted; their canonical targets are shown.
 
-### Core/DecayCoin.h
+### include/COINAlgebra/Core/DecayCoin.h
 
 Source: [DecayCoin.h](../include/COINAlgebra/Core/DecayCoin.h).
 
 ```cpp
-class DecayCoin {
+class DecayCoin
+{
 public:
+
     DecayCoin() = default;
-    DecayCoin(const std::vector<DecayLevel*>& levelOrder, const std::vector<DecayTransition>& transitions);
-    DecayCoin(const std::vector<DecayLevel*>& levelOrder, const std::vector<DecayPath>& factors);
+
+    DecayCoin(const std::vector<DecayLevel*>& levelOrder,
+              const std::vector<DecayTransition>& transitions);
+
+    DecayCoin(const std::vector<DecayLevel*>& levelOrder,
+              const std::vector<DecayPath>& factors);
+
     bool Empty() const;
+
     bool IsStationary() const;
+
     std::size_t Degree() const;
+
     const std::vector<DecayPath>& GetFactors() const;
+
     const std::vector<DecayLevel*>& GetLevelOrder() const;
+
     DecayLevel* GetSource() const;
     DecayLevel* GetTarget() const;
+
     bool IsComposableWith(const DecayCoin& other) const;
+
     DecayCoin Compose(const DecayCoin& other) const;
+
     bool operator==(const DecayCoin& other) const;
     bool operator!=(const DecayCoin& other) const;
+
     std::string ToString() const;
+private:
+
+    std::vector<DecayLevel*> fLevelOrder;
+
+    std::vector<DecayPath> fFactors;
+
+    std::size_t Rank(DecayLevel* level) const;
 };
 ```
 
-### Core/DecayLevel.h
+### include/COINAlgebra/Core/DecayLevel.h
 
 Source: [DecayLevel.h](../include/COINAlgebra/Core/DecayLevel.h).
 
 ```cpp
-class DecayLevel {
+class DecayLevel
+{
 public:
+
     DecayLevel();
-    explicit DecayLevel( const std::string& name );
+
+    explicit DecayLevel(
+        const std::string& name
+    );
+
+    DecayLevel(const std::string& name, double energy_keV);
+
+    bool HasEnergy() const;
+    double GetEnergy() const;
+    void SetEnergy(double energy_keV);
+    void ClearEnergy();
+
     const std::string& GetName() const;
-    void SetName( const std::string& name );
+
+    void SetName(
+        const std::string& name
+    );
+
     void Print() const;
+
+private:
+
+    std::string fName;
+    double fEnergy = 0.0;
+    bool fHasEnergy = false;
 };
 ```
 
-### Core/DecayPath.h
+### include/COINAlgebra/Core/DecayPath.h
 
 Source: [DecayPath.h](../include/COINAlgebra/Core/DecayPath.h).
 
 ```cpp
-class DecayPath {
+class DecayLevel;
+
+class DecayPath
+{
 public:
+
     DecayPath();
-    explicit DecayPath( DecayLevel* level );
-    explicit DecayPath( const DecayTransition& transition );
-    explicit DecayPath( const std::vector<DecayTransition>& transitions );
+
+    explicit DecayPath(
+        DecayLevel* level
+    );
+
+    explicit DecayPath(
+        const DecayTransition& transition
+    );
+
+    explicit DecayPath(
+        const std::vector<DecayTransition>& transitions
+    );
+
     bool Empty() const;
+
     bool IsStationary() const;
+
     std::size_t Length() const;
-    const std::vector<DecayTransition>& GetTransitions() const;
-    const DecayTransition& GetTransition( std::size_t index ) const;
+
+    const std::vector<DecayTransition>&
+    GetTransitions() const;
+
+    const DecayTransition&
+    GetTransition(
+        std::size_t index
+    ) const;
+
     DecayLevel* GetSource() const;
+
     DecayLevel* GetTarget() const;
+
     double GetProbability() const;
-    bool IsComposableWith( const DecayPath& other ) const;
-    DecayPath Compose( const DecayPath& other ) const;
-    bool operator==( const DecayPath& other ) const;
-    bool operator!=( const DecayPath& other ) const;
-    bool HasSameSource( const DecayPath& other ) const;
-    bool HasSameTarget( const DecayPath& other ) const;
-    bool HasSameEndpoints( const DecayPath& other ) const;
+
+    bool IsComposableWith(
+        const DecayPath& other
+    ) const;
+
+    DecayPath Compose(
+        const DecayPath& other
+    ) const;
+
+    bool operator==(
+        const DecayPath& other
+    ) const;
+
+    bool operator!=(
+        const DecayPath& other
+    ) const;
+
+    bool HasSameSource(
+        const DecayPath& other
+    ) const;
+
+    bool HasSameTarget(
+        const DecayPath& other
+    ) const;
+
+    bool HasSameEndpoints(
+        const DecayPath& other
+    ) const;
+
     std::string ToString() const;
+
+private:
+
+    std::vector<DecayTransition> fTransitions;
+
+    DecayLevel* fSource;
+
+    DecayLevel* fTarget;
+
+    void Validate() const;
 };
 ```
 
-### Core/DecayQuiver.h
+### include/COINAlgebra/Core/DecayQuiver.h
 
 Source: [DecayQuiver.h](../include/COINAlgebra/Core/DecayQuiver.h).
 
 ```cpp
-class DecayQuiver {
+class DecayQuiver
+{
 public:
+
     DecayQuiver();
+
     ~DecayQuiver();
-    DecayLevel* AddLevel( const std::string& name );
-    DecayLevel* GetLevel( const std::string& name ) const;
+
+    DecayLevel* AddLevel(
+        const std::string& name
+    );
+
+    DecayLevel* AddLevel(const std::string& name, double energy_keV);
+
+    DecayLevel* GetLevel(
+        const std::string& name
+    ) const;
+
     const std::vector<DecayLevel*>& GetLevels() const;
-    DecayTransition* AddTransition( const std::string& name, DecayLevel* source, DecayLevel* target, double probability = 1.0 );
-    DecayTransition* GetTransition( const std::string& name ) const;
+
+    DecayTransition* AddTransition(
+        const std::string& name,
+        DecayLevel* source,
+        DecayLevel* target,
+        double probability = 1.0
+    );
+
+    DecayTransition* GetTransition(
+        const std::string& name
+    ) const;
+
     const std::vector<DecayTransition*>& GetTransitions() const;
+
     bool RemoveLevel(const DecayLevel* level);
+
     bool RemoveTransition(const DecayTransition* transition);
-    bool IsComposable( const DecayTransition* first, const DecayTransition* second ) const;
-    bool HasDirectTransition( const DecayLevel* source, const DecayLevel* target ) const;
-    double GetOutgoingProbability( const DecayLevel* level ) const;
-    bool IsNormalized( const DecayLevel* level, double tolerance = 1.0e-12 ) const;
+
+    bool IsComposable(
+        const DecayTransition* first,
+        const DecayTransition* second
+    ) const;
+
+    bool HasDirectTransition(
+        const DecayLevel* source,
+        const DecayLevel* target
+    ) const;
+
+    double GetOutgoingProbability(
+        const DecayLevel* level
+    ) const;
+
+    bool IsNormalized(
+        const DecayLevel* level,
+        double tolerance = 1.0e-12
+    ) const;
+
     void Print() const;
+
+    void ExportJson(
+        const std::string& filename,
+        const std::vector<DecayVector>& vectors = {},
+        const std::string& title = "",
+        const std::unordered_map<std::string, double>& conversionCoefficients = {},
+        const std::vector<double>& initialPopulations = {}
+    ) const;
+
+private:
+
+    std::vector<DecayLevel*> fLevels;
+
+    std::vector<DecayTransition*> fTransitions;
 };
 ```
 
-### Core/DecayTransition.h
+### include/COINAlgebra/Core/DecayTransition.h
 
 Source: [DecayTransition.h](../include/COINAlgebra/Core/DecayTransition.h).
 
 ```cpp
-class DecayTransition {
+class DecayLevel;
+
+class DecayTransition
+{
 public:
+
     DecayTransition();
-    DecayTransition( const std::string& name, DecayLevel* source, DecayLevel* target, double probability = 1.0 );
+
+    DecayTransition(
+        const std::string& name,
+        DecayLevel* source,
+        DecayLevel* target,
+        double probability = 1.0
+    );
+
     const std::string& GetName() const;
+
     DecayLevel* GetSource() const;
+
     DecayLevel* GetTarget() const;
+
     double GetProbability() const;
-    void SetName( const std::string& name );
-    void SetSource( DecayLevel* source );
-    void SetTarget( DecayLevel* target );
-    void SetProbability( double probability );
+
+    void SetName(
+        const std::string& name
+    );
+
+    void SetSource(
+        DecayLevel* source
+    );
+
+    void SetTarget(
+        DecayLevel* target
+    );
+
+    void SetProbability(
+        double probability
+    );
+
     void Print() const;
+
+private:
+
+    std::string fName;
+
+    DecayLevel* fSource;
+
+    DecayLevel* fTarget;
+
+    double fProbability;
 };
 ```
 
-### Core/DecayVector.h
+### include/COINAlgebra/Core/DecayVector.h
 
 Source: [DecayVector.h](../include/COINAlgebra/Core/DecayVector.h).
 
 ```cpp
-class DecayVector {
+class DecayVector
+{
 public:
-    struct Term { DecayPath path;
-    double coefficient;
+
+    struct Term
+    {
+        DecayPath path;
+        double coefficient;
     };
+
     DecayVector();
-    explicit DecayVector( const DecayPath& path, double coefficient = 1.0 );
+
+    explicit DecayVector(
+        const DecayPath& path,
+        double coefficient = 1.0
+    );
+
     bool Empty() const;
+
     std::size_t Size() const;
+
     const std::vector<Term>& GetTerms() const;
-    void AddTerm( const DecayPath& path, double coefficient );
-    DecayVector operator+( const DecayVector& other ) const;
-    DecayVector operator-( const DecayVector& other ) const;
-    DecayVector& operator+=( const DecayVector& other );
-    DecayVector& operator-=( const DecayVector& other );
-    DecayVector operator*( double scalar ) const;
-    DecayVector& operator*=( double scalar );
-    friend DecayVector operator*( double scalar, const DecayVector& vector );
+
+    void AddTerm(
+        const DecayPath& path,
+        double coefficient
+    );
+
+    DecayVector operator+(
+        const DecayVector& other
+    ) const;
+
+    DecayVector operator-(
+        const DecayVector& other
+    ) const;
+
+    DecayVector& operator+=(
+        const DecayVector& other
+    );
+
+    DecayVector& operator-=(
+        const DecayVector& other
+    );
+
+    DecayVector operator*(
+        double scalar
+    ) const;
+
+    DecayVector& operator*=(
+        double scalar
+    );
+
+    friend DecayVector operator*(
+        double scalar,
+        const DecayVector& vector
+    );
+
+    DecayVector ApplyConversionMap(
+        const std::unordered_map<std::string, double>& conversionCoefficients
+    ) const;
+
+    DecayVector ApplyDetectionMap(
+        const std::unordered_map<std::string, double>& efficiencies
+    ) const;
+
     std::string ToString() const;
+
     void Print() const;
     void PrintTable() const;
     void PrintTable(std::ostream& out) const;
+
+private:
+
+    std::vector<Term> fTerms;
+
+    static bool PathsEqual(
+        const DecayPath& first,
+        const DecayPath& second
+    );
+
+    void Simplify();
+
 };
 ```
 
-### Algebra/CAlgebra.h
+### include/COINAlgebra/Algebra/CAlgebra.h
 
 Source: [CAlgebra.h](../include/COINAlgebra/Algebra/CAlgebra.h).
 
 ```cpp
-class CAlgebra {
+class DecayQuiver;
+
+class CAlgebra
+{
 public:
-    struct Term { DecayCoin coin;
-    double coefficient;
-    };
+
+    struct Term { DecayCoin coin; double coefficient; };
     using Vector = std::vector<Term>;
-    CAlgebra(const DecayQuiver& quiver, const std::vector<DecayLevel*>& levelOrder, const DecayVector& decay);
+
+    CAlgebra(const DecayQuiver& quiver,
+             const std::vector<DecayLevel*>& levelOrder,
+             const DecayVector& decay);
+
     DecayCoin Coin(const std::vector<DecayTransition>& transitions) const;
+
     DecayCoin Coin(const std::vector<DecayPath>& factors) const;
+
     Vector Embed(const DecayVector& vector) const;
+
     double ScalarConnection(const DecayCoin& first, const DecayCoin& second) const;
+
     Vector Multiply(const DecayCoin& first, const DecayCoin& second) const;
+
     Vector Multiply(const Vector& first, const Vector& second) const;
+
     Vector Power(const Vector& vector, std::size_t n) const;
+private:
+
+    std::vector<DecayLevel*> fLevelOrder;
+
+    std::vector<DecayTransition> fTransitions;
+
+    DecayVector fDecay;
+
+    void Validate(const DecayCoin& coin) const;
+
+    static void AddTerm(Vector& vector, const DecayCoin& coin, double coefficient);
 };
 ```
 
-### Algebra/PathAlgebra.h
+### include/COINAlgebra/Algebra/PathAlgebra.h
 
 Source: [PathAlgebra.h](../include/COINAlgebra/Algebra/PathAlgebra.h).
 
 ```cpp
-class PathAlgebra {
+class DecayQuiver;
+
+class PathAlgebra
+{
 public:
-    PathAlgebra( const DecayQuiver& quiver );
+
+    PathAlgebra(
+        const DecayQuiver& quiver
+    );
+
     DecayVector Identity() const;
+
     std::size_t MaxPower() const;
+
     const DecayQuiver& GetQuiver() const;
-    DecayVector Multiply( const DecayVector& first, const DecayVector& second ) const;
-    DecayVector Power( const DecayVector& d, std::size_t n ) const;
-    DecayVector PowerExpand( const DecayVector& d, std::size_t maxPower ) const;
-    double SourceForm( const DecayVector& first, const DecayVector& second ) const;
-    double TargetForm( const DecayVector& first, const DecayVector& second ) const;
-    double PathForm( const DecayVector& first, const DecayVector& second ) const;
+
+    DecayVector Multiply(
+        const DecayVector& first,
+        const DecayVector& second
+    ) const;
+
+    DecayVector Power(
+        const DecayVector& d,
+        std::size_t n
+    ) const;
+
+    DecayVector PowerExpand(
+        const DecayVector& d,
+        std::size_t maxPower
+    ) const;
+
+    double SourceForm(
+        const DecayVector& first,
+        const DecayVector& second
+    ) const;
+
+    double TargetForm(
+        const DecayVector& first,
+        const DecayVector& second
+    ) const;
+
+    double PathForm(
+        const DecayVector& first,
+        const DecayVector& second
+    ) const;
+
+private:
+
+    const DecayQuiver* fQuiver;
 };
 ```
 
-### Algebra/PathProjectors.h
+### include/COINAlgebra/Algebra/PathProjectors.h
 
 Source: [PathProjectors.h](../include/COINAlgebra/Algebra/PathProjectors.h).
 
 ```cpp
-class PathProjectors {
+class DecayLevel;
+
+class PathProjectors
+{
 public:
+
     PathProjectors();
-    DecayVector SourceProjector( const DecayVector& vector, DecayLevel* source ) const;
-    DecayVector TargetProjector( const DecayVector& vector, DecayLevel* target ) const;
-    DecayVector SourceVertexProjector( const DecayVector& vector ) const;
-    DecayVector TargetVertexProjector( const DecayVector& vector ) const;
-    DecayVector BranchingProjector( const DecayVector& vector ) const;
+
+    DecayVector SourceProjector(
+        const DecayVector& vector,
+        DecayLevel* source
+    ) const;
+
+    DecayVector TargetProjector(
+        const DecayVector& vector,
+        DecayLevel* target
+    ) const;
+
+    DecayVector SourceVertexProjector(
+        const DecayVector& vector
+    ) const;
+
+    DecayVector TargetVertexProjector(
+        const DecayVector& vector
+    ) const;
+
+    DecayVector BranchingProjector(
+        const DecayVector& vector
+    ) const;
 };
 ```
 
-### Probability/DecayProbability.h
+### include/COINAlgebra/Probability/DecayProbability.h
 
 Source: [DecayProbability.h](../include/COINAlgebra/Probability/DecayProbability.h).
 
 ```cpp
-class DecayProbability {
+class PathAlgebra;
+class PathProjectors;
+class DetectionMaps;
+
+class DecayProbability
+{
 public:
-    DecayProbability( const PathAlgebra& algebra, const PathProjectors& projectors );
-    DecayVector FeedingVector( const DecayVector& decay ) const;
-    double FeedingProbability( const DecayVector& decay, const DecayPath& path ) const;
-    double PathConnection( const DecayVector& decay, const DecayPath& path_i, const DecayPath& path_j ) const;
-    double CoincidenceProbability( const DecayVector& decay, const DecayPath& path_i, const DecayPath& path_j ) const;
+
+    DecayProbability(
+        const PathAlgebra& algebra,
+        const PathProjectors& projectors
+    );
+
+    DecayVector FeedingVector(
+        const DecayVector& decay
+    ) const;
+
+    DecayVector DetectionFeedingVector(
+        const DecayVector& decay,
+        const std::unordered_map<std::string, double>& efficiencies
+    ) const;
+
+    DecayVector EmissionFeedingVector(
+        const DecayVector& decay,
+        const std::unordered_map<std::string, double>& conversionCoefficients
+    ) const;
+
+    DecayVector DetectionFeedingVector(
+        const DecayVector& decay,
+        const std::unordered_map<std::string, double>& efficiencies,
+        const std::unordered_map<std::string, double>& conversionCoefficients
+    ) const;
+
+    DecayVector SummingFeedingVector(
+        const DecayVector& decay, const DetectionMaps& maps
+    ) const;
+
+    double FeedingProbability(
+        const DecayVector& decay,
+        const DecayPath& path
+    ) const;
+
+    double PathConnection(
+         const DecayVector& decay,
+         const DecayPath& path_i,
+         const DecayPath& path_j
+    ) const;
+
+    double CoincidenceProbability(
+         const DecayVector& decay,
+         const DecayPath& path_i,
+         const DecayPath& path_j
+    ) const;
+
+private:
+
+    const PathAlgebra* fAlgebra;
+    const PathProjectors* fProjectors;
 };
 ```
 
-### NuclearData/PhotonEvaporationReader.h
+### include/COINAlgebra/Detection/DetectionMaps.h
 
-Source: [PhotonEvaporationReader.h](../include/COINAlgebra/NuclearData/PhotonEvaporationReader.h).
+Source: [DetectionMaps.h](../include/COINAlgebra/Detection/DetectionMaps.h).
 
 ```cpp
-struct PhotonTransition {
-public:
-    int daughterLevel;
-    double energy_keV;
-    double relativeIntensity;
-    int multipolarity;
-    double mixingRatio;
-    double conversionCoefficient;
-    std::array<double, 10> shellConversionProbabilities{};
-    PhotonTransition();
-    PhotonTransition( int daughterLevel, double energy_keV, double relativeIntensity, int multipolarity, double mixingRatio, double conversionCoefficient, const std::array<double, 10>& shellConversionProbabilities );
-    double gammaProbability() const;
-    double conversionProbability() const;
-};
+class PathAlgebra;
 
-struct PhotonLevel {
+class DetectionMaps
+{
 public:
-    int id;
-    std::string floating;
-    double energy_keV;
-    double halfLife_s;
-    double jpi;
-    std::vector<PhotonTransition> transitions;
-    PhotonLevel();
-    PhotonLevel( int id, const std::string& floating, double energy_keV, double halfLife_s, double jpi );
-    std::size_t numberOfGammas() const;
-    bool isStable() const;
-    bool hasKnownJPi() const;
-};
+    using EfficiencyMap = std::unordered_map<std::string, double>;
+    DetectionMaps(const EfficiencyMap& peakEfficiencies,
+                  const EfficiencyMap& totalEfficiencies,
+                  std::size_t detectorCount,
+                  const EfficiencyMap& conversionCoefficients = {});
 
-class PhotonIsotope {
-public:
-    PhotonIsotope();
-    PhotonIsotope( int atomicNumber, int massNumber );
-    int atomicNumber() const;
-    int massNumber() const;
-    const std::vector<PhotonLevel>& levels() const;
-    std::vector<PhotonLevel>& levels();
-    std::size_t numberOfLevels() const;
-    const PhotonLevel& level(int id) const;
-    PhotonLevel& level(int id);
-    void addLevel(const PhotonLevel& level);
-};
+    std::size_t DetectorCount() const;
 
-class PhotonEvaporationReader {
-public:
-    explicit PhotonEvaporationReader( const std::string& dataDirectory );
-    PhotonIsotope read( int atomicNumber, int massNumber ) const;
-    std::string filePath( int atomicNumber, int massNumber ) const;
-    const std::string& dataDirectory() const;
+    DecayVector FullEnergyHit(const DecayVector& vector) const;
+    DecayVector TotalHit(const DecayVector& vector) const;
+    DecayVector SummingOut(const DecayVector& vector) const;
+
+    DecayVector AvoidDetectors(const DecayVector& vector, std::size_t m) const;
+
+    CAlgebra::Vector FullEnergyHit(const CAlgebra::Vector& vector) const;
+    CAlgebra::Vector TotalHit(const CAlgebra::Vector& vector) const;
+    CAlgebra::Vector SummingOut(const CAlgebra::Vector& vector) const;
+
+    CAlgebra::Vector SummingInExpansion(const CAlgebra& fiber,
+                                       const DecayVector& transition) const;
+
+    DecayVector SummingInExpansion(const PathAlgebra& algebra,
+                                  const DecayVector& transition) const;
+private:
+    EfficiencyMap fPeak, fTotal, fConversion;
+    std::size_t fDetectorCount;
+    DecayVector Apply(const DecayVector& vector, int kind, std::size_t avoided = 1) const;
+    CAlgebra::Vector Apply(const CAlgebra::Vector& vector, int kind) const;
 };
 ```
 
-### NuclearData/RadioactiveDecayReader.h
-
-Source: [RadioactiveDecayReader.h](../include/COINAlgebra/NuclearData/RadioactiveDecayReader.h).
-
-```cpp
-struct RadioactiveDecayChannel {
-public:
-    std::string decayType;
-    double daughterEnergy_keV;
-    std::string daughterFloating;
-    double branchingPercentage;
-    double qValue_keV;
-    std::string forbiddenness;
-    RadioactiveDecayChannel();
-    RadioactiveDecayChannel( const std::string& decayType, double daughterEnergy_keV, const std::string& daughterFloating, double branchingPercentage, double qValue_keV, const std::string& forbiddenness = "" );
-    double modeFraction() const;
-};
-
-struct RadioactiveDecayMode {
-public:
-    std::string decayType;
-    double totalBranchingFraction;
-    std::vector<RadioactiveDecayChannel> channels;
-    RadioactiveDecayMode();
-    RadioactiveDecayMode( const std::string& decayType, double totalBranchingFraction );
-    std::size_t numberOfChannels() const;
-    void addChannel( const RadioactiveDecayChannel& channel );
-    double channelBranchingFraction( std::size_t index ) const;
-};
-
-struct RadioactiveParentState {
-public:
-    double energy_keV;
-    std::string floating;
-    double halfLife_s;
-    std::vector<RadioactiveDecayMode> decayModes;
-    RadioactiveParentState();
-    RadioactiveParentState( double energy_keV, const std::string& floating, double halfLife_s );
-    std::size_t numberOfDecayModes() const;
-    bool isStable() const;
-    void addDecayMode( const RadioactiveDecayMode& mode );
-};
-
-class RadioactiveIsotope {
-public:
-    RadioactiveIsotope();
-    RadioactiveIsotope( int atomicNumber, int massNumber );
-    int atomicNumber() const;
-    int massNumber() const;
-    const std::vector<RadioactiveParentState>& parentStates() const;
-    std::vector<RadioactiveParentState>& parentStates();
-    std::size_t numberOfParentStates() const;
-    const RadioactiveParentState& parentState( double energy_keV ) const;
-    RadioactiveParentState& parentState( double energy_keV );
-    void addParentState( const RadioactiveParentState& state );
-};
-
-class RadioactiveDecayReader {
-public:
-    explicit RadioactiveDecayReader( const std::string& dataDirectory );
-    RadioactiveIsotope read( int atomicNumber, int massNumber ) const;
-    std::string filePath( int atomicNumber, int massNumber ) const;
-    const std::string& dataDirectory() const;
-};
-```
-
-### Builders/DecayQuiverBuilder.h
+### include/COINAlgebra/Builders/DecayQuiverBuilder.h
 
 Source: [DecayQuiverBuilder.h](../include/COINAlgebra/Builders/DecayQuiverBuilder.h).
 
 ```cpp
-class DecayQuiverBuilder {
+class DecayQuiverBuilder
+{
 public:
-    static DecayQuiver BuildGammaQuiver( const RadioactiveIsotope& parent, const PhotonIsotope& daughter, const std::string& decayType = "BetaPlus", double energyTolerance_keV = 1.0 );
+
+    static DecayQuiver BuildGammaQuiver(
+        const RadioactiveIsotope& parent,
+        const PhotonIsotope& daughter,
+        const std::string& decayType = "BetaPlus",
+        double energyTolerance_keV = 1.0
+    );
+
+    static DecayQuiver BuildGammaQuiver(
+        const RadioactiveIsotope& parent,
+        const PhotonIsotope& daughter,
+        std::unordered_map<std::string, double>& conversionCoefficients,
+        const std::string& decayType = "BetaPlus",
+        double energyTolerance_keV = 1.0
+    );
+
+private:
+
+    static const PhotonLevel* FindLevelByEnergy(
+        const PhotonIsotope& daughter,
+        double energy_keV,
+        double tolerance_keV
+    );
+
+    static void CollectReachableGammaLevels(
+        const PhotonIsotope& daughter,
+        int levelID,
+        std::set<int>& reachableLevels
+    );
+
+    static bool IsElectronCaptureMode(
+        const std::string& decayType
+    );
+
+    static bool ModeMatchesDecayType(
+        const std::string& mode,
+        const std::string& decayType
+    );
 };
 ```
 
-### ROOT/COINAlgebra.h
+### include/COINAlgebra/NuclearData/PhotonEvaporationReader.h
+
+Source: [PhotonEvaporationReader.h](../include/COINAlgebra/NuclearData/PhotonEvaporationReader.h).
+
+```cpp
+struct PhotonTransition
+{
+
+    int daughterLevel;
+
+    double energy_keV;
+
+    double relativeIntensity;
+
+    int multipolarity;
+
+    double mixingRatio;
+
+    double conversionCoefficient;
+
+    std::array<double, 10> shellConversionProbabilities{};
+
+    PhotonTransition();
+
+    PhotonTransition(
+        int daughterLevel,
+        double energy_keV,
+        double relativeIntensity,
+        int multipolarity,
+        double mixingRatio,
+        double conversionCoefficient,
+        const std::array<double, 10>& shellConversionProbabilities
+    );
+
+    double gammaProbability() const;
+
+    double conversionProbability() const;
+};
+
+struct PhotonLevel
+{
+
+    int id;
+
+    std::string floating;
+
+    double energy_keV;
+
+    double halfLife_s;
+
+    double jpi;
+
+    std::vector<PhotonTransition> transitions;
+
+    PhotonLevel();
+
+    PhotonLevel(
+        int id,
+        const std::string& floating,
+        double energy_keV,
+        double halfLife_s,
+        double jpi
+    );
+
+    std::size_t numberOfGammas() const;
+
+    bool isStable() const;
+
+    bool hasKnownJPi() const;
+};
+
+class PhotonIsotope
+{
+public:
+
+    PhotonIsotope();
+
+    PhotonIsotope(
+        int atomicNumber,
+        int massNumber
+    );
+
+    int atomicNumber() const;
+
+    int massNumber() const;
+
+    const std::vector<PhotonLevel>& levels() const;
+
+    std::vector<PhotonLevel>& levels();
+
+    std::size_t numberOfLevels() const;
+
+    const PhotonLevel& level(int id) const;
+
+    PhotonLevel& level(int id);
+
+    void addLevel(const PhotonLevel& level);
+
+private:
+
+    int fAtomicNumber;
+    int fMassNumber;
+
+    std::vector<PhotonLevel> fLevels;
+};
+
+class PhotonEvaporationReader
+{
+public:
+
+    explicit PhotonEvaporationReader(
+        const std::string& dataDirectory
+    );
+
+    PhotonIsotope read(
+        int atomicNumber,
+        int massNumber
+    ) const;
+
+    std::string filePath(
+        int atomicNumber,
+        int massNumber
+    ) const;
+
+    const std::string& dataDirectory() const;
+
+private:
+
+    std::string fDataDirectory;
+
+    PhotonLevel parseLevel(
+        const std::string& line
+    ) const;
+
+    PhotonTransition parseTransition(
+        const std::string& line
+    ) const;
+};
+```
+
+### include/COINAlgebra/NuclearData/RadioactiveDecayReader.h
+
+Source: [RadioactiveDecayReader.h](../include/COINAlgebra/NuclearData/RadioactiveDecayReader.h).
+
+```cpp
+struct RadioactiveDecayChannel
+{
+    std::string decayType;
+
+    double daughterEnergy_keV;
+    std::string daughterFloating;
+
+    double branchingPercentage;
+
+    double qValue_keV;
+
+    std::string forbiddenness;
+
+    RadioactiveDecayChannel();
+
+    RadioactiveDecayChannel(
+        const std::string& decayType,
+        double daughterEnergy_keV,
+        const std::string& daughterFloating,
+        double branchingPercentage,
+        double qValue_keV,
+        const std::string& forbiddenness = ""
+    );
+
+    double modeFraction() const;
+};
+
+struct RadioactiveDecayMode
+{
+    std::string decayType;
+
+    double totalBranchingFraction;
+
+    std::vector<RadioactiveDecayChannel> channels;
+
+    RadioactiveDecayMode();
+
+    RadioactiveDecayMode(
+        const std::string& decayType,
+        double totalBranchingFraction
+    );
+
+    std::size_t numberOfChannels() const;
+
+    void addChannel(
+        const RadioactiveDecayChannel& channel
+    );
+
+    double channelBranchingFraction(
+        std::size_t index
+    ) const;
+};
+
+struct RadioactiveParentState
+{
+    double energy_keV;
+    std::string floating;
+    double halfLife_s;
+
+    std::vector<RadioactiveDecayMode> decayModes;
+
+    RadioactiveParentState();
+
+    RadioactiveParentState(
+        double energy_keV,
+        const std::string& floating,
+        double halfLife_s
+    );
+
+    std::size_t numberOfDecayModes() const;
+
+    bool isStable() const;
+
+    void addDecayMode(
+        const RadioactiveDecayMode& mode
+    );
+};
+
+class RadioactiveIsotope
+{
+public:
+
+    RadioactiveIsotope();
+
+    RadioactiveIsotope(
+        int atomicNumber,
+        int massNumber
+    );
+
+    int atomicNumber() const;
+
+    int massNumber() const;
+
+    const std::vector<RadioactiveParentState>&
+    parentStates() const;
+
+    std::vector<RadioactiveParentState>&
+    parentStates();
+
+    std::size_t numberOfParentStates() const;
+
+    const RadioactiveParentState&
+    parentState(
+        double energy_keV
+    ) const;
+
+    RadioactiveParentState&
+    parentState(
+        double energy_keV
+    );
+
+    void addParentState(
+        const RadioactiveParentState& state
+    );
+
+private:
+
+    int fAtomicNumber;
+    int fMassNumber;
+
+    std::vector<RadioactiveParentState>
+        fParentStates;
+};
+
+class RadioactiveDecayReader
+{
+public:
+
+    explicit RadioactiveDecayReader(
+        const std::string& dataDirectory
+    );
+
+    RadioactiveIsotope read(
+        int atomicNumber,
+        int massNumber
+    ) const;
+
+    std::string filePath(
+        int atomicNumber,
+        int massNumber
+    ) const;
+
+    const std::string&
+    dataDirectory() const;
+
+private:
+
+    std::string fDataDirectory;
+
+    RadioactiveParentState parseParentState(
+        const std::string& line
+    ) const;
+
+    RadioactiveDecayMode parseDecayMode(
+        const std::string& line
+    ) const;
+
+    RadioactiveDecayChannel parseDecayChannel(
+        const std::string& line
+    ) const;
+};
+```
+
+### include/COINAlgebra/ROOT/COINAlgebra.h
 
 Source: [COINAlgebra.h](../include/COINAlgebra/ROOT/COINAlgebra.h).
 
 ```cpp
-class COINAlgebra {
+class TRint;
+
+class COINAlgebra
+{
 public:
+
     COINAlgebra();
     ~COINAlgebra();
+
     void PrintBanner() const;
     void PrintHelp() const;
     void PrintVersion() const;
+
     void ConfigureROOT(TRint& rootApp);
+
     void InitializeEnvironment(TRint& rootApp);
+
     const std::string& GetVersion() const;
+
+private:
+
+    std::string fVersion;
 };
 
 void COINAlgebraHelp();
 void COINAlgebraVersion();
 ```
 
-### ROOT/Commands.h
+### include/COINAlgebra/ROOT/Commands.h
 
 Source: [Commands.h](../include/COINAlgebra/ROOT/Commands.h).
 
 ```cpp
 void COINAlgebraHelp();
+
 void COINAlgebraVersion();
+```
+
+### gui/MainWindow.h
+
+Source: [MainWindow.h](../gui/MainWindow.h).
+
+```cpp
+class QLineEdit;
+class QPushButton;
+class QComboBox;
+class QListWidget;
+class QListWidgetItem;
+class QuiverView;
+class QLabel;
+
+class DecayQuiver;
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+public:
+    MainWindow();
+
+private slots:
+    void addLevel();
+    void addTransition();
+    void onLevelRenamed(int index, const QString& newName);
+    void onTransitionEdited(int index, double probability);
+    void importQuiver();
+    void exportQuiver();
+    void editLevelItem(QListWidgetItem* item);
+    void editTransitionItem(QListWidgetItem* item);
+    void showPathVectorBuilder();
+    void createDecayVector();
+    void calculateFeeding();
+    void calculateCoincidence();
+    void showDecayTable();
+    void showFeedingTable();
+
+private:
+    void removeLevel(int index);
+    void editPopulations();
+    void editGroups();
+    void editSubquivers();
+    void editViewSettings();
+    void manageViews();
+    void importEfficiencies();
+    void showDetectionTable();
+    void showEmissionTable();
+    void showEfficiencyTable();
+    void updateUI();
+    void showVectorTable(const DecayVector& vector, const QString& title);
+    DecayVector currentDecay() const;
+
+    QuiverView* fView;
+    QLineEdit* fQuiverTitle;
+
+    QLineEdit* fLevelName;
+    QLineEdit* fLevelEnergy;
+    QPushButton* fAddLevel;
+    QPushButton* fExportButton;
+
+    QComboBox* fSourceBox;
+    QComboBox* fTargetBox;
+    QLineEdit* fProbability;
+    QPushButton* fAddTransition;
+
+    QListWidget* fLevelsList;
+    QListWidget* fTransitionsList;
+
+    std::unique_ptr<DecayQuiver> fQuiver;
+
+    std::vector<DecayVector> fVectors;
+    QJsonObject fMetadata;
+    QLineEdit* fFeedingTransition;
+    QLabel* fAnalysisResult;
+    QComboBox* fCoincidenceA;
+    QComboBox* fCoincidenceB;
+    QPushButton* fCalculateCoincidence;
+    QLabel* fCoincidenceResult;
+    void invalidateCoincidence();
+};
+```
+
+### gui/QuiverView.h
+
+Source: [QuiverView.h](../gui/QuiverView.h).
+
+```cpp
+class DecayQuiver;
+class DecayLevel;
+class DecayTransition;
+
+class QuiverView : public QGraphicsView
+{
+    Q_OBJECT
+public:
+    explicit QuiverView(QWidget* parent = nullptr);
+
+    void setQuiver(DecayQuiver* q);
+    void setMetadata(const QJsonObject& metadata);
+    QJsonObject viewState() const;
+    void restoreView(const QJsonObject& state);
+    void setMode(int mode);
+    void setEnergyScale(double scale);
+    void configureView(const QJsonObject& state);
+    int mode() const { return fMode; }
+
+    void refresh();
+    void focusOnLevel(int index);
+    void showAllLevels();
+
+private:
+    QJsonObject fMetadata;
+    int fMode=0;
+    double fEnergyScale=1;
+    std::vector<double> fLeft, fRight;
+    std::vector<bool> fVisible, fEdgeVisible;
+    std::vector<int> fCollapsed;
+    std::vector<QPointF> fGroupCenters;
+    int fDraggingGroup=-1;
+    void setObjectStyle(int index, bool transition);
+    void persistView();
+    void wheelEvent(QWheelEvent* event) override;
+    DecayQuiver* fQuiver = nullptr;
+    const DecayLevel* fTopLevel = nullptr;
+    const DecayTransition* fHighlightedTransition = nullptr;
+    const DecayLevel* fHighlightedLevel = nullptr;
+    int fVisibleLevelCount = 0;
+    std::vector<QPointF> fPositions;
+    double fNodeRadius = 28.0;
+    double fLineStartX = 0.0;
+    double fLineEndX = 0.0;
+    double fLineHalfHeight = 6.0;
+
+    std::vector<double> fTransitionOffsets;
+
+    std::vector<char> fTransitionPinned;
+
+    int fDraggingLevel = -1;
+    int fDraggingTransition = -1;
+    QPointF fLastMousePos;
+signals:
+    void levelDeleteRequested(int index);
+    void appearanceChanged(const QJsonObject& metadata);
+    void levelRenamed(int index, const QString& newName);
+    void transitionEdited(int index, double probability);
+protected:
+    void mousePressEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
+protected:
+    void resizeEvent(QResizeEvent* event) override;
+};
+```
+
+### gui/QuiverJson.h
+
+Source: [QuiverJson.h](../gui/QuiverJson.h).
+
+```cpp
+namespace Studio {
+
+struct Document {
+    std::unique_ptr<DecayQuiver> quiver;
+    std::vector<DecayVector> vectors;
+    QJsonObject metadata;
+    QString title;
+};
+
+Document readJson(const QByteArray& bytes);
+DecayVector createDecayVector(const DecayQuiver& quiver, const QJsonObject& metadata);
+}
+```
+
+### gui/StudioModel.h
+
+Source: [StudioModel.h](../gui/StudioModel.h).
+
+```cpp
+namespace Studio {
+
+DecayVector branchingVector(const DecayQuiver&, const QJsonObject&);
+DecayVector transitionVector(const DecayQuiver&);
+double levelEnergy(const DecayQuiver&, const QJsonObject&, int);
+QJsonArray readEfficiencyCsv(const QByteArray&);
+std::unordered_map<std::string,double> efficiencyMap(const DecayQuiver&, const QJsonObject&);
+std::unordered_map<std::string,double> conversionMap(const DecayQuiver&, const QJsonObject&);
+void validateStudio(const DecayQuiver&, const QJsonObject&);
+}
+```
+
+### gui/ViewState.h
+
+Source: [ViewState.h](../gui/ViewState.h).
+
+```cpp
+class DecayQuiver;
+
+namespace Studio {
+
+QJsonObject normalizeViewMetadata(QJsonObject metadata);
+QJsonArray layoutGroups(const QJsonObject& metadata);
+struct GraphSelection {
+    std::vector<bool> levels;
+    std::vector<bool> transitions;
+    std::vector<bool> contextLevels;
+    std::vector<bool> contextTransitions;
+};
+GraphSelection selectGraph(const DecayQuiver&, const QJsonObject& metadata, bool focus);
+QJsonObject objectStyle(const QJsonObject& metadata, const QString& groupId,
+                        const QString& objectId, bool transition);
+void validateViewMetadata(const DecayQuiver&, const QJsonObject&);
+void removeViewLevel(QJsonObject& metadata, int index);
+void pruneViewTransitions(QJsonObject& metadata, const DecayQuiver&);
+
+std::vector<double> energyCoordinates(const DecayQuiver&, const QJsonObject&,
+                                      std::vector<bool>& visible);
+}
+```
+
+### gui/TransitionEditor.h
+
+Source: [TransitionEditor.h](../gui/TransitionEditor.h).
+
+```cpp
+class QWidget;
+class DecayLevel;
+class DecayTransition;
+
+namespace Studio {
+
+bool editTransition(QWidget* parent, DecayTransition& transition,
+                    const std::vector<DecayLevel*>& levels);
+}
 ```

@@ -22,10 +22,13 @@ pnpm build
 pnpm dev
 ```
 
-The preview server uses port 8765. The generator reads `../class-reference.md`
-and its linked source files. Edit that Markdown guide rather than generated
+The preview server uses port 8765. The generator reads `../class-reference.md`, canonical library/DQStudio headers,
+and linked source files. The `<!-- canonical-headers -->` marker expands into
+a fresh header appendix at build time; do not hand-copy declarations. Edit that Markdown guide rather than generated
 HTML. Rebuild after changing the Markdown or linked headers/examples/tests.
 The script checks equation rendering, unique IDs, and internal anchor targets.
+The class/member indexes include DetectionMaps and DQStudio types and namespace
+modules. The downloaded Markdown includes the expanded header appendix.
 
 - `build.mjs`: Markdown conversion, indexes, local source pages, asset packaging.
 - `style.css`: original styling inspired by the reference site's structure.

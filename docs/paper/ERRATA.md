@@ -87,3 +87,36 @@ changing either the paper or the implementation.
 - **Code and evidence:** `DetectionMaps` and `tests/core/test_summing.C`;
   see `docs/mathematics/internal-conversion.md` and
   `docs/mathematics/detection-summing.md`.
+
+## CA-002 — Two-detector gated avoidance and group labels
+
+- **Location:** version 14, Eqs. (71)-(72), pages 10-11.
+- **Status:** Concrete counterexample for the interpretation “two distinct clean
+  full-energy peaks”; observable/general formula needs author review.
+- **Printed:** products use the one-detector summing-out fiber, with gated hit
+  factor h*(N-1)/N. This correctly chooses a different detector for a second
+  single photon, but the o fiber protects only one detector from other photons.
+- **Counterexample:** a deterministic three-photon cascade, perfect peak/total
+  efficiencies, no IC. Select the first two individual photons as clean peaks.
+  The third must avoid both detectors. Enumerating assignments gives
+  (N-1)(N-2)/N^2, whereas the degree-two term of the printed expression gives
+  (N-1)^2/N^2. For N=2 these are 0 and 1/4; for N=4, 3/8 and 9/16.
+- **Implementation:** `AvoidDetectors(tau,2)` supplies 1-2*q*total/N on hidden
+  edges; a restricted resolved-pair calculation is demonstrated in
+  `examples/calculations/coincidence.C`. General summed-in gated groups are not
+  implemented. Their detector partition must be retained rather than inferred
+  from a tensor that has already combined distinct detection scenarios.
+- **Evidence:** `tests/core/test_coincidence_detection.C` checks physical and
+  response-weighted cascade subsets and explicitly enumerates detector
+  assignments for this counterexample. No manuscript edits made.
+
+## CA-003 — Missing initial population in Table III
+
+- **Location:** version 14, page 10, single-hit row epsilon_2 tensor p_10,
+  column f_2.
+- **Status:** Suspected table typo, not author-confirmed.
+- **Printed:** o_21*h_10, without f_2.
+- **Eq. (70) and code:** f_2*o_21*h_10. All contributions are linear in the
+  initial population; the row must vanish if f_2=0.
+- **Evidence:** mixed-population enumeration in
+  `tests/core/test_coincidence_detection.C`.

@@ -8,81 +8,127 @@
 <span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a></span>
 <span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>class PathAlgebra;</span>
 <span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>class PathProjectors;</span>
-<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a></span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>class DetectionMaps;</span>
 <span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a></span>
-<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>class DecayProbability</span>
-<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>{</span>
-<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>public:</span>
-<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a></span>
-<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    // ========================================================</span>
-<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    // Constructor</span>
-<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    // ========================================================</span>
-<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a></span>
-<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    // Constructs a probability calculator from an existing</span>
-<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    // PathAlgebra and PathProjectors.</span>
-<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    //</span>
-<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    // Neither object is owned by DecayProbability.</span>
-<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    //</span>
-<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    DecayProbability(</span>
-<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>        const PathAlgebra&amp; algebra,</span>
-<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>        const PathProjectors&amp; projectors</span>
-<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>    );</span>
-<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a></span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a></span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>class DecayProbability</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>{</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>public:</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a></span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    // ========================================================</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    // Constructor</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    // ========================================================</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a></span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    // Constructs a probability calculator from an existing</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    // PathAlgebra and PathProjectors.</span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    //</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    // Neither object is owned by DecayProbability.</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    //</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    DecayProbability(</span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>        const PathAlgebra&amp; algebra,</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>        const PathProjectors&amp; projectors</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    );</span>
 <span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a></span>
-<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    // ========================================================</span>
-<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    // Feeding vector</span>
-<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // ========================================================</span>
-<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
-<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    // Calculates the feeding vector associated with a decay</span>
-<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    // vector.</span>
-<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    //</span>
-<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    // The maximum power is determined automatically by the</span>
-<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    // associated path algebra.</span>
-<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    //</span>
-<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    DecayVector FeedingVector(</span>
-<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>        const DecayVector&amp; decay</span>
-<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    ) const;</span>
-<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a></span>
-<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a></span>
-<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    // ========================================================</span>
-<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    // Feeding probability</span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a></span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    // ========================================================</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // Feeding vector</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>    // ========================================================</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a></span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    // Calculates the feeding vector associated with a decay</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    // vector, counting both gamma and conversion when decay contains</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    // total physical transition probabilities.</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    //</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    // The maximum power is determined automatically by the</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    // associated path algebra.</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    //</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    DecayVector FeedingVector(</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>        const DecayVector&amp; decay</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>    ) const;</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a></span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a></span>
 <span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // ========================================================</span>
-<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a></span>
-<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    // Calculates the feeding probability associated with a</span>
-<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    // specified path.</span>
-<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    //</span>
-<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    // The path is embedded into the decay-vector space with</span>
-<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    // coefficient one and paired with the feeding vector using</span>
-<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    // the path form.</span>
-<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    //</span>
-<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    double FeedingProbability(</span>
-<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>        const DecayVector&amp; decay,</span>
-<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>        const DecayPath&amp; path</span>
-<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    ) const;</span>
-<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a></span>
-<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>    double PathConnection( </span>
-<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>         const DecayVector&amp; decay, </span>
-<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>         const DecayPath&amp; path_i, </span>
-<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>         const DecayPath&amp; path_j </span>
-<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    ) const;</span>
-<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
-<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    double CoincidenceProbability(</span>
-<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>         const DecayVector&amp; decay, </span>
-<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>         const DecayPath&amp; path_i, </span>
-<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>         const DecayPath&amp; path_j </span>
-<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    ) const;</span>
-<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a></span>
-<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>private:</span>
-<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a></span>
-<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    // ========================================================</span>
-<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>    // Dependencies</span>
-<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    // ========================================================</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    // Detection feeding vector</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    // ========================================================</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a></span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    // Apply detection efficiencies to FeedingVector(decay), after physical</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    // population propagation. For a single transition g, the coefficient is</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    // P(g) * efficiency(g); earlier transitions need not be detected.</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    // Longer output paths receive the product of their edge efficiencies.</span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    // The map is keyed by transition name; required entries must be finite</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    // and in [0, 1], as enforced by DecayVector::ApplyDetectionMap.</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    DecayVector DetectionFeedingVector(</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>        const DecayVector&amp; decay,</span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>        const std::unordered_map&lt;std::string, double&gt;&amp; efficiencies</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>    ) const;</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a></span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a></span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    // Gamma emission from total physical feeding; conversion still feeds</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>    // daughter levels. Supply total (gamma + IC) branches in decay.</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    DecayVector EmissionFeedingVector(</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a>        const DecayVector&amp; decay,</span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>        const std::unordered_map&lt;std::string, double&gt;&amp; conversionCoefficients</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>    ) const;</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a></span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    // Gamma detection: emission feeding times detector efficiency.</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    // The two-argument overload applies only the supplied efficiency map;</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    // use this overload to include internal conversion explicitly.</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>    DecayVector DetectionFeedingVector(</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>        const DecayVector&amp; decay,</span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>        const std::unordered_map&lt;std::string, double&gt;&amp; efficiencies,</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>        const std::unordered_map&lt;std::string, double&gt;&amp; conversionCoefficients</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    ) const;</span>
 <span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a></span>
-<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    // Non-owning pointers.</span>
-<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    //</span>
-<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    const PathAlgebra* fAlgebra;</span>
-<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    const PathProjectors* fProjectors;</span>
-<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>};</span>
-<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a></span>
-<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>#endif</span>
-<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a></span></code></pre></main></body></html>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    // ========================================================</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    // Feeding probability</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // ========================================================</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a></span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    // Connected-path summing, Eqs. (32)-(33), with terminal-complete</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    // propagation below the observed path and whole-array N^(k-1) scaling.</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    // These conventions differ from the literal printed Eqs. (31)-(32);</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    // see docs/mathematics/detection-summing.md.</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    // Use PathForm(result, DecayVector(path)) to collect endpoint-equivalent</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    // direct and summed paths. Individual path contributions remain separate.</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>    // Requires a DAG and normalized, nonnegative total physical edge branches.</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>    // Every quiver level with outgoing edges must have outgoing sum one in decay.</span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>    DecayVector SummingFeedingVector(</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>        const DecayVector&amp; decay, const DetectionMaps&amp; maps</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    ) const;</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a></span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    // Calculates the feeding probability associated with a</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    // specified path.</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    //</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a>    // The path is embedded into the decay-vector space with</span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    // coefficient one and paired with the feeding vector using</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    // the path form.</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    //</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>    double FeedingProbability(</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>        const DecayVector&amp; decay,</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a>        const DecayPath&amp; path</span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    ) const;</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a></span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>    double PathConnection( </span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>         const DecayVector&amp; decay, </span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>         const DecayPath&amp; path_i, </span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>         const DecayPath&amp; path_j </span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>    ) const;</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a></span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>    double CoincidenceProbability(</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>         const DecayVector&amp; decay, </span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>         const DecayPath&amp; path_i, </span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>         const DecayPath&amp; path_j </span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>    ) const;</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a></span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a>private:</span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a></span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>    // ========================================================</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>    // Dependencies</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    // ========================================================</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a></span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>    // Non-owning pointers.</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>    //</span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    const PathAlgebra* fAlgebra;</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    const PathProjectors* fProjectors;</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>};</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a></span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>#endif</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a></span></code></pre></main></body></html>

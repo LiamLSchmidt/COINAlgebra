@@ -7,97 +7,113 @@
 <span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a>#include &lt;cstddef&gt;</span>
 <span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a>#include &lt;string&gt;</span>
 <span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>#include &lt;iosfwd&gt;</span>
-<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>#include &lt;vector&gt;</span>
-<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a></span>
-<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a>class DecayVector</span>
-<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>{</span>
-<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>public:</span>
-<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a></span>
-<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>    struct Term</span>
-<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    {</span>
-<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>        DecayPath path;</span>
-<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>        double coefficient;</span>
-<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    };</span>
-<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a></span>
-<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    DecayVector();</span>
-<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a></span>
-<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    explicit DecayVector(</span>
-<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>        const DecayPath&amp; path,</span>
-<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>        double coefficient = 1.0</span>
-<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    );</span>
-<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a></span>
-<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    // Properties</span>
-<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a></span>
-<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    bool Empty() const;</span>
-<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a></span>
-<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>    std::size_t Size() const;</span>
-<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a></span>
-<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    const std::vector&lt;Term&gt;&amp; GetTerms() const;</span>
-<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a></span>
-<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    // Vector construction</span>
-<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a></span>
-<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    void AddTerm(</span>
-<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>        const DecayPath&amp; path,</span>
-<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>        double coefficient</span>
-<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>    );</span>
-<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a></span>
-<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // Vector arithmetic</span>
-<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a></span>
-<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    DecayVector operator+(</span>
-<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>        const DecayVector&amp; other</span>
-<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    ) const;</span>
-<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a></span>
-<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    DecayVector operator-(</span>
-<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>        const DecayVector&amp; other</span>
-<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    ) const;</span>
-<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a></span>
-<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>    DecayVector&amp; operator+=(</span>
-<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>        const DecayVector&amp; other</span>
-<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>    );</span>
-<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a></span>
-<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>    DecayVector&amp; operator-=(</span>
-<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>        const DecayVector&amp; other</span>
-<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>    );</span>
-<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a></span>
-<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a>    DecayVector operator*(</span>
-<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>        double scalar</span>
-<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>    ) const;</span>
-<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a></span>
-<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    DecayVector&amp; operator*=(</span>
-<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>        double scalar</span>
-<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    );</span>
-<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a></span>
-<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>    friend DecayVector operator*(</span>
-<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>        double scalar,</span>
-<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>        const DecayVector&amp; vector</span>
-<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    );</span>
-<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a></span>
-<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    // Display</span>
-<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a></span>
-<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    std::string ToString() const;</span>
-<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a></span>
-<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    void Print() const;</span>
-<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    void PrintTable() const;</span>
-<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    void PrintTable(std::ostream&amp; out) const;</span>
-<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>private:</span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>#include &lt;unordered_map&gt;</span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>#include &lt;vector&gt;</span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a></span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>class DecayVector</span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>{</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>public:</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a></span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    struct Term</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    {</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>        DecayPath path;</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>        double coefficient;</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    };</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a></span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    DecayVector();</span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a></span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    explicit DecayVector(</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>        const DecayPath&amp; path,</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>        double coefficient = 1.0</span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>    );</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a></span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>    // Properties</span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a></span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    bool Empty() const;</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    std::size_t Size() const;</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a></span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    const std::vector&lt;Term&gt;&amp; GetTerms() const;</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a></span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    // Vector construction</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a></span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    void AddTerm(</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>        const DecayPath&amp; path,</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>        double coefficient</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    );</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a></span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    // Vector arithmetic</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a></span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    DecayVector operator+(</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>        const DecayVector&amp; other</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    ) const;</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a></span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    DecayVector operator-(</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>        const DecayVector&amp; other</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    ) const;</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a></span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    DecayVector&amp; operator+=(</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>        const DecayVector&amp; other</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>    );</span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a></span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    DecayVector&amp; operator-=(</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>        const DecayVector&amp; other</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    );</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    DecayVector operator*(</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>        double scalar</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>    ) const;</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a></span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    DecayVector&amp; operator*=(</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>        double scalar</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>    );</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a></span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    friend DecayVector operator*(</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>        double scalar,</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>        const DecayVector&amp; vector</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>    );</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a></span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // Detection Maps</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    // Divide each non-stationary path by the product of (1 + alpha)</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    // over its transitions. Missing, negative or nonfinite alpha throws.</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    // Stationary coefficients are unchanged. Does not renormalize.</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    DecayVector ApplyConversionMap(</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>        const std::unordered_map&lt;std::string, double&gt;&amp; conversionCoefficients</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    ) const;</span>
 <span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a></span>
-<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>    std::vector&lt;Term&gt; fTerms;</span>
-<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a></span>
-<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    static bool PathsEqual(</span>
-<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>        const DecayPath&amp; first,</span>
-<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>        const DecayPath&amp; second</span>
-<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    );</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>    DecayVector ApplyDetectionMap(</span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>        const std::unordered_map&lt;std::string, double&gt;&amp; efficiencies</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    ) const;</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>    // Display</span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    // --------------------------------------------------------</span>
 <span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a></span>
-<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    void Simplify();</span>
-<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a>};</span>
-<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a></span>
-<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>#endif</span>
-<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a></span></code></pre></main></body></html>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    std::string ToString() const;</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a></span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    void Print() const;</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    void PrintTable() const;</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    void PrintTable(std::ostream&amp; out) const;</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a></span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>private:</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a></span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    std::vector&lt;Term&gt; fTerms;</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a></span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>    static bool PathsEqual(</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>        const DecayPath&amp; first,</span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>        const DecayPath&amp; second</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    );</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a></span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>    void Simplify();</span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a></span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>};</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a></span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>#endif</span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a></span></code></pre></main></body></html>

@@ -3,8 +3,9 @@
 The current manuscript is `APS_Coincidence_Algebra-14.pdf`.
 
 Track confirmed typos and unresolved paper–code differences in
-[the discrepancy register](ERRATA.md). A complete agreement audit is planned
-after the first build is agreed ready for validation.
+[the discrepancy register](ERRATA.md). A computational audit of the implemented products and detection maps is
+recorded in [the validation baseline](../mathematics/coincidence-validation.md).
+This does not certify every bundle statement or the general gated formula.
 
 `DecayCoin` implements Definitions III.1-4: unordered input is canonicalized
 from highest to lowest, overlapping intervals are rejected, gaps and shared

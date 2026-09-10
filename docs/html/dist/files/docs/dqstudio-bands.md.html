@@ -1,0 +1,212 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>docs/dqstudio-bands.md — COINAlgebra</title><style>:root{--blue:#005baa;--navy:#143d62;--link:#245c8a;--line:#ced8e2;--soft:#f1f5f9;--ink:#243445;--muted:#617285;--sidebar:266px;--top:158px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:180px}body{margin:0;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif;background:white}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer;border:1px solid #bacbdc;border-radius:4px;background:#fff;color:var(--navy);padding:5px 12px}button:hover{background:#eaf1f7}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d69b28;outline-offset:3px}.project-header{height:110px;background:var(--blue);display:flex;align-items:center;padding:20px 32px;gap:20px;color:white}.brand-mark{border:1px solid #ffffff65;width:62px;height:62px;font-size:40px;line-height:60px;text-align:center;font-family:Georgia,serif}.brand-mark span{font-size:24px}.project-name{color:white;font-size:32px;letter-spacing:.2px;font-weight:600;line-height:1.2}.project-name span{font-size:14px;font-weight:normal;opacity:.85;margin-left:8px}.project-header p{margin:6px 0 0;font-size:15px;color:#dfedfb}.header-note{margin-left:auto;text-align:right;font-size:14px;color:#d8eafb}.top-nav{height:48px;display:flex;align-items:stretch;background:linear-gradient(#f5f8fc,#e1e9f3);border-bottom:1px solid #a8bcd2;position:sticky;top:0;z-index:20;padding:0 24px;box-shadow:0 2px 4px #1c3f6410}.top-nav>a{padding:11px 20px;font-size:14px;font-weight:600;border-right:1px solid #cad6e3;color:#284c71;white-space:nowrap}.top-nav>a.active{background:#d2e1f0;box-shadow:inset 0 -3px var(--blue)}.search-box{margin:auto 0 auto auto;position:relative}.search-box input{width:280px;border:1px solid #a9bdd0;border-radius:18px;background:white;padding:5px 34px 5px 14px;font-size:14px}.search-box kbd{position:absolute;right:12px;top:5px;color:#8190a0;font:14px monospace}.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr) 190px;min-height:calc(100vh - 158px)}#sidebar{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;border-right:1px solid var(--line);background:#f8fafc;padding:20px 12px;font-size:14px}#sidebar a{display:flex;align-items:center;gap:8px;padding:5px 10px;color:#344e67;overflow-wrap:anywhere}#sidebar a.active{background:#dce9f6;color:#174d7a;border-radius:3px;font-weight:600}#sidebar details{margin:8px 0}#sidebar summary{padding:4px 8px;font-weight:600;color:#314d68;cursor:pointer}#sidebar details a{padding-left:24px}.tree-root{font-weight:bold;margin-bottom:10px}.type-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;border:1px solid #84a6c4;background:#e7f1f9;color:#2b6b9c;font:12px/1 monospace;border-radius:3px}.sidebar-footer{border-top:1px solid var(--line);padding-top:14px;margin-top:22px}.sidebar-footer span{display:block;font-size:12px;color:var(--muted);padding:5px 10px}main{min-width:0;padding:24px 38px 40px}.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:25px}.breadcrumb span{margin-left:8px}.view-tools{float:right}h1{font-size:28px;font-weight:500;line-height:1.3;color:#223c55;margin:0 0 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}h2{font-size:24px;font-weight:500;color:#204b72;border-bottom:1px solid #c5d5e5;padding:10px 0 8px;margin:38px 0 18px}h3{font-size:19px;color:#2c506e;margin-top:28px}p{margin:15px 0}li{margin:6px 0}.permalink{opacity:0;margin-left:10px;color:#8ba8c1;font-size:16px}h2:hover .permalink,h3:hover .permalink,.permalink:focus{opacity:1}code{font-family:Consolas,'Liberation Mono',monospace;font-size:.9em;color:#214a6a}p code,li code,td code{background:#f0f4f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:4px}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}th{background:#eaf0f7;text-align:left;font-weight:600;color:#294d70}th,td{padding:12px 15px;border-bottom:1px solid #dbe3eb;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fafc}td:first-child{min-width:180px}tr:target{background:#fff3ce!important}pre{overflow-x:auto;font:14px/1.65 Consolas,'Liberation Mono',monospace;margin:0;padding:18px 20px;background:#f6f8fb;tab-size:4}.code-wrap{border:1px solid #cbd8e5;border-radius:4px;margin:22px 0;overflow:hidden}.code-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:#eaf0f7;font-size:12px;color:#526d85;border-bottom:1px solid #d4dfeb}.code-bar button{font-size:12px;padding:2px 9px}.equation{overflow-x:auto;padding:10px 4px}.on-page{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;padding:28px 15px 20px 5px;font-size:13px}.on-page strong{font-size:12px;letter-spacing:.8px;color:#758698}.on-page a{display:block;border-left:2px solid #e2e8f0;padding:7px 12px;line-height:1.5;margin-top:2px}.on-page a:hover{border-left-color:#005baa}.class-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:25px}.class-card{display:grid;grid-template-columns:20px 1fr;gap:4px 10px;border:1px solid #cfdae5;padding:16px;border-radius:4px;background:#fafcfe}.class-card:hover{background:#eef4fa;text-decoration:none;border-color:#93b0cb}.class-card strong{overflow-wrap:anywhere;font-size:15px}.class-card>span:last-child{grid-column:2;font-size:13px;color:#71849a}footer{margin-top:48px;border-top:1px solid var(--line);padding-top:15px;font-size:12px;color:#74879a}footer span{margin:0 6px}#search-results{position:fixed;right:24px;top:158px;width:min(640px,calc(100vw - 32px));max-height:65vh;overflow:auto;background:white;border:1px solid #bacbdc;border-radius:5px;box-shadow:0 8px 30px #143d6233;z-index:30;padding:16px}#search-status{font-size:14px;color:#617285;margin-bottom:10px}.search-result{display:block;padding:12px;border-top:1px solid #e3eaf1}.search-result strong{display:block;font-size:15px;overflow-wrap:anywhere}.search-result span{font-size:13px;color:#6d7f90}.search-result small{display:block;font-size:14px;color:#455c72}#close-search{margin-top:12px}#member-filter{display:block;width:min(100%,480px);padding:8px 12px;border:1px solid #adbed0;border-radius:4px;margin-top:6px}#member-count{font-size:14px;color:var(--muted)}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.skip{position:absolute;top:-100px;left:20px;z-index:100;background:white;padding:12px}.skip:focus{top:10px}#menu-toggle{display:none}.source-page main{padding:32px}.source-page h1{font-size:22px;margin-top:20px;overflow-wrap:anywhere}.source-line{display:block;min-height:23px}.source-line>a{display:inline-block;width:55px;text-align:right;padding-right:18px;color:#8494a5;user-select:none}.source-line:target{background:#fff1c6}.source-code{border:1px solid var(--line);padding:12px 0;white-space:pre}.source-code code{font-size:14px}@media(min-width:1450px){main{padding-right:55px;padding-left:55px}}@media(max-width:1150px){.layout{grid-template-columns:240px minmax(0,1fr)}.on-page{display:none}.top-nav{padding:0 12px}.top-nav>a{padding:11px 13px}.search-box input{width:230px}}@media(max-width:800px){.project-header{height:100px;padding:18px}.brand-mark{display:none}.project-name{font-size:27px}.header-note{display:none}.top-nav{height:auto;min-height:48px;flex-wrap:wrap;padding:0 8px}.top-nav>a{padding:12px 8px;font-size:13px}.search-box{width:100%;margin:6px 0 9px}.search-box input{width:100%}.layout{display:block}#sidebar{display:none;position:fixed;top:0;bottom:0;left:0;height:100vh;width:280px;z-index:40;box-shadow:8px 0 30px #143d6233;padding-top:24px}body.nav-open #sidebar{display:block}#menu-toggle{display:block;border:0;background:transparent;padding:6px}#menu-toggle span{display:none}main{padding:22px 18px}.view-tools{float:none;text-align:right;margin-bottom:14px}.class-grid{grid-template-columns:1fr}h1{font-size:25px}h2{font-size:22px}#search-results{top:110px;right:12px}.project-header p{font-size:13px}.breadcrumb{margin-bottom:14px}html{scroll-padding-top:125px}}@media print{.project-header,.top-nav,#sidebar,.on-page,.view-tools,#search-results,.code-bar button,.permalink,.breadcrumb{display:none!important}.layout{display:block}main{padding:0}#guide{display:block!important}#class-index,#member-index,#file-index{display:none!important}pre{white-space:pre-wrap}a{color:inherit}h2,h3{break-after:avoid}tr{break-inside:avoid}footer{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body class="source-page"><header class="project-header"><a class="project-name" href="../../index.html#files">COINAlgebra <span>Source reference</span></a></header><main><a href="../../index.html#files">← File list</a><h1>docs/dqstudio-bands.md</h1><pre class="source-code"><code><span class="source-line" id="L1"><a href="#L1" aria-label="Line 1">1</a># DQStudio groups, subquivers and saved views</span>
+<span class="source-line" id="L2"><a href="#L2" aria-label="Line 2">2</a></span>
+<span class="source-line" id="L3"><a href="#L3" aria-label="Line 3">3</a>The physical `DecayQuiver` remains the authority for levels and transitions.</span>
+<span class="source-line" id="L4"><a href="#L4" aria-label="Line 4">4</a>Studio keeps graph membership separate from view settings; every view references</span>
+<span class="source-line" id="L5"><a href="#L5" aria-label="Line 5">5</a>that same quiver. Branching populations, transition probabilities and detector</span>
+<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a>calibration are document data and do not change when switching views.</span>
+<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a></span>
+<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>## Try it</span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a></span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>Import `examples/dqstudio-bands-demo.json`. It is a **synthetic illustration**,</span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a>not evaluated nuclear data. Open **Saved views…** and restore the band overview,</span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>selected branch with context, or collapsed-band view.</span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a></span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>- **Quiver View** retains the ordinary level scheme.</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>- **Band View** uses shorter levels in columns. Drag a band heading horizontally</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>  to move all its levels. In **Groups…**, edit the band's centre and level width.</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>  Right-click a heading or summary box to collapse/expand it.</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>- **Focus View** displays a group, an explicit subquiver, or a level with selected</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>  context. Choose the target in **Focus / energy / style…**.</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a></span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>## Groups and explicit subquivers</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a></span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>**Groups…** manages semantic collections of levels: bands, cascades and user</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>categories. A group's default focus includes all transitions between its levels.</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>Its colour and line style apply to member levels and intra-group transitions;</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>individual styles override those defaults. For overlapping groups, the first</span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>membership determines layout and inherited style. Unassigned transitions retain</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>the global style.</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a></span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>**Subquivers…** manages explicit selections of vertices **and arrows**. Selecting</span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>an arrow also selects its endpoints. Other arrows between the same endpoints</span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>remain excluded. The “Select all arrows…” button explicitly builds an induced</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>selection when wanted. Saving validates that every selected arrow has both</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>endpoints selected.</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a></span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>In **Focus / energy / style…**, context choices include incoming, outgoing,</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>both directions, all ancestors, or all descendants. Incoming/outgoing/both use</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>the chosen neighbour depth. Added context is faded; the original selection stays</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>prominent. An explicitly excluded internal arrow stays excluded even when context</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>is enabled. Focus is a visual restriction: analysis still uses the full quiver.</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a></span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>Collapsed groups become summary boxes. External connections are retained and</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>aggregated by their displayed endpoints; hover an aggregate line to see its</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>original transition names. Labels count transitions, **not probabilities**.</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>Internal transitions remain in the physical quiver and reappear on expansion.</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>Hidden groups remove their displayed levels and incident arrows from the view.</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a></span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>## Energy, style and camera</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a></span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>Energy spacing is independent of wheel zoom:</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a></span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>- **auto:** physical spacing when selected levels have known energies; otherwise</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>  insertion order, retaining manual vertical placement for uncalibrated levels.</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>- **physical:** spacing proportional to energy.</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>- **compressed:** `log(1 + E/E₀)`, with editable positive `E₀` in keV.</span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>- **uniform:** even spacing in energy order when energies are known, otherwise</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>  insertion order.</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a></span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>An optional energy window filters levels and scales the selected interval.</span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>Explicit physical/compressed modes and energy windows require known energies;</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>the settings dialog reports missing data instead of applying an invalid change.</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>Enter energy in keV when adding a level, or use **Initial populations / energies…**</span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>to edit it later. Energies live in the core `DecayLevel` objects. Older</span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>`level_…keV` names and energy metadata are migrated once during import; renaming</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>a level subsequently leaves its physical energy unchanged. An empty window displays a message.</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>`Y ×` expands vertical spacing; wheel zoom changes the camera scale.</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a>Drag empty canvas to pan; **Fit** recovers the displayed scheme.</span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a></span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>Style precedence is **global → group → object override**. Global colour and</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>transition label visibility are in the view settings dialog. Groups supply</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>colour, stroke width and solid/dashed/dotted lines. Right-click a level or</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>transition and choose **Style…** for independent overrides; “Inherit”/blank</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>fields remove the corresponding overrides.</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a></span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>## Saved views</span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a></span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>**Saved views…** saves the current configuration under a name. Saving an existing</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>name replaces that view. Restore/delete operations apply to the selected entry.</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>Views contain layout mode, focus/context, energy transform/window, group positions</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>and widths, visibility/collapse, inherited and individual styles, camera centre</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>and scale, object highlights, and manual level/transition offsets. Camera restore</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>is subject to normal viewport/scrollbar pixel rounding. Calibrated energy spacing</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>takes precedence over manual vertical positions.</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a></span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>Group/subquiver definitions are shared across saved views. Editing membership</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>therefore affects every view referencing that definition. Removing a definition</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>clears references to it from all views. Removing levels remaps index references;</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>removing transitions or changing their endpoints prunes invalid explicit arrow</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>memberships and saved styles/offsets. Earlier Studio group metadata is migrated</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>on import. Existing source JSON without view data remains supported.</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a></span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>## Populations and efficiencies</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a></span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>**Initial populations / energies…** edits initial level fractions, which must sum</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>to one. They are stationary terms of the branching vector. The transition vector</span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>uses the quiver's editable transition coefficients, and their sum is the decay</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>vector. Separate tables are available in the right panel. Populated levels must</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>have their population redistributed before deletion.</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a></span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>**Import Efficiency CSV…** accepts the GRIFFIN file in `data/GRIFFIN_Eff.csv`</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>with its `Energy[keV], HPGe` header, as well as the generic format below. GRIFFIN</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>values are used directly as efficiency fractions, not percentages.</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a></span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>For each transition, Studio evaluates the curve at `|Esource − Etarget|` in keV.</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a>Exact tabulated energies use the corresponding sample; intermediate energies</span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>are linearly interpolated. **Show Transition Efficiencies** lists the transition</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>name, derived energy and assigned efficiency. The map is rebuilt from the current</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>level energies for every calculation, so editing an energy updates detection.</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>The supplied GRIFFIN table covers 10–2000 keV; out-of-range transitions are reported</span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>by name and energy.</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a></span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>Generic CSV format:</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a></span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>```csv</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>energy_keV,efficiency</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>0,0.20</span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>1000,0.10</span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>3000,0.05</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>```</span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a></span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>Supply at least two strictly increasing energies and fractions in `[0,1]`.</span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>Blank lines and `#` comments are allowed. Linear interpolation is used with no</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>extrapolation. Missing energies or incomplete transition-energy coverage reject</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>the import without replacing the prior curve.</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a></span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>**Show Gamma Emission Probabilities** applies `1/(1+α)` to physical feeding</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>using `metadata.conversion_coefficients`, keyed by transition name.</span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>**Show Detection Probabilities** then multiplies by the efficiency at the</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>transition energy. Physical transition branches must include gamma + IC; they</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>are not renormalized or efficiency-weighted during propagation. No summing</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>correction is added by these controls. If no IC map is supplied, α=0 is assumed</span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>and the table title says so. A supplied map must contain every transition with</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>a finite nonnegative coefficient. **Show Transition Efficiencies** also displays α.</span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a>Saved views share these physical inputs.</span>
+<span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a></span>
+<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a>The `examples/133Ba_gamma_quiver.json` example includes all nine coefficients</span>
+<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>from `PhotonEvaporation5.5/z55.a133`, and explicitly sets initial populations to</span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>0.145 at 383.8491 keV and 0.855 at 437.0113 keV. Its integration-test generator</span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>preserves these inputs on every export.</span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a></span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>## Storage contract</span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a></span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>`metadata.groups` stores stable group IDs, names, semantic kinds, and level</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>indices. `metadata.subquivers` stores stable IDs, names, level indices, and</span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>explicit transition names. `metadata.view` is the active view state;</span>
+<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a>`metadata.saved_views` contains `{name, state}` entries.</span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a></span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>Each state stores `group_layout` keyed by stable group ID, `focus` keyed by</span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>selection type/ID (or a level index), `energy`, global/per-object styles, camera,</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>highlights and manual offsets. Visual data never enters core `DecayLevel` or</span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>`DecayTransition` classes. Membership uses document indices/unique transition</span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a>names; Studio remaps or prunes them on deletion. No public core subquiver API or</span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>algebraic restriction operator is introduced by these visualization changes.</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a></span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>Physical populations and calibration remain in `metadata.branching` and</span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>`metadata.efficiency_samples`. Core level energies are exported in the top-level</span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>`level_energies_keV` array aligned with `levels`; `null` means unknown, while</span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>`0` is a known ground-state energy. Both native `DecayQuiver::ExportJson` and</span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>Studio use this format. Old files without the array continue to load; legacy</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>energy metadata is migrated and removed. An explicit energy array takes</span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>precedence over legacy metadata and display names. JSON `analysis_vectors` contains named branching,</span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>transition and combined decay snapshots. Calculations rebuild from authoritative</span>
+<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>physical inputs rather than trusting snapshots. Custom path vectors rebind to</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>current transitions after edits; invalid paths are discarded.</span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a></span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a></span>
+<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a>## Core energy API</span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a></span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>```cpp</span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>DecayQuiver quiver;</span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>auto* ground = quiver.AddLevel(&quot;ground&quot;, 0.0);       // keV</span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>auto* excited = quiver.AddLevel(&quot;excited&quot;, 1332.5);</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>auto* unknown = quiver.AddLevel(&quot;unmeasured&quot;);</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a></span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>excited-&gt;SetEnergy(1332.492);</span>
+<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a>const double gammaEnergy = excited-&gt;GetEnergy() - ground-&gt;GetEnergy();</span>
+<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>if (unknown-&gt;HasEnergy()) { /* safe to call GetEnergy() */ }</span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>unknown-&gt;ClearEnergy();</span>
+<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a>```</span>
+<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a></span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>`DecayLevel(name, energy_keV)` is also available. Energies must be finite and</span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>nonnegative. `GetEnergy()` throws `std::logic_error` when unset; invalid setters</span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a>throw `std::invalid_argument` without changing the previous energy. Unknown is</span>
+<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a>never silently treated as zero. Names, path identity and probabilities retain</span>
+<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>their existing semantics. Nuclear-data builders assign the reader's full numeric</span>
+<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>energy, rather than recovering it from rounded level names.</span>
+<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a></span>
+<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a></span>
+<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>## Two-transition coincidence</span>
+<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a></span>
+<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>The right panel's **Two-transition coincidence** section selects two distinct</span>
+<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a>transitions A and B. **Calculate Coincidence Probability** evaluates</span>
+<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a>`DecayProbability::CoincidenceProbability` in both orders and adds the disjoint</span>
+<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a>results for the acyclic decay graph. Reversing the selections gives the same</span>
+<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a>joint probability. Mutually exclusive branches give zero; selecting the same</span>
+<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>transition twice disables calculation. All calculations use the full quiver,</span>
+<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a>regardless of the displayed focus or hidden groups.</span>
+<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a></span>
+<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a>The panel shows:</span>
+<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a></span>
+<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a>- **Physical:** both selected transitions occur, counting gamma + IC.</span>
+<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a>- **Gamma emission:** physical coincidence divided by `(1+αA)(1+αB)`.</span>
+<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>- **Detected:** gamma coincidence multiplied by `ε(EA) ε(EB)`, when a CSV is</span>
+<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a>  loaded. This assumes independent detection efficiencies and does not include</span>
+<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a>  angular correlations, detector-pair geometry or summing corrections.</span>
+<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a></span>
+<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a>When IC data is absent, α=0 is explicitly indicated. Parallel arrows are resolved</span>
+<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>to their individual branching fractions because the core path form groups paths</span>
+<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>with the same endpoints. Selections survive ordinary edits where possible;</span>
+<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>results are cleared when inputs change, preventing stale values from being shown.</span>
+<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a></span></code></pre></main></body></html>

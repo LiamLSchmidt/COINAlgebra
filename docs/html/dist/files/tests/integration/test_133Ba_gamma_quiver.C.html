@@ -1,0 +1,446 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tests/integration/test_133Ba_gamma_quiver.C — COINAlgebra</title><style>:root{--blue:#005baa;--navy:#143d62;--link:#245c8a;--line:#ced8e2;--soft:#f1f5f9;--ink:#243445;--muted:#617285;--sidebar:266px;--top:158px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:180px}body{margin:0;color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif;background:white}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}button{cursor:pointer;border:1px solid #bacbdc;border-radius:4px;background:#fff;color:var(--navy);padding:5px 12px}button:hover{background:#eaf1f7}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #d69b28;outline-offset:3px}.project-header{height:110px;background:var(--blue);display:flex;align-items:center;padding:20px 32px;gap:20px;color:white}.brand-mark{border:1px solid #ffffff65;width:62px;height:62px;font-size:40px;line-height:60px;text-align:center;font-family:Georgia,serif}.brand-mark span{font-size:24px}.project-name{color:white;font-size:32px;letter-spacing:.2px;font-weight:600;line-height:1.2}.project-name span{font-size:14px;font-weight:normal;opacity:.85;margin-left:8px}.project-header p{margin:6px 0 0;font-size:15px;color:#dfedfb}.header-note{margin-left:auto;text-align:right;font-size:14px;color:#d8eafb}.top-nav{height:48px;display:flex;align-items:stretch;background:linear-gradient(#f5f8fc,#e1e9f3);border-bottom:1px solid #a8bcd2;position:sticky;top:0;z-index:20;padding:0 24px;box-shadow:0 2px 4px #1c3f6410}.top-nav>a{padding:11px 20px;font-size:14px;font-weight:600;border-right:1px solid #cad6e3;color:#284c71;white-space:nowrap}.top-nav>a.active{background:#d2e1f0;box-shadow:inset 0 -3px var(--blue)}.search-box{margin:auto 0 auto auto;position:relative}.search-box input{width:280px;border:1px solid #a9bdd0;border-radius:18px;background:white;padding:5px 34px 5px 14px;font-size:14px}.search-box kbd{position:absolute;right:12px;top:5px;color:#8190a0;font:14px monospace}.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr) 190px;min-height:calc(100vh - 158px)}#sidebar{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;border-right:1px solid var(--line);background:#f8fafc;padding:20px 12px;font-size:14px}#sidebar a{display:flex;align-items:center;gap:8px;padding:5px 10px;color:#344e67;overflow-wrap:anywhere}#sidebar a.active{background:#dce9f6;color:#174d7a;border-radius:3px;font-weight:600}#sidebar details{margin:8px 0}#sidebar summary{padding:4px 8px;font-weight:600;color:#314d68;cursor:pointer}#sidebar details a{padding-left:24px}.tree-root{font-weight:bold;margin-bottom:10px}.type-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;border:1px solid #84a6c4;background:#e7f1f9;color:#2b6b9c;font:12px/1 monospace;border-radius:3px}.sidebar-footer{border-top:1px solid var(--line);padding-top:14px;margin-top:22px}.sidebar-footer span{display:block;font-size:12px;color:var(--muted);padding:5px 10px}main{min-width:0;padding:24px 38px 40px}.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:25px}.breadcrumb span{margin-left:8px}.view-tools{float:right}h1{font-size:28px;font-weight:500;line-height:1.3;color:#223c55;margin:0 0 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}h2{font-size:24px;font-weight:500;color:#204b72;border-bottom:1px solid #c5d5e5;padding:10px 0 8px;margin:38px 0 18px}h3{font-size:19px;color:#2c506e;margin-top:28px}p{margin:15px 0}li{margin:6px 0}.permalink{opacity:0;margin-left:10px;color:#8ba8c1;font-size:16px}h2:hover .permalink,h3:hover .permalink,.permalink:focus{opacity:1}code{font-family:Consolas,'Liberation Mono',monospace;font-size:.9em;color:#214a6a}p code,li code,td code{background:#f0f4f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--line);border-radius:4px}table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}th{background:#eaf0f7;text-align:left;font-weight:600;color:#294d70}th,td{padding:12px 15px;border-bottom:1px solid #dbe3eb;vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f8fafc}td:first-child{min-width:180px}tr:target{background:#fff3ce!important}pre{overflow-x:auto;font:14px/1.65 Consolas,'Liberation Mono',monospace;margin:0;padding:18px 20px;background:#f6f8fb;tab-size:4}.code-wrap{border:1px solid #cbd8e5;border-radius:4px;margin:22px 0;overflow:hidden}.code-bar{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:#eaf0f7;font-size:12px;color:#526d85;border-bottom:1px solid #d4dfeb}.code-bar button{font-size:12px;padding:2px 9px}.equation{overflow-x:auto;padding:10px 4px}.on-page{position:sticky;top:48px;height:calc(100vh - 48px);overflow:auto;padding:28px 15px 20px 5px;font-size:13px}.on-page strong{font-size:12px;letter-spacing:.8px;color:#758698}.on-page a{display:block;border-left:2px solid #e2e8f0;padding:7px 12px;line-height:1.5;margin-top:2px}.on-page a:hover{border-left-color:#005baa}.class-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:25px}.class-card{display:grid;grid-template-columns:20px 1fr;gap:4px 10px;border:1px solid #cfdae5;padding:16px;border-radius:4px;background:#fafcfe}.class-card:hover{background:#eef4fa;text-decoration:none;border-color:#93b0cb}.class-card strong{overflow-wrap:anywhere;font-size:15px}.class-card>span:last-child{grid-column:2;font-size:13px;color:#71849a}footer{margin-top:48px;border-top:1px solid var(--line);padding-top:15px;font-size:12px;color:#74879a}footer span{margin:0 6px}#search-results{position:fixed;right:24px;top:158px;width:min(640px,calc(100vw - 32px));max-height:65vh;overflow:auto;background:white;border:1px solid #bacbdc;border-radius:5px;box-shadow:0 8px 30px #143d6233;z-index:30;padding:16px}#search-status{font-size:14px;color:#617285;margin-bottom:10px}.search-result{display:block;padding:12px;border-top:1px solid #e3eaf1}.search-result strong{display:block;font-size:15px;overflow-wrap:anywhere}.search-result span{font-size:13px;color:#6d7f90}.search-result small{display:block;font-size:14px;color:#455c72}#close-search{margin-top:12px}#member-filter{display:block;width:min(100%,480px);padding:8px 12px;border:1px solid #adbed0;border-radius:4px;margin-top:6px}#member-count{font-size:14px;color:var(--muted)}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.skip{position:absolute;top:-100px;left:20px;z-index:100;background:white;padding:12px}.skip:focus{top:10px}#menu-toggle{display:none}.source-page main{padding:32px}.source-page h1{font-size:22px;margin-top:20px;overflow-wrap:anywhere}.source-line{display:block;min-height:23px}.source-line>a{display:inline-block;width:55px;text-align:right;padding-right:18px;color:#8494a5;user-select:none}.source-line:target{background:#fff1c6}.source-code{border:1px solid var(--line);padding:12px 0;white-space:pre}.source-code code{font-size:14px}@media(min-width:1450px){main{padding-right:55px;padding-left:55px}}@media(max-width:1150px){.layout{grid-template-columns:240px minmax(0,1fr)}.on-page{display:none}.top-nav{padding:0 12px}.top-nav>a{padding:11px 13px}.search-box input{width:230px}}@media(max-width:800px){.project-header{height:100px;padding:18px}.brand-mark{display:none}.project-name{font-size:27px}.header-note{display:none}.top-nav{height:auto;min-height:48px;flex-wrap:wrap;padding:0 8px}.top-nav>a{padding:12px 8px;font-size:13px}.search-box{width:100%;margin:6px 0 9px}.search-box input{width:100%}.layout{display:block}#sidebar{display:none;position:fixed;top:0;bottom:0;left:0;height:100vh;width:280px;z-index:40;box-shadow:8px 0 30px #143d6233;padding-top:24px}body.nav-open #sidebar{display:block}#menu-toggle{display:block;border:0;background:transparent;padding:6px}#menu-toggle span{display:none}main{padding:22px 18px}.view-tools{float:none;text-align:right;margin-bottom:14px}.class-grid{grid-template-columns:1fr}h1{font-size:25px}h2{font-size:22px}#search-results{top:110px;right:12px}.project-header p{font-size:13px}.breadcrumb{margin-bottom:14px}html{scroll-padding-top:125px}}@media print{.project-header,.top-nav,#sidebar,.on-page,.view-tools,#search-results,.code-bar button,.permalink,.breadcrumb{display:none!important}.layout{display:block}main{padding:0}#guide{display:block!important}#class-index,#member-index,#file-index{display:none!important}pre{white-space:pre-wrap}a{color:inherit}h2,h3{break-after:avoid}tr{break-inside:avoid}footer{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body class="source-page"><header class="project-header"><a class="project-name" href="../../../index.html#files">COINAlgebra <span>Source reference</span></a></header><main><a href="../../../index.html#files">← File list</a><h1>tests/integration/test_133Ba_gamma_quiver.C</h1><pre class="source-code"><code><span class="source-line" id="L1"><a href="#L1" aria-label="Line 1">1</a>#include &quot;COINAlgebra/Builders/DecayQuiverBuilder.h&quot;</span>
+<span class="source-line" id="L2"><a href="#L2" aria-label="Line 2">2</a>#include &quot;COINAlgebra/Algebra/PathAlgebra.h&quot;</span>
+<span class="source-line" id="L3"><a href="#L3" aria-label="Line 3">3</a>#include &quot;COINAlgebra/Algebra/PathProjectors.h&quot;</span>
+<span class="source-line" id="L4"><a href="#L4" aria-label="Line 4">4</a>#include &quot;COINAlgebra/Probability/DecayProbability.h&quot;</span>
+<span class="source-line" id="L5"><a href="#L5" aria-label="Line 5">5</a>#include &quot;COINAlgebra/Detection/DetectionMaps.h&quot;</span>
+<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a></span>
+<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a>#include &lt;iostream&gt;</span>
+<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>#include &lt;iomanip&gt;</span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>#include &lt;algorithm&gt;</span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>#include &lt;cmath&gt;</span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a>#include &lt;stdexcept&gt;</span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a></span>
+<span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>void test_133Ba_gamma_quiver()</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>{</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>    // Detector setup: whole-array total efficiency, conditional on gamma emission.</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    const double totalEfficiency = 0.7;</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    const std::size_t detectorCount = 64; // Set to the number of detectors in your array.</span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a></span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    std::cout</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>        &lt;&lt; &quot;============================================================&quot;</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a></span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    std::cout</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>        &lt;&lt; &quot;             133Ba -&gt; EC -&gt; 133Cs decay quiver&quot;</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a></span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>    std::cout</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>        &lt;&lt; &quot;============================================================&quot;</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a></span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a></span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    // ========================================================</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // Read radioactive decay data for the PARENT nucleus</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>    //</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    // 133Ba:</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    //     Z = 56</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    //     A = 133</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    // ========================================================</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a></span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    RadioactiveDecayReader radioactiveReader(</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>        &quot;RadioactiveDecay5.5&quot;</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    );</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a></span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>    RadioactiveIsotope ba133 =</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>        radioactiveReader.read(56, 133);</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a></span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a></span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // ========================================================</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    // Read photon evaporation data for the DAUGHTER nucleus</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    //</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    // 133Cs:</span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    //     Z = 55</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    //     A = 133</span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    // ========================================================</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a></span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    PhotonEvaporationReader photonReader(</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>        &quot;PhotonEvaporation5.5&quot;</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    );</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a></span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    PhotonIsotope cs133 =</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>        photonReader.read(55, 133);</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a></span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a></span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    // ========================================================</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>    // Print radioactive decay information</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    // ========================================================</span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    std::cout</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>        &lt;&lt; std::endl</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>        &lt;&lt; &quot;133Ba radioactive decay data&quot;</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a></span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    std::cout</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>        &lt;&lt; &quot;--------------------------------------------&quot;</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a></span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>    std::cout</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>        &lt;&lt; &quot;Atomic number  = &quot;</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>        &lt;&lt; ba133.atomicNumber()</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a></span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    std::cout</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>        &lt;&lt; &quot;Mass number    = &quot;</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>        &lt;&lt; ba133.massNumber()</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a></span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    std::cout</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>        &lt;&lt; &quot;Parent states  = &quot;</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>        &lt;&lt; ba133.numberOfParentStates()</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a></span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a></span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    // ========================================================</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // Print PhotonEvaporation information</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>    // ========================================================</span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a></span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    std::cout</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>        &lt;&lt; std::endl</span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a>        &lt;&lt; &quot;133Cs PhotonEvaporation data&quot;</span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a></span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    std::cout</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>        &lt;&lt; &quot;--------------------------------------------&quot;</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a></span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    std::cout</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>        &lt;&lt; &quot;Atomic number  = &quot;</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>        &lt;&lt; cs133.atomicNumber()</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a></span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    std::cout</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>        &lt;&lt; &quot;Mass number    = &quot;</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>        &lt;&lt; cs133.massNumber()</span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a></span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>    std::cout</span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>        &lt;&lt; &quot;Number of levels = &quot;</span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>        &lt;&lt; cs133.numberOfLevels()</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a></span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a></span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>    // ========================================================</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>    // Build the gamma-decay quiver</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    //</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>    // &quot;EC&quot; means physical electron capture, so the builder</span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>    // combines:</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>    //</span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    //     KshellEC</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    //     LshellEC</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>    //     MshellEC</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>    //</span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    // from the Ba-133 radioactive-decay data.</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>    //</span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a>    // The resulting daughter levels and gamma transitions</span>
+<span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a>    // come from Cs-133 PhotonEvaporation data.</span>
+<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a>    // ========================================================</span>
+<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a></span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>    std::unordered_map&lt;std::string, double&gt; conversionCoefficients;</span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>    DecayQuiver quiver =</span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>        DecayQuiverBuilder::BuildGammaQuiver(</span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>            ba133,</span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a>            cs133,</span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>            conversionCoefficients,</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>            &quot;EC&quot;</span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>        );</span>
+<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a></span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a></span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>    if (conversionCoefficients.size() != quiver.GetTransitions().size() ||</span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>        std::abs(conversionCoefficients.at(&quot;gamma_81_to_0_0&quot;) - 1.703) &gt; 1e-12 ||</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>        std::abs(conversionCoefficients.at(&quot;gamma_437_to_384_0&quot;) - 5.66) &gt; 1e-12)</span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>        throw std::runtime_error(&quot;Incorrect extracted Ba-133 conversion coefficients&quot;);</span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a></span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>    // ========================================================</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>    // Print resulting quiver</span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>    // ========================================================</span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a></span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>    std::cout</span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>        &lt;&lt; std::endl</span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>        &lt;&lt; &quot;Resulting gamma-decay quiver:&quot;</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>        &lt;&lt; std::endl</span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a></span>
+<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>    quiver.Print();</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a></span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a></span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>    // ========================================================</span>
+<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a>    // Summary</span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a>    // ========================================================</span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a></span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>    std::cout</span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>        &lt;&lt; std::endl</span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>        &lt;&lt; &quot;--------------------------------------------&quot;</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a></span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>    std::cout</span>
+<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a>        &lt;&lt; &quot;Number of levels      = &quot;</span>
+<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>        &lt;&lt; quiver.GetLevels().size()</span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a></span>
+<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a>    std::cout</span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>        &lt;&lt; &quot;Number of transitions = &quot;</span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>        &lt;&lt; quiver.GetTransitions().size()</span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a></span>
+<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>    std::cout</span>
+<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>        &lt;&lt; &quot;============================================================&quot;</span>
+<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a>        &lt;&lt; std::endl;</span>
+<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a></span>
+<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>    // Probabilities:</span>
+<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a></span>
+<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>    DecayVector decay_vector;</span>
+<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a>    // Builder names use six decimal places and the case-sensitive suffix keV.</span>
+<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a>    const auto requireLevel = [&amp;quiver](const std::string&amp; name) {</span>
+<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a>        DecayLevel* level = quiver.GetLevel(name);</span>
+<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a>        if(level == nullptr)</span>
+<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>        {</span>
+<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a>            throw std::runtime_error(&quot;Missing quiver level: &quot; + name);</span>
+<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a>        }</span>
+<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a>        return level;</span>
+<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a>    };</span>
+<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a>    DecayLevel* e0 = requireLevel(&quot;level_0.000000keV&quot;);</span>
+<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a>    DecayLevel* e1 = requireLevel(&quot;level_80.997900keV&quot;);</span>
+<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>    DecayLevel* e2 = requireLevel(&quot;level_160.612100keV&quot;);</span>
+<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a>    DecayLevel* e3 = requireLevel(&quot;level_383.849100keV&quot;);</span>
+<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a>    DecayLevel* e4 = requireLevel(&quot;level_437.011300keV&quot;);</span>
+<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a></span>
+<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a>    DecayTransition* g10 = quiver.GetTransition(&quot;gamma_81_to_0_0&quot;);</span>
+<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>    DecayTransition* g21 = quiver.GetTransition(&quot;gamma_161_to_81_0&quot;);</span>
+<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>    DecayTransition* g20 = quiver.GetTransition(&quot;gamma_161_to_0_1&quot;);</span>
+<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>    DecayTransition* g30 = quiver.GetTransition(&quot;gamma_384_to_0_2&quot;);</span>
+<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a>    DecayTransition* g31 = quiver.GetTransition(&quot;gamma_384_to_81_1&quot;);</span>
+<span class="source-line" id="L212"><a href="#L212" aria-label="Line 212">212</a>    DecayTransition* g41 = quiver.GetTransition(&quot;gamma_437_to_81_2&quot;);</span>
+<span class="source-line" id="L213"><a href="#L213" aria-label="Line 213">213</a>    DecayTransition* g32 = quiver.GetTransition(&quot;gamma_384_to_161_0&quot;);</span>
+<span class="source-line" id="L214"><a href="#L214" aria-label="Line 214">214</a>    DecayTransition* g42 = quiver.GetTransition(&quot;gamma_437_to_161_1&quot;);</span>
+<span class="source-line" id="L215"><a href="#L215" aria-label="Line 215">215</a>    DecayTransition* g43 = quiver.GetTransition(&quot;gamma_437_to_384_0&quot;);</span>
+<span class="source-line" id="L216"><a href="#L216" aria-label="Line 216">216</a></span>
+<span class="source-line" id="L217"><a href="#L217" aria-label="Line 217">217</a>    DecayPath p0(e0);</span>
+<span class="source-line" id="L218"><a href="#L218" aria-label="Line 218">218</a>    DecayPath p1(e1);</span>
+<span class="source-line" id="L219"><a href="#L219" aria-label="Line 219">219</a>    DecayPath p2(e2);</span>
+<span class="source-line" id="L220"><a href="#L220" aria-label="Line 220">220</a>    DecayPath p3(e3);</span>
+<span class="source-line" id="L221"><a href="#L221" aria-label="Line 221">221</a>    DecayPath p4(e4);</span>
+<span class="source-line" id="L222"><a href="#L222" aria-label="Line 222">222</a></span>
+<span class="source-line" id="L223"><a href="#L223" aria-label="Line 223">223</a></span>
+<span class="source-line" id="L224"><a href="#L224" aria-label="Line 224">224</a>       // --------------------------------------------------------</span>
+<span class="source-line" id="L225"><a href="#L225" aria-label="Line 225">225</a>    // Stationary components</span>
+<span class="source-line" id="L226"><a href="#L226" aria-label="Line 226">226</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L227"><a href="#L227" aria-label="Line 227">227</a></span>
+<span class="source-line" id="L228"><a href="#L228" aria-label="Line 228">228</a>    decay_vector.AddTerm(</span>
+<span class="source-line" id="L229"><a href="#L229" aria-label="Line 229">229</a>        p0,</span>
+<span class="source-line" id="L230"><a href="#L230" aria-label="Line 230">230</a>        0.0 //e0.GetProbability()</span>
+<span class="source-line" id="L231"><a href="#L231" aria-label="Line 231">231</a>    );</span>
+<span class="source-line" id="L232"><a href="#L232" aria-label="Line 232">232</a></span>
+<span class="source-line" id="L233"><a href="#L233" aria-label="Line 233">233</a>    decay_vector.AddTerm(</span>
+<span class="source-line" id="L234"><a href="#L234" aria-label="Line 234">234</a>        p1,</span>
+<span class="source-line" id="L235"><a href="#L235" aria-label="Line 235">235</a>        0.0 //e1.GetProbability()</span>
+<span class="source-line" id="L236"><a href="#L236" aria-label="Line 236">236</a>    );</span>
+<span class="source-line" id="L237"><a href="#L237" aria-label="Line 237">237</a></span>
+<span class="source-line" id="L238"><a href="#L238" aria-label="Line 238">238</a>    decay_vector.AddTerm(</span>
+<span class="source-line" id="L239"><a href="#L239" aria-label="Line 239">239</a>        p2,</span>
+<span class="source-line" id="L240"><a href="#L240" aria-label="Line 240">240</a>        0.0 // e2.GetProbability()</span>
+<span class="source-line" id="L241"><a href="#L241" aria-label="Line 241">241</a>    );</span>
+<span class="source-line" id="L242"><a href="#L242" aria-label="Line 242">242</a></span>
+<span class="source-line" id="L243"><a href="#L243" aria-label="Line 243">243</a>    decay_vector.AddTerm(</span>
+<span class="source-line" id="L244"><a href="#L244" aria-label="Line 244">244</a>        p3,</span>
+<span class="source-line" id="L245"><a href="#L245" aria-label="Line 245">245</a>        0.145 //e3.GetProbability()</span>
+<span class="source-line" id="L246"><a href="#L246" aria-label="Line 246">246</a>    );</span>
+<span class="source-line" id="L247"><a href="#L247" aria-label="Line 247">247</a></span>
+<span class="source-line" id="L248"><a href="#L248" aria-label="Line 248">248</a>    decay_vector.AddTerm(</span>
+<span class="source-line" id="L249"><a href="#L249" aria-label="Line 249">249</a>        p4,</span>
+<span class="source-line" id="L250"><a href="#L250" aria-label="Line 250">250</a>        0.855 //e4.GetProbability()</span>
+<span class="source-line" id="L251"><a href="#L251" aria-label="Line 251">251</a>    );</span>
+<span class="source-line" id="L252"><a href="#L252" aria-label="Line 252">252</a></span>
+<span class="source-line" id="L253"><a href="#L253" aria-label="Line 253">253</a>     // --------------------------------------------------------</span>
+<span class="source-line" id="L254"><a href="#L254" aria-label="Line 254">254</a>    // Length-one components</span>
+<span class="source-line" id="L255"><a href="#L255" aria-label="Line 255">255</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L256"><a href="#L256" aria-label="Line 256">256</a></span>
+<span class="source-line" id="L257"><a href="#L257" aria-label="Line 257">257</a>    for(const auto* transition :</span>
+<span class="source-line" id="L258"><a href="#L258" aria-label="Line 258">258</a>        quiver.GetTransitions())</span>
+<span class="source-line" id="L259"><a href="#L259" aria-label="Line 259">259</a>    {</span>
+<span class="source-line" id="L260"><a href="#L260" aria-label="Line 260">260</a>        DecayPath path(*transition);</span>
+<span class="source-line" id="L261"><a href="#L261" aria-label="Line 261">261</a></span>
+<span class="source-line" id="L262"><a href="#L262" aria-label="Line 262">262</a>        decay_vector.AddTerm(</span>
+<span class="source-line" id="L263"><a href="#L263" aria-label="Line 263">263</a>            path,</span>
+<span class="source-line" id="L264"><a href="#L264" aria-label="Line 264">264</a>            path.GetProbability()</span>
+<span class="source-line" id="L265"><a href="#L265" aria-label="Line 265">265</a>        );</span>
+<span class="source-line" id="L266"><a href="#L266" aria-label="Line 266">266</a>    }</span>
+<span class="source-line" id="L267"><a href="#L267" aria-label="Line 267">267</a>    PathAlgebra algebra(quiver);</span>
+<span class="source-line" id="L268"><a href="#L268" aria-label="Line 268">268</a>    PathProjectors projectors;</span>
+<span class="source-line" id="L269"><a href="#L269" aria-label="Line 269">269</a>    DecayProbability pb(algebra,projectors);</span>
+<span class="source-line" id="L270"><a href="#L270" aria-label="Line 270">270</a>    DecayVector feedingVector = pb.FeedingVector(decay_vector);</span>
+<span class="source-line" id="L271"><a href="#L271" aria-label="Line 271">271</a>    std::cout &lt;&lt; &quot;Total transition feeding (gamma + IC):\n&quot;;</span>
+<span class="source-line" id="L272"><a href="#L272" aria-label="Line 272">272</a>    feedingVector.PrintTable();</span>
+<span class="source-line" id="L273"><a href="#L273" aria-label="Line 273">273</a>    std::cout &lt;&lt; &quot;Gamma emission feeding:\n&quot;;</span>
+<span class="source-line" id="L274"><a href="#L274" aria-label="Line 274">274</a>    pb.EmissionFeedingVector(decay_vector, conversionCoefficients).PrintTable();</span>
+<span class="source-line" id="L275"><a href="#L275" aria-label="Line 275">275</a></span>
+<span class="source-line" id="L276"><a href="#L276" aria-label="Line 276">276</a>    std::vector&lt;double&gt; initialPopulations(quiver.GetLevels().size(), 0.0);</span>
+<span class="source-line" id="L277"><a href="#L277" aria-label="Line 277">277</a>    for(const auto&amp; term:decay_vector.GetTerms()) if(term.path.IsStationary())</span>
+<span class="source-line" id="L278"><a href="#L278" aria-label="Line 278">278</a>        for(std::size_t i=0;i&lt;quiver.GetLevels().size();++i)</span>
+<span class="source-line" id="L279"><a href="#L279" aria-label="Line 279">279</a>            if(term.path.GetSource()==quiver.GetLevels()[i]) initialPopulations[i]+=term.coefficient;</span>
+<span class="source-line" id="L280"><a href="#L280" aria-label="Line 280">280</a>    quiver.ExportJson(&quot;examples/133Ba_gamma_quiver.json&quot;,</span>
+<span class="source-line" id="L281"><a href="#L281" aria-label="Line 281">281</a>                      {decay_vector}, &quot;133Ba -&gt; EC -&gt; 133Cs&quot;,</span>
+<span class="source-line" id="L282"><a href="#L282" aria-label="Line 282">282</a>                      conversionCoefficients, initialPopulations);</span>
+<span class="source-line" id="L283"><a href="#L283" aria-label="Line 283">283</a></span>
+<span class="source-line" id="L284"><a href="#L284" aria-label="Line 284">284</a>    std::unordered_map&lt;std::string, double&gt; efficiencies;</span>
+<span class="source-line" id="L285"><a href="#L285" aria-label="Line 285">285</a>    efficiencies[&quot;gamma_81_to_0_0&quot;] = 0.455954;</span>
+<span class="source-line" id="L286"><a href="#L286" aria-label="Line 286">286</a>    efficiencies[&quot;gamma_161_to_81_0&quot;] = 0.455949;</span>
+<span class="source-line" id="L287"><a href="#L287" aria-label="Line 287">287</a>    efficiencies[&quot;gamma_161_to_0_1&quot;] = 0.40154;</span>
+<span class="source-line" id="L288"><a href="#L288" aria-label="Line 288">288</a>    efficiencies[&quot;gamma_384_to_0_2&quot;] = 0.239605;</span>
+<span class="source-line" id="L289"><a href="#L289" aria-label="Line 289">289</a>    efficiencies[&quot;gamma_384_to_81_1&quot;] = 0.283232;</span>
+<span class="source-line" id="L290"><a href="#L290" aria-label="Line 290">290</a>    efficiencies[&quot;gamma_437_to_81_2&quot;] = 0.253294;</span>
+<span class="source-line" id="L291"><a href="#L291" aria-label="Line 291">291</a>    efficiencies[&quot;gamma_384_to_161_0&quot;] = 0.34334284;</span>
+<span class="source-line" id="L292"><a href="#L292" aria-label="Line 292">292</a>    efficiencies[&quot;gamma_437_to_161_1&quot;] = 0.30135745;</span>
+<span class="source-line" id="L293"><a href="#L293" aria-label="Line 293">293</a>    efficiencies[&quot;gamma_437_to_384_0&quot;] = 0.44011142;</span>
+<span class="source-line" id="L294"><a href="#L294" aria-label="Line 294">294</a></span>
+<span class="source-line" id="L295"><a href="#L295" aria-label="Line 295">295</a>    DecayVector feedingEfficiencyVector = pb.DetectionFeedingVector(decay_vector, efficiencies, conversionCoefficients);</span>
+<span class="source-line" id="L296"><a href="#L296" aria-label="Line 296">296</a>    std::cout &lt;&lt; &quot;Gamma detection feeding (including IC):\n&quot;;</span>
+<span class="source-line" id="L297"><a href="#L297" aria-label="Line 297">297</a>    feedingEfficiencyVector.PrintTable();</span>
+<span class="source-line" id="L298"><a href="#L298" aria-label="Line 298">298</a>    for (const auto&amp; term : feedingVector.GetTerms())</span>
+<span class="source-line" id="L299"><a href="#L299" aria-label="Line 299">299</a>    {</span>
+<span class="source-line" id="L300"><a href="#L300" aria-label="Line 300">300</a>        const double expected = term.coefficient *</span>
+<span class="source-line" id="L301"><a href="#L301" aria-label="Line 301">301</a>            efficiencies.at(term.path.GetTransitions().front().GetName()) /</span>
+<span class="source-line" id="L302"><a href="#L302" aria-label="Line 302">302</a>            (1.0 + conversionCoefficients.at(term.path.GetTransitions().front().GetName()));</span>
+<span class="source-line" id="L303"><a href="#L303" aria-label="Line 303">303</a>        const double actual = algebra.PathForm(</span>
+<span class="source-line" id="L304"><a href="#L304" aria-label="Line 304">304</a>            feedingEfficiencyVector, DecayVector(term.path, 1.0));</span>
+<span class="source-line" id="L305"><a href="#L305" aria-label="Line 305">305</a>        if (std::abs(actual - expected) &gt; 1e-12)</span>
+<span class="source-line" id="L306"><a href="#L306" aria-label="Line 306">306</a>            throw std::runtime_error(&quot;Incorrect detected feeding probability&quot;);</span>
+<span class="source-line" id="L307"><a href="#L307" aria-label="Line 307">307</a>    }</span>
+<span class="source-line" id="L308"><a href="#L308" aria-label="Line 308">308</a>    std::unordered_map&lt;std::string, double&gt; totalEfficiencies;</span>
+<span class="source-line" id="L309"><a href="#L309" aria-label="Line 309">309</a>    for (const auto* transition : quiver.GetTransitions())</span>
+<span class="source-line" id="L310"><a href="#L310" aria-label="Line 310">310</a>        totalEfficiencies[transition-&gt;GetName()] = totalEfficiency;</span>
+<span class="source-line" id="L311"><a href="#L311" aria-label="Line 311">311</a></span>
+<span class="source-line" id="L312"><a href="#L312" aria-label="Line 312">312</a>    {</span>
+<span class="source-line" id="L313"><a href="#L313" aria-label="Line 313">313</a>        std::cout &lt;&lt; &quot;Summing setup: &quot; &lt;&lt; detectorCount</span>
+<span class="source-line" id="L314"><a href="#L314" aria-label="Line 314">314</a>                  &lt;&lt; &quot; detector(s), uniform whole-array total efficiency = &quot;</span>
+<span class="source-line" id="L315"><a href="#L315" aria-label="Line 315">315</a>                  &lt;&lt; totalEfficiency &lt;&lt; '\n';</span>
+<span class="source-line" id="L316"><a href="#L316" aria-label="Line 316">316</a>        DetectionMaps maps(efficiencies, totalEfficiencies, detectorCount, conversionCoefficients);</span>
+<span class="source-line" id="L317"><a href="#L317" aria-label="Line 317">317</a>        const auto summed = pb.SummingFeedingVector(decay_vector, maps);</span>
+<span class="source-line" id="L318"><a href="#L318" aria-label="Line 318">318</a>        std::cout &lt;&lt; &quot;Connected summing contributions (separate paths):\n&quot;;</span>
+<span class="source-line" id="L319"><a href="#L319" aria-label="Line 319">319</a>        summed.PrintTable();</span>
+<span class="source-line" id="L320"><a href="#L320" aria-label="Line 320">320</a>        DecayVector peaks;</span>
+<span class="source-line" id="L321"><a href="#L321" aria-label="Line 321">321</a>        for (const auto* transition : quiver.GetTransitions()) {</span>
+<span class="source-line" id="L322"><a href="#L322" aria-label="Line 322">322</a>            DecayPath path(*transition);</span>
+<span class="source-line" id="L323"><a href="#L323" aria-label="Line 323">323</a>            peaks.AddTerm(path, algebra.PathForm(summed, DecayVector(path)));</span>
+<span class="source-line" id="L324"><a href="#L324" aria-label="Line 324">324</a>        }</span>
+<span class="source-line" id="L325"><a href="#L325" aria-label="Line 325">325</a>        std::cout &lt;&lt; &quot;Connected summing-corrected peaks (equivalent endpoints combined):\n&quot;;</span>
+<span class="source-line" id="L326"><a href="#L326" aria-label="Line 326">326</a>        peaks.PrintTable();</span>
+<span class="source-line" id="L327"><a href="#L327" aria-label="Line 327">327</a></span>
+<span class="source-line" id="L328"><a href="#L328" aria-label="Line 328">328</a>    }</span>
+<span class="source-line" id="L329"><a href="#L329" aria-label="Line 329">329</a></span>
+<span class="source-line" id="L330"><a href="#L330" aria-label="Line 330">330</a>    // ========================================================</span>
+<span class="source-line" id="L331"><a href="#L331" aria-label="Line 331">331</a>    // Coincidence vectors: physical, emitted, detected, summed</span>
+<span class="source-line" id="L332"><a href="#L332" aria-label="Line 332">332</a>    // ========================================================</span>
+<span class="source-line" id="L333"><a href="#L333" aria-label="Line 333">333</a>    // The fiber contains physical gamma+IC branches. Applying hit maps to</span>
+<span class="source-line" id="L334"><a href="#L334" aria-label="Line 334">334</a>    // observed factors must not also suppress the unobserved connections.</span>
+<span class="source-line" id="L335"><a href="#L335" aria-label="Line 335">335</a>    CAlgebra coins(quiver, {e4,e3,e2,e1,e0}, decay_vector);</span>
+<span class="source-line" id="L336"><a href="#L336" aria-label="Line 336">336</a>    DecayVector branch, tau;</span>
+<span class="source-line" id="L337"><a href="#L337" aria-label="Line 337">337</a>    for (const auto&amp; term : decay_vector.GetTerms()) {</span>
+<span class="source-line" id="L338"><a href="#L338" aria-label="Line 338">338</a>        if (term.path.IsStationary()) branch.AddTerm(term.path,term.coefficient);</span>
+<span class="source-line" id="L339"><a href="#L339" aria-label="Line 339">339</a>        else tau.AddTerm(term.path,term.coefficient);</span>
+<span class="source-line" id="L340"><a href="#L340" aria-label="Line 340">340</a>    }</span>
+<span class="source-line" id="L341"><a href="#L341" aria-label="Line 341">341</a>    const DecayVector terminal(p0);</span>
+<span class="source-line" id="L342"><a href="#L342" aria-label="Line 342">342</a>    DetectionMaps maps(efficiencies,totalEfficiencies,detectorCount,conversionCoefficients);</span>
+<span class="source-line" id="L343"><a href="#L343" aria-label="Line 343">343</a>    DetectionMaps::EfficiencyMap unity;</span>
+<span class="source-line" id="L344"><a href="#L344" aria-label="Line 344">344</a>    for (const auto* edge : quiver.GetTransitions()) unity[edge-&gt;GetName()]=1.0;</span>
+<span class="source-line" id="L345"><a href="#L345" aria-label="Line 345">345</a>    // Unit conditional efficiency leaves only the gamma-emission fraction.</span>
+<span class="source-line" id="L346"><a href="#L346" aria-label="Line 346">346</a>    DetectionMaps emissionMap(unity,unity,detectorCount,conversionCoefficients);</span>
+<span class="source-line" id="L347"><a href="#L347" aria-label="Line 347">347</a></span>
+<span class="source-line" id="L348"><a href="#L348" aria-label="Line 348">348</a>    // Transition-identity gate projector: retain terms containing ALL requested</span>
+<span class="source-line" id="L349"><a href="#L349" aria-label="Line 349">349</a>    // arrows, without changing or renormalizing their coefficients. This is the</span>
+<span class="source-line" id="L350"><a href="#L350" aria-label="Line 350">350</a>    // single-arrow form of G1/G2 (Eqs. 65/67), retaining parallel-arrow identity.</span>
+<span class="source-line" id="L351"><a href="#L351" aria-label="Line 351">351</a>    // On summed vectors this is photon membership, NOT a resolved-energy gate.</span>
+<span class="source-line" id="L352"><a href="#L352" aria-label="Line 352">352</a>    const auto gate = [](const CAlgebra::Vector&amp; vector,</span>
+<span class="source-line" id="L353"><a href="#L353" aria-label="Line 353">353</a>                         const std::vector&lt;DecayTransition*&gt;&amp; required) {</span>
+<span class="source-line" id="L354"><a href="#L354" aria-label="Line 354">354</a>        CAlgebra::Vector result;</span>
+<span class="source-line" id="L355"><a href="#L355" aria-label="Line 355">355</a>        for (const auto&amp; term : vector) {</span>
+<span class="source-line" id="L356"><a href="#L356" aria-label="Line 356">356</a>            const auto&amp; factors=term.coin.GetFactors();</span>
+<span class="source-line" id="L357"><a href="#L357" aria-label="Line 357">357</a>            const bool keep=std::all_of(required.begin(),required.end(),[&amp;](const auto* edge) {</span>
+<span class="source-line" id="L358"><a href="#L358" aria-label="Line 358">358</a>                if (!edge) throw std::runtime_error(&quot;Missing coincidence gate transition&quot;);</span>
+<span class="source-line" id="L359"><a href="#L359" aria-label="Line 359">359</a>                return std::find(factors.begin(),factors.end(),DecayPath(*edge))!=factors.end();</span>
+<span class="source-line" id="L360"><a href="#L360" aria-label="Line 360">360</a>            });</span>
+<span class="source-line" id="L361"><a href="#L361" aria-label="Line 361">361</a>            if (keep) result.push_back(term);</span>
+<span class="source-line" id="L362"><a href="#L362" aria-label="Line 362">362</a>        }</span>
+<span class="source-line" id="L363"><a href="#L363" aria-label="Line 363">363</a>        return result;</span>
+<span class="source-line" id="L364"><a href="#L364" aria-label="Line 364">364</a>    };</span>
+<span class="source-line" id="L365"><a href="#L365" aria-label="Line 365">365</a>    const auto sum = [](const CAlgebra::Vector&amp; vector) {</span>
+<span class="source-line" id="L366"><a href="#L366" aria-label="Line 366">366</a>        double result=0;</span>
+<span class="source-line" id="L367"><a href="#L367" aria-label="Line 367">367</a>        for (const auto&amp; term : vector) result+=term.coefficient;</span>
+<span class="source-line" id="L368"><a href="#L368" aria-label="Line 368">368</a>        return result;</span>
+<span class="source-line" id="L369"><a href="#L369" aria-label="Line 369">369</a>    };</span>
+<span class="source-line" id="L370"><a href="#L370" aria-label="Line 370">370</a>    const auto print = [&amp;](const std::string&amp; title,const CAlgebra::Vector&amp; vector) {</span>
+<span class="source-line" id="L371"><a href="#L371" aria-label="Line 371">371</a>        std::cout &lt;&lt; &quot;\n&quot; &lt;&lt; title &lt;&lt; &quot;\ncoefficient per parent decay | degree | coincidence basis\n&quot;;</span>
+<span class="source-line" id="L372"><a href="#L372" aria-label="Line 372">372</a>        if (vector.empty()) std::cout &lt;&lt; &quot;0 (zero vector)\n&quot;;</span>
+<span class="source-line" id="L373"><a href="#L373" aria-label="Line 373">373</a>        for (const auto&amp; term : vector)</span>
+<span class="source-line" id="L374"><a href="#L374" aria-label="Line 374">374</a>            std::cout &lt;&lt; std::setprecision(12) &lt;&lt; term.coefficient &lt;&lt; &quot; | &quot;</span>
+<span class="source-line" id="L375"><a href="#L375" aria-label="Line 375">375</a>                      &lt;&lt; term.coin.Degree() &lt;&lt; &quot; | &quot; &lt;&lt; term.coin.ToString() &lt;&lt; '\n';</span>
+<span class="source-line" id="L376"><a href="#L376" aria-label="Line 376">376</a>        std::cout &lt;&lt; &quot;Coefficient sum = &quot; &lt;&lt; sum(vector)</span>
+<span class="source-line" id="L377"><a href="#L377" aria-label="Line 377">377</a>                  &lt;&lt; &quot; (expected count; not generally an exclusive probability)\n&quot;;</span>
+<span class="source-line" id="L378"><a href="#L378" aria-label="Line 378">378</a>    };</span>
+<span class="source-line" id="L379"><a href="#L379" aria-label="Line 379">379</a>    std::cout &lt;&lt; &quot;\nCOINCIDENCE RESPONSE: illustrative existing peak efficiencies, total=&quot;</span>
+<span class="source-line" id="L380"><a href="#L380" aria-label="Line 380">380</a>              &lt;&lt; totalEfficiency &lt;&lt; &quot;, N=&quot; &lt;&lt; detectorCount &lt;&lt; &quot;. IC included.\n&quot;</span>
+<span class="source-line" id="L381"><a href="#L381" aria-label="Line 381">381</a>              &lt;&lt; &quot;All nonzero orders are printed; forbidden combinations have coefficient zero.\n&quot;</span>
+<span class="source-line" id="L382"><a href="#L382" aria-label="Line 382">382</a>              &lt;&lt; &quot;Stationary markers retain initial populations; no factorial or reverse-order duplication.\n&quot;;</span>
+<span class="source-line" id="L383"><a href="#L383" aria-label="Line 383">383</a>    CAlgebra::Vector pairs;</span>
+<span class="source-line" id="L384"><a href="#L384" aria-label="Line 384">384</a>    for (std::size_t k=2;k&lt;quiver.GetLevels().size();++k) {</span>
+<span class="source-line" id="L385"><a href="#L385" aria-label="Line 385">385</a>        auto physical=coins.Multiply(coins.Embed(branch),coins.Power(coins.Embed(tau),k));</span>
+<span class="source-line" id="L386"><a href="#L386" aria-label="Line 386">386</a>        if (physical.empty()) break;</span>
+<span class="source-line" id="L387"><a href="#L387" aria-label="Line 387">387</a>        if (k==2) pairs=physical;</span>
+<span class="source-line" id="L388"><a href="#L388" aria-label="Line 388">388</a>        const auto emitted=emissionMap.FullEnergyHit(physical);</span>
+<span class="source-line" id="L389"><a href="#L389" aria-label="Line 389">389</a>        const auto detected=maps.FullEnergyHit(physical);</span>
+<span class="source-line" id="L390"><a href="#L390" aria-label="Line 390">390</a>        const auto label=std::to_string(k)+&quot;-transition &quot;;</span>
+<span class="source-line" id="L391"><a href="#L391" aria-label="Line 391">391</a>        print(label+&quot;physical coincidences (gamma + IC)&quot;,physical);</span>
+<span class="source-line" id="L392"><a href="#L392" aria-label="Line 392">392</a>        print(label+&quot;gamma emission coincidences&quot;,emitted);</span>
+<span class="source-line" id="L393"><a href="#L393" aria-label="Line 393">393</a>        print(label+&quot;independent full-energy detections (no summing corrections)&quot;,detected);</span>
+<span class="source-line" id="L394"><a href="#L394" aria-label="Line 394">394</a>        print(label+&quot;emission, G1: contains 80.9979-keV gamma&quot;,gate(emitted,{g10}));</span>
+<span class="source-line" id="L395"><a href="#L395" aria-label="Line 395">395</a>        print(label+&quot;detection, G1: contains 80.9979-keV gamma&quot;,gate(detected,{g10}));</span>
+<span class="source-line" id="L396"><a href="#L396" aria-label="Line 396">396</a>    }</span>
+<span class="source-line" id="L397"><a href="#L397" aria-label="Line 397">397</a></span>
+<span class="source-line" id="L398"><a href="#L398" aria-label="Line 398">398</a>    // Eq. (70): one detector's peaks, including disconnected summed-in photons.</span>
+<span class="source-line" id="L399"><a href="#L399" aria-label="Line 399">399</a>    CAlgebra out(quiver,{e4,e3,e2,e1,e0},maps.SummingOut(tau));</span>
+<span class="source-line" id="L400"><a href="#L400" aria-label="Line 400">400</a>    const auto spectrum=out.Multiply(out.Multiply(out.Embed(branch),</span>
+<span class="source-line" id="L401"><a href="#L401" aria-label="Line 401">401</a>        maps.SummingInExpansion(out,tau)),out.Embed(terminal));</span>
+<span class="source-line" id="L402"><a href="#L402" aria-label="Line 402">402</a>    print(&quot;Summing-corrected spectrum: degree 1 singles; degree &gt;=2 same-detector sums&quot;,spectrum);</span>
+<span class="source-line" id="L403"><a href="#L403" aria-label="Line 403">403</a>    print(&quot;Summed spectrum, G1 photon membership: includes 80.9979-keV gamma (not an 81-keV peak gate)&quot;,</span>
+<span class="source-line" id="L404"><a href="#L404" aria-label="Line 404">404</a>          gate(spectrum,{g10}));</span>
+<span class="source-line" id="L405"><a href="#L405" aria-label="Line 405">405</a>    print(&quot;Summed spectrum, G2 photon membership: includes 356.0134- and 80.9979-keV gammas&quot;,</span>
+<span class="source-line" id="L406"><a href="#L406" aria-label="Line 406">406</a>          gate(spectrum,{g41,g10}));</span>
+<span class="source-line" id="L407"><a href="#L407" aria-label="Line 407">407</a></span>
+<span class="source-line" id="L408"><a href="#L408" aria-label="Line 408">408</a>    // Resolved two-detector peaks: all other radiation must avoid BOTH detectors.</span>
+<span class="source-line" id="L409"><a href="#L409" aria-label="Line 409">409</a>    // This does not implement general gated sums of photon groups (see CA-002).</span>
+<span class="source-line" id="L410"><a href="#L410" aria-label="Line 410">410</a>    CAlgebra::Vector cleanPairs;</span>
+<span class="source-line" id="L411"><a href="#L411" aria-label="Line 411">411</a>    if (detectorCount&gt;=2) {</span>
+<span class="source-line" id="L412"><a href="#L412" aria-label="Line 412">412</a>        CAlgebra twoOut(quiver,{e4,e3,e2,e1,e0},maps.AvoidDetectors(tau,2));</span>
+<span class="source-line" id="L413"><a href="#L413" aria-label="Line 413">413</a>        cleanPairs=twoOut.Multiply(twoOut.Multiply(twoOut.Embed(branch),</span>
+<span class="source-line" id="L414"><a href="#L414" aria-label="Line 414">414</a>            twoOut.Power(twoOut.Embed(maps.FullEnergyHit(tau)),2)),twoOut.Embed(terminal));</span>
+<span class="source-line" id="L415"><a href="#L415" aria-label="Line 415">415</a>        for (auto&amp; term : cleanPairs)</span>
+<span class="source-line" id="L416"><a href="#L416" aria-label="Line 416">416</a>            term.coefficient*=double(detectorCount-1)/double(detectorCount);</span>
+<span class="source-line" id="L417"><a href="#L417" aria-label="Line 417">417</a>    }</span>
+<span class="source-line" id="L418"><a href="#L418" aria-label="Line 418">418</a>    print(&quot;Two distinct clean full-energy peaks, including summing-out (no summed-in groups)&quot;,cleanPairs);</span>
+<span class="source-line" id="L419"><a href="#L419" aria-label="Line 419">419</a>    print(&quot;Clean pairs, G1: 80.9979-keV peak&quot;,gate(cleanPairs,{g10}));</span>
+<span class="source-line" id="L420"><a href="#L420" aria-label="Line 420">420</a>    print(&quot;Clean pairs, G2: 356.0134-keV AND 80.9979-keV peaks&quot;,gate(cleanPairs,{g41,g10}));</span>
+<span class="source-line" id="L421"><a href="#L421" aria-label="Line 421">421</a></span>
+<span class="source-line" id="L422"><a href="#L422" aria-label="Line 422">422</a>    // Independent checks against the existing ordered path-probability API</span>
+<span class="source-line" id="L423"><a href="#L423" aria-label="Line 423">423</a>    // and explicit response factors for this adjacent two-transition pair.</span>
+<span class="source-line" id="L424"><a href="#L424" aria-label="Line 424">424</a>    const double physicalPair=sum(gate(pairs,{g41,g10}));</span>
+<span class="source-line" id="L425"><a href="#L425" aria-label="Line 425">425</a>    const double pathPair=pb.CoincidenceProbability(decay_vector,DecayPath(*g41),DecayPath(*g10));</span>
+<span class="source-line" id="L426"><a href="#L426" aria-label="Line 426">426</a>    const double gammaPair=physicalPair/(1+conversionCoefficients.at(g41-&gt;GetName()))/</span>
+<span class="source-line" id="L427"><a href="#L427" aria-label="Line 427">427</a>                                          (1+conversionCoefficients.at(g10-&gt;GetName()));</span>
+<span class="source-line" id="L428"><a href="#L428" aria-label="Line 428">428</a>    const double detectedPair=gammaPair*efficiencies.at(g41-&gt;GetName())*efficiencies.at(g10-&gt;GetName());</span>
+<span class="source-line" id="L429"><a href="#L429" aria-label="Line 429">429</a>    const auto check = [](double actual,double expected) {</span>
+<span class="source-line" id="L430"><a href="#L430" aria-label="Line 430">430</a>        if (std::abs(actual-expected)&gt;1e-12)</span>
+<span class="source-line" id="L431"><a href="#L431" aria-label="Line 431">431</a>            throw std::runtime_error(&quot;Incorrect Ba-133 coincidence vector or gate&quot;);</span>
+<span class="source-line" id="L432"><a href="#L432" aria-label="Line 432">432</a>    };</span>
+<span class="source-line" id="L433"><a href="#L433" aria-label="Line 433">433</a>    check(physicalPair,pathPair);</span>
+<span class="source-line" id="L434"><a href="#L434" aria-label="Line 434">434</a>    check(sum(gate(emissionMap.FullEnergyHit(pairs),{g41,g10})),gammaPair);</span>
+<span class="source-line" id="L435"><a href="#L435" aria-label="Line 435">435</a>    check(sum(gate(maps.FullEnergyHit(pairs),{g41,g10})),detectedPair);</span>
+<span class="source-line" id="L436"><a href="#L436" aria-label="Line 436">436</a>    // This pair spans the full cascade from the populated top level to ground:</span>
+<span class="source-line" id="L437"><a href="#L437" aria-label="Line 437">437</a>    // there are no hidden photons, so only distinct-detector acceptance remains.</span>
+<span class="source-line" id="L438"><a href="#L438" aria-label="Line 438">438</a>    check(sum(gate(cleanPairs,{g41,g10})),detectedPair*double(detectorCount-1)/double(detectorCount));</span>
+<span class="source-line" id="L439"><a href="#L439" aria-label="Line 439">439</a>    check(sum(gate(spectrum,{g41,g10})),detectedPair/double(detectorCount));</span>
+<span class="source-line" id="L440"><a href="#L440" aria-label="Line 440">440</a>    check(sum(gate(gate(pairs,{g10}),{g10})),sum(gate(pairs,{g10})));</span>
+<span class="source-line" id="L441"><a href="#L441" aria-label="Line 441">441</a>    check(sum(gate(pairs,{g41,g43})),0.0); // mutually exclusive outgoing branches</span>
+<span class="source-line" id="L442"><a href="#L442" aria-label="Line 442">442</a>    std::cout &lt;&lt; &quot;PASS: Ba-133 coincidence response, clean/summed pair and gate checks\n&quot;;</span>
+<span class="source-line" id="L443"><a href="#L443" aria-label="Line 443">443</a></span>
+<span class="source-line" id="L444"><a href="#L444" aria-label="Line 444">444</a>}</span>
+<span class="source-line" id="L445"><a href="#L445" aria-label="Line 445">445</a></span></code></pre></main></body></html>

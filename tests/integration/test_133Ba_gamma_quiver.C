@@ -5,6 +5,8 @@
 #include "COINAlgebra/Detection/DetectionMaps.h"
 
 #include <iostream>
+#include <iomanip>
+#include <algorithm>
 #include <cmath>
 #include <stdexcept>
 
@@ -324,4 +326,119 @@ void test_133Ba_gamma_quiver()
         peaks.PrintTable();
 
     }
+
+    // ========================================================
+    // Coincidence vectors: physical, emitted, detected, summed
+    // ========================================================
+    // The fiber contains physical gamma+IC branches. Applying hit maps to
+    // observed factors must not also suppress the unobserved connections.
+    CAlgebra coins(quiver, {e4,e3,e2,e1,e0}, decay_vector);
+    DecayVector branch, tau;
+    for (const auto& term : decay_vector.GetTerms()) {
+        if (term.path.IsStationary()) branch.AddTerm(term.path,term.coefficient);
+        else tau.AddTerm(term.path,term.coefficient);
+    }
+    const DecayVector terminal(p0);
+    DetectionMaps maps(efficiencies,totalEfficiencies,detectorCount,conversionCoefficients);
+    DetectionMaps::EfficiencyMap unity;
+    for (const auto* edge : quiver.GetTransitions()) unity[edge->GetName()]=1.0;
+    // Unit conditional efficiency leaves only the gamma-emission fraction.
+    DetectionMaps emissionMap(unity,unity,detectorCount,conversionCoefficients);
+
+    // Transition-identity gate projector: retain terms containing ALL requested
+    // arrows, without changing or renormalizing their coefficients. This is the
+    // single-arrow form of G1/G2 (Eqs. 65/67), retaining parallel-arrow identity.
+    // On summed vectors this is photon membership, NOT a resolved-energy gate.
+    const auto gate = [](const CAlgebra::Vector& vector,
+                         const std::vector<DecayTransition*>& required) {
+        CAlgebra::Vector result;
+        for (const auto& term : vector) {
+            const auto& factors=term.coin.GetFactors();
+            const bool keep=std::all_of(required.begin(),required.end(),[&](const auto* edge) {
+                if (!edge) throw std::runtime_error("Missing coincidence gate transition");
+                return std::find(factors.begin(),factors.end(),DecayPath(*edge))!=factors.end();
+            });
+            if (keep) result.push_back(term);
+        }
+        return result;
+    };
+    const auto sum = [](const CAlgebra::Vector& vector) {
+        double result=0;
+        for (const auto& term : vector) result+=term.coefficient;
+        return result;
+    };
+    const auto print = [&](const std::string& title,const CAlgebra::Vector& vector) {
+        std::cout << "\n" << title << "\ncoefficient per parent decay | degree | coincidence basis\n";
+        if (vector.empty()) std::cout << "0 (zero vector)\n";
+        for (const auto& term : vector)
+            std::cout << std::setprecision(12) << term.coefficient << " | "
+                      << term.coin.Degree() << " | " << term.coin.ToString() << '\n';
+        std::cout << "Coefficient sum = " << sum(vector)
+                  << " (expected count; not generally an exclusive probability)\n";
+    };
+    std::cout << "\nCOINCIDENCE RESPONSE: illustrative existing peak efficiencies, total="
+              << totalEfficiency << ", N=" << detectorCount << ". IC included.\n"
+              << "All nonzero orders are printed; forbidden combinations have coefficient zero.\n"
+              << "Stationary markers retain initial populations; no factorial or reverse-order duplication.\n";
+    CAlgebra::Vector pairs;
+    for (std::size_t k=2;k<quiver.GetLevels().size();++k) {
+        auto physical=coins.Multiply(coins.Embed(branch),coins.Power(coins.Embed(tau),k));
+        if (physical.empty()) break;
+        if (k==2) pairs=physical;
+        const auto emitted=emissionMap.FullEnergyHit(physical);
+        const auto detected=maps.FullEnergyHit(physical);
+        const auto label=std::to_string(k)+"-transition ";
+        print(label+"physical coincidences (gamma + IC)",physical);
+        print(label+"gamma emission coincidences",emitted);
+        print(label+"independent full-energy detections (no summing corrections)",detected);
+        print(label+"emission, G1: contains 80.9979-keV gamma",gate(emitted,{g10}));
+        print(label+"detection, G1: contains 80.9979-keV gamma",gate(detected,{g10}));
+    }
+
+    // Eq. (70): one detector's peaks, including disconnected summed-in photons.
+    CAlgebra out(quiver,{e4,e3,e2,e1,e0},maps.SummingOut(tau));
+    const auto spectrum=out.Multiply(out.Multiply(out.Embed(branch),
+        maps.SummingInExpansion(out,tau)),out.Embed(terminal));
+    print("Summing-corrected spectrum: degree 1 singles; degree >=2 same-detector sums",spectrum);
+    print("Summed spectrum, G1 photon membership: includes 80.9979-keV gamma (not an 81-keV peak gate)",
+          gate(spectrum,{g10}));
+    print("Summed spectrum, G2 photon membership: includes 356.0134- and 80.9979-keV gammas",
+          gate(spectrum,{g41,g10}));
+
+    // Resolved two-detector peaks: all other radiation must avoid BOTH detectors.
+    // This does not implement general gated sums of photon groups (see CA-002).
+    CAlgebra::Vector cleanPairs;
+    if (detectorCount>=2) {
+        CAlgebra twoOut(quiver,{e4,e3,e2,e1,e0},maps.AvoidDetectors(tau,2));
+        cleanPairs=twoOut.Multiply(twoOut.Multiply(twoOut.Embed(branch),
+            twoOut.Power(twoOut.Embed(maps.FullEnergyHit(tau)),2)),twoOut.Embed(terminal));
+        for (auto& term : cleanPairs)
+            term.coefficient*=double(detectorCount-1)/double(detectorCount);
+    }
+    print("Two distinct clean full-energy peaks, including summing-out (no summed-in groups)",cleanPairs);
+    print("Clean pairs, G1: 80.9979-keV peak",gate(cleanPairs,{g10}));
+    print("Clean pairs, G2: 356.0134-keV AND 80.9979-keV peaks",gate(cleanPairs,{g41,g10}));
+
+    // Independent checks against the existing ordered path-probability API
+    // and explicit response factors for this adjacent two-transition pair.
+    const double physicalPair=sum(gate(pairs,{g41,g10}));
+    const double pathPair=pb.CoincidenceProbability(decay_vector,DecayPath(*g41),DecayPath(*g10));
+    const double gammaPair=physicalPair/(1+conversionCoefficients.at(g41->GetName()))/
+                                          (1+conversionCoefficients.at(g10->GetName()));
+    const double detectedPair=gammaPair*efficiencies.at(g41->GetName())*efficiencies.at(g10->GetName());
+    const auto check = [](double actual,double expected) {
+        if (std::abs(actual-expected)>1e-12)
+            throw std::runtime_error("Incorrect Ba-133 coincidence vector or gate");
+    };
+    check(physicalPair,pathPair);
+    check(sum(gate(emissionMap.FullEnergyHit(pairs),{g41,g10})),gammaPair);
+    check(sum(gate(maps.FullEnergyHit(pairs),{g41,g10})),detectedPair);
+    // This pair spans the full cascade from the populated top level to ground:
+    // there are no hidden photons, so only distinct-detector acceptance remains.
+    check(sum(gate(cleanPairs,{g41,g10})),detectedPair*double(detectorCount-1)/double(detectorCount));
+    check(sum(gate(spectrum,{g41,g10})),detectedPair/double(detectorCount));
+    check(sum(gate(gate(pairs,{g10}),{g10})),sum(gate(pairs,{g10})));
+    check(sum(gate(pairs,{g41,g43})),0.0); // mutually exclusive outgoing branches
+    std::cout << "PASS: Ba-133 coincidence response, clean/summed pair and gate checks\n";
+
 }

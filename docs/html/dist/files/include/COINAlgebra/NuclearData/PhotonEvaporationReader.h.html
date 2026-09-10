@@ -31,354 +31,355 @@
 <span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>    // --------------------------------------------------------</span>
 <span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a></span>
 <span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    double energy_keV;</span>
-<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    double relativeIntensity;</span>
-<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
-<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    // Geant4 multipolarity encoding:</span>
-<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    //</span>
-<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    //   1 = E0</span>
-<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    //   2 = E1</span>
-<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    //   3 = M1</span>
-<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    //   4 = E2</span>
-<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    //   5 = M2</span>
-<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    //   6 = E3</span>
-<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    //   7 = M3</span>
-<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>    //</span>
-<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>    //   100*Nx + Ny = mixed transition</span>
-<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    //</span>
-<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    // Example:</span>
-<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    //   304 = M1 + E2</span>
-<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    //</span>
-<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    //   0 = unknown multipolarity</span>
-<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    //</span>
-<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a></span>
-<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>    int multipolarity;</span>
-<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a></span>
-<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    // Multipolarity mixing ratio</span>
-<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    //</span>
-<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>    // Geant4 uses 0 when no mixing ratio is given in the</span>
-<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    // numerical representation of the data.</span>
-<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>    //</span>
-<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>    // The original file description refers to this as &quot;O&quot;</span>
-<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>    // (not given) in the conceptual format.</span>
-<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    //</span>
-<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a></span>
-<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    double mixingRatio;</span>
-<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
-<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>    // Internal conversion</span>
-<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    //</span>
-<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    // alpha = Ic / Ig</span>
-<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    //</span>
-<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a></span>
-<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>    double conversionCoefficient;</span>
-<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a></span>
-<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    // Partial internal conversion probabilities</span>
-<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    //</span>
-<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    // Ordered according to the Geant4 documentation:</span>
-<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    //</span>
-<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    //   [0] K</span>
-<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    //   [1] L1</span>
-<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    //   [2] L2</span>
-<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    //   [3] L3</span>
-<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    //   [4] M1</span>
-<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    //   [5] M2</span>
-<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    //   [6] M3</span>
-<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>    //   [7] M4</span>
-<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>    //   [8] M5</span>
-<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>    //   [9] Outer shells</span>
-<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    //</span>
-<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // These values are zero when the total conversion</span>
-<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>    // coefficient is zero or when no partial data are given.</span>
-<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    //</span>
-<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a></span>
-<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    std::array&lt;double, 10&gt; shellConversionProbabilities{};</span>
-<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a></span>
-<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    // Constructors</span>
-<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a></span>
-<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>    PhotonTransition();</span>
-<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a></span>
-<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a>    PhotonTransition(</span>
-<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>        int daughterLevel,</span>
-<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>        double energy_keV,</span>
-<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>        double relativeIntensity,</span>
-<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>        int multipolarity,</span>
-<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>        double mixingRatio,</span>
-<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>        double conversionCoefficient,</span>
-<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>        const std::array&lt;double, 10&gt;&amp; shellConversionProbabilities</span>
-<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>    );</span>
-<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a></span>
-<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>    // Probability helpers</span>
-<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a></span>
-<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a>    // Probability that the transition proceeds by gamma</span>
-<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>    // emission rather than internal conversion.</span>
-<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>    //</span>
-<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>    // P(gamma) = 1 / (1 + alpha)</span>
-<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    //</span>
-<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>    double gammaProbability() const;</span>
-<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a></span>
-<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>    // Probability that the transition proceeds by internal</span>
-<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    // conversion.</span>
-<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    //</span>
-<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>    // P(IC) = alpha / (1 + alpha)</span>
-<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>    //</span>
-<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    double conversionProbability() const;</span>
-<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>};</span>
-<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a></span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // Relative GAMMA intensity; total branch weight is this * (1 + alpha).</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a>    double relativeIntensity;</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a></span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    // Geant4 multipolarity encoding:</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    //</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    //   1 = E0</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    //   2 = E1</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    //   3 = M1</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    //   4 = E2</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    //   5 = M2</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    //   6 = E3</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>    //   7 = M3</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>    //</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>    //   100*Nx + Ny = mixed transition</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    //</span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    // Example:</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    //   304 = M1 + E2</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    //</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    //   0 = unknown multipolarity</span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    //</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a></span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    int multipolarity;</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a></span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    // Multipolarity mixing ratio</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>    //</span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    // Geant4 uses 0 when no mixing ratio is given in the</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>    // numerical representation of the data.</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>    //</span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>    // The original file description refers to this as &quot;O&quot;</span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    // (not given) in the conceptual format.</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>    //</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a></span>
+<span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a>    double mixingRatio;</span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a></span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>    // Internal conversion</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    //</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    // alpha = Ic / Ig</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>    //</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a></span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    double conversionCoefficient;</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a></span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>    // Partial internal conversion probabilities</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>    //</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // Ordered according to the Geant4 documentation:</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    //</span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    //   [0] K</span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    //   [1] L1</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    //   [2] L2</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    //   [3] L3</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    //   [4] M1</span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    //   [5] M2</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>    //   [6] M3</span>
+<span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a>    //   [7] M4</span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>    //   [8] M5</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    //   [9] Outer shells</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    //</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>    // These values are zero when the total conversion</span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    // coefficient is zero or when no partial data are given.</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    //</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a></span>
+<span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a>    std::array&lt;double, 10&gt; shellConversionProbabilities{};</span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a></span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a>    // Constructors</span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a></span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a>    PhotonTransition();</span>
+<span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a></span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>    PhotonTransition(</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>        int daughterLevel,</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>        double energy_keV,</span>
+<span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a>        double relativeIntensity,</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>        int multipolarity,</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>        double mixingRatio,</span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>        double conversionCoefficient,</span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>        const std::array&lt;double, 10&gt;&amp; shellConversionProbabilities</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>    );</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a></span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>    // Probability helpers</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a></span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>    // Probability that the transition proceeds by gamma</span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>    // emission rather than internal conversion.</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>    //</span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    // P(gamma) = 1 / (1 + alpha)</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>    //</span>
+<span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a>    double gammaProbability() const;</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a></span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    // Probability that the transition proceeds by internal</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    // conversion.</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>    //</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>    // P(IC) = alpha / (1 + alpha)</span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    //</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>    double conversionProbability() const;</span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a>};</span>
 <span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a></span>
-<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a>// ============================================================</span>
-<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>// PhotonLevel</span>
-<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>// ============================================================</span>
-<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>//</span>
-<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>// Represents one nuclear level in a PhotonEvaporation isotope</span>
-<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>// file.</span>
-<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a>//</span>
-<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a></span>
-<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>struct PhotonLevel</span>
-<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>{</span>
-<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a>    // Level identification</span>
-<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a></span>
-<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>    int id;</span>
-<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a></span>
-<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>    // Floating-level flag</span>
-<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>    //</span>
-<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>    // Geant4 level files contain values such as:</span>
-<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>    //</span>
-<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>    //   -</span>
-<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>    //   +X</span>
-<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>    //   +Y</span>
-<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>    //   +Z</span>
-<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>    //   +U</span>
-<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>    //   ...</span>
-<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>    //</span>
-<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>    // We preserve this field as a string rather than attempting</span>
-<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>    // to interpret it at the reader level.</span>
-<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a>    //</span>
-<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a></span>
-<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>    std::string floating;</span>
-<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a></span>
-<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>    // Level properties</span>
-<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a></span>
-<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>    double energy_keV;</span>
-<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a></span>
-<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>    // Level half-life in seconds.</span>
-<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>    //</span>
-<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a>    // Geant4 uses -1 for a stable ground state.</span>
-<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a>    //</span>
-<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a></span>
-<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>    double halfLife_s;</span>
-<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a></span>
-<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>    // JPi information</span>
-<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a>    //</span>
-<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a>    // The sign encodes parity.</span>
-<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>    //</span>
-<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a>    // 99 indicates that JPi is unknown.</span>
-<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>    //</span>
-<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a></span>
-<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a>    double jpi;</span>
-<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a></span>
-<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>    // Gamma deexcitation transitions</span>
-<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a></span>
-<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a>    std::vector&lt;PhotonTransition&gt; transitions;</span>
-<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a></span>
-<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a>    // Constructors</span>
-<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a></span>
-<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a>    PhotonLevel();</span>
-<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a></span>
-<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a>    PhotonLevel(</span>
-<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>        int id,</span>
-<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>        const std::string&amp; floating,</span>
-<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>        double energy_keV,</span>
-<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a>        double halfLife_s,</span>
-<span class="source-line" id="L212"><a href="#L212" aria-label="Line 212">212</a>        double jpi</span>
-<span class="source-line" id="L213"><a href="#L213" aria-label="Line 213">213</a>    );</span>
-<span class="source-line" id="L214"><a href="#L214" aria-label="Line 214">214</a></span>
-<span class="source-line" id="L215"><a href="#L215" aria-label="Line 215">215</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L216"><a href="#L216" aria-label="Line 216">216</a>    // Queries</span>
-<span class="source-line" id="L217"><a href="#L217" aria-label="Line 217">217</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L218"><a href="#L218" aria-label="Line 218">218</a></span>
-<span class="source-line" id="L219"><a href="#L219" aria-label="Line 219">219</a>    std::size_t numberOfGammas() const;</span>
-<span class="source-line" id="L220"><a href="#L220" aria-label="Line 220">220</a></span>
-<span class="source-line" id="L221"><a href="#L221" aria-label="Line 221">221</a>    bool isStable() const;</span>
-<span class="source-line" id="L222"><a href="#L222" aria-label="Line 222">222</a></span>
-<span class="source-line" id="L223"><a href="#L223" aria-label="Line 223">223</a>    bool hasKnownJPi() const;</span>
-<span class="source-line" id="L224"><a href="#L224" aria-label="Line 224">224</a>};</span>
-<span class="source-line" id="L225"><a href="#L225" aria-label="Line 225">225</a></span>
+<span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a></span>
+<span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>// ============================================================</span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>// PhotonLevel</span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>// ============================================================</span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>//</span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>// Represents one nuclear level in a PhotonEvaporation isotope</span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a>// file.</span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>//</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a></span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>struct PhotonLevel</span>
+<span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a>{</span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>    // Level identification</span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a></span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>    int id;</span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a></span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>    // Floating-level flag</span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>    //</span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>    // Geant4 level files contain values such as:</span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>    //</span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>    //   -</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>    //   +X</span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>    //   +Y</span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>    //   +Z</span>
+<span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a>    //   +U</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>    //   ...</span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>    //</span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>    // We preserve this field as a string rather than attempting</span>
+<span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a>    // to interpret it at the reader level.</span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a>    //</span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a></span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>    std::string floating;</span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a></span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>    // Level properties</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a></span>
+<span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a>    double energy_keV;</span>
+<span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a></span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>    // Level half-life in seconds.</span>
+<span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a>    //</span>
+<span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a>    // Geant4 uses -1 for a stable ground state.</span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>    //</span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a></span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a>    double halfLife_s;</span>
+<span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a></span>
+<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>    // JPi information</span>
+<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a>    //</span>
+<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>    // The sign encodes parity.</span>
+<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a>    //</span>
+<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>    // 99 indicates that JPi is unknown.</span>
+<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a>    //</span>
+<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a></span>
+<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a>    double jpi;</span>
+<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a></span>
+<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a>    // Gamma deexcitation transitions</span>
+<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a></span>
+<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a>    std::vector&lt;PhotonTransition&gt; transitions;</span>
+<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a></span>
+<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>    // Constructors</span>
+<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a></span>
+<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a>    PhotonLevel();</span>
+<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a></span>
+<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>    PhotonLevel(</span>
+<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>        int id,</span>
+<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>        const std::string&amp; floating,</span>
+<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a>        double energy_keV,</span>
+<span class="source-line" id="L212"><a href="#L212" aria-label="Line 212">212</a>        double halfLife_s,</span>
+<span class="source-line" id="L213"><a href="#L213" aria-label="Line 213">213</a>        double jpi</span>
+<span class="source-line" id="L214"><a href="#L214" aria-label="Line 214">214</a>    );</span>
+<span class="source-line" id="L215"><a href="#L215" aria-label="Line 215">215</a></span>
+<span class="source-line" id="L216"><a href="#L216" aria-label="Line 216">216</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L217"><a href="#L217" aria-label="Line 217">217</a>    // Queries</span>
+<span class="source-line" id="L218"><a href="#L218" aria-label="Line 218">218</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L219"><a href="#L219" aria-label="Line 219">219</a></span>
+<span class="source-line" id="L220"><a href="#L220" aria-label="Line 220">220</a>    std::size_t numberOfGammas() const;</span>
+<span class="source-line" id="L221"><a href="#L221" aria-label="Line 221">221</a></span>
+<span class="source-line" id="L222"><a href="#L222" aria-label="Line 222">222</a>    bool isStable() const;</span>
+<span class="source-line" id="L223"><a href="#L223" aria-label="Line 223">223</a></span>
+<span class="source-line" id="L224"><a href="#L224" aria-label="Line 224">224</a>    bool hasKnownJPi() const;</span>
+<span class="source-line" id="L225"><a href="#L225" aria-label="Line 225">225</a>};</span>
 <span class="source-line" id="L226"><a href="#L226" aria-label="Line 226">226</a></span>
-<span class="source-line" id="L227"><a href="#L227" aria-label="Line 227">227</a>// ============================================================</span>
-<span class="source-line" id="L228"><a href="#L228" aria-label="Line 228">228</a>// PhotonIsotope</span>
-<span class="source-line" id="L229"><a href="#L229" aria-label="Line 229">229</a>// ============================================================</span>
-<span class="source-line" id="L230"><a href="#L230" aria-label="Line 230">230</a>//</span>
-<span class="source-line" id="L231"><a href="#L231" aria-label="Line 231">231</a>// Represents the complete PhotonEvaporation data for one</span>
-<span class="source-line" id="L232"><a href="#L232" aria-label="Line 232">232</a>// isotope.</span>
-<span class="source-line" id="L233"><a href="#L233" aria-label="Line 233">233</a>//</span>
-<span class="source-line" id="L234"><a href="#L234" aria-label="Line 234">234</a>// For example:</span>
-<span class="source-line" id="L235"><a href="#L235" aria-label="Line 235">235</a>//</span>
-<span class="source-line" id="L236"><a href="#L236" aria-label="Line 236">236</a>//     Z = 11, A = 22</span>
-<span class="source-line" id="L237"><a href="#L237" aria-label="Line 237">237</a>//</span>
-<span class="source-line" id="L238"><a href="#L238" aria-label="Line 238">238</a>// corresponds to:</span>
-<span class="source-line" id="L239"><a href="#L239" aria-label="Line 239">239</a>//</span>
-<span class="source-line" id="L240"><a href="#L240" aria-label="Line 240">240</a>//     PhotonEvaporation5.5/z11.a22</span>
-<span class="source-line" id="L241"><a href="#L241" aria-label="Line 241">241</a>//</span>
-<span class="source-line" id="L242"><a href="#L242" aria-label="Line 242">242</a></span>
-<span class="source-line" id="L243"><a href="#L243" aria-label="Line 243">243</a>class PhotonIsotope</span>
-<span class="source-line" id="L244"><a href="#L244" aria-label="Line 244">244</a>{</span>
-<span class="source-line" id="L245"><a href="#L245" aria-label="Line 245">245</a>public:</span>
-<span class="source-line" id="L246"><a href="#L246" aria-label="Line 246">246</a></span>
-<span class="source-line" id="L247"><a href="#L247" aria-label="Line 247">247</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L248"><a href="#L248" aria-label="Line 248">248</a>    // Constructor</span>
-<span class="source-line" id="L249"><a href="#L249" aria-label="Line 249">249</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L250"><a href="#L250" aria-label="Line 250">250</a></span>
-<span class="source-line" id="L251"><a href="#L251" aria-label="Line 251">251</a>    PhotonIsotope();</span>
-<span class="source-line" id="L252"><a href="#L252" aria-label="Line 252">252</a></span>
-<span class="source-line" id="L253"><a href="#L253" aria-label="Line 253">253</a>    PhotonIsotope(</span>
-<span class="source-line" id="L254"><a href="#L254" aria-label="Line 254">254</a>        int atomicNumber,</span>
-<span class="source-line" id="L255"><a href="#L255" aria-label="Line 255">255</a>        int massNumber</span>
-<span class="source-line" id="L256"><a href="#L256" aria-label="Line 256">256</a>    );</span>
-<span class="source-line" id="L257"><a href="#L257" aria-label="Line 257">257</a></span>
-<span class="source-line" id="L258"><a href="#L258" aria-label="Line 258">258</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L259"><a href="#L259" aria-label="Line 259">259</a>    // Isotope identification</span>
-<span class="source-line" id="L260"><a href="#L260" aria-label="Line 260">260</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L261"><a href="#L261" aria-label="Line 261">261</a></span>
-<span class="source-line" id="L262"><a href="#L262" aria-label="Line 262">262</a>    int atomicNumber() const;</span>
-<span class="source-line" id="L263"><a href="#L263" aria-label="Line 263">263</a></span>
-<span class="source-line" id="L264"><a href="#L264" aria-label="Line 264">264</a>    int massNumber() const;</span>
-<span class="source-line" id="L265"><a href="#L265" aria-label="Line 265">265</a></span>
-<span class="source-line" id="L266"><a href="#L266" aria-label="Line 266">266</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L267"><a href="#L267" aria-label="Line 267">267</a>    // Level access</span>
-<span class="source-line" id="L268"><a href="#L268" aria-label="Line 268">268</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L269"><a href="#L269" aria-label="Line 269">269</a></span>
-<span class="source-line" id="L270"><a href="#L270" aria-label="Line 270">270</a>    const std::vector&lt;PhotonLevel&gt;&amp; levels() const;</span>
-<span class="source-line" id="L271"><a href="#L271" aria-label="Line 271">271</a></span>
-<span class="source-line" id="L272"><a href="#L272" aria-label="Line 272">272</a>    std::vector&lt;PhotonLevel&gt;&amp; levels();</span>
-<span class="source-line" id="L273"><a href="#L273" aria-label="Line 273">273</a></span>
-<span class="source-line" id="L274"><a href="#L274" aria-label="Line 274">274</a>    std::size_t numberOfLevels() const;</span>
-<span class="source-line" id="L275"><a href="#L275" aria-label="Line 275">275</a></span>
-<span class="source-line" id="L276"><a href="#L276" aria-label="Line 276">276</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L277"><a href="#L277" aria-label="Line 277">277</a>    // Level lookup</span>
-<span class="source-line" id="L278"><a href="#L278" aria-label="Line 278">278</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L279"><a href="#L279" aria-label="Line 279">279</a></span>
-<span class="source-line" id="L280"><a href="#L280" aria-label="Line 280">280</a>    const PhotonLevel&amp; level(int id) const;</span>
-<span class="source-line" id="L281"><a href="#L281" aria-label="Line 281">281</a></span>
-<span class="source-line" id="L282"><a href="#L282" aria-label="Line 282">282</a>    PhotonLevel&amp; level(int id);</span>
-<span class="source-line" id="L283"><a href="#L283" aria-label="Line 283">283</a></span>
-<span class="source-line" id="L284"><a href="#L284" aria-label="Line 284">284</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L285"><a href="#L285" aria-label="Line 285">285</a>    // Add level</span>
-<span class="source-line" id="L286"><a href="#L286" aria-label="Line 286">286</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L287"><a href="#L287" aria-label="Line 287">287</a></span>
-<span class="source-line" id="L288"><a href="#L288" aria-label="Line 288">288</a>    void addLevel(const PhotonLevel&amp; level);</span>
-<span class="source-line" id="L289"><a href="#L289" aria-label="Line 289">289</a></span>
-<span class="source-line" id="L290"><a href="#L290" aria-label="Line 290">290</a>private:</span>
-<span class="source-line" id="L291"><a href="#L291" aria-label="Line 291">291</a></span>
-<span class="source-line" id="L292"><a href="#L292" aria-label="Line 292">292</a>    int fAtomicNumber;</span>
-<span class="source-line" id="L293"><a href="#L293" aria-label="Line 293">293</a>    int fMassNumber;</span>
-<span class="source-line" id="L294"><a href="#L294" aria-label="Line 294">294</a></span>
-<span class="source-line" id="L295"><a href="#L295" aria-label="Line 295">295</a>    std::vector&lt;PhotonLevel&gt; fLevels;</span>
-<span class="source-line" id="L296"><a href="#L296" aria-label="Line 296">296</a>};</span>
-<span class="source-line" id="L297"><a href="#L297" aria-label="Line 297">297</a></span>
+<span class="source-line" id="L227"><a href="#L227" aria-label="Line 227">227</a></span>
+<span class="source-line" id="L228"><a href="#L228" aria-label="Line 228">228</a>// ============================================================</span>
+<span class="source-line" id="L229"><a href="#L229" aria-label="Line 229">229</a>// PhotonIsotope</span>
+<span class="source-line" id="L230"><a href="#L230" aria-label="Line 230">230</a>// ============================================================</span>
+<span class="source-line" id="L231"><a href="#L231" aria-label="Line 231">231</a>//</span>
+<span class="source-line" id="L232"><a href="#L232" aria-label="Line 232">232</a>// Represents the complete PhotonEvaporation data for one</span>
+<span class="source-line" id="L233"><a href="#L233" aria-label="Line 233">233</a>// isotope.</span>
+<span class="source-line" id="L234"><a href="#L234" aria-label="Line 234">234</a>//</span>
+<span class="source-line" id="L235"><a href="#L235" aria-label="Line 235">235</a>// For example:</span>
+<span class="source-line" id="L236"><a href="#L236" aria-label="Line 236">236</a>//</span>
+<span class="source-line" id="L237"><a href="#L237" aria-label="Line 237">237</a>//     Z = 11, A = 22</span>
+<span class="source-line" id="L238"><a href="#L238" aria-label="Line 238">238</a>//</span>
+<span class="source-line" id="L239"><a href="#L239" aria-label="Line 239">239</a>// corresponds to:</span>
+<span class="source-line" id="L240"><a href="#L240" aria-label="Line 240">240</a>//</span>
+<span class="source-line" id="L241"><a href="#L241" aria-label="Line 241">241</a>//     PhotonEvaporation5.5/z11.a22</span>
+<span class="source-line" id="L242"><a href="#L242" aria-label="Line 242">242</a>//</span>
+<span class="source-line" id="L243"><a href="#L243" aria-label="Line 243">243</a></span>
+<span class="source-line" id="L244"><a href="#L244" aria-label="Line 244">244</a>class PhotonIsotope</span>
+<span class="source-line" id="L245"><a href="#L245" aria-label="Line 245">245</a>{</span>
+<span class="source-line" id="L246"><a href="#L246" aria-label="Line 246">246</a>public:</span>
+<span class="source-line" id="L247"><a href="#L247" aria-label="Line 247">247</a></span>
+<span class="source-line" id="L248"><a href="#L248" aria-label="Line 248">248</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L249"><a href="#L249" aria-label="Line 249">249</a>    // Constructor</span>
+<span class="source-line" id="L250"><a href="#L250" aria-label="Line 250">250</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L251"><a href="#L251" aria-label="Line 251">251</a></span>
+<span class="source-line" id="L252"><a href="#L252" aria-label="Line 252">252</a>    PhotonIsotope();</span>
+<span class="source-line" id="L253"><a href="#L253" aria-label="Line 253">253</a></span>
+<span class="source-line" id="L254"><a href="#L254" aria-label="Line 254">254</a>    PhotonIsotope(</span>
+<span class="source-line" id="L255"><a href="#L255" aria-label="Line 255">255</a>        int atomicNumber,</span>
+<span class="source-line" id="L256"><a href="#L256" aria-label="Line 256">256</a>        int massNumber</span>
+<span class="source-line" id="L257"><a href="#L257" aria-label="Line 257">257</a>    );</span>
+<span class="source-line" id="L258"><a href="#L258" aria-label="Line 258">258</a></span>
+<span class="source-line" id="L259"><a href="#L259" aria-label="Line 259">259</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L260"><a href="#L260" aria-label="Line 260">260</a>    // Isotope identification</span>
+<span class="source-line" id="L261"><a href="#L261" aria-label="Line 261">261</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L262"><a href="#L262" aria-label="Line 262">262</a></span>
+<span class="source-line" id="L263"><a href="#L263" aria-label="Line 263">263</a>    int atomicNumber() const;</span>
+<span class="source-line" id="L264"><a href="#L264" aria-label="Line 264">264</a></span>
+<span class="source-line" id="L265"><a href="#L265" aria-label="Line 265">265</a>    int massNumber() const;</span>
+<span class="source-line" id="L266"><a href="#L266" aria-label="Line 266">266</a></span>
+<span class="source-line" id="L267"><a href="#L267" aria-label="Line 267">267</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L268"><a href="#L268" aria-label="Line 268">268</a>    // Level access</span>
+<span class="source-line" id="L269"><a href="#L269" aria-label="Line 269">269</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L270"><a href="#L270" aria-label="Line 270">270</a></span>
+<span class="source-line" id="L271"><a href="#L271" aria-label="Line 271">271</a>    const std::vector&lt;PhotonLevel&gt;&amp; levels() const;</span>
+<span class="source-line" id="L272"><a href="#L272" aria-label="Line 272">272</a></span>
+<span class="source-line" id="L273"><a href="#L273" aria-label="Line 273">273</a>    std::vector&lt;PhotonLevel&gt;&amp; levels();</span>
+<span class="source-line" id="L274"><a href="#L274" aria-label="Line 274">274</a></span>
+<span class="source-line" id="L275"><a href="#L275" aria-label="Line 275">275</a>    std::size_t numberOfLevels() const;</span>
+<span class="source-line" id="L276"><a href="#L276" aria-label="Line 276">276</a></span>
+<span class="source-line" id="L277"><a href="#L277" aria-label="Line 277">277</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L278"><a href="#L278" aria-label="Line 278">278</a>    // Level lookup</span>
+<span class="source-line" id="L279"><a href="#L279" aria-label="Line 279">279</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L280"><a href="#L280" aria-label="Line 280">280</a></span>
+<span class="source-line" id="L281"><a href="#L281" aria-label="Line 281">281</a>    const PhotonLevel&amp; level(int id) const;</span>
+<span class="source-line" id="L282"><a href="#L282" aria-label="Line 282">282</a></span>
+<span class="source-line" id="L283"><a href="#L283" aria-label="Line 283">283</a>    PhotonLevel&amp; level(int id);</span>
+<span class="source-line" id="L284"><a href="#L284" aria-label="Line 284">284</a></span>
+<span class="source-line" id="L285"><a href="#L285" aria-label="Line 285">285</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L286"><a href="#L286" aria-label="Line 286">286</a>    // Add level</span>
+<span class="source-line" id="L287"><a href="#L287" aria-label="Line 287">287</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L288"><a href="#L288" aria-label="Line 288">288</a></span>
+<span class="source-line" id="L289"><a href="#L289" aria-label="Line 289">289</a>    void addLevel(const PhotonLevel&amp; level);</span>
+<span class="source-line" id="L290"><a href="#L290" aria-label="Line 290">290</a></span>
+<span class="source-line" id="L291"><a href="#L291" aria-label="Line 291">291</a>private:</span>
+<span class="source-line" id="L292"><a href="#L292" aria-label="Line 292">292</a></span>
+<span class="source-line" id="L293"><a href="#L293" aria-label="Line 293">293</a>    int fAtomicNumber;</span>
+<span class="source-line" id="L294"><a href="#L294" aria-label="Line 294">294</a>    int fMassNumber;</span>
+<span class="source-line" id="L295"><a href="#L295" aria-label="Line 295">295</a></span>
+<span class="source-line" id="L296"><a href="#L296" aria-label="Line 296">296</a>    std::vector&lt;PhotonLevel&gt; fLevels;</span>
+<span class="source-line" id="L297"><a href="#L297" aria-label="Line 297">297</a>};</span>
 <span class="source-line" id="L298"><a href="#L298" aria-label="Line 298">298</a></span>
-<span class="source-line" id="L299"><a href="#L299" aria-label="Line 299">299</a>// ============================================================</span>
-<span class="source-line" id="L300"><a href="#L300" aria-label="Line 300">300</a>// PhotonEvaporationReader</span>
-<span class="source-line" id="L301"><a href="#L301" aria-label="Line 301">301</a>// ============================================================</span>
-<span class="source-line" id="L302"><a href="#L302" aria-label="Line 302">302</a>//</span>
-<span class="source-line" id="L303"><a href="#L303" aria-label="Line 303">303</a>// Reader for the Geant4 PhotonEvaporation level-gamma database.</span>
-<span class="source-line" id="L304"><a href="#L304" aria-label="Line 304">304</a>//</span>
-<span class="source-line" id="L305"><a href="#L305" aria-label="Line 305">305</a>// Example:</span>
-<span class="source-line" id="L306"><a href="#L306" aria-label="Line 306">306</a>//</span>
-<span class="source-line" id="L307"><a href="#L307" aria-label="Line 307">307</a>//     PhotonEvaporationReader reader(</span>
-<span class="source-line" id="L308"><a href="#L308" aria-label="Line 308">308</a>//         &quot;PhotonEvaporation5.5&quot;</span>
-<span class="source-line" id="L309"><a href="#L309" aria-label="Line 309">309</a>//     );</span>
-<span class="source-line" id="L310"><a href="#L310" aria-label="Line 310">310</a>//</span>
-<span class="source-line" id="L311"><a href="#L311" aria-label="Line 311">311</a>//     PhotonIsotope na22 = reader.read(11, 22);</span>
-<span class="source-line" id="L312"><a href="#L312" aria-label="Line 312">312</a>//</span>
-<span class="source-line" id="L313"><a href="#L313" aria-label="Line 313">313</a></span>
-<span class="source-line" id="L314"><a href="#L314" aria-label="Line 314">314</a>class PhotonEvaporationReader</span>
-<span class="source-line" id="L315"><a href="#L315" aria-label="Line 315">315</a>{</span>
-<span class="source-line" id="L316"><a href="#L316" aria-label="Line 316">316</a>public:</span>
-<span class="source-line" id="L317"><a href="#L317" aria-label="Line 317">317</a></span>
-<span class="source-line" id="L318"><a href="#L318" aria-label="Line 318">318</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L319"><a href="#L319" aria-label="Line 319">319</a>    // Constructor</span>
-<span class="source-line" id="L320"><a href="#L320" aria-label="Line 320">320</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L321"><a href="#L321" aria-label="Line 321">321</a></span>
-<span class="source-line" id="L322"><a href="#L322" aria-label="Line 322">322</a>    explicit PhotonEvaporationReader(</span>
-<span class="source-line" id="L323"><a href="#L323" aria-label="Line 323">323</a>        const std::string&amp; dataDirectory</span>
-<span class="source-line" id="L324"><a href="#L324" aria-label="Line 324">324</a>    );</span>
-<span class="source-line" id="L325"><a href="#L325" aria-label="Line 325">325</a></span>
-<span class="source-line" id="L326"><a href="#L326" aria-label="Line 326">326</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L327"><a href="#L327" aria-label="Line 327">327</a>    // Read isotope</span>
-<span class="source-line" id="L328"><a href="#L328" aria-label="Line 328">328</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L329"><a href="#L329" aria-label="Line 329">329</a>    //</span>
-<span class="source-line" id="L330"><a href="#L330" aria-label="Line 330">330</a>    // Reads:</span>
-<span class="source-line" id="L331"><a href="#L331" aria-label="Line 331">331</a>    //</span>
-<span class="source-line" id="L332"><a href="#L332" aria-label="Line 332">332</a>    //     &lt;dataDirectory&gt;/z&lt;Z&gt;.a&lt;A&gt;</span>
-<span class="source-line" id="L333"><a href="#L333" aria-label="Line 333">333</a>    //</span>
-<span class="source-line" id="L334"><a href="#L334" aria-label="Line 334">334</a>    // For example:</span>
-<span class="source-line" id="L335"><a href="#L335" aria-label="Line 335">335</a>    //</span>
-<span class="source-line" id="L336"><a href="#L336" aria-label="Line 336">336</a>    //     read(11, 22)</span>
-<span class="source-line" id="L337"><a href="#L337" aria-label="Line 337">337</a>    //</span>
-<span class="source-line" id="L338"><a href="#L338" aria-label="Line 338">338</a>    // reads:</span>
-<span class="source-line" id="L339"><a href="#L339" aria-label="Line 339">339</a>    //</span>
-<span class="source-line" id="L340"><a href="#L340" aria-label="Line 340">340</a>    //     PhotonEvaporation5.5/z11.a22</span>
-<span class="source-line" id="L341"><a href="#L341" aria-label="Line 341">341</a>    //</span>
-<span class="source-line" id="L342"><a href="#L342" aria-label="Line 342">342</a></span>
-<span class="source-line" id="L343"><a href="#L343" aria-label="Line 343">343</a>    PhotonIsotope read(</span>
-<span class="source-line" id="L344"><a href="#L344" aria-label="Line 344">344</a>        int atomicNumber,</span>
-<span class="source-line" id="L345"><a href="#L345" aria-label="Line 345">345</a>        int massNumber</span>
-<span class="source-line" id="L346"><a href="#L346" aria-label="Line 346">346</a>    ) const;</span>
-<span class="source-line" id="L347"><a href="#L347" aria-label="Line 347">347</a></span>
-<span class="source-line" id="L348"><a href="#L348" aria-label="Line 348">348</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L349"><a href="#L349" aria-label="Line 349">349</a>    // File path</span>
-<span class="source-line" id="L350"><a href="#L350" aria-label="Line 350">350</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L351"><a href="#L351" aria-label="Line 351">351</a>    //</span>
-<span class="source-line" id="L352"><a href="#L352" aria-label="Line 352">352</a>    // Returns the expected path for an isotope data file.</span>
-<span class="source-line" id="L353"><a href="#L353" aria-label="Line 353">353</a>    //</span>
-<span class="source-line" id="L354"><a href="#L354" aria-label="Line 354">354</a></span>
-<span class="source-line" id="L355"><a href="#L355" aria-label="Line 355">355</a>    std::string filePath(</span>
-<span class="source-line" id="L356"><a href="#L356" aria-label="Line 356">356</a>        int atomicNumber,</span>
-<span class="source-line" id="L357"><a href="#L357" aria-label="Line 357">357</a>        int massNumber</span>
-<span class="source-line" id="L358"><a href="#L358" aria-label="Line 358">358</a>    ) const;</span>
-<span class="source-line" id="L359"><a href="#L359" aria-label="Line 359">359</a></span>
-<span class="source-line" id="L360"><a href="#L360" aria-label="Line 360">360</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L361"><a href="#L361" aria-label="Line 361">361</a>    // Data directory</span>
-<span class="source-line" id="L362"><a href="#L362" aria-label="Line 362">362</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L363"><a href="#L363" aria-label="Line 363">363</a></span>
-<span class="source-line" id="L364"><a href="#L364" aria-label="Line 364">364</a>    const std::string&amp; dataDirectory() const;</span>
-<span class="source-line" id="L365"><a href="#L365" aria-label="Line 365">365</a></span>
-<span class="source-line" id="L366"><a href="#L366" aria-label="Line 366">366</a>private:</span>
-<span class="source-line" id="L367"><a href="#L367" aria-label="Line 367">367</a></span>
-<span class="source-line" id="L368"><a href="#L368" aria-label="Line 368">368</a>    std::string fDataDirectory;</span>
-<span class="source-line" id="L369"><a href="#L369" aria-label="Line 369">369</a></span>
-<span class="source-line" id="L370"><a href="#L370" aria-label="Line 370">370</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L371"><a href="#L371" aria-label="Line 371">371</a>    // Parsing helpers</span>
-<span class="source-line" id="L372"><a href="#L372" aria-label="Line 372">372</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L373"><a href="#L373" aria-label="Line 373">373</a></span>
-<span class="source-line" id="L374"><a href="#L374" aria-label="Line 374">374</a>    PhotonLevel parseLevel(</span>
-<span class="source-line" id="L375"><a href="#L375" aria-label="Line 375">375</a>        const std::string&amp; line</span>
-<span class="source-line" id="L376"><a href="#L376" aria-label="Line 376">376</a>    ) const;</span>
-<span class="source-line" id="L377"><a href="#L377" aria-label="Line 377">377</a></span>
-<span class="source-line" id="L378"><a href="#L378" aria-label="Line 378">378</a>    PhotonTransition parseTransition(</span>
-<span class="source-line" id="L379"><a href="#L379" aria-label="Line 379">379</a>        const std::string&amp; line</span>
-<span class="source-line" id="L380"><a href="#L380" aria-label="Line 380">380</a>    ) const;</span>
-<span class="source-line" id="L381"><a href="#L381" aria-label="Line 381">381</a>};</span>
-<span class="source-line" id="L382"><a href="#L382" aria-label="Line 382">382</a></span>
-<span class="source-line" id="L383"><a href="#L383" aria-label="Line 383">383</a>#endif // COINALGEBRA_PHOTONEVAPORATIONREADER_H</span></code></pre></main></body></html>
+<span class="source-line" id="L299"><a href="#L299" aria-label="Line 299">299</a></span>
+<span class="source-line" id="L300"><a href="#L300" aria-label="Line 300">300</a>// ============================================================</span>
+<span class="source-line" id="L301"><a href="#L301" aria-label="Line 301">301</a>// PhotonEvaporationReader</span>
+<span class="source-line" id="L302"><a href="#L302" aria-label="Line 302">302</a>// ============================================================</span>
+<span class="source-line" id="L303"><a href="#L303" aria-label="Line 303">303</a>//</span>
+<span class="source-line" id="L304"><a href="#L304" aria-label="Line 304">304</a>// Reader for the Geant4 PhotonEvaporation level-gamma database.</span>
+<span class="source-line" id="L305"><a href="#L305" aria-label="Line 305">305</a>//</span>
+<span class="source-line" id="L306"><a href="#L306" aria-label="Line 306">306</a>// Example:</span>
+<span class="source-line" id="L307"><a href="#L307" aria-label="Line 307">307</a>//</span>
+<span class="source-line" id="L308"><a href="#L308" aria-label="Line 308">308</a>//     PhotonEvaporationReader reader(</span>
+<span class="source-line" id="L309"><a href="#L309" aria-label="Line 309">309</a>//         &quot;PhotonEvaporation5.5&quot;</span>
+<span class="source-line" id="L310"><a href="#L310" aria-label="Line 310">310</a>//     );</span>
+<span class="source-line" id="L311"><a href="#L311" aria-label="Line 311">311</a>//</span>
+<span class="source-line" id="L312"><a href="#L312" aria-label="Line 312">312</a>//     PhotonIsotope na22 = reader.read(11, 22);</span>
+<span class="source-line" id="L313"><a href="#L313" aria-label="Line 313">313</a>//</span>
+<span class="source-line" id="L314"><a href="#L314" aria-label="Line 314">314</a></span>
+<span class="source-line" id="L315"><a href="#L315" aria-label="Line 315">315</a>class PhotonEvaporationReader</span>
+<span class="source-line" id="L316"><a href="#L316" aria-label="Line 316">316</a>{</span>
+<span class="source-line" id="L317"><a href="#L317" aria-label="Line 317">317</a>public:</span>
+<span class="source-line" id="L318"><a href="#L318" aria-label="Line 318">318</a></span>
+<span class="source-line" id="L319"><a href="#L319" aria-label="Line 319">319</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L320"><a href="#L320" aria-label="Line 320">320</a>    // Constructor</span>
+<span class="source-line" id="L321"><a href="#L321" aria-label="Line 321">321</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L322"><a href="#L322" aria-label="Line 322">322</a></span>
+<span class="source-line" id="L323"><a href="#L323" aria-label="Line 323">323</a>    explicit PhotonEvaporationReader(</span>
+<span class="source-line" id="L324"><a href="#L324" aria-label="Line 324">324</a>        const std::string&amp; dataDirectory</span>
+<span class="source-line" id="L325"><a href="#L325" aria-label="Line 325">325</a>    );</span>
+<span class="source-line" id="L326"><a href="#L326" aria-label="Line 326">326</a></span>
+<span class="source-line" id="L327"><a href="#L327" aria-label="Line 327">327</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L328"><a href="#L328" aria-label="Line 328">328</a>    // Read isotope</span>
+<span class="source-line" id="L329"><a href="#L329" aria-label="Line 329">329</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L330"><a href="#L330" aria-label="Line 330">330</a>    //</span>
+<span class="source-line" id="L331"><a href="#L331" aria-label="Line 331">331</a>    // Reads:</span>
+<span class="source-line" id="L332"><a href="#L332" aria-label="Line 332">332</a>    //</span>
+<span class="source-line" id="L333"><a href="#L333" aria-label="Line 333">333</a>    //     &lt;dataDirectory&gt;/z&lt;Z&gt;.a&lt;A&gt;</span>
+<span class="source-line" id="L334"><a href="#L334" aria-label="Line 334">334</a>    //</span>
+<span class="source-line" id="L335"><a href="#L335" aria-label="Line 335">335</a>    // For example:</span>
+<span class="source-line" id="L336"><a href="#L336" aria-label="Line 336">336</a>    //</span>
+<span class="source-line" id="L337"><a href="#L337" aria-label="Line 337">337</a>    //     read(11, 22)</span>
+<span class="source-line" id="L338"><a href="#L338" aria-label="Line 338">338</a>    //</span>
+<span class="source-line" id="L339"><a href="#L339" aria-label="Line 339">339</a>    // reads:</span>
+<span class="source-line" id="L340"><a href="#L340" aria-label="Line 340">340</a>    //</span>
+<span class="source-line" id="L341"><a href="#L341" aria-label="Line 341">341</a>    //     PhotonEvaporation5.5/z11.a22</span>
+<span class="source-line" id="L342"><a href="#L342" aria-label="Line 342">342</a>    //</span>
+<span class="source-line" id="L343"><a href="#L343" aria-label="Line 343">343</a></span>
+<span class="source-line" id="L344"><a href="#L344" aria-label="Line 344">344</a>    PhotonIsotope read(</span>
+<span class="source-line" id="L345"><a href="#L345" aria-label="Line 345">345</a>        int atomicNumber,</span>
+<span class="source-line" id="L346"><a href="#L346" aria-label="Line 346">346</a>        int massNumber</span>
+<span class="source-line" id="L347"><a href="#L347" aria-label="Line 347">347</a>    ) const;</span>
+<span class="source-line" id="L348"><a href="#L348" aria-label="Line 348">348</a></span>
+<span class="source-line" id="L349"><a href="#L349" aria-label="Line 349">349</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L350"><a href="#L350" aria-label="Line 350">350</a>    // File path</span>
+<span class="source-line" id="L351"><a href="#L351" aria-label="Line 351">351</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L352"><a href="#L352" aria-label="Line 352">352</a>    //</span>
+<span class="source-line" id="L353"><a href="#L353" aria-label="Line 353">353</a>    // Returns the expected path for an isotope data file.</span>
+<span class="source-line" id="L354"><a href="#L354" aria-label="Line 354">354</a>    //</span>
+<span class="source-line" id="L355"><a href="#L355" aria-label="Line 355">355</a></span>
+<span class="source-line" id="L356"><a href="#L356" aria-label="Line 356">356</a>    std::string filePath(</span>
+<span class="source-line" id="L357"><a href="#L357" aria-label="Line 357">357</a>        int atomicNumber,</span>
+<span class="source-line" id="L358"><a href="#L358" aria-label="Line 358">358</a>        int massNumber</span>
+<span class="source-line" id="L359"><a href="#L359" aria-label="Line 359">359</a>    ) const;</span>
+<span class="source-line" id="L360"><a href="#L360" aria-label="Line 360">360</a></span>
+<span class="source-line" id="L361"><a href="#L361" aria-label="Line 361">361</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L362"><a href="#L362" aria-label="Line 362">362</a>    // Data directory</span>
+<span class="source-line" id="L363"><a href="#L363" aria-label="Line 363">363</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L364"><a href="#L364" aria-label="Line 364">364</a></span>
+<span class="source-line" id="L365"><a href="#L365" aria-label="Line 365">365</a>    const std::string&amp; dataDirectory() const;</span>
+<span class="source-line" id="L366"><a href="#L366" aria-label="Line 366">366</a></span>
+<span class="source-line" id="L367"><a href="#L367" aria-label="Line 367">367</a>private:</span>
+<span class="source-line" id="L368"><a href="#L368" aria-label="Line 368">368</a></span>
+<span class="source-line" id="L369"><a href="#L369" aria-label="Line 369">369</a>    std::string fDataDirectory;</span>
+<span class="source-line" id="L370"><a href="#L370" aria-label="Line 370">370</a></span>
+<span class="source-line" id="L371"><a href="#L371" aria-label="Line 371">371</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L372"><a href="#L372" aria-label="Line 372">372</a>    // Parsing helpers</span>
+<span class="source-line" id="L373"><a href="#L373" aria-label="Line 373">373</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L374"><a href="#L374" aria-label="Line 374">374</a></span>
+<span class="source-line" id="L375"><a href="#L375" aria-label="Line 375">375</a>    PhotonLevel parseLevel(</span>
+<span class="source-line" id="L376"><a href="#L376" aria-label="Line 376">376</a>        const std::string&amp; line</span>
+<span class="source-line" id="L377"><a href="#L377" aria-label="Line 377">377</a>    ) const;</span>
+<span class="source-line" id="L378"><a href="#L378" aria-label="Line 378">378</a></span>
+<span class="source-line" id="L379"><a href="#L379" aria-label="Line 379">379</a>    PhotonTransition parseTransition(</span>
+<span class="source-line" id="L380"><a href="#L380" aria-label="Line 380">380</a>        const std::string&amp; line</span>
+<span class="source-line" id="L381"><a href="#L381" aria-label="Line 381">381</a>    ) const;</span>
+<span class="source-line" id="L382"><a href="#L382" aria-label="Line 382">382</a>};</span>
+<span class="source-line" id="L383"><a href="#L383" aria-label="Line 383">383</a></span>
+<span class="source-line" id="L384"><a href="#L384" aria-label="Line 384">384</a>#endif // COINALGEBRA_PHOTONEVAPORATIONREADER_H</span></code></pre></main></body></html>

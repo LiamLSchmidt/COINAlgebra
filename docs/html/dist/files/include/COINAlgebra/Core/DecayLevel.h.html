@@ -14,18 +14,29 @@
 <span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>        const std::string&amp; name</span>
 <span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>    );</span>
 <span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a></span>
-<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    const std::string&amp; GetName() const;</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    DecayLevel(const std::string&amp; name, double energy_keV);</span>
 <span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a></span>
-<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    void SetName(</span>
-<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>        const std::string&amp; name</span>
-<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    );</span>
-<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a></span>
-<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    void Print() const;</span>
-<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a></span>
-<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>private:</span>
-<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a></span>
-<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    std::string fName;</span>
-<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>};</span>
-<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a></span>
-<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>#endif</span>
-<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a></span></code></pre></main></body></html>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    // Excitation energy in keV. Unknown is distinct from the ground state's 0.</span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    // GetEnergy throws logic_error if unset; setters reject nonfinite/negative values.</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    bool HasEnergy() const;</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    double GetEnergy() const;</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    void SetEnergy(double energy_keV);</span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    void ClearEnergy();</span>
+<span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a></span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    const std::string&amp; GetName() const;</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a></span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>    void SetName(</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>        const std::string&amp; name</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    );</span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a></span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    void Print() const;</span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a></span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>private:</span>
+<span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    std::string fName;</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    double fEnergy = 0.0;</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    bool fHasEnergy = false;</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>};</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a></span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>#endif</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a></span></code></pre></main></body></html>

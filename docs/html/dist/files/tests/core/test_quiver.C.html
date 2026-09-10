@@ -4,188 +4,209 @@
 <span class="source-line" id="L3"><a href="#L3" aria-label="Line 3">3</a>#include &lt;cassert&gt;</span>
 <span class="source-line" id="L4"><a href="#L4" aria-label="Line 4">4</a>#include &lt;cmath&gt;</span>
 <span class="source-line" id="L5"><a href="#L5" aria-label="Line 5">5</a>#include &lt;iostream&gt;</span>
-<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a></span>
-<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a></span>
-<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a>void test_quiver()</span>
-<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a>{</span>
-<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>    std::cout &lt;&lt; std::endl;</span>
-<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a>    std::cout &lt;&lt; &quot;========================================&quot; &lt;&lt; std::endl;</span>
-<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>    std::cout &lt;&lt; &quot;       COINAlgebra Quiver Test&quot; &lt;&lt; std::endl;</span>
+<span class="source-line" id="L6"><a href="#L6" aria-label="Line 6">6</a>#include &lt;limits&gt;</span>
+<span class="source-line" id="L7"><a href="#L7" aria-label="Line 7">7</a>#include &lt;stdexcept&gt;</span>
+<span class="source-line" id="L8"><a href="#L8" aria-label="Line 8">8</a></span>
+<span class="source-line" id="L9"><a href="#L9" aria-label="Line 9">9</a></span>
+<span class="source-line" id="L10"><a href="#L10" aria-label="Line 10">10</a>void test_quiver()</span>
+<span class="source-line" id="L11"><a href="#L11" aria-label="Line 11">11</a>{</span>
+<span class="source-line" id="L12"><a href="#L12" aria-label="Line 12">12</a>    std::cout &lt;&lt; std::endl;</span>
 <span class="source-line" id="L13"><a href="#L13" aria-label="Line 13">13</a>    std::cout &lt;&lt; &quot;========================================&quot; &lt;&lt; std::endl;</span>
-<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>    std::cout &lt;&lt; std::endl;</span>
-<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a></span>
-<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a></span>
-<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a>    // Construct the decay quiver</span>
-<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    //</span>
-<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    //              gamma1</span>
-<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    //         d2 ----------&gt; d1</span>
-<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    //          |              |</span>
-<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    //       gamma3          gamma2</span>
+<span class="source-line" id="L14"><a href="#L14" aria-label="Line 14">14</a>    std::cout &lt;&lt; &quot;       COINAlgebra Quiver Test&quot; &lt;&lt; std::endl;</span>
+<span class="source-line" id="L15"><a href="#L15" aria-label="Line 15">15</a>    std::cout &lt;&lt; &quot;========================================&quot; &lt;&lt; std::endl;</span>
+<span class="source-line" id="L16"><a href="#L16" aria-label="Line 16">16</a>    std::cout &lt;&lt; std::endl;</span>
+<span class="source-line" id="L17"><a href="#L17" aria-label="Line 17">17</a></span>
+<span class="source-line" id="L18"><a href="#L18" aria-label="Line 18">18</a></span>
+<span class="source-line" id="L19"><a href="#L19" aria-label="Line 19">19</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L20"><a href="#L20" aria-label="Line 20">20</a>    // Construct the decay quiver</span>
+<span class="source-line" id="L21"><a href="#L21" aria-label="Line 21">21</a>    //</span>
+<span class="source-line" id="L22"><a href="#L22" aria-label="Line 22">22</a>    //              gamma1</span>
+<span class="source-line" id="L23"><a href="#L23" aria-label="Line 23">23</a>    //         d2 ----------&gt; d1</span>
 <span class="source-line" id="L24"><a href="#L24" aria-label="Line 24">24</a>    //          |              |</span>
-<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    //          v              v</span>
-<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    //         d0 &lt;------------</span>
-<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>    //</span>
-<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>    // gamma1 = 0.7</span>
-<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    // gamma2 = 1.0</span>
-<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>    // gamma3 = 0.3</span>
-<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a></span>
-<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    DecayQuiver quiver;</span>
+<span class="source-line" id="L25"><a href="#L25" aria-label="Line 25">25</a>    //       gamma3          gamma2</span>
+<span class="source-line" id="L26"><a href="#L26" aria-label="Line 26">26</a>    //          |              |</span>
+<span class="source-line" id="L27"><a href="#L27" aria-label="Line 27">27</a>    //          v              v</span>
+<span class="source-line" id="L28"><a href="#L28" aria-label="Line 28">28</a>    //         d0 &lt;------------</span>
+<span class="source-line" id="L29"><a href="#L29" aria-label="Line 29">29</a>    //</span>
+<span class="source-line" id="L30"><a href="#L30" aria-label="Line 30">30</a>    // gamma1 = 0.7</span>
+<span class="source-line" id="L31"><a href="#L31" aria-label="Line 31">31</a>    // gamma2 = 1.0</span>
+<span class="source-line" id="L32"><a href="#L32" aria-label="Line 32">32</a>    // gamma3 = 0.3</span>
+<span class="source-line" id="L33"><a href="#L33" aria-label="Line 33">33</a>    // --------------------------------------------------------</span>
 <span class="source-line" id="L34"><a href="#L34" aria-label="Line 34">34</a></span>
-<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    DecayLevel* d2 = quiver.AddLevel(&quot;d2&quot;);</span>
-<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    DecayLevel* d1 = quiver.AddLevel(&quot;d1&quot;);</span>
-<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    DecayLevel* d0 = quiver.AddLevel(&quot;d0&quot;);</span>
-<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a></span>
-<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    DecayTransition* gamma1 =</span>
-<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>        quiver.AddTransition(</span>
-<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>            &quot;gamma1&quot;,</span>
-<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>            d2,</span>
-<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>            d1,</span>
-<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>            0.7</span>
-<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>        );</span>
-<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a></span>
-<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    DecayTransition* gamma2 =</span>
-<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>        quiver.AddTransition(</span>
-<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>            &quot;gamma2&quot;,</span>
-<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>            d1,</span>
-<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>            d0,</span>
-<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>            1.0</span>
-<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a>        );</span>
-<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a></span>
-<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a>    DecayTransition* gamma3 =</span>
-<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>        quiver.AddTransition(</span>
-<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>            &quot;gamma3&quot;,</span>
-<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>            d2,</span>
-<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a>            d0,</span>
-<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>            0.3</span>
-<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>        );</span>
-<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a></span>
-<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a></span>
-<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>    // Print</span>
-<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L35"><a href="#L35" aria-label="Line 35">35</a>    // Energy is optional, validated and independent of names and graph identity.</span>
+<span class="source-line" id="L36"><a href="#L36" aria-label="Line 36">36</a>    DecayLevel unknown(&quot;unknown&quot;);</span>
+<span class="source-line" id="L37"><a href="#L37" aria-label="Line 37">37</a>    assert(!unknown.HasEnergy());</span>
+<span class="source-line" id="L38"><a href="#L38" aria-label="Line 38">38</a>    bool unsetThrows=false;</span>
+<span class="source-line" id="L39"><a href="#L39" aria-label="Line 39">39</a>    try { unknown.GetEnergy(); } catch(const std::logic_error&amp;) { unsetThrows=true; }</span>
+<span class="source-line" id="L40"><a href="#L40" aria-label="Line 40">40</a>    assert(unsetThrows);</span>
+<span class="source-line" id="L41"><a href="#L41" aria-label="Line 41">41</a>    DecayLevel ground(&quot;ground&quot;,0.0);assert(ground.HasEnergy() &amp;&amp; ground.GetEnergy()==0.0);</span>
+<span class="source-line" id="L42"><a href="#L42" aria-label="Line 42">42</a>    ground.SetEnergy(123.456789);ground.SetName(&quot;renamed&quot;);assert(ground.GetEnergy()==123.456789);</span>
+<span class="source-line" id="L43"><a href="#L43" aria-label="Line 43">43</a>    auto copy=ground;assert(copy.HasEnergy() &amp;&amp; copy.GetEnergy()==ground.GetEnergy());</span>
+<span class="source-line" id="L44"><a href="#L44" aria-label="Line 44">44</a>    for(double bad:{-1.,std::numeric_limits&lt;double&gt;::infinity(),std::numeric_limits&lt;double&gt;::quiet_NaN()}) {</span>
+<span class="source-line" id="L45"><a href="#L45" aria-label="Line 45">45</a>        bool rejected=false;try{ground.SetEnergy(bad);}catch(const std::invalid_argument&amp;){rejected=true;}</span>
+<span class="source-line" id="L46"><a href="#L46" aria-label="Line 46">46</a>        assert(rejected &amp;&amp; ground.GetEnergy()==123.456789);</span>
+<span class="source-line" id="L47"><a href="#L47" aria-label="Line 47">47</a>    }</span>
+<span class="source-line" id="L48"><a href="#L48" aria-label="Line 48">48</a>    ground.ClearEnergy();assert(!ground.HasEnergy());</span>
+<span class="source-line" id="L49"><a href="#L49" aria-label="Line 49">49</a>    DecayQuiver energyQuiver;</span>
+<span class="source-line" id="L50"><a href="#L50" aria-label="Line 50">50</a>    auto* excited=energyQuiver.AddLevel(&quot;excited&quot;,200.5);assert(excited-&gt;GetEnergy()==200.5);</span>
+<span class="source-line" id="L51"><a href="#L51" aria-label="Line 51">51</a>    bool rejected=false;try{energyQuiver.AddLevel(&quot;invalid&quot;,-1);}catch(const std::invalid_argument&amp;){rejected=true;}</span>
+<span class="source-line" id="L52"><a href="#L52" aria-label="Line 52">52</a>    assert(rejected &amp;&amp; energyQuiver.GetLevels().size()==1);</span>
+<span class="source-line" id="L53"><a href="#L53" aria-label="Line 53">53</a></span>
+<span class="source-line" id="L54"><a href="#L54" aria-label="Line 54">54</a>    DecayQuiver quiver;</span>
+<span class="source-line" id="L55"><a href="#L55" aria-label="Line 55">55</a></span>
+<span class="source-line" id="L56"><a href="#L56" aria-label="Line 56">56</a>    DecayLevel* d2 = quiver.AddLevel(&quot;d2&quot;);</span>
+<span class="source-line" id="L57"><a href="#L57" aria-label="Line 57">57</a>    DecayLevel* d1 = quiver.AddLevel(&quot;d1&quot;);</span>
+<span class="source-line" id="L58"><a href="#L58" aria-label="Line 58">58</a>    DecayLevel* d0 = quiver.AddLevel(&quot;d0&quot;);</span>
+<span class="source-line" id="L59"><a href="#L59" aria-label="Line 59">59</a></span>
+<span class="source-line" id="L60"><a href="#L60" aria-label="Line 60">60</a>    DecayTransition* gamma1 =</span>
+<span class="source-line" id="L61"><a href="#L61" aria-label="Line 61">61</a>        quiver.AddTransition(</span>
+<span class="source-line" id="L62"><a href="#L62" aria-label="Line 62">62</a>            &quot;gamma1&quot;,</span>
+<span class="source-line" id="L63"><a href="#L63" aria-label="Line 63">63</a>            d2,</span>
+<span class="source-line" id="L64"><a href="#L64" aria-label="Line 64">64</a>            d1,</span>
+<span class="source-line" id="L65"><a href="#L65" aria-label="Line 65">65</a>            0.7</span>
+<span class="source-line" id="L66"><a href="#L66" aria-label="Line 66">66</a>        );</span>
 <span class="source-line" id="L67"><a href="#L67" aria-label="Line 67">67</a></span>
-<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    quiver.Print();</span>
-<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a></span>
-<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a></span>
-<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>    // Check vertices</span>
-<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a></span>
-<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a>    assert(quiver.GetLevel(&quot;d2&quot;) == d2);</span>
-<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    assert(quiver.GetLevel(&quot;d1&quot;) == d1);</span>
-<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>    assert(quiver.GetLevel(&quot;d0&quot;) == d0);</span>
-<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a></span>
-<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>    assert(quiver.GetLevels().size() == 3);</span>
-<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a></span>
-<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a></span>
-<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a>    // Check transitions</span>
-<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a></span>
-<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    assert(quiver.GetTransition(&quot;gamma1&quot;) == gamma1);</span>
-<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    assert(quiver.GetTransition(&quot;gamma2&quot;) == gamma2);</span>
-<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a>    assert(quiver.GetTransition(&quot;gamma3&quot;) == gamma3);</span>
-<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a></span>
-<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a>    assert(quiver.GetTransitions().size() == 3);</span>
+<span class="source-line" id="L68"><a href="#L68" aria-label="Line 68">68</a>    DecayTransition* gamma2 =</span>
+<span class="source-line" id="L69"><a href="#L69" aria-label="Line 69">69</a>        quiver.AddTransition(</span>
+<span class="source-line" id="L70"><a href="#L70" aria-label="Line 70">70</a>            &quot;gamma2&quot;,</span>
+<span class="source-line" id="L71"><a href="#L71" aria-label="Line 71">71</a>            d1,</span>
+<span class="source-line" id="L72"><a href="#L72" aria-label="Line 72">72</a>            d0,</span>
+<span class="source-line" id="L73"><a href="#L73" aria-label="Line 73">73</a>            1.0</span>
+<span class="source-line" id="L74"><a href="#L74" aria-label="Line 74">74</a>        );</span>
+<span class="source-line" id="L75"><a href="#L75" aria-label="Line 75">75</a></span>
+<span class="source-line" id="L76"><a href="#L76" aria-label="Line 76">76</a>    DecayTransition* gamma3 =</span>
+<span class="source-line" id="L77"><a href="#L77" aria-label="Line 77">77</a>        quiver.AddTransition(</span>
+<span class="source-line" id="L78"><a href="#L78" aria-label="Line 78">78</a>            &quot;gamma3&quot;,</span>
+<span class="source-line" id="L79"><a href="#L79" aria-label="Line 79">79</a>            d2,</span>
+<span class="source-line" id="L80"><a href="#L80" aria-label="Line 80">80</a>            d0,</span>
+<span class="source-line" id="L81"><a href="#L81" aria-label="Line 81">81</a>            0.3</span>
+<span class="source-line" id="L82"><a href="#L82" aria-label="Line 82">82</a>        );</span>
+<span class="source-line" id="L83"><a href="#L83" aria-label="Line 83">83</a></span>
+<span class="source-line" id="L84"><a href="#L84" aria-label="Line 84">84</a></span>
+<span class="source-line" id="L85"><a href="#L85" aria-label="Line 85">85</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L86"><a href="#L86" aria-label="Line 86">86</a>    // Print</span>
+<span class="source-line" id="L87"><a href="#L87" aria-label="Line 87">87</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L88"><a href="#L88" aria-label="Line 88">88</a></span>
+<span class="source-line" id="L89"><a href="#L89" aria-label="Line 89">89</a>    quiver.Print();</span>
+<span class="source-line" id="L90"><a href="#L90" aria-label="Line 90">90</a></span>
 <span class="source-line" id="L91"><a href="#L91" aria-label="Line 91">91</a></span>
-<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a></span>
-<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // Check source and target maps</span>
-<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a></span>
-<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    assert(gamma1-&gt;GetSource() == d2);</span>
-<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    assert(gamma1-&gt;GetTarget() == d1);</span>
+<span class="source-line" id="L92"><a href="#L92" aria-label="Line 92">92</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L93"><a href="#L93" aria-label="Line 93">93</a>    // Check vertices</span>
+<span class="source-line" id="L94"><a href="#L94" aria-label="Line 94">94</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L95"><a href="#L95" aria-label="Line 95">95</a></span>
+<span class="source-line" id="L96"><a href="#L96" aria-label="Line 96">96</a>    assert(quiver.GetLevel(&quot;d2&quot;) == d2);</span>
+<span class="source-line" id="L97"><a href="#L97" aria-label="Line 97">97</a>    assert(quiver.GetLevel(&quot;d1&quot;) == d1);</span>
+<span class="source-line" id="L98"><a href="#L98" aria-label="Line 98">98</a>    assert(quiver.GetLevel(&quot;d0&quot;) == d0);</span>
 <span class="source-line" id="L99"><a href="#L99" aria-label="Line 99">99</a></span>
-<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    assert(gamma2-&gt;GetSource() == d1);</span>
-<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a>    assert(gamma2-&gt;GetTarget() == d0);</span>
+<span class="source-line" id="L100"><a href="#L100" aria-label="Line 100">100</a>    assert(quiver.GetLevels().size() == 3);</span>
+<span class="source-line" id="L101"><a href="#L101" aria-label="Line 101">101</a></span>
 <span class="source-line" id="L102"><a href="#L102" aria-label="Line 102">102</a></span>
-<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>    assert(gamma3-&gt;GetSource() == d2);</span>
-<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>    assert(gamma3-&gt;GetTarget() == d0);</span>
-<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a></span>
+<span class="source-line" id="L103"><a href="#L103" aria-label="Line 103">103</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L104"><a href="#L104" aria-label="Line 104">104</a>    // Check transitions</span>
+<span class="source-line" id="L105"><a href="#L105" aria-label="Line 105">105</a>    // --------------------------------------------------------</span>
 <span class="source-line" id="L106"><a href="#L106" aria-label="Line 106">106</a></span>
-<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>    // Check probabilities</span>
-<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L107"><a href="#L107" aria-label="Line 107">107</a>    assert(quiver.GetTransition(&quot;gamma1&quot;) == gamma1);</span>
+<span class="source-line" id="L108"><a href="#L108" aria-label="Line 108">108</a>    assert(quiver.GetTransition(&quot;gamma2&quot;) == gamma2);</span>
+<span class="source-line" id="L109"><a href="#L109" aria-label="Line 109">109</a>    assert(quiver.GetTransition(&quot;gamma3&quot;) == gamma3);</span>
 <span class="source-line" id="L110"><a href="#L110" aria-label="Line 110">110</a></span>
-<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    assert(</span>
-<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a>        std::abs(gamma1-&gt;GetProbability() - 0.7)</span>
-<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a>        &lt; 1.0e-12</span>
-<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>    );</span>
-<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a></span>
-<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>    assert(</span>
-<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a>        std::abs(gamma2-&gt;GetProbability() - 1.0)</span>
-<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>        &lt; 1.0e-12</span>
-<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>    );</span>
+<span class="source-line" id="L111"><a href="#L111" aria-label="Line 111">111</a>    assert(quiver.GetTransitions().size() == 3);</span>
+<span class="source-line" id="L112"><a href="#L112" aria-label="Line 112">112</a></span>
+<span class="source-line" id="L113"><a href="#L113" aria-label="Line 113">113</a></span>
+<span class="source-line" id="L114"><a href="#L114" aria-label="Line 114">114</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L115"><a href="#L115" aria-label="Line 115">115</a>    // Check source and target maps</span>
+<span class="source-line" id="L116"><a href="#L116" aria-label="Line 116">116</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L117"><a href="#L117" aria-label="Line 117">117</a></span>
+<span class="source-line" id="L118"><a href="#L118" aria-label="Line 118">118</a>    assert(gamma1-&gt;GetSource() == d2);</span>
+<span class="source-line" id="L119"><a href="#L119" aria-label="Line 119">119</a>    assert(gamma1-&gt;GetTarget() == d1);</span>
 <span class="source-line" id="L120"><a href="#L120" aria-label="Line 120">120</a></span>
-<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>    assert(</span>
-<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>        std::abs(gamma3-&gt;GetProbability() - 0.3)</span>
-<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a>        &lt; 1.0e-12</span>
-<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    );</span>
-<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a></span>
+<span class="source-line" id="L121"><a href="#L121" aria-label="Line 121">121</a>    assert(gamma2-&gt;GetSource() == d1);</span>
+<span class="source-line" id="L122"><a href="#L122" aria-label="Line 122">122</a>    assert(gamma2-&gt;GetTarget() == d0);</span>
+<span class="source-line" id="L123"><a href="#L123" aria-label="Line 123">123</a></span>
+<span class="source-line" id="L124"><a href="#L124" aria-label="Line 124">124</a>    assert(gamma3-&gt;GetSource() == d2);</span>
+<span class="source-line" id="L125"><a href="#L125" aria-label="Line 125">125</a>    assert(gamma3-&gt;GetTarget() == d0);</span>
 <span class="source-line" id="L126"><a href="#L126" aria-label="Line 126">126</a></span>
-<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    // Check branching normalization</span>
-<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a></span>
-<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a>    assert(</span>
-<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>        std::abs(</span>
-<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>            quiver.GetOutgoingProbability(d2) - 1.0</span>
-<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a>        ) &lt; 1.0e-12</span>
+<span class="source-line" id="L127"><a href="#L127" aria-label="Line 127">127</a></span>
+<span class="source-line" id="L128"><a href="#L128" aria-label="Line 128">128</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L129"><a href="#L129" aria-label="Line 129">129</a>    // Check probabilities</span>
+<span class="source-line" id="L130"><a href="#L130" aria-label="Line 130">130</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L131"><a href="#L131" aria-label="Line 131">131</a></span>
+<span class="source-line" id="L132"><a href="#L132" aria-label="Line 132">132</a>    assert(</span>
+<span class="source-line" id="L133"><a href="#L133" aria-label="Line 133">133</a>        std::abs(gamma1-&gt;GetProbability() - 0.7)</span>
+<span class="source-line" id="L134"><a href="#L134" aria-label="Line 134">134</a>        &lt; 1.0e-12</span>
 <span class="source-line" id="L135"><a href="#L135" aria-label="Line 135">135</a>    );</span>
 <span class="source-line" id="L136"><a href="#L136" aria-label="Line 136">136</a></span>
 <span class="source-line" id="L137"><a href="#L137" aria-label="Line 137">137</a>    assert(</span>
-<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>        std::abs(</span>
-<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>            quiver.GetOutgoingProbability(d1) - 1.0</span>
-<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>        ) &lt; 1.0e-12</span>
-<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a>    );</span>
-<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a></span>
-<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>    assert(quiver.IsNormalized(d2));</span>
-<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>    assert(quiver.IsNormalized(d1));</span>
-<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a></span>
+<span class="source-line" id="L138"><a href="#L138" aria-label="Line 138">138</a>        std::abs(gamma2-&gt;GetProbability() - 1.0)</span>
+<span class="source-line" id="L139"><a href="#L139" aria-label="Line 139">139</a>        &lt; 1.0e-12</span>
+<span class="source-line" id="L140"><a href="#L140" aria-label="Line 140">140</a>    );</span>
+<span class="source-line" id="L141"><a href="#L141" aria-label="Line 141">141</a></span>
+<span class="source-line" id="L142"><a href="#L142" aria-label="Line 142">142</a>    assert(</span>
+<span class="source-line" id="L143"><a href="#L143" aria-label="Line 143">143</a>        std::abs(gamma3-&gt;GetProbability() - 0.3)</span>
+<span class="source-line" id="L144"><a href="#L144" aria-label="Line 144">144</a>        &lt; 1.0e-12</span>
+<span class="source-line" id="L145"><a href="#L145" aria-label="Line 145">145</a>    );</span>
 <span class="source-line" id="L146"><a href="#L146" aria-label="Line 146">146</a></span>
-<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>    // Check composability</span>
-<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>    //</span>
-<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>    // gamma1 : d2 -&gt; d1</span>
-<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a>    // gamma2 : d1 -&gt; d0</span>
-<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a>    //</span>
-<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>    // Therefore gamma1 followed by gamma2 is composable.</span>
-<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a></span>
-<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>    assert(</span>
-<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a>        quiver.IsComposable(gamma1, gamma2)</span>
-<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>    );</span>
-<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a></span>
-<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>    // gamma3 : d2 -&gt; d0</span>
-<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>    //</span>
-<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>    // gamma1 followed by gamma3 is not composable.</span>
+<span class="source-line" id="L147"><a href="#L147" aria-label="Line 147">147</a></span>
+<span class="source-line" id="L148"><a href="#L148" aria-label="Line 148">148</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L149"><a href="#L149" aria-label="Line 149">149</a>    // Check branching normalization</span>
+<span class="source-line" id="L150"><a href="#L150" aria-label="Line 150">150</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L151"><a href="#L151" aria-label="Line 151">151</a></span>
+<span class="source-line" id="L152"><a href="#L152" aria-label="Line 152">152</a>    assert(</span>
+<span class="source-line" id="L153"><a href="#L153" aria-label="Line 153">153</a>        std::abs(</span>
+<span class="source-line" id="L154"><a href="#L154" aria-label="Line 154">154</a>            quiver.GetOutgoingProbability(d2) - 1.0</span>
+<span class="source-line" id="L155"><a href="#L155" aria-label="Line 155">155</a>        ) &lt; 1.0e-12</span>
+<span class="source-line" id="L156"><a href="#L156" aria-label="Line 156">156</a>    );</span>
+<span class="source-line" id="L157"><a href="#L157" aria-label="Line 157">157</a></span>
+<span class="source-line" id="L158"><a href="#L158" aria-label="Line 158">158</a>    assert(</span>
+<span class="source-line" id="L159"><a href="#L159" aria-label="Line 159">159</a>        std::abs(</span>
+<span class="source-line" id="L160"><a href="#L160" aria-label="Line 160">160</a>            quiver.GetOutgoingProbability(d1) - 1.0</span>
+<span class="source-line" id="L161"><a href="#L161" aria-label="Line 161">161</a>        ) &lt; 1.0e-12</span>
+<span class="source-line" id="L162"><a href="#L162" aria-label="Line 162">162</a>    );</span>
 <span class="source-line" id="L163"><a href="#L163" aria-label="Line 163">163</a></span>
-<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>    assert(</span>
-<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>        !quiver.IsComposable(gamma1, gamma3)</span>
-<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a>    );</span>
+<span class="source-line" id="L164"><a href="#L164" aria-label="Line 164">164</a>    assert(quiver.IsNormalized(d2));</span>
+<span class="source-line" id="L165"><a href="#L165" aria-label="Line 165">165</a>    assert(quiver.IsNormalized(d1));</span>
+<span class="source-line" id="L166"><a href="#L166" aria-label="Line 166">166</a></span>
 <span class="source-line" id="L167"><a href="#L167" aria-label="Line 167">167</a></span>
-<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a></span>
-<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>    // Check direct transitions</span>
-<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>    // --------------------------------------------------------</span>
-<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a></span>
-<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>    assert(</span>
-<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a>        quiver.HasDirectTransition(d2, d1)</span>
-<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>    );</span>
+<span class="source-line" id="L168"><a href="#L168" aria-label="Line 168">168</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L169"><a href="#L169" aria-label="Line 169">169</a>    // Check composability</span>
+<span class="source-line" id="L170"><a href="#L170" aria-label="Line 170">170</a>    //</span>
+<span class="source-line" id="L171"><a href="#L171" aria-label="Line 171">171</a>    // gamma1 : d2 -&gt; d1</span>
+<span class="source-line" id="L172"><a href="#L172" aria-label="Line 172">172</a>    // gamma2 : d1 -&gt; d0</span>
+<span class="source-line" id="L173"><a href="#L173" aria-label="Line 173">173</a>    //</span>
+<span class="source-line" id="L174"><a href="#L174" aria-label="Line 174">174</a>    // Therefore gamma1 followed by gamma2 is composable.</span>
+<span class="source-line" id="L175"><a href="#L175" aria-label="Line 175">175</a>    // --------------------------------------------------------</span>
 <span class="source-line" id="L176"><a href="#L176" aria-label="Line 176">176</a></span>
 <span class="source-line" id="L177"><a href="#L177" aria-label="Line 177">177</a>    assert(</span>
-<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>        quiver.HasDirectTransition(d1, d0)</span>
+<span class="source-line" id="L178"><a href="#L178" aria-label="Line 178">178</a>        quiver.IsComposable(gamma1, gamma2)</span>
 <span class="source-line" id="L179"><a href="#L179" aria-label="Line 179">179</a>    );</span>
 <span class="source-line" id="L180"><a href="#L180" aria-label="Line 180">180</a></span>
-<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>    assert(</span>
-<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>        quiver.HasDirectTransition(d2, d0)</span>
-<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a>    );</span>
+<span class="source-line" id="L181"><a href="#L181" aria-label="Line 181">181</a>    // gamma3 : d2 -&gt; d0</span>
+<span class="source-line" id="L182"><a href="#L182" aria-label="Line 182">182</a>    //</span>
+<span class="source-line" id="L183"><a href="#L183" aria-label="Line 183">183</a>    // gamma1 followed by gamma3 is not composable.</span>
 <span class="source-line" id="L184"><a href="#L184" aria-label="Line 184">184</a></span>
-<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a></span>
-<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>    std::cout &lt;&lt; std::endl;</span>
-<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a>    std::cout &lt;&lt; &quot;All quiver tests passed.&quot; &lt;&lt; std::endl;</span>
-<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a>    std::cout &lt;&lt; std::endl;</span>
-<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a>}</span>
-<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a></span></code></pre></main></body></html>
+<span class="source-line" id="L185"><a href="#L185" aria-label="Line 185">185</a>    assert(</span>
+<span class="source-line" id="L186"><a href="#L186" aria-label="Line 186">186</a>        !quiver.IsComposable(gamma1, gamma3)</span>
+<span class="source-line" id="L187"><a href="#L187" aria-label="Line 187">187</a>    );</span>
+<span class="source-line" id="L188"><a href="#L188" aria-label="Line 188">188</a></span>
+<span class="source-line" id="L189"><a href="#L189" aria-label="Line 189">189</a></span>
+<span class="source-line" id="L190"><a href="#L190" aria-label="Line 190">190</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L191"><a href="#L191" aria-label="Line 191">191</a>    // Check direct transitions</span>
+<span class="source-line" id="L192"><a href="#L192" aria-label="Line 192">192</a>    // --------------------------------------------------------</span>
+<span class="source-line" id="L193"><a href="#L193" aria-label="Line 193">193</a></span>
+<span class="source-line" id="L194"><a href="#L194" aria-label="Line 194">194</a>    assert(</span>
+<span class="source-line" id="L195"><a href="#L195" aria-label="Line 195">195</a>        quiver.HasDirectTransition(d2, d1)</span>
+<span class="source-line" id="L196"><a href="#L196" aria-label="Line 196">196</a>    );</span>
+<span class="source-line" id="L197"><a href="#L197" aria-label="Line 197">197</a></span>
+<span class="source-line" id="L198"><a href="#L198" aria-label="Line 198">198</a>    assert(</span>
+<span class="source-line" id="L199"><a href="#L199" aria-label="Line 199">199</a>        quiver.HasDirectTransition(d1, d0)</span>
+<span class="source-line" id="L200"><a href="#L200" aria-label="Line 200">200</a>    );</span>
+<span class="source-line" id="L201"><a href="#L201" aria-label="Line 201">201</a></span>
+<span class="source-line" id="L202"><a href="#L202" aria-label="Line 202">202</a>    assert(</span>
+<span class="source-line" id="L203"><a href="#L203" aria-label="Line 203">203</a>        quiver.HasDirectTransition(d2, d0)</span>
+<span class="source-line" id="L204"><a href="#L204" aria-label="Line 204">204</a>    );</span>
+<span class="source-line" id="L205"><a href="#L205" aria-label="Line 205">205</a></span>
+<span class="source-line" id="L206"><a href="#L206" aria-label="Line 206">206</a></span>
+<span class="source-line" id="L207"><a href="#L207" aria-label="Line 207">207</a>    std::cout &lt;&lt; std::endl;</span>
+<span class="source-line" id="L208"><a href="#L208" aria-label="Line 208">208</a>    std::cout &lt;&lt; &quot;All quiver tests passed.&quot; &lt;&lt; std::endl;</span>
+<span class="source-line" id="L209"><a href="#L209" aria-label="Line 209">209</a>    std::cout &lt;&lt; std::endl;</span>
+<span class="source-line" id="L210"><a href="#L210" aria-label="Line 210">210</a>}</span>
+<span class="source-line" id="L211"><a href="#L211" aria-label="Line 211">211</a></span></code></pre></main></body></html>
